@@ -1,242 +1,290 @@
-    body,
-    html {
-        background-color: #223843;
-        width: 100%;
-        height: 100%;
-        margin: 0 auto;
-        font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-        color: #ffffff;
-    }
-    
-    .fitchain {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-        height: 100%;
-        justify-content: space-between;
-    }
-    
-    .banner {
-        display: flex;
-        flex-direction: row;
-        align-content: center;
-        align-items: center;
-        justify-content: center;
-        width: 100%;
-        border-bottom: 20px solid #95dee3;
-        background: white;
-    }
-    
-    .inner-banner {
-        display: flex;
-        justify-content: space-between;
-        max-width: 1010px;
-        width: 100%;
-        align-items: center;
-        margin: 20px;
-    }
-    
-    .inner-content {
-        display: flex;
-        justify-content: space-between;
-        max-width: 1010px;
-        width: 100%;
-        align-items: center;
-        margin: 20px;
-    }
-    
-    .content {
-        display: flex;
-        flex-direction: row;
-        align-content: center;
-        align-items: center;
-        justify-content: center;
-        width: 100%;
-    }
-    
-    .poster {
-        height: 360px;
-        width: 33%;
-        background: white;
-        border-radius: 4px;
-        margin: 20px;
-        display: flex;
-        flex-direction: column;
-        align-content: center;
-        align-items: center;
-        justify-content: center;
-    }
-    
-    .benefits {
-        height: 300px;
-        width: 33%;
-        background: white;
-        border-radius: 4px;
-        margin: 20px;
-    }
-    
-    .login {
-        height: 300px;
-        width: 33%;
-        background: white;
-        border-radius: 4px;
-        margin: 20px;
-    }
-    
-    .logoholder {}
-    
-    .logo {
-        height: 120px;
-    }
-    
-    .posterlogo {
-        height: 60px;
-    }
-    
-    .posterInner {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-    }
-    
-    .posterText {
-        color: #F4512C;
-        font-weight: bold;
-        letter-spacing: 2px;
-        font-size: 22px;
-    }
-    
-    .posterSubText {
-        color: #223843;
-        letter-spacing: 2px;
-        font-size: 16px;
-        width: 160px;
-        text-align: center;
-        height: 120px;
-        display: flex;
-        justify-content: center;
-        align-content: center;
-        flex-direction: column;
-        line-height: 26px;
-    }
-    
-    .about {
-        color: #F4512C;
-        font-weight: bold;
-        font-size: 18px;
-    }
-    
-    .trait {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-content: center;
-        align-items: center;
-        margin: 10px;
-    }
-    
-    .traitinfo {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-content: center;
-        align-items: center;
-    }
-    
-    .traitimage {
-        height: 40px;
-        margin: 5px;
-    }
-    
-    .traitwords {
-        color: #F4512C;
-        font-size: 16px;
-        width: 200px;
-        margin: 10px;
-        font-weight: bold;
-    }
-    
-    .traitsubtext {
-        color: #578ca9;
-        font-size: 13px;
-        width: 200px;
-    }
-    /* - - - - - */
-    
-    .loginbox {
-        height: auto;
-        display: flex;
-        flex-direction: column;
-        align-content: center;
-        align-items: center;
-        justify-content: center;
-    }
-    
-    .loginform {
-        display: flex;
-        flex-direction: column;
-        margin-top: 10px;
-    }
-    
-    .loginfield {
-        display: flex;
-        padding: 16px;
-        align-items: center;
-        justify-content: center;
-        margin: 10px;
-        height: 20px;
-        align-content: center;
-        flex-direction: row;
-        font-size: 14px;
-    }
-    
-    .logininput {
-        border: 1px solid #F4512C;
-        border-radius: 4px;
-        height: 36px;
-        padding: 10px;
-        width: 180px;
-        font-size: 14px;
-    }
-    
-    .icon {
-        width: 30px;
-        padding: 10px;
-        margin-left: -20px;
-    }
-    
-    .loginbutton {
-        background: #F4512C;
-        color: white;
-        text-align: center;
-        width: 200px;
-        height: 36px;
-        padding: 5px;
-        align-self: center;
-        border-radius: 4px;
-        margin-top: 10px;
-        border: none;
-        font-size: 16px;
-    }
-    
-    .loginnew {
-        padding: 15px;
-        text-align: center;
-        text-decoration: none;
-        color: #95dee3;
-    }
-    
-    a {
-        color: #95dee3;
-    }
-    
-    .footer {
-        width: 100%;
-        height: 80px;
-        background: #578CA9;
-    }
-    
-    .padding {
-        height: 200px;
-    }
+body,
+html {
+    background-color: #2d2d37;
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    /*        font-family: "HelveticaNeue-Light",
+"Helvetica Neue Light",
+"Helvetica Neue",
+Helvetica,
+Arial,
+"Lucida Grande",
+sans-serif;*/
+    font-family: 'Source Sans Pro', sans-serif;
+    color: #ffffff;
+    letter-spacing: 1px;
+}
+
+.fitchain {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    justify-content: space-between;
+}
+
+.banner {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    /*    border-bottom: 2px solid #384b55;*/
+    background: #24242c;
+    height: 100px;
+}
+
+.inner-banner {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1010px;
+    width: 100%;
+    align-items: center;
+    margin: 20px;
+}
+
+.inner-content {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1010px;
+    width: 100%;
+    align-items: center;
+    margin: 20px;
+}
+
+.content {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.poster {
+    height: 360px;
+    width: 33%;
+    background: #363640;
+    border-radius: 4px;
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.benefits {
+    height: 300px;
+    width: 33%;
+    background: white;
+    border-radius: 4px;
+    margin: 20px;
+}
+
+.login {
+    height: 300px;
+    width: 33%;
+    background: white;
+    border-radius: 4px;
+    margin: 20px;
+}
+
+.title {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    text-align: center;
+    align-content: center;
+    align-items: center;
+}
+
+.logoholder {
+    font-size: 18px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+
+.logo {
+    height: 120px;
+}
+
+.posterlogo {
+    height: 60px;
+}
+
+.posterInner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.posterText {
+    color: #f56461;
+    letter-spacing: 2px;
+    font-size: 22px;
+}
+
+.posterSubText {
+    color: #c0c0c3;
+    letter-spacing: 2px;
+    font-size: 16px;
+    width: 160px;
+    text-align: center;
+    height: 120px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+    line-height: 26px;
+}
+
+.about {
+    color: #fff;
+    /* font-weight: bold; */
+    font-size: 16px;
+}
+
+.trait {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    margin: 10px;
+}
+
+.traitinfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+}
+
+.traitimage {
+    height: 40px;
+    margin: 5px;
+}
+
+.traitwords {
+    color: #f56461;
+    font-size: 16px;
+    width: 200px;
+    margin: 10px;
+}
+
+.traitsubtext {
+    color: #c0c0c3;
+    font-size: 14px;
+    width: 200px;
+}
+
+
+/* - - - - - */
+
+.loginbox {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.loginform {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+}
+
+.loginfield {
+    display: flex;
+    padding: 16px;
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
+    height: 20px;
+    align-content: center;
+    flex-direction: row;
+    font-size: 14px;
+}
+
+.logininput {
+    border: none;
+    border-radius: 4px;
+    height: 24px;
+    padding: 10px;
+    width: 180px;
+    font-size: 14px;
+    background: #24242c;
+}
+
+.icon {
+    width: 30px;
+    padding: 10px;
+    margin-left: -20px;
+}
+
+.loginbutton {
+    background: #f56461;
+    color: white;
+    text-align: center;
+    width: 200px;
+    height: 36px;
+    padding: 5px;
+    align-self: center;
+    border-radius: 4px;
+    margin-top: 10px;
+    border: none;
+    font-size: 16px;
+}
+
+.loginnew {
+    padding: 15px;
+    text-align: center;
+    text-decoration: none;
+    color: #95dee3;
+}
+
+a {
+    color: #c0c0c3;
+}
+
+.footer {
+    width: 100%;
+    height: 80px;
+    background: #24242c;
+}
+
+.padding {
+    height: 200px;
+}
+
+.chain {
+    display: flex;
+    flex-direction: row;
+    height: 20px;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+}
+
+.link {
+    height: 7px;
+    width: 7px;
+    background: white;
+    border-radius: 7px;
+}
+
+.join {
+    height: 2px;
+    width: 8px;
+    background: white;
+}
