@@ -45,7 +45,15 @@ console.log(process.env.FITBIT);
 
 /* - - - - - - - - - - - - - - - - - - - - - */
 
-var config = require('./config/credentials.json');
+
+var config;
+
+try {
+    config = require('./config/credentials.json');
+    console.log("Loaded local credentials", vcapLocal);
+} catch (e) {
+    console.error(e);
+}
 
 var FitbitApiClient = require("fitbit-node");
 
