@@ -36,36 +36,53 @@ var appEnv = cfenv.getAppEnv();
 console.log('app environment');
 console.log(appEnv);
 
-
 console.log('process env mongodb');
 console.log(appEnv.services['compose-for-mongodb']);
 
 console.log('process env fitbit');
+
+var fitbitCredentials = JSON.parse(process.env.FITBIT);
 console.log(process.env.FITBIT);
+
+console.log(fitbitCredentials);
 
 /* - - - - - - - - - - - - - - - - - - - - - */
 
-
 var config;
+
+var DEFINED_BY_ENVIRONMENT = 'defined by environment';
 
 try {
     config = require('./config/credentials.json');
-    console.log("Loaded local credentials", vcapLocal);
+    console.log("Loaded local credentials");
 } catch (e) {
-    console.error(e);
+    config = DEFINED_BY_ENVIRONMENT;
+    console.warn('COULD NOT LOAD LOCAL CREDENTIAL FILE');
+    console.warn(e);
 }
+
+console.log('config:');
+
+console.log(config);
 
 var FitbitApiClient = require("fitbit-node");
 
-var fitbitConfig
+var fitbitConfig;
 
-if (config) {
-    fitbitConfig = config.fitbit;
+if (config === DEFINED_BY_ENVIRONMENT) {
+    fitbitConfig = fitbitCredentials.fitbit;
+    console.log('reading FITBIT config from Bluemix Configuration');
+    console.log('fitbitConfig:', fitbitConfig);
 } else {
-    fitbitConfig = process.env.FITBIT.fitbit;
+    fitbitConfig = config.fitbit;
+    console.log('reading FITBIT config from local Configuration');
 }
 
+
+
+console.log('Authorizing fitbit API');
 var client = new FitbitApiClient(fitbitConfig.clientID, fitbitConfig.clientSecret);
+console.log('Fitbit API Authorized');
 
 /* fitbit callback */
 
@@ -101,11 +118,20 @@ app.get("/fitbit", function (req, res) {
 
 var mongoDbCredentials
 
-if (config) {
-    mongoDbCredentials = config.mongo[0].credentials;
+if (config === DEFINED_BY_ENVIRONMENT) {
+
+    console.log('MONGO CREDENTIALS');
+
+    console.log(appEnv.services['compose-for-mongodb']);
+
+
+    mongoDbCredentials = appEnv.services['compose-for-mongodb'][0].credentials;
 } else {
-    mongoDbCredentials = appEnv.services['compose-for-mongodb'].credentials;
+    mongoDbCredentials = config.mongo[0].credentials;
 }
+
+console.log('Authorizing Mongo API');
+
 
 var ca = [new Buffer(mongoDbCredentials.ca_certificate_base64, 'base64')];
 mongoDbUrl = mongoDbCredentials.uri;
@@ -120,6 +146,8 @@ mongoDbOptions = {
 };
 
 mongoose.connect(mongoDbUrl, mongoDbOptions);
+
+console.log('Mongo API authorized');
 
 app.use(express.static(__dirname + '/public'));
 
