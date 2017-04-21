@@ -33,13 +33,31 @@ app.use(express.static(__dirname + '/public'));
 // get the app environment from Cloud Foundry
 var appEnv = cfenv.getAppEnv();
 
+console.log('app environment');
+console.log(appEnv);
+
+
+console.log('process env mongodb');
+console.log(appEnv.services['compose-for-mongodb']);
+
+console.log('process env fitbit');
+console.log(process.env.FITBIT);
+
 /* - - - - - - - - - - - - - - - - - - - - - */
 
 var config = require('./config/credentials.json');
 
 var FitbitApiClient = require("fitbit-node");
 
-var client = new FitbitApiClient(config.fitbit.clientID, config.fitbit.clientSecret);
+var fitbitConfig
+
+if (config) {
+    fitbitConfig = config.fitbit;
+} else {
+    fitbitConfig = process.env.FITBIT.fitbit;
+}
+
+var client = new FitbitApiClient(fitbitConfig.clientID, fitbitConfig.clientSecret);
 
 /* fitbit callback */
 
@@ -73,8 +91,13 @@ app.get("/fitbit", function (req, res) {
 
 // configuration ===============================================================
 
+var mongoDbCredentials
 
-var mongoDbCredentials = config.mongo[0].credentials;
+if (config) {
+    mongoDbCredentials = config.mongo[0].credentials;
+} else {
+    mongoDbCredentials = appEnv.services['compose-for-mongodb'].credentials;
+}
 
 var ca = [new Buffer(mongoDbCredentials.ca_certificate_base64, 'base64')];
 mongoDbUrl = mongoDbCredentials.uri;
