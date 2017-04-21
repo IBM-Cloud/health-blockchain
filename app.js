@@ -194,7 +194,15 @@ app.get('/signupFailure', function (req, res) {
     }, null, 3));
 })
 
+app.get('/profile', function (req, res) {
+    req.session.lastPage = "/profile";
 
+    if (req.isAuthenticated()) {
+        res.sendfile('./public/profile.html');
+    } else {
+        res.sendfile('./public/login.html');
+    }
+});
 
 app.get('/login', function (req, res) {
     res.sendfile('./public/index.html');
