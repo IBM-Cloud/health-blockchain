@@ -13,6 +13,9 @@
 		224047601EAE3A820054B74D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2240475F1EAE3A820054B74D /* Assets.xcassets */; };
 		224047631EAE3A820054B74D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 224047611EAE3A820054B74D /* LaunchScreen.storyboard */; };
 		2240476E1EAE3A820054B74D /* fitchainTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2240476D1EAE3A820054B74D /* fitchainTests.swift */; };
+		22FA696E1EB29B9400D32D66 /* SummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FA696D1EB29B9400D32D66 /* SummaryViewController.swift */; };
+		22FA69701EB29BB900D32D66 /* MarketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FA696F1EB29BB900D32D66 /* MarketViewController.swift */; };
+		22FA69721EB29BC900D32D66 /* StatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FA69711EB29BC900D32D66 /* StatusViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +39,9 @@
 		224047691EAE3A820054B74D /* fitchainTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = fitchainTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2240476D1EAE3A820054B74D /* fitchainTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fitchainTests.swift; sourceTree = "<group>"; };
 		2240476F1EAE3A820054B74D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		22FA696D1EB29B9400D32D66 /* SummaryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SummaryViewController.swift; sourceTree = "<group>"; };
+		22FA696F1EB29BB900D32D66 /* MarketViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketViewController.swift; sourceTree = "<group>"; };
+		22FA69711EB29BC900D32D66 /* StatusViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +89,9 @@
 				2240475F1EAE3A820054B74D /* Assets.xcassets */,
 				224047611EAE3A820054B74D /* LaunchScreen.storyboard */,
 				224047641EAE3A820054B74D /* Info.plist */,
+				22FA696D1EB29B9400D32D66 /* SummaryViewController.swift */,
+				22FA696F1EB29BB900D32D66 /* MarketViewController.swift */,
+				22FA69711EB29BC900D32D66 /* StatusViewController.swift */,
 			);
 			path = fitchain;
 			sourceTree = "<group>";
@@ -199,8 +208,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22FA69701EB29BB900D32D66 /* MarketViewController.swift in Sources */,
 				2240475B1EAE3A820054B74D /* ViewController.swift in Sources */,
 				224047591EAE3A820054B74D /* AppDelegate.swift in Sources */,
+				22FA696E1EB29B9400D32D66 /* SummaryViewController.swift in Sources */,
+				22FA69721EB29BC900D32D66 /* StatusViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -406,6 +418,7 @@
 				224047741EAE3A820054B74D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		224047751EAE3A820054B74D /* Build configuration list for PBXNativeTarget "fitchainTests" */ = {
 			isa = XCConfigurationList;
@@ -414,6 +427,7 @@
 				224047771EAE3A820054B74D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
