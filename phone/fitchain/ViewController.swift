@@ -65,9 +65,14 @@ class ViewController: UIViewController {
             }
         }
         
-        self.performSegue(withIdentifier: "beaconsegue", sender: nil)
+        self.performSegue(withIdentifier: "fitchainsegue", sender: nil)
         
         task.resume()
+    }
+    
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
     }
     
     override func viewDidLoad() {

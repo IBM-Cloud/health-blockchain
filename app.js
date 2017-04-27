@@ -41,11 +41,13 @@ console.log(appEnv.services['compose-for-mongodb']);
 
 console.log('process env fitbit');
 
-var fitbitCredentials = JSON.parse(process.env.FITBIT);
-console.log(process.env.FITBIT);
+if (process.env.FITBIT) {
 
-console.log(fitbitCredentials);
+    var fitbitCredentials = JSON.parse(process.env.FITBIT);
+    console.log(process.env.FITBIT);
 
+    console.log(fitbitCredentials);
+}
 /* - - - - - - - - - - - - - - - - - - - - - */
 
 var config;
@@ -216,20 +218,20 @@ app.post('/signup', passport.authenticate('local-signup', {
 }));
 
 app.get('/loginSuccess', function (req, res) {
+
+    console.log('LOGIN SUCCESS');
+
     res.setHeader('Content-Type', 'application/json');
     res.send(JSON.stringify({
         username: req.user.local.email,
-        firstName: req.user.local.first_name,
-        lastName: req.user.local.last_name,
-        visits: req.user.visits,
-        appointments: req.user.appointments,
-        status: req.user.statusHistory,
-        evidence: req.user.evidenceHistory,
         outcome: 'success'
     }, null, 3));
 })
 
 app.get('/loginFailure', function (req, res) {
+
+    console.log('LOGIN FAILURE');
+
     res.setHeader('Content-Type', 'application/json');
     res.send(JSON.stringify({
         outcome: 'failure'
@@ -267,7 +269,6 @@ app.get('/login', function (req, res) {
     res.sendfile('./public/index.html');
 });
 
-// process the login form
 app.post('/login', passport.authenticate('local-login', {
     successRedirect: '/loginSuccess', // redirect to the secure profile section
     failureRedirect: '/loginFailure', // redirect back to the signup page if there is an error
