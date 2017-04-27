@@ -19,8 +19,8 @@ class ViewController: UIViewController {
     @IBAction func login(sender: UIButton) {
         // do something
         
-        print(username.text);
-        print(password.text);
+        print(username.text!);
+        print(password.text!);
         
         let target = "https://fitchain.mybluemix.net/login";
         
