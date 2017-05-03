@@ -86,6 +86,7 @@
                                                 <color key="backgroundColor" red="0.96921378374099731" green="0.38618910312652588" blue="0.3651546835899353" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="2ad-Zj-tBn"/>
+                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="squ-uI-e25"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="24"/>
                                                 <state key="normal" title="Login">
