@@ -155,10 +155,12 @@
 				TargetAttributes = {
 					224047541EAE3A810054B74D = {
 						CreatedOnToolsVersion = 8.3.1;
+						DevelopmentTeam = CT3Y8HLWZY;
 						ProvisioningStyle = Automatic;
 					};
 					224047681EAE3A820054B74D = {
 						CreatedOnToolsVersion = 8.3.1;
+						DevelopmentTeam = 2PMPL6JH3T;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 224047541EAE3A810054B74D;
 					};
@@ -351,6 +353,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = CT3Y8HLWZY;
 				INFOPLIST_FILE = fitchain/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.cloudplatform.com.fitchain;
@@ -363,6 +366,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = CT3Y8HLWZY;
 				INFOPLIST_FILE = fitchain/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.cloudplatform.com.fitchain;
@@ -376,6 +380,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = 2PMPL6JH3T;
 				INFOPLIST_FILE = fitchainTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.cloudplatform.com.fitchainTests;
@@ -390,6 +395,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = 2PMPL6JH3T;
 				INFOPLIST_FILE = fitchainTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.cloudplatform.com.fitchainTests;

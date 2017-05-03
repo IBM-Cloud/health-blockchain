@@ -12,21 +12,12 @@ class SummaryViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        
-        let limpet = UIColor(red:0.61, green:0.85, blue:0.85, alpha:1.0)
-        
-        let snorkel = UIColor(red:0.00, green:0.31, blue:0.51, alpha:1.0)
-        
         
         let dark = UIColor(red:0.14, green:0.14, blue:0.17, alpha:1.0)
-        navigationController!.navigationBar.barTintColor = dark
-        
-        
-        tabBarController!.tabBar.barTintColor = dark
-        
-        tabBarController!.tabBar.tintColor = snorkel
+        navigationController!.navigationBar.barTintColor = dark;
+        navigationController!.navigationBar.tintColor = UIColor.white;
+        tabBarController!.tabBar.barTintColor = dark;
+        tabBarController!.tabBar.tintColor = UIColor.white;
     }
 
     override func didReceiveMemoryWarning() {

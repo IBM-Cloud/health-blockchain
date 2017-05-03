@@ -40,7 +40,7 @@ class ViewController: UIViewController {
             
             guard let data = data, let _:URLResponse = response  , error == nil else {
                 print("error")
-                print(response)
+                print(response!)
                 return
             }
             
@@ -48,9 +48,9 @@ class ViewController: UIViewController {
             
             let dictionary = self.convertStringToDictionary(text: dataString!)
             
-            print(dataString)
+            print(dataString!)
             
-            print(dictionary)
+            print(dictionary!)
             
             if let fname = dictionary?["firstName"] {
                 self.appDelegate.firstname = fname as! String;

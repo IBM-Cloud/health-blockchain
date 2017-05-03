@@ -3,6 +3,9 @@
 var mongoose = require('mongoose');
 var bcrypt = require('bcrypt-nodejs');
 
+var Challenge = require('../models/challenge');
+
+
 var accountSchema = mongoose.Schema({
 
     local: {
@@ -11,24 +14,7 @@ var accountSchema = mongoose.Schema({
         first_name: String,
         last_name: String
     },
-    facebook: {
-        id: String,
-        token: String,
-        email: String,
-        name: String
-    },
-    twitter: {
-        id: String,
-        token: String,
-        displayName: String,
-        username: String
-    },
-    google: {
-        id: String,
-        token: String,
-        email: String,
-        name: String
-    }
+    challenges: [Challenge.schema],
 });
 
 // methods ======================

@@ -29,11 +29,10 @@
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FITCHAIN" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7JK-TJ-IIw">
                                                 <rect key="frame" x="0.0" y="0.0" width="200" height="40"/>
-                                                <color key="backgroundColor" red="0.14019104839999999" green="0.1386831701" blue="0.1728926301" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="Zyv-nj-TVD"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBold" family="Helvetica Neue" pointSize="32"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="35"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -49,7 +48,7 @@
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="CfA-5W-5aS"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
                                                 <color key="textColor" red="0.64884495735168457" green="0.73438882827758789" blue="0.76589387655258179" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -65,7 +64,7 @@
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="PVv-kB-37b"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
                                                 <color key="textColor" red="0.64884495735168457" green="0.73438882827758789" blue="0.76589387655258179" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -88,7 +87,7 @@
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="2ad-Zj-tBn"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="22"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="24"/>
                                                 <state key="normal" title="Login">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
@@ -138,7 +137,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LsU-Id-i1P" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2156" y="920.68965517241384"/>
+            <point key="canvasLocation" x="727" y="1749"/>
         </scene>
         <!--Table View Controller-->
         <scene sceneID="SIY-YN-MdI">
@@ -167,7 +166,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="whL-Hj-1nn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3980" y="915.29235382308855"/>
+            <point key="canvasLocation" x="1759" y="1746"/>
         </scene>
         <!--SUMMARY-->
         <scene sceneID="gbQ-Qw-0bC">
@@ -244,7 +243,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f7x-J8-sBu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1216.8" y="920.68965517241384"/>
+            <point key="canvasLocation" x="726" y="927"/>
         </scene>
         <!--Item-->
         <scene sceneID="jdn-Jv-1hM">
@@ -263,7 +262,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tbx-e4-xLv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3040.8000000000002" y="915.29235382308855"/>
+            <point key="canvasLocation" x="1758" y="925"/>
         </scene>
     </scenes>
 </document>
