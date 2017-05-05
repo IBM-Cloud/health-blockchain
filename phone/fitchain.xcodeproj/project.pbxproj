@@ -15,8 +15,11 @@
 		2240476E1EAE3A820054B74D /* fitchainTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2240476D1EAE3A820054B74D /* fitchainTests.swift */; };
 		22FA696E1EB29B9400D32D66 /* SummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FA696D1EB29B9400D32D66 /* SummaryViewController.swift */; };
 		22FA69701EB29BB900D32D66 /* MarketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FA696F1EB29BB900D32D66 /* MarketViewController.swift */; };
-		22FA69721EB29BC900D32D66 /* StatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FA69711EB29BC900D32D66 /* StatusViewController.swift */; };
 		22FA69771EBACB7F00D32D66 /* fitchain.png in Resources */ = {isa = PBXBuildFile; fileRef = 22FA69761EBACB7F00D32D66 /* fitchain.png */; };
+		22FA69791EBBC73C00D32D66 /* ChallengesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FA69781EBBC73C00D32D66 /* ChallengesTableViewController.swift */; };
+		22FA697B1EBBDE7E00D32D66 /* target.png in Resources */ = {isa = PBXBuildFile; fileRef = 22FA697A1EBBDE7E00D32D66 /* target.png */; };
+		22FA697D1EBBDF6900D32D66 /* time.png in Resources */ = {isa = PBXBuildFile; fileRef = 22FA697C1EBBDF6900D32D66 /* time.png */; };
+		22FA697F1EBBE00300D32D66 /* measure.png in Resources */ = {isa = PBXBuildFile; fileRef = 22FA697E1EBBE00300D32D66 /* measure.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,8 +45,11 @@
 		2240476F1EAE3A820054B74D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		22FA696D1EB29B9400D32D66 /* SummaryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SummaryViewController.swift; sourceTree = "<group>"; };
 		22FA696F1EB29BB900D32D66 /* MarketViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketViewController.swift; sourceTree = "<group>"; };
-		22FA69711EB29BC900D32D66 /* StatusViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusViewController.swift; sourceTree = "<group>"; };
 		22FA69761EBACB7F00D32D66 /* fitchain.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fitchain.png; sourceTree = "<group>"; };
+		22FA69781EBBC73C00D32D66 /* ChallengesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengesTableViewController.swift; sourceTree = "<group>"; };
+		22FA697A1EBBDE7E00D32D66 /* target.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = target.png; sourceTree = "<group>"; };
+		22FA697C1EBBDF6900D32D66 /* time.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = time.png; sourceTree = "<group>"; };
+		22FA697E1EBBE00300D32D66 /* measure.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = measure.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,7 +100,7 @@
 				224047641EAE3A820054B74D /* Info.plist */,
 				22FA696D1EB29B9400D32D66 /* SummaryViewController.swift */,
 				22FA696F1EB29BB900D32D66 /* MarketViewController.swift */,
-				22FA69711EB29BC900D32D66 /* StatusViewController.swift */,
+				22FA69781EBBC73C00D32D66 /* ChallengesTableViewController.swift */,
 			);
 			path = fitchain;
 			sourceTree = "<group>";
@@ -111,6 +117,9 @@
 		22FA69731EBA90F600D32D66 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				22FA697E1EBBE00300D32D66 /* measure.png */,
+				22FA697C1EBBDF6900D32D66 /* time.png */,
+				22FA697A1EBBDE7E00D32D66 /* target.png */,
 				22FA69761EBACB7F00D32D66 /* fitchain.png */,
 			);
 			name = images;
@@ -203,8 +212,11 @@
 			files = (
 				224047631EAE3A820054B74D /* LaunchScreen.storyboard in Resources */,
 				22FA69771EBACB7F00D32D66 /* fitchain.png in Resources */,
+				22FA697D1EBBDF6900D32D66 /* time.png in Resources */,
+				22FA697F1EBBE00300D32D66 /* measure.png in Resources */,
 				224047601EAE3A820054B74D /* Assets.xcassets in Resources */,
 				2240475E1EAE3A820054B74D /* Main.storyboard in Resources */,
+				22FA697B1EBBDE7E00D32D66 /* target.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -225,8 +237,8 @@
 				22FA69701EB29BB900D32D66 /* MarketViewController.swift in Sources */,
 				2240475B1EAE3A820054B74D /* ViewController.swift in Sources */,
 				224047591EAE3A820054B74D /* AppDelegate.swift in Sources */,
+				22FA69791EBBC73C00D32D66 /* ChallengesTableViewController.swift in Sources */,
 				22FA696E1EB29B9400D32D66 /* SummaryViewController.swift in Sources */,
-				22FA69721EB29BC900D32D66 /* StatusViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
