@@ -12,7 +12,7 @@ class ChallengesTableViewController: UITableViewController {
     
     @IBOutlet weak var table: UITableView!
     
-    var items = ["Apple", "Orange", "Pear"]
+    var challenges = Array<Challenge>();
     
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
 
@@ -36,6 +36,10 @@ class ChallengesTableViewController: UITableViewController {
         )
         
         self.navigationItem.rightBarButtonItem = rightButtonItem
+        
+        
+        self.buildTestData()
+        
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -44,8 +48,77 @@ class ChallengesTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
     
-    func rightButtonAction(sender: UIBarButtonItem){
+    func buildTestData(){
         
+        var dateComponents = DateComponents()
+        
+        dateComponents.year = 2017
+        dateComponents.month = 4
+        dateComponents.day = 0
+        dateComponents.timeZone = TimeZone(abbreviation: "EST")
+        dateComponents.hour = 12
+        dateComponents.minute = 0
+        
+        let userCalendar = Calendar.current // user calendar
+
+        // - - - - - - -
+        
+        let startBTW = userCalendar.date(from: dateComponents)
+
+        dateComponents.day = 30
+        
+        let endBTW = userCalendar.date(from: dateComponents)
+        
+        // - - - - - - -
+        
+        var bikeToWork = Challenge();
+        
+        bikeToWork.title = "Bike To Work";
+        bikeToWork.start = startBTW;
+        bikeToWork.end = endBTW;
+        bikeToWork.image = "bike.png"
+        bikeToWork.unit = "Days"
+        bikeToWork.activity = "CYCLING"
+        
+        // - - - - - - -
+        
+        dateComponents.day = 1
+        dateComponents.month = 0
+
+        
+        let startFFW = userCalendar.date(from: dateComponents)
+        
+        dateComponents.day = 11
+        dateComponents.month = 30
+
+        
+        let endFFW = userCalendar.date(from: dateComponents)
+        
+        // - - - - - - -
+        
+        var fitForWork = Challenge();
+        
+        fitForWork.title = "Fit For Work";
+        fitForWork.start = startFFW;
+        fitForWork.end = endFFW;
+        fitForWork.image = "skip.png"
+        fitForWork.unit = "Days"
+        fitForWork.activity = "ANY"
+        
+        // - - - - - - -
+        
+        challenges.append(bikeToWork)
+        challenges.append(fitForWork)
+        
+        print("built test data")
+        
+        print ("---------------")
+        
+        print(challenges);
+    }
+    
+    
+    func rightButtonAction(sender: UIBarButtonItem){
         performSegue(withIdentifier: "marketsegue", sender: self)
         print("pressed button")
     }
@@ -64,19 +137,20 @@ class ChallengesTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return self.items.count;
+        return self.challenges.count;
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "challengeCell", for: indexPath)
-//        let rowdata = self.items[indexPath.row];
-//        cell.hotelLabel.text = rowdata["hotel"] as? String;
+        let cell = tableView.dequeueReusableCell(withIdentifier: "challengeCell", for: indexPath)as! ChallengeTableViewCell
+
+        let rowdata = self.challenges[indexPath.row];
+        cell.titleLabel.text = rowdata.title
 //        cell.hotelLabel.textColor = UIColor(white: 114/255, alpha: 1)
 //        
-//        let rowicon = rowdata["icon"] as? String;
-//        cell.hotelIcon.image = UIImage(named:rowicon!);
-//        
+        let rowicon = rowdata.image;
+        cell.challengeIcon.image = UIImage(named:rowicon);
+//
 //        
 //        let start = rowdata["start"] as? String;
 //        

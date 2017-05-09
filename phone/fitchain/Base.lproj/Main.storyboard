@@ -161,7 +161,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.17520600557327271" green="0.1742992103099823" blue="0.2161145806312561" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="challengeCell" rowHeight="200" id="hj3-Dn-Eaf">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="challengeCell" rowHeight="200" id="hj3-Dn-Eaf" customClass="ChallengeTableViewCell" customModule="fitchain" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="200"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hj3-Dn-Eaf" id="fzc-YP-wvm">
@@ -329,6 +329,12 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" red="0.1411394476890564" green="0.13650572299957275" blue="0.17378035187721252" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <outlet property="beginLabel" destination="6Ym-u6-J3S" id="vRg-jX-l39"/>
+                                    <outlet property="challengeIcon" destination="sEk-Gq-P81" id="QLo-LA-dka"/>
+                                    <outlet property="endLabel" destination="UW9-ie-Prb" id="v8y-x3-2fp"/>
+                                    <outlet property="titleLabel" destination="lkY-CH-qF0" id="p0z-kN-KId"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>

@@ -10,10 +10,10 @@ import UIKit
 
 class ChallengeTableViewCell: UITableViewCell {
     
-//    @IBOutlet weak var hotelIcon: UIImageView!
-//    @IBOutlet weak var hotelLabel: UILabel!
-//    @IBOutlet weak var endLabel: UILabel!
-//    @IBOutlet weak var beginLabel: UILabel!
+    @IBOutlet weak var challengeIcon: UIImageView!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var endLabel: UILabel!
+    @IBOutlet weak var beginLabel: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()

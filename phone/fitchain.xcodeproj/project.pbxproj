@@ -21,8 +21,10 @@
 		22FA697F1EBBE00300D32D66 /* measure.png in Resources */ = {isa = PBXBuildFile; fileRef = 22FA697E1EBBE00300D32D66 /* measure.png */; };
 		22FA69811EBCFC2D00D32D66 /* HistoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FA69801EBCFC2D00D32D66 /* HistoryTableViewController.swift */; };
 		22FA69851EC0CEEA00D32D66 /* ChallengeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FA69841EC0CEEA00D32D66 /* ChallengeTableViewCell.swift */; };
-		22FA69871EC0D8DF00D32D66 /* bike.png in Resources */ = {isa = PBXBuildFile; fileRef = 22FA69861EC0D8DF00D32D66 /* bike.png */; };
 		22FA69891EC22BDF00D32D66 /* MarketTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FA69881EC22BDF00D32D66 /* MarketTableViewController.swift */; };
+		22FA698B1EC2341D00D32D66 /* Challenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FA698A1EC2341D00D32D66 /* Challenge.swift */; };
+		22FA698F1EC254C000D32D66 /* skip.png in Resources */ = {isa = PBXBuildFile; fileRef = 22FA698E1EC254C000D32D66 /* skip.png */; };
+		22FA69911EC254C500D32D66 /* bike.png in Resources */ = {isa = PBXBuildFile; fileRef = 22FA69901EC254C500D32D66 /* bike.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,8 +56,10 @@
 		22FA697E1EBBE00300D32D66 /* measure.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = measure.png; sourceTree = "<group>"; };
 		22FA69801EBCFC2D00D32D66 /* HistoryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryTableViewController.swift; sourceTree = "<group>"; };
 		22FA69841EC0CEEA00D32D66 /* ChallengeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeTableViewCell.swift; sourceTree = "<group>"; };
-		22FA69861EC0D8DF00D32D66 /* bike.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bike.png; sourceTree = "<group>"; };
 		22FA69881EC22BDF00D32D66 /* MarketTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketTableViewController.swift; sourceTree = "<group>"; };
+		22FA698A1EC2341D00D32D66 /* Challenge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Challenge.swift; sourceTree = "<group>"; };
+		22FA698E1EC254C000D32D66 /* skip.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = skip.png; sourceTree = "<group>"; };
+		22FA69901EC254C500D32D66 /* bike.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bike.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +113,7 @@
 				22FA69801EBCFC2D00D32D66 /* HistoryTableViewController.swift */,
 				22FA69841EC0CEEA00D32D66 /* ChallengeTableViewCell.swift */,
 				22FA69881EC22BDF00D32D66 /* MarketTableViewController.swift */,
+				22FA698A1EC2341D00D32D66 /* Challenge.swift */,
 			);
 			path = fitchain;
 			sourceTree = "<group>";
@@ -125,7 +130,8 @@
 		22FA69731EBA90F600D32D66 /* images */ = {
 			isa = PBXGroup;
 			children = (
-				22FA69861EC0D8DF00D32D66 /* bike.png */,
+				22FA698E1EC254C000D32D66 /* skip.png */,
+				22FA69901EC254C500D32D66 /* bike.png */,
 				22FA697E1EBBE00300D32D66 /* measure.png */,
 				22FA697C1EBBDF6900D32D66 /* time.png */,
 				22FA697A1EBBDE7E00D32D66 /* target.png */,
@@ -221,11 +227,12 @@
 			files = (
 				224047631EAE3A820054B74D /* LaunchScreen.storyboard in Resources */,
 				22FA69771EBACB7F00D32D66 /* fitchain.png in Resources */,
+				22FA69911EC254C500D32D66 /* bike.png in Resources */,
+				22FA698F1EC254C000D32D66 /* skip.png in Resources */,
 				22FA697D1EBBDF6900D32D66 /* time.png in Resources */,
 				22FA697F1EBBE00300D32D66 /* measure.png in Resources */,
 				224047601EAE3A820054B74D /* Assets.xcassets in Resources */,
 				2240475E1EAE3A820054B74D /* Main.storyboard in Resources */,
-				22FA69871EC0D8DF00D32D66 /* bike.png in Resources */,
 				22FA697B1EBBDE7E00D32D66 /* target.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -249,6 +256,7 @@
 				224047591EAE3A820054B74D /* AppDelegate.swift in Sources */,
 				22FA69891EC22BDF00D32D66 /* MarketTableViewController.swift in Sources */,
 				22FA69791EBBC73C00D32D66 /* ChallengesTableViewController.swift in Sources */,
+				22FA698B1EC2341D00D32D66 /* Challenge.swift in Sources */,
 				22FA69851EC0CEEA00D32D66 /* ChallengeTableViewCell.swift in Sources */,
 				22FA696E1EB29B9400D32D66 /* SummaryViewController.swift in Sources */,
 			);
