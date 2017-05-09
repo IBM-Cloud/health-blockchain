@@ -1,53 +1,27 @@
 //
-//  ChallengesTableViewController.swift
+//  MarketTableViewController.swift
 //  fitchain
 //
-//  Created by Anton McConville on 2017-05-04.
+//  Created by Anton McConville on 2017-05-09.
 //  Copyright © 2017 Anton McConville. All rights reserved.
 //
 
 import UIKit
 
-class ChallengesTableViewController: UITableViewController {
-    
-    @IBOutlet weak var table: UITableView!
-    
-    var items = ["Apple", "Orange", "Pear"]
-    
-    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+class MarketTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        table.delegate = self
-        table.dataSource = self
-        
         let dark = UIColor(red:0.14, green:0.14, blue:0.17, alpha:1.0)
         navigationController!.navigationBar.barTintColor = dark;
         navigationController!.navigationBar.tintColor = UIColor.white;
-        tabBarController!.tabBar.barTintColor = dark;
-        tabBarController!.tabBar.tintColor = UIColor.white;
-        
-        let rightButtonItem = UIBarButtonItem.init(
-            title: "Add",
-            style: .done,
-            target: self,
-            action: #selector(self.rightButtonAction)
-        )
-        
-        self.navigationItem.rightBarButtonItem = rightButtonItem
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-    }
-    
-    func rightButtonAction(sender: UIBarButtonItem){
-        
-        performSegue(withIdentifier: "marketsegue", sender: self)
-        print("pressed button")
     }
 
     override func didReceiveMemoryWarning() {
@@ -59,46 +33,24 @@ class ChallengesTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 1
+        return 0
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return self.items.count;
+        return 0
     }
 
-    
+    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "challengeCell", for: indexPath)
-//        let rowdata = self.items[indexPath.row];
-//        cell.hotelLabel.text = rowdata["hotel"] as? String;
-//        cell.hotelLabel.textColor = UIColor(white: 114/255, alpha: 1)
-//        
-//        let rowicon = rowdata["icon"] as? String;
-//        cell.hotelIcon.image = UIImage(named:rowicon!);
-//        
-//        
-//        let start = rowdata["start"] as? String;
-//        
-//        var index = start?.index((start?.startIndex)!, offsetBy: 10)
-//        let begin = start?.substring(to: index!)
-//        
-//        cell.beginLabel.text = begin;
-//        
-//        
-//        
-//        let stop = rowdata["end"] as? String;
-//        
-//        index = stop?.index((stop?.startIndex)!, offsetBy: 10)
-//        let end = stop?.substring(to: index!)
-//        
-//        cell.endLabel.text = end;
-        
-        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+
+        // Configure the cell...
+
         return cell
     }
-    
-    
+    */
+
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {

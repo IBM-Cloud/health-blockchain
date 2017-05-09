@@ -122,6 +122,36 @@
             </objects>
             <point key="canvasLocation" x="388" y="42"/>
         </scene>
+        <!--MARKET-->
+        <scene sceneID="cKB-v6-f58">
+            <objects>
+                <tableViewController id="Dgq-Sb-n4Z" userLabel="MARKET" customClass="MarketTableViewController" customModule="fitchain" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="4lI-Iy-3fa">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.14019104838371277" green="0.13868317008018494" blue="0.17289263010025024" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="7Of-cP-QSd">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7Of-cP-QSd" id="jQj-yS-WxR">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                                <color key="backgroundColor" red="0.14019104838371277" green="0.13868317008018494" blue="0.17289263010025024" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Dgq-Sb-n4Z" id="GaV-Nm-G7f"/>
+                            <outlet property="delegate" destination="Dgq-Sb-n4Z" id="JWP-j8-uws"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="MARKET" id="t2V-g9-ccC"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JH2-bF-hCq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1772" y="2574.96251874063"/>
+        </scene>
         <!--CHALLENGES-->
         <scene sceneID="SIY-YN-MdI">
             <objects>
@@ -309,6 +339,7 @@
                     <navigationItem key="navigationItem" title="CHALLENGES" id="BIm-LS-hfv"/>
                     <connections>
                         <outlet property="table" destination="kVx-f0-4Ys" id="tpi-ql-10V"/>
+                        <segue destination="Dgq-Sb-n4Z" kind="show" identifier="marketsegue" id="JbG-Ny-ZLV"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="whL-Hj-1nn" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -14,7 +14,6 @@
 		224047631EAE3A820054B74D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 224047611EAE3A820054B74D /* LaunchScreen.storyboard */; };
 		2240476E1EAE3A820054B74D /* fitchainTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2240476D1EAE3A820054B74D /* fitchainTests.swift */; };
 		22FA696E1EB29B9400D32D66 /* SummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FA696D1EB29B9400D32D66 /* SummaryViewController.swift */; };
-		22FA69701EB29BB900D32D66 /* MarketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FA696F1EB29BB900D32D66 /* MarketViewController.swift */; };
 		22FA69771EBACB7F00D32D66 /* fitchain.png in Resources */ = {isa = PBXBuildFile; fileRef = 22FA69761EBACB7F00D32D66 /* fitchain.png */; };
 		22FA69791EBBC73C00D32D66 /* ChallengesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FA69781EBBC73C00D32D66 /* ChallengesTableViewController.swift */; };
 		22FA697B1EBBDE7E00D32D66 /* target.png in Resources */ = {isa = PBXBuildFile; fileRef = 22FA697A1EBBDE7E00D32D66 /* target.png */; };
@@ -23,6 +22,7 @@
 		22FA69811EBCFC2D00D32D66 /* HistoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FA69801EBCFC2D00D32D66 /* HistoryTableViewController.swift */; };
 		22FA69851EC0CEEA00D32D66 /* ChallengeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FA69841EC0CEEA00D32D66 /* ChallengeTableViewCell.swift */; };
 		22FA69871EC0D8DF00D32D66 /* bike.png in Resources */ = {isa = PBXBuildFile; fileRef = 22FA69861EC0D8DF00D32D66 /* bike.png */; };
+		22FA69891EC22BDF00D32D66 /* MarketTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FA69881EC22BDF00D32D66 /* MarketTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,7 +47,6 @@
 		2240476D1EAE3A820054B74D /* fitchainTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fitchainTests.swift; sourceTree = "<group>"; };
 		2240476F1EAE3A820054B74D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		22FA696D1EB29B9400D32D66 /* SummaryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SummaryViewController.swift; sourceTree = "<group>"; };
-		22FA696F1EB29BB900D32D66 /* MarketViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketViewController.swift; sourceTree = "<group>"; };
 		22FA69761EBACB7F00D32D66 /* fitchain.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fitchain.png; sourceTree = "<group>"; };
 		22FA69781EBBC73C00D32D66 /* ChallengesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengesTableViewController.swift; sourceTree = "<group>"; };
 		22FA697A1EBBDE7E00D32D66 /* target.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = target.png; sourceTree = "<group>"; };
@@ -56,6 +55,7 @@
 		22FA69801EBCFC2D00D32D66 /* HistoryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryTableViewController.swift; sourceTree = "<group>"; };
 		22FA69841EC0CEEA00D32D66 /* ChallengeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeTableViewCell.swift; sourceTree = "<group>"; };
 		22FA69861EC0D8DF00D32D66 /* bike.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bike.png; sourceTree = "<group>"; };
+		22FA69881EC22BDF00D32D66 /* MarketTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,10 +105,10 @@
 				224047611EAE3A820054B74D /* LaunchScreen.storyboard */,
 				224047641EAE3A820054B74D /* Info.plist */,
 				22FA696D1EB29B9400D32D66 /* SummaryViewController.swift */,
-				22FA696F1EB29BB900D32D66 /* MarketViewController.swift */,
 				22FA69781EBBC73C00D32D66 /* ChallengesTableViewController.swift */,
 				22FA69801EBCFC2D00D32D66 /* HistoryTableViewController.swift */,
 				22FA69841EC0CEEA00D32D66 /* ChallengeTableViewCell.swift */,
+				22FA69881EC22BDF00D32D66 /* MarketTableViewController.swift */,
 			);
 			path = fitchain;
 			sourceTree = "<group>";
@@ -244,10 +244,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				22FA69701EB29BB900D32D66 /* MarketViewController.swift in Sources */,
 				2240475B1EAE3A820054B74D /* ViewController.swift in Sources */,
 				22FA69811EBCFC2D00D32D66 /* HistoryTableViewController.swift in Sources */,
 				224047591EAE3A820054B74D /* AppDelegate.swift in Sources */,
+				22FA69891EC22BDF00D32D66 /* MarketTableViewController.swift in Sources */,
 				22FA69791EBBC73C00D32D66 /* ChallengesTableViewController.swift in Sources */,
 				22FA69851EC0CEEA00D32D66 /* ChallengeTableViewCell.swift in Sources */,
 				22FA696E1EB29B9400D32D66 /* SummaryViewController.swift in Sources */,
