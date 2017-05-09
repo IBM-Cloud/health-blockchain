@@ -7,12 +7,16 @@
 //
 
 import UIKit
+import HealthKit
+
 
 class ChallengesTableViewController: UITableViewController {
     
     @IBOutlet weak var table: UITableView!
     
     var challenges = Array<Challenge>();
+    
+    let healthKitStore:HKHealthStore = HKHealthStore()
     
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
 

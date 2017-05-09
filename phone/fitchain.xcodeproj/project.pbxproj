@@ -25,6 +25,7 @@
 		22FA698B1EC2341D00D32D66 /* Challenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FA698A1EC2341D00D32D66 /* Challenge.swift */; };
 		22FA698F1EC254C000D32D66 /* skip.png in Resources */ = {isa = PBXBuildFile; fileRef = 22FA698E1EC254C000D32D66 /* skip.png */; };
 		22FA69911EC254C500D32D66 /* bike.png in Resources */ = {isa = PBXBuildFile; fileRef = 22FA69901EC254C500D32D66 /* bike.png */; };
+		22FA69951EC255E000D32D66 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22FA69941EC255E000D32D66 /* HealthKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +61,8 @@
 		22FA698A1EC2341D00D32D66 /* Challenge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Challenge.swift; sourceTree = "<group>"; };
 		22FA698E1EC254C000D32D66 /* skip.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = skip.png; sourceTree = "<group>"; };
 		22FA69901EC254C500D32D66 /* bike.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bike.png; sourceTree = "<group>"; };
+		22FA69921EC255E000D32D66 /* fitchain.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = fitchain.entitlements; sourceTree = "<group>"; };
+		22FA69941EC255E000D32D66 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +70,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22FA69951EC255E000D32D66 /* HealthKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -86,6 +90,7 @@
 				224047571EAE3A820054B74D /* fitchain */,
 				2240476C1EAE3A820054B74D /* fitchainTests */,
 				224047561EAE3A820054B74D /* Products */,
+				22FA69931EC255E000D32D66 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -101,6 +106,7 @@
 		224047571EAE3A820054B74D /* fitchain */ = {
 			isa = PBXGroup;
 			children = (
+				22FA69921EC255E000D32D66 /* fitchain.entitlements */,
 				22FA69731EBA90F600D32D66 /* images */,
 				224047581EAE3A820054B74D /* AppDelegate.swift */,
 				2240475A1EAE3A820054B74D /* ViewController.swift */,
@@ -138,6 +144,14 @@
 				22FA69761EBACB7F00D32D66 /* fitchain.png */,
 			);
 			name = images;
+			sourceTree = "<group>";
+		};
+		22FA69931EC255E000D32D66 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				22FA69941EC255E000D32D66 /* HealthKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -192,6 +206,11 @@
 						CreatedOnToolsVersion = 8.3.1;
 						DevelopmentTeam = CT3Y8HLWZY;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.HealthKit = {
+								enabled = 1;
+							};
+						};
 					};
 					224047681EAE3A820054B74D = {
 						CreatedOnToolsVersion = 8.3.1;
@@ -397,6 +416,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = fitchain/fitchain.entitlements;
 				DEVELOPMENT_TEAM = CT3Y8HLWZY;
 				INFOPLIST_FILE = fitchain/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -410,6 +430,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = fitchain/fitchain.entitlements;
 				DEVELOPMENT_TEAM = CT3Y8HLWZY;
 				INFOPLIST_FILE = fitchain/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
