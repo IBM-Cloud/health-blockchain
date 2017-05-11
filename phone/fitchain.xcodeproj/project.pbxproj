@@ -26,6 +26,7 @@
 		22FA698F1EC254C000D32D66 /* skip.png in Resources */ = {isa = PBXBuildFile; fileRef = 22FA698E1EC254C000D32D66 /* skip.png */; };
 		22FA69911EC254C500D32D66 /* bike.png in Resources */ = {isa = PBXBuildFile; fileRef = 22FA69901EC254C500D32D66 /* bike.png */; };
 		22FA69951EC255E000D32D66 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22FA69941EC255E000D32D66 /* HealthKit.framework */; };
+		22FA69971EC3D82A00D32D66 /* HealthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FA69961EC3D82A00D32D66 /* HealthManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 		22FA69901EC254C500D32D66 /* bike.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bike.png; sourceTree = "<group>"; };
 		22FA69921EC255E000D32D66 /* fitchain.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = fitchain.entitlements; sourceTree = "<group>"; };
 		22FA69941EC255E000D32D66 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
+		22FA69961EC3D82A00D32D66 /* HealthManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +122,7 @@
 				22FA69841EC0CEEA00D32D66 /* ChallengeTableViewCell.swift */,
 				22FA69881EC22BDF00D32D66 /* MarketTableViewController.swift */,
 				22FA698A1EC2341D00D32D66 /* Challenge.swift */,
+				22FA69961EC3D82A00D32D66 /* HealthManager.swift */,
 			);
 			path = fitchain;
 			sourceTree = "<group>";
@@ -278,6 +281,7 @@
 				22FA698B1EC2341D00D32D66 /* Challenge.swift in Sources */,
 				22FA69851EC0CEEA00D32D66 /* ChallengeTableViewCell.swift in Sources */,
 				22FA696E1EB29B9400D32D66 /* SummaryViewController.swift in Sources */,
+				22FA69971EC3D82A00D32D66 /* HealthManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

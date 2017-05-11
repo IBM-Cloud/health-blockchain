@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -32,6 +33,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        
 //        // change navigation item title color
         navigationBarAppearace.titleTextAttributes = [NSForegroundColorAttributeName:UIColor.white]
+        
+        var hm = HealthManager();
+        
+        hm.authorizeHealthKit()
         
         return true
     }

@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import HealthKit
 
 
 class ChallengesTableViewController: UITableViewController {
@@ -16,7 +15,6 @@ class ChallengesTableViewController: UITableViewController {
     
     var challenges = Array<Challenge>();
     
-    let healthKitStore:HKHealthStore = HKHealthStore()
     
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
 
@@ -43,8 +41,8 @@ class ChallengesTableViewController: UITableViewController {
         
         
         self.buildTestData()
-        
-
+   
+     
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
