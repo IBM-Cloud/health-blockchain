@@ -14,10 +14,12 @@ class ChallengeTableViewCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var endLabel: UILabel!
     @IBOutlet weak var beginLabel: UILabel!
+    @IBOutlet weak var button:UIButton!
 
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        button.layer.cornerRadius = 4;
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

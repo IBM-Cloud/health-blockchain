@@ -77,6 +77,11 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if( appDelegate.debug == true){
+            self.performSegue(withIdentifier: "fitchainsegue", sender: nil)
+        }
+        
         // Do any additional setup after loading the view, typically from a nib.
     }
     
