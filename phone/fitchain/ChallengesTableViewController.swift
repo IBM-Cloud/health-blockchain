@@ -148,12 +148,11 @@ class ChallengesTableViewController: UITableViewController {
 
         let rowdata = self.challenges[indexPath.row];
         cell.titleLabel.text = rowdata.title
-//        cell.hotelLabel.textColor = UIColor(white: 114/255, alpha: 1)
-//        
+        
         let rowicon = rowdata.image;
         cell.challengeIcon.image = UIImage(named:rowicon);
-//
-//        
+
+      
 //        let start = rowdata["start"] as? String;
 //        
 //        var index = start?.index((start?.startIndex)!, offsetBy: 10)

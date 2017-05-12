@@ -9,6 +9,13 @@
 import UIKit
 
 class MarketTableViewController: UITableViewController {
+    
+    @IBOutlet weak var table: UITableView!
+    
+    var challenges = Array<Challenge>();    
+    
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,11 +24,151 @@ class MarketTableViewController: UITableViewController {
         navigationController!.navigationBar.barTintColor = dark;
         navigationController!.navigationBar.tintColor = UIColor.white;
 
+        self.buildTestData()
+        
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
-
+        
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+    }
+    
+    func buildTestData(){
+        
+        var dateComponents = DateComponents()
+        
+        dateComponents.year = 2017
+        dateComponents.month = 4
+        dateComponents.day = 0
+        dateComponents.timeZone = TimeZone(abbreviation: "EST")
+        dateComponents.hour = 12
+        dateComponents.minute = 0
+        
+        let userCalendar = Calendar.current // user calendar
+        
+        // - - - - - - -
+        
+        let startBTW = userCalendar.date(from: dateComponents)
+        
+        dateComponents.day = 30
+        
+        let endBTW = userCalendar.date(from: dateComponents)
+        
+        // - - - - - - -
+        
+        var bikeToWork = Challenge();
+        
+        bikeToWork.title = "Bike To Work";
+        bikeToWork.start = startBTW;
+        bikeToWork.end = endBTW;
+        bikeToWork.image = "bike.png"
+        bikeToWork.unit = "Days"
+        bikeToWork.goal = 31
+        bikeToWork.activity = "CYCLING"
+        
+        // - - - - - - -
+        
+        dateComponents.day = 1
+        dateComponents.month = 0
+        
+        
+        let startFFW = userCalendar.date(from: dateComponents)
+        
+        dateComponents.day = 11
+        dateComponents.month = 30
+        
+        
+        let endFFW = userCalendar.date(from: dateComponents)
+        
+        // - - - - - - -
+        
+        var fitForWork = Challenge();
+        
+        fitForWork.title = "Fit For Work";
+        fitForWork.start = startFFW;
+        fitForWork.end = endFFW;
+        fitForWork.image = "skip.png"
+        fitForWork.unit = "Days"
+        fitForWork.goal = 60
+        fitForWork.activity = "ANY"
+        
+        // - - - - - - -
+        
+        
+        dateComponents.day = 1
+        dateComponents.month = 10
+        
+        
+        let startSC = userCalendar.date(from: dateComponents)
+        
+        dateComponents.day = 30
+        dateComponents.month = 3
+        dateComponents.year = 2018
+        
+        let endSC = userCalendar.date(from: dateComponents)
+
+        
+        var stairChallenge = Challenge();
+        
+        fitForWork.title = "Stair Challenge";
+        fitForWork.start = startSC;
+        fitForWork.end = endSC;
+        fitForWork.image = "skip.png"
+        fitForWork.unit = "Steps"
+        fitForWork.goal = 1000
+        fitForWork.activity = "STAIRS"
+        
+        // - - - - - - -
+        
+        dateComponents.day = 1
+        dateComponents.month = 1
+        
+        
+        let startRL = userCalendar.date(from: dateComponents)
+        
+        dateComponents.day = 30
+        dateComponents.month = 11
+        dateComponents.year = 2017
+        
+        let endRL = userCalendar.date(from: dateComponents)
+
+
+        var runnersLife = Challenge();
+        
+        fitForWork.title = "Runners Life Insurance";
+        fitForWork.start = startRL;
+        fitForWork.end = endRL;
+        fitForWork.image = "skip.png"
+        fitForWork.unit = "Steps"
+        fitForWork.activity = "STAIRS"
+        
+        // - - - - - - -
+        
+        
+        var halfMarathon = Challenge();
+        
+        fitForWork.title = "Half Marathon Qualifying";
+        fitForWork.start = startRL;
+        fitForWork.end = endRL;
+        fitForWork.image = "skip.png"
+        fitForWork.unit = "Time"
+        fitForWork.goal = 90
+        fitForWork.activity = "RUN"
+        
+        // - - - - - - -
+
+        challenges.append(bikeToWork)
+        challenges.append(fitForWork)
+        challenges.append(stairChallenge)
+        challenges.append(runnersLife)
+        challenges.append(halfMarathon)
+
+        print("built test data")
+        
+        print ("---------------")
+        
+        print(challenges);
     }
 
     override func didReceiveMemoryWarning() {
@@ -33,23 +180,23 @@ class MarketTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return self.challenges.count;
     }
 
-    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "marketCell", for: indexPath)as! MarketTableViewCell
+
 
         // Configure the cell...
 
         return cell
     }
-    */
+
 
     /*
     // Override to support conditional editing of the table view.
