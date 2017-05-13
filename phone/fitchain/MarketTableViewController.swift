@@ -192,7 +192,11 @@ class MarketTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "marketCell", for: indexPath)as! MarketTableViewCell
 
 
-        // Configure the cell...
+        let rowdata = self.challenges[indexPath.row];
+        cell.titleLabel.text = rowdata.title
+        
+        let rowicon = rowdata.image;
+        cell.challengeIcon.image = UIImage(named:rowicon);
 
         return cell
     }

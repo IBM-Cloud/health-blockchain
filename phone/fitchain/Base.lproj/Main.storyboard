@@ -126,19 +126,77 @@
         <scene sceneID="cKB-v6-f58">
             <objects>
                 <tableViewController id="Dgq-Sb-n4Z" userLabel="MARKET" customClass="MarketTableViewController" customModule="fitchain" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="4lI-Iy-3fa">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="280" sectionHeaderHeight="28" sectionFooterHeight="28" id="4lI-Iy-3fa">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.14019104838371277" green="0.13868317008018494" blue="0.17289263010025024" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="marketCell" id="7Of-cP-QSd" customClass="MarketTableViewCell" customModule="fitchain" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="marketCell" rowHeight="280" id="7Of-cP-QSd" customClass="MarketTableViewCell" customModule="fitchain" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="280"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7Of-cP-QSd" id="jQj-yS-WxR">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="280"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Wbm-zY-XWo">
+                                            <rect key="frame" x="77.5" y="60" width="220" height="159.5"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bike To Work" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qsp-dA-8Zx">
+                                                    <rect key="frame" x="0.0" y="0.0" width="220" height="19.5"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iB7-pS-mHg">
+                                                    <rect key="frame" x="0.0" y="19.5" width="220" height="100"/>
+                                                    <subviews>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bike.png" translatesAutoresizingMaskIntoConstraints="NO" id="W0s-2A-cTL">
+                                                            <rect key="frame" x="59.5" y="0.0" width="100" height="100"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="100" id="H8y-lC-fco"/>
+                                                                <constraint firstAttribute="height" constant="100" id="xEI-0n-Pbq"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="W0s-2A-cTL" firstAttribute="centerX" secondItem="iB7-pS-mHg" secondAttribute="centerX" id="1Ju-JI-tB5"/>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="9Nb-9a-bmW"/>
+                                                        <constraint firstAttribute="width" constant="100" id="UgA-gm-7HD"/>
+                                                        <constraint firstItem="W0s-2A-cTL" firstAttribute="centerY" secondItem="iB7-pS-mHg" secondAttribute="centerY" id="guC-0s-wRx"/>
+                                                        <constraint firstAttribute="height" constant="100" id="nvJ-Bp-OyO"/>
+                                                    </constraints>
+                                                </view>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5uN-BJ-vMa">
+                                                    <rect key="frame" x="0.0" y="119.5" width="220" height="10"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="10" id="ghi-ZD-V3o"/>
+                                                    </constraints>
+                                                </view>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Qo-ER-fiC">
+                                                    <rect key="frame" x="0.0" y="129.5" width="220" height="30"/>
+                                                    <color key="backgroundColor" red="0.86666667460000002" green="0.25490197539999998" blue="0.1921568662" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <state key="normal" title="Accept Challenge">
+                                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="220" id="lah-Ks-feT"/>
+                                            </constraints>
+                                        </stackView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="Wbm-zY-XWo" firstAttribute="centerX" secondItem="jQj-yS-WxR" secondAttribute="centerX" id="3mK-s4-q6V"/>
+                                        <constraint firstItem="Wbm-zY-XWo" firstAttribute="centerY" secondItem="jQj-yS-WxR" secondAttribute="centerY" id="4DJ-Tc-zQI"/>
+                                        <constraint firstItem="Wbm-zY-XWo" firstAttribute="centerX" secondItem="jQj-yS-WxR" secondAttribute="centerX" id="nKd-Ys-h8w"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" red="0.14019104838371277" green="0.13868317008018494" blue="0.17289263010025024" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <outlet property="button" destination="6Qo-ER-fiC" id="pXY-Og-eQW"/>
+                                    <outlet property="challengeIcon" destination="W0s-2A-cTL" id="eT0-rH-uII"/>
+                                    <outlet property="titleLabel" destination="qsp-dA-8Zx" id="7Dl-SW-1le"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -153,7 +211,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JH2-bF-hCq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="833" y="2611"/>
+            <point key="canvasLocation" x="832.79999999999995" y="2610.9445277361319"/>
         </scene>
         <!--CHALLENGES-->
         <scene sceneID="SIY-YN-MdI">
