@@ -28,6 +28,7 @@
 		22FA69971EC3D82A00D32D66 /* HealthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FA69961EC3D82A00D32D66 /* HealthManager.swift */; };
 		22FA69991EC610CB00D32D66 /* MarketTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FA69981EC610CB00D32D66 /* MarketTableViewCell.swift */; };
 		22FA699F1EC65F7200D32D66 /* fitchain.png in Resources */ = {isa = PBXBuildFile; fileRef = 22FA699E1EC65F7200D32D66 /* fitchain.png */; };
+		22FA69A11EC7356400D32D66 /* stair.png in Resources */ = {isa = PBXBuildFile; fileRef = 22FA69A01EC7356400D32D66 /* stair.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,7 @@
 		22FA69961EC3D82A00D32D66 /* HealthManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthManager.swift; sourceTree = "<group>"; };
 		22FA69981EC610CB00D32D66 /* MarketTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarketTableViewCell.swift; sourceTree = "<group>"; };
 		22FA699E1EC65F7200D32D66 /* fitchain.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fitchain.png; sourceTree = "<group>"; };
+		22FA69A01EC7356400D32D66 /* stair.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stair.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,6 +146,7 @@
 			children = (
 				22FA698E1EC254C000D32D66 /* skip.png */,
 				22FA699E1EC65F7200D32D66 /* fitchain.png */,
+				22FA69A01EC7356400D32D66 /* stair.png */,
 				22FA69901EC254C500D32D66 /* bike.png */,
 				22FA697E1EBBE00300D32D66 /* measure.png */,
 				22FA697C1EBBDF6900D32D66 /* time.png */,
@@ -251,6 +254,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				22FA699F1EC65F7200D32D66 /* fitchain.png in Resources */,
+				22FA69A11EC7356400D32D66 /* stair.png in Resources */,
 				224047631EAE3A820054B74D /* LaunchScreen.storyboard in Resources */,
 				22FA69911EC254C500D32D66 /* bike.png in Resources */,
 				22FA698F1EC254C000D32D66 /* skip.png in Resources */,

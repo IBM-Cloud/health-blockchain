@@ -66,6 +66,7 @@ class MarketTableViewController: UITableViewController {
         bikeToWork.unit = "Days"
         bikeToWork.goal = 31
         bikeToWork.activity = "CYCLING"
+        bikeToWork.description = "Earn a water bottle for 10 bike commutes to work"
         
         // - - - - - - -
         
@@ -90,8 +91,10 @@ class MarketTableViewController: UITableViewController {
         fitForWork.end = endFFW;
         fitForWork.image = "skip.png"
         fitForWork.unit = "Days"
-        fitForWork.goal = 60
+        fitForWork.goal = 30
         fitForWork.activity = "ANY"
+        fitForWork.description = "$100 health insurance credit for 30 workouts a year"
+
         
         // - - - - - - -
         
@@ -111,13 +114,14 @@ class MarketTableViewController: UITableViewController {
         
         var stairChallenge = Challenge();
         
-        fitForWork.title = "Stair Challenge";
-        fitForWork.start = startSC;
-        fitForWork.end = endSC;
-        fitForWork.image = "skip.png"
-        fitForWork.unit = "Steps"
-        fitForWork.goal = 1000
-        fitForWork.activity = "STAIRS"
+        stairChallenge.title = "Stair Challenge";
+        stairChallenge.start = startSC;
+        stairChallenge.end = endSC;
+        stairChallenge.image = "stair.png"
+        stairChallenge.unit = "Steps"
+        stairChallenge.goal = 1000
+        stairChallenge.activity = "STAIRS"
+        stairChallenge.description = "Bobble hat for 1000 stairs climbed this winter"
         
         // - - - - - - -
         
@@ -136,25 +140,25 @@ class MarketTableViewController: UITableViewController {
 
         var runnersLife = Challenge();
         
-        fitForWork.title = "Runners Life Insurance";
-        fitForWork.start = startRL;
-        fitForWork.end = endRL;
-        fitForWork.image = "skip.png"
-        fitForWork.unit = "Steps"
-        fitForWork.activity = "STAIRS"
+        runnersLife.title = "Runners Life Insurance";
+        runnersLife.start = startRL;
+        runnersLife.end = endRL;
+        runnersLife.image = "skip.png"
+        runnersLife.unit = "Steps"
+        runnersLife.activity = "STAIRS"
         
         // - - - - - - -
         
         
         var halfMarathon = Challenge();
         
-        fitForWork.title = "Half Marathon Qualifying";
-        fitForWork.start = startRL;
-        fitForWork.end = endRL;
-        fitForWork.image = "skip.png"
-        fitForWork.unit = "Time"
-        fitForWork.goal = 90
-        fitForWork.activity = "RUN"
+        halfMarathon.title = "Half Marathon Qualifying";
+        halfMarathon.start = startRL;
+        halfMarathon.end = endRL;
+        halfMarathon.image = "skip.png"
+        halfMarathon.unit = "Time"
+        halfMarathon.goal = 90
+        halfMarathon.activity = "RUN"
         
         // - - - - - - -
 
@@ -197,6 +201,8 @@ class MarketTableViewController: UITableViewController {
         
         let rowicon = rowdata.image;
         cell.challengeIcon.image = UIImage(named:rowicon);
+        
+        cell.about.text = rowdata.description;
 
         return cell
     }
