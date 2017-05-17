@@ -16,6 +16,8 @@ var bodyParser = require('body-parser');
 var session = require('express-session');
 var request = require('request');
 
+var databaseStatus = false;
+
 require('./config/passport')(passport);
 
 var Account = require('./models/account');
@@ -147,7 +149,13 @@ mongoDbOptions = {
     }
 };
 
-mongoose.connect(mongoDbUrl, mongoDbOptions);
+mongoose.connect(mongoDbUrl, mongoDbOptions, function (error) {
+    if (error) {
+        console.log('Unable to connect to the database. Please start the server. Error:', error);
+    } else {
+        console.log('Connected to database');
+    }
+});
 
 console.log('Mongo API authorized');
 
