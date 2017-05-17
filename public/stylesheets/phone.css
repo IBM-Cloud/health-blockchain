@@ -1,0 +1,42 @@
+.phone {
+    width: 360px;
+    height: 756px;
+    border-radius: 56px;
+    border: 2px solid #d9dbdc;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #24242c;
+}
+
+.screen {
+    width: 330px;
+    height: 588px;
+    background: #2d2d37;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+}
+
+.border {
+    height: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+}
+
+.card {
+    height: 360px;
+    background: #363640;
+    border-radius: 4px;
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+}

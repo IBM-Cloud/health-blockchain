@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Healthchain - fitness data blockchain - health economy</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+    <link rel="stylesheet" href="stylesheets/style.css">
+    <link rel="stylesheet" href="stylesheets/phone.css">
+
+</head>
+
+<body>
+    <div class='fitchain'>
+        <div class='banner'>
+            <div class='inner-banner'>
+                <div class="logoholder">
+                    <div class="title"><a href="/">FITCHAIN</a></div>
+                    <div class="chain">
+                        <div class="join"></div>
+                        <div class="link"></div>
+                        <div class="join"></div>
+                        <div class="link"></div>
+                        <div class="join"></div>
+                        <div class="link"></div>
+                        <div class="join"></div>
+                        <div class="link"></div>
+                        <div class="join"></div>
+                        <div class="link"></div>
+                        <div class="join"></div>
+                        <div class="link"></div>
+                        <div class="join"></div>
+                    </div>
+                </div>
+                <!--                <div class="logoholder"><img class='logo' src="images/fitchain.svg"></div>-->
+
+                <div class="about"><a href="./about.html">ABOUT</a></div>
+            </div>
+        </div>
+        <div class='content'>
+            <div class='inner-content'>
+                <div class="phone">
+                    <div class="screen">
+                        <div class='card'>
+                            <div class="loginbox">
+                                <div class="loginform">
+                                    <div class="loginfield">
+                                        <img src="images/username.svg" class="icon">
+                                        <input id="email" class="logininput" type="text" name="email" placeholder="E-mail address" onkeypress="return newEvent(event,'login')">
+                                    </div>
+                                    <div class="loginfield">
+                                        <img src="images/password.svg" class="icon">
+                                        <input id="password" class="logininput" type="password" name="password" placeholder="Password" onkeypress="return newEvent(event,'login')">
+                                    </div>
+                                    <button class="loginbutton" onclick="login()">Login</button>
+                                    <div class="loginnew"><a class="signuplink" href="./signup">Add a new account</a></div>
+                                </div>
+                                <div class="messagearea" id="messagearea"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class='footer'>
+            <div class='inner-banner'>
+                <div class="logoholder">
+                    <div class="footerInfo">Built with <a href="https://www.ibm.com/cloud-computing/bluemix/">IBM Bluemix</a> and <a href="https://www.ibm.com/blockchain/">IBM Blockchain</a></div>
+                </div>
+                <div class="footerGithub">
+                    <a href="https://github.com/IBM-Bluemix/health-blockchain">Github Repo</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="src/fitchain.js"></script>
+
+</html>
