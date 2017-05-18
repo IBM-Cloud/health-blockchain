@@ -1,76 +1,96 @@
-.phone {
-    width: 360px;
-    height: 756px;
-    border-radius: 56px;
-    border: 2px solid #666;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background: #24242c;
-}
-
-.screen {
-    width: 330px;
-    height: 588px;
-    background: #2d2d37;
-    display: flex;
-    flex-direction: column;
-    align-content: center;
-    justify-content: center;
-}
-
-.border {
-    height: 80px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-content: center;
-    align-items: center;
-}
-
-.camera {}
-
-.home {
-    width: 46px;
-    height: 46px;
-    border-radius: 50px;
-    border: 1px solid #444;
-    background: linear-gradient(135deg, #080808 0%, #464646 50%, #080808 100%);
-}
-
-.border-row {
-    flex-direction: row;
-    width: 104px;
-    display: flex;
-    align-content: center;
-    justify-content: center;
-    align-items: center;
-}
-
-.sensor {
-    height: 14px;
-    width: 14px;
-    border-radius: 14px;
-    background: #555;
-}
-
-.speaker {
-    width: 70px;
-    height: 6px;
-    border-radius: 6px;
-    background: #555;
-    margin-left: 20px;
-}
-
-.card {
-    height: 360px;
-    background: #363640;
-    border-radius: 4px;
-    margin: 20px;
-    display: flex;
-    flex-direction: column;
-    align-content: center;
-    align-items: center;
-    justify-content: center;
-}
+    .phone {
+        width: 360px;
+        height: 756px;
+        border-radius: 56px;
+        border: 2px solid #666;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background: #24242c;
+    }
+    
+    .screen {
+        width: 330px;
+        height: 588px;
+        background: #2d2d37;
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        justify-content: center;
+    }
+    
+    .border {
+        height: 80px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-content: center;
+        align-items: center;
+    }
+    
+    .camera {}
+    
+    .home {
+        width: 46px;
+        height: 46px;
+        border-radius: 50px;
+        border: 1px solid #444;
+        background: linear-gradient(135deg, #080808 0%, #464646 50%, #080808 100%);
+    }
+    
+    .border-row {
+        flex-direction: row;
+        width: 104px;
+        display: flex;
+        align-content: center;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .sensor {
+        height: 14px;
+        width: 14px;
+        border-radius: 14px;
+        background: #555;
+    }
+    
+    .speaker {
+        width: 70px;
+        height: 6px;
+        border-radius: 6px;
+        background: #555;
+        margin-left: 20px;
+    }
+    
+    .card {
+        height: 360px;
+        background: #363640;
+        border-radius: 4px;
+        margin: 20px;
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .bar {
+        height: 50px;
+        background: #363640;
+        display: flex;
+        flex-direction: row;
+        align-content: center;
+        align-items: center;
+        justify-content: space-around;
+        color: white;
+    }
+    
+    .tabimage {
+        height: 26px;
+        width: 26px;
+    }
+    
+    .stage {
+        height: 488px;
+    }
