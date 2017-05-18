@@ -19,7 +19,7 @@ The app comes with a toolchain you can use to deploy the solution with few click
 
 1. Click ***Deploy to Bluemix*** to start the Bluemix DevOps wizard:
 
-   [![Deploy To Bluemix](https://console.ng.bluemix.net/devops/graphics/create_toolchain_button.png)](https://console.ng.bluemix.net/devops/setup/deploy/?repository=https://github.com/IBM-Bluemix/health-blockchain&branch=toolchain)
+   [![Deploy To Bluemix](https://console.ng.bluemix.net/devops/graphics/create_toolchain_button.png)](https://console.ng.bluemix.net/devops/setup/deploy/?repository=https://github.com/IBM-Bluemix/health-blockchain&branch=master)
 
 1. Select the **GitHub** box.
 
