@@ -1,5 +1,11 @@
 # Heath Blockchain
 
+:warning: WORK IN PROGRESS
+
+## Overview
+
+A blockchain for fitness data demo.
+
 ## Prerequisites
 
 * IBM Bluemix account. [Sign up][bluemix_signup_url] for Bluemix, or use an existing account.
