@@ -1,0 +1,42 @@
+version: '2'
+template:
+  name: "Health Blockchain"
+  description: "Deploy your own Health Blockchain app."
+  required:
+    - build
+    - repo
+    - deploy
+
+toolchain:
+  name: 'health-blockchain-{{timestamp}}'
+
+services:
+  repo:
+    service_id: githubpublic
+    parameters:
+      repo_name: 'health-blockchain'
+      repo_url: 'https://github.com/IBM-Bluemix/health-blockchain'
+      type: fork
+      has_issues: false
+  build:
+    service_id: pipeline
+    parameters:
+      services:
+        - repo
+      name: '{{services.repo.parameters.repo_name}}'
+      ui-pipeline: true
+      configuration:
+        content:
+          $text: pipeline.yml
+        env:
+          REPO: repo
+          CF_APP_NAME: 'fitchain'
+          SPACE_NAME: '{{form.pipeline.parameters.app-space}}'
+          ORG_NAME: '{{form.pipeline.parameters.app-organization}}'
+          REGION_ID: '{{form.pipeline.parameters.app-region}}'
+        execute: true
+
+form:
+  pipeline:
+    schema:
+      $ref: deploy.json

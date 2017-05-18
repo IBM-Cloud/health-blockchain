@@ -1,8 +1,8 @@
 applications:
-- path: .
+- name: fitchain
   memory: 256M
-  instances: 1
-  domain: mybluemix.net
-  name: fitchain
-  host: fitchain
-  disk_quota: 1024M
+  random-route: true
+  services:
+  - health-blockchain-db
+  env:
+    FITBIT: '{ "fitbit": { "clientID": "", "clientSecret": ""} }'
