@@ -120,5 +120,27 @@ function get(path, callback) {
 }
 
 
+function selectTab(e) {
+    console.log('select tab');
+    console.log(e);
+
+    var stages = document.getElementById('stages');
+
+    var elements = ['summary', 'challenges', 'history'];
+
+    elements.forEach(function (element) {
+        var element = document.getElementById(element);
+        element.style.display = 'none';
+    })
+
+    var selected = document.getElementById(e.srcElement.id);
+    selected.style.display = 'flex';
+
+    var navigation = document.getElementById('navigation');
+    navigation.innerHTML = e.srcElement.id.toUpperCase();
+}
+
+
+
 
 checkStatus();

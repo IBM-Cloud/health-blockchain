@@ -98,6 +98,7 @@
 .tabimage {
     height: 26px;
     width: 26px;
+    cursor: pointer;
 }
 
 .stage {
@@ -107,6 +108,7 @@
     justify-content: center;
     align-content: center;
     align-items: center;
+    display: none;
 }
 
 .challenges {
@@ -162,4 +164,85 @@
 .rewardlabel {
     font-size: 12px;
     align-self: flex-end;
+}
+
+
+/* - - - - - - */
+
+.challengelist {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    align-content: center;
+    height: 100%;
+    width: 100%;
+}
+
+.challengeitem {
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px solid #444;
+    width: 100%;
+}
+
+.challengeblock {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-content: center;
+    justify-content: center;
+}
+
+.challengebutton {
+    margin-top: 10px;
+    width: 80%;
+    background: #f56461;
+    color: white;
+    border: none;
+    height: 20px;
+    border-radius: 6px;
+}
+
+.progress,
+.time {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.begin {
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+}
+
+.conclude {
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+    align-content: flex-end;
+}
+
+.begins {
+    font-size: 10px;
+}
+
+.ends {
+    font-size: 10px;
+}
+
+.beginlabel {
+    font-size: 12px;
+}
+
+.endlabel {
+    font-size: 12px;
+}
+
+.challengeicon {
+    height: 160px;
 }

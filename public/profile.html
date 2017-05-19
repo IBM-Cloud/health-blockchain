@@ -51,57 +51,123 @@
                         </div>
                     </div>
                     <div class="screen">
-                        <div class="bar">SUMMARY</div>
-                        <div class="stage">
-                            <div class="summarybox">
-                                <div class="logoholder">
-                                    <div class="title"><a href="/">FITCHAIN</a></div>
-                                    <div class="chain">
-                                        <div class="join"></div>
-                                        <div class="link"></div>
-                                        <div class="join"></div>
-                                        <div class="link"></div>
-                                        <div class="join"></div>
-                                        <div class="link"></div>
-                                        <div class="join"></div>
-                                        <div class="link"></div>
-                                        <div class="join"></div>
-                                        <div class="link"></div>
-                                        <div class="join"></div>
-                                        <div class="link"></div>
-                                        <div class="join"></div>
+                        <div id="navigation" class="bar">SUMMARY</div>
+                        <div id="stages">
+                            <div id="summary" class="stage" style="display:flex;">
+                                <div class="summarybox">
+                                    <div class="logoholder">
+                                        <div class="title"><a href="/">FITCHAIN</a></div>
+                                        <div class="chain">
+                                            <div class="join"></div>
+                                            <div class="link"></div>
+                                            <div class="join"></div>
+                                            <div class="link"></div>
+                                            <div class="join"></div>
+                                            <div class="link"></div>
+                                            <div class="join"></div>
+                                            <div class="link"></div>
+                                            <div class="join"></div>
+                                            <div class="link"></div>
+                                            <div class="join"></div>
+                                            <div class="link"></div>
+                                            <div class="join"></div>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="challenges">
-                                    <div id="challengecount" class="challengecount">3</div>
-                                    <div class="challengelabel">CHALLENGES</div>
-                                </div>
-                                <div class="challengedata">
-                                    <div class="workouts">
-                                        <div id="workoutcount" class="workoutcount">57</div>
-                                        <div class="workoutlabel">WORKOUTS</div>
+                                    <div class="challenges">
+                                        <div id="challengecount" class="challengecount">3</div>
+                                        <div class="challengelabel">CHALLENGES</div>
                                     </div>
-                                    <div class="rewards">
-                                        <div id="rewardcount" class="rewardcount">2</div>
-                                        <div class="rewardlabel">REWARDS</div>
+                                    <div class="challengedata">
+                                        <div class="workouts">
+                                            <div id="workoutcount" class="workoutcount">57</div>
+                                            <div class="workoutlabel">WORKOUTS</div>
+                                        </div>
+                                        <div class="rewards">
+                                            <div id="rewardcount" class="rewardcount">2</div>
+                                            <div class="rewardlabel">REWARDS</div>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="challengedata">
-                                    <div class="workouts">
-                                        <div id="workoutcount" class="workoutcount">40</div>
-                                        <div class="workoutlabel">HOURS</div>
-                                    </div>
-                                    <div class="rewards">
-                                        <div id="rewardcount" class="rewardcount">20000</div>
-                                        <div class="rewardlabel">CALORIES</div>
+                                    <div class="challengedata">
+                                        <div class="workouts">
+                                            <div id="workoutcount" class="workoutcount">40</div>
+                                            <div class="workoutlabel">HOURS</div>
+                                        </div>
+                                        <div class="rewards">
+                                            <div id="rewardcount" class="rewardcount">20000</div>
+                                            <div class="rewardlabel">CALORIES</div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+                            <div id="challenges" class="stage">
+                                <div class="challengelist" id="challengelist">
+                                    <div class="challengeitem">
+                                        <div class="challengevisual"><img class="challengeicon" src="images/bike.svg"></div>
+                                        <div class="challengeblock">
+                                            <div class="challengetitle">Bike To Work</div>
+                                            <div class="time">
+                                                <div class="begin">
+                                                    <div class="beginlabel">STARTS</div>
+                                                    <div class="begins">May 1 2017</div>
+                                                </div>
+                                                <div class="conclude">
+                                                    <div class="endlabel">ENDS</div>
+                                                    <div class="ends">May 31 2017</div>
+                                                </div>
+                                            </div>
+                                            <div class="progress">
+                                                <div class="begin">
+                                                    <div class="beginlabel">GOAL</div>
+                                                    <div class="begins">10</div>
+                                                </div>
+                                                <div class="conclude">
+                                                    <div class="endlabel">LOGGED</div>
+                                                    <div class="ends">6</div>
+                                                </div>
+                                            </div>
+                                            <div class="progressbar"></div>
+                                            <button class="challengebutton">START WORKOUT</button>
+                                        </div>
+                                    </div>
+                                    <div class="challengeitem">
+                                        <div class="challengevisual"><img class="challengeicon" src="images/skip.svg"></div>
+                                        <div class="challengeblock">
+                                            <div class="challengetitle">Fit To Work</div>
+                                            <div class="time">
+                                                <div class="begin">
+                                                    <div class="beginlabel">STARTS</div>
+                                                    <div class="begins">Jan 1 2017</div>
+                                                </div>
+                                                <div class="conclude">
+                                                    <div class="endlabel">ENDS</div>
+                                                    <div class="ends">Dec 31 2017</div>
+                                                </div>
+                                            </div>
+                                            <div class="progress">
+                                                <div class="begin">
+                                                    <div class="beginlabel">GOAL</div>
+                                                    <div class="begins">30</div>
+                                                </div>
+                                                <div class="conclude">
+                                                    <div class="endlabel">LOGGED</div>
+                                                    <div class="ends">6</div>
+                                                </div>
+                                            </div>
+                                            <div class="progressbar"></div>
+                                            <button class="challengebutton">START WORKOUT</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="history" class="stage">
+
+                            </div>
                         </div>
+
                         <div class="bar">
-                            <img class="tabimage" src="images/summary.svg">
-                            <img class="tabimage" src="images/target.svg">
-                            <img class="tabimage" src="images/time.svg">
+                            <img id="summary" class="tabimage" src="images/summary.svg" onclick="selectTab(event)">
+                            <img id="challenges" class="tabimage" src="images/target.svg" onclick="selectTab(event)">
+                            <img id="history" class="tabimage" src="images/time.svg" onclick="selectTab(event)">
                         </div>
                     </div>
                     <div class="border">
