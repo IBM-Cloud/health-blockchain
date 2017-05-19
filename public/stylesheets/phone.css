@@ -183,13 +183,23 @@
     justify-content: center;
 }
 
+.challengevisual {
+    display: flex;
+    flex-direction: column;
+    height: 180px;
+    width: 160px;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+
 .challengebutton {
-    margin-top: 10px;
+    margin-top: 20px;
     width: 80%;
     background: #f56461;
     color: white;
     border: none;
-    height: 20px;
+    height: 28px;
     border-radius: 6px;
 }
 
@@ -233,7 +243,7 @@
 }
 
 .challengeicon {
-    height: 160px;
+    height: 150px;
 }
 
 .navigationbar {
@@ -270,8 +280,11 @@
 
 .leftnav {
     width: 50px;
+    text-align: center;
+    font-weight: bold;
 }
 
 .rightnav {
     width: 50px;
+    text-align: center;
 }

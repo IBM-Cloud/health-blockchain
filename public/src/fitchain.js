@@ -120,12 +120,27 @@ function get(path, callback) {
 }
 
 
-function selectTab(e) {
-    console.log('select tab');
-    console.log(e);
+function addChallenges(e) {
 
-    var stages = document.getElementById('stages');
+    deselectTabs();
 
+    var challenges = document.getElementById('challenges');
+    challenges.style.opacity = '1.0';
+
+    var marketstage = document.getElementById('marketstage');
+    marketstage.style.display = 'flex';
+
+    var navigation = document.getElementById('navigation');
+    navigation.innerHTML = 'MARKET';
+
+    var rightnav = document.getElementById('rightnav');
+    rightnav.innerHTML = '';
+
+    var leftnav = document.getElementById('leftnav');
+    leftnav.innerHTML = '<';
+}
+
+function deselectTabs() {
     var elements = ['summary', 'challenges', 'history'];
 
     elements.forEach(function (element) {
@@ -133,21 +148,37 @@ function selectTab(e) {
         element.style.opacity = '0.4';
     })
 
-    e.srcElement.style.opacity = '1.0';
-
     elements.forEach(function (element) {
         var element = document.getElementById(element + "stage");
         element.style.display = 'none';
     })
+}
+
+function selectTab(e) {
+
+    var marketstage = document.getElementById('marketstage');
+    marketstage.style.display = 'none';
+
+    var stages = document.getElementById('stages');
+
+    deselectTabs();
+    e.srcElement.style.opacity = '1.0';
 
     var selected = document.getElementById(e.srcElement.id + "stage");
-    selected.style.display = 'flex';
+
+    if (selected !== null) {
+        selected.style.display = 'flex';
+    }
 
     var rightnav = document.getElementById('rightnav');
+
+
+
     if (e.srcElement.id === 'challenges') {
         rightnav.innerHTML = 'Add';
     } else {
         rightnav.innerHTML = '';
+        leftnav.innerHTML = '';
     }
 
     var navigation = document.getElementById('navigation');
