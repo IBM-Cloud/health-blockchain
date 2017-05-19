@@ -6,6 +6,17 @@
 
 A blockchain for fitness data demo.
 
+Blockchain is first and foremost about a peer to peer exchange of value. The following demonstration reviews the exchange of an individual's fitness/workout data for various rewards from organizations they interact with.
+
+In the demo, the workout/health data never leaves the person's phone. The person accepts a fitness challenge from an organization, and each time their workout matches the challenge criteria, it is recorded as a transaction in a block. 
+
+During the demo, we will view what the individual sees, what a network administrator sees, and what the organization sees. We look behind the scenes at the blockchain fabric where fitness challenge data exists and explore the tenets of: 
+
+    * Shared ledger [ participants only see transactions they're entitled to see ]
+    * Trust [ endorsements, assets ]
+    * Privacy [ anonymity ]
+    * Smart contract [ verifiable, queryable, searchable, encrypted ]
+
 ## Prerequisites
 
 * IBM Bluemix account. [Sign up][bluemix_signup_url] for Bluemix, or use an existing account.
