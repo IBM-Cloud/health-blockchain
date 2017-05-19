@@ -130,11 +130,25 @@ function selectTab(e) {
 
     elements.forEach(function (element) {
         var element = document.getElementById(element);
+        element.style.opacity = '0.4';
+    })
+
+    e.srcElement.style.opacity = '1.0';
+
+    elements.forEach(function (element) {
+        var element = document.getElementById(element + "stage");
         element.style.display = 'none';
     })
 
-    var selected = document.getElementById(e.srcElement.id);
+    var selected = document.getElementById(e.srcElement.id + "stage");
     selected.style.display = 'flex';
+
+    var rightnav = document.getElementById('rightnav');
+    if (e.srcElement.id === 'challenges') {
+        rightnav.innerHTML = 'Add';
+    } else {
+        rightnav.innerHTML = '';
+    }
 
     var navigation = document.getElementById('navigation');
     navigation.innerHTML = e.srcElement.id.toUpperCase();

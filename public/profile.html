@@ -51,9 +51,13 @@
                         </div>
                     </div>
                     <div class="screen">
-                        <div id="navigation" class="bar">SUMMARY</div>
+                        <div class="navigationbar">
+                            <div id="leftnav" class="leftnav"></div>
+                            <div id="navigation" class="bar">SUMMARY</div>
+                            <div id="rightnav" class="rightnav"></div>
+                        </div>
                         <div id="stages">
-                            <div id="summary" class="stage" style="display:flex;">
+                            <div id="summarystage" class="stage" style="display:flex;">
                                 <div class="summarybox">
                                     <div class="logoholder">
                                         <div class="title"><a href="/">FITCHAIN</a></div>
@@ -99,7 +103,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div id="challenges" class="stage">
+                            <div id="challengesstage" class="stage">
                                 <div class="challengelist" id="challengelist">
                                     <div class="challengeitem">
                                         <div class="challengevisual"><img class="challengeicon" src="images/bike.svg"></div>
@@ -159,15 +163,14 @@
                                     </div>
                                 </div>
                             </div>
-                            <div id="history" class="stage">
+                            <div id="historystage" class="stage">
 
                             </div>
                         </div>
-
-                        <div class="bar">
-                            <img id="summary" class="tabimage" src="images/summary.svg" onclick="selectTab(event)">
-                            <img id="challenges" class="tabimage" src="images/target.svg" onclick="selectTab(event)">
-                            <img id="history" class="tabimage" src="images/time.svg" onclick="selectTab(event)">
+                        <div class="tabbar">
+                            <img id="summary" style="opacity:1;" class="tabimage" src="images/summary.svg" onclick="selectTab(event)">
+                            <img id="challenges" style="opacity:0.4;" class="tabimage" src="images/target.svg" onclick="selectTab(event)">
+                            <img id="history" style="opacity:0.4;" class="tabimage" src="images/time.svg" onclick="selectTab(event)">
                         </div>
                     </div>
                     <div class="border">
