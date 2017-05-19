@@ -1,27 +1,27 @@
 {
-    "name": "NodejsStarterApp",
-    "version": "0.0.1",
-    "private": true,
-    "scripts": {
-        "start": "node app.js"
-    },
-    "dependencies": {
-        "bcrypt-nodejs": "0.0.3",
-        "body-parser": "^1.17.1",
-        "cfenv": "1.0.x",
-        "connect-flash": "^0.1.1",
-        "cookie-parser": "^1.4.3",
-        "express": "4.13.x",
-        "express-session": "^1.15.2",
-        "fitbit-node": "^2.0.5",
-        "mongoose": "^4.9.5",
-        "morgan": "^1.8.1",
-        "passport": "^0.3.2",
-        "passport-local": "^1.0.0",
-        "request": "^2.81.0"
-    },
-    "repository": {},
-    "engines": {
-        "node": "6.x"
-    }
+  "name": "HealthBlockchain",
+  "version": "0.0.1",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.17.1",
+    "cf-deployment-tracker-client": "*",
+    "cfenv": "1.0.x",
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "^1.4.3",
+    "express": "4.13.x",
+    "express-session": "^1.15.2",
+    "fitbit-node": "^2.0.5",
+    "mongoose": "^4.9.5",
+    "morgan": "^1.8.1",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0",
+    "request": "^2.81.0"
+  },
+  "repository": {},
+  "engines": {
+    "node": "6.x"
+  }
 }
