@@ -1,4 +1,4 @@
-# Heath Blockchain
+# Health Blockchain
 
 :warning: WORK IN PROGRESS
 
