@@ -259,6 +259,22 @@ app.get('/signupSuccess', function (req, res) {
     }, null, 3));
 })
 
+
+app.get('/summary', function (req, res) {
+    res.setHeader('Content-Type', 'application/json');
+
+    console.log('getting summary');
+
+    res.send(JSON.stringify({
+        challenges: 3,
+        workouts: 57,
+        rewards: 2,
+        hours: 40,
+        calories: 2000,
+        outcome: 'success'
+    }, null, 3));
+})
+
 app.get('/signupFailure', function (req, res) {
     res.setHeader('Content-Type', 'application/json');
     res.send(JSON.stringify({

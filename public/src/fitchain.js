@@ -119,6 +119,63 @@ function get(path, callback) {
     xmlhttp.send();
 }
 
+function back() {
+
+}
+
+
+function loadData(target, callback) {
+    var xhr = new XMLHttpRequest();
+
+    var uri = './summary';
+    xhr.open('GET', encodeURI(uri));
+    xhr.onload = function (response) {
+        if (xhr.status === 200) {
+
+            console.log('response');
+            console.log(xhr.responseText);
+
+            var reply = JSON.parse(xhr.responseText);
+
+            if (reply.outcome === 'success') {
+                callback(reply);
+            } else {}
+
+
+        } else if (xhr.status !== 200) {
+            alert('Request failed.  Returned status of ' + xhr.status);
+        }
+    };
+    xhr.send();
+};
+
+function setter(domid, value) {
+    var element = document.getElementById(domid);
+    element.innerHTML = value;
+}
+
+function processSummaryData(data) {
+    setter('challengecount', data.challenges);
+    setter('workoutcount', data.workouts);
+    setter('rewardcount', data.rewards);
+    setter('hourcount', data.hours);
+    setter('caloriecount', data.calories);
+    console.log(data);
+}
+
+function processChallengesData(data) {
+    console.log(data);
+}
+
+function processHistoryData(data) {
+    console.log(data);
+}
+
+var callbacks = [];
+
+callbacks['summary'] = processSummaryData;
+callbacks['challenges'] = processChallengesData;
+callbacks['history'] = processHistoryData;
 
 function addChallenges(e) {
 
@@ -156,13 +213,20 @@ function deselectTabs() {
 
 function selectTab(e) {
 
+    /* make sure the market view is hidden */
+
     var marketstage = document.getElementById('marketstage');
     marketstage.style.display = 'none';
 
-    var stages = document.getElementById('stages');
+    /* make sure all of the tab views are hidden */
 
     deselectTabs();
+
+    /* light up the tab that was selected */
+
     e.srcElement.style.opacity = '1.0';
+
+    /* switch from display none, to display flex for the selected tab */
 
     var selected = document.getElementById(e.srcElement.id + "stage");
 
@@ -170,9 +234,9 @@ function selectTab(e) {
         selected.style.display = 'flex';
     }
 
+    /* manage the left and right navigation sides */
+
     var rightnav = document.getElementById('rightnav');
-
-
 
     if (e.srcElement.id === 'challenges') {
         rightnav.innerHTML = 'Add';
@@ -181,11 +245,21 @@ function selectTab(e) {
         leftnav.innerHTML = '';
     }
 
+    /* set the name of the view */
+
     var navigation = document.getElementById('navigation');
     navigation.innerHTML = e.srcElement.id.toUpperCase();
+
+    /* load data */
+
+    loadData(e.srcElement.id, callbacks[e.srcElement.id]);
 }
 
+function selectSummaryTab() { /* faking a selection of the Summary tab */
+    var summaryButton = document.getElementById('summary');
+    summaryButton.click();
+}
 
-
+selectSummaryTab();
 
 checkStatus();
