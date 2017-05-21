@@ -281,18 +281,25 @@ app.get('/challenges', function (req, res) {
         end: endDate,
         goal: 10,
         unit: 'workout',
-        activity: 'CYCLING'
+        activity: 'CYCLING',
+        logged: 6
         }, {
-        title: 'Bike To Work',
+        title: 'Fit To Work',
         image: 'skip.svg',
         start: ffwstartdate,
         end: ffwenddate,
         goal: 30,
         unit: 'workout',
-        activity: 'ANY'
+        activity: 'ANY',
+        logged: 20
         }];
 
-    res.send(JSON.stringify(challenges, null, 3));
+    var response = {
+        challenges: challenges,
+        outcome: 'success'
+    };
+
+    res.send(JSON.stringify(response, null, 3));
 })
 
 app.get('/summary', function (req, res) {

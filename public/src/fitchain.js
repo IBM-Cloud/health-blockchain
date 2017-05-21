@@ -164,6 +164,47 @@ function processSummaryData(data) {
 
 function processChallengesData(data) {
     console.log(data);
+
+    var challengelist = document.getElementById('challengelist');
+
+    data.challenges.forEach(function (challenge) {
+
+        var challengeitem = document.createElement('div');
+        challengeitem.className = 'challengeitem';
+
+        challengeitem.innerHTML = '<div class="challengevisual"><img class="challengeicon" src="images/' + challenge.image + '"></div>';
+
+        var challengeblock = document.createElement('div');
+        challengeblock.className = 'challengeblock';
+
+        challengeblock.innerHTML = '<div class="challengetitle">' + challenge.title + '</div>' +
+            '<div class = "time">' +
+            '<div class = "begin">' +
+            '<div class = "beginlabel">STARTS</div>' +
+            '<div class = "begins"></div>' +
+            '</div>' +
+            '<div class = "conclude">' +
+            '<div class = "endlabel">ENDS</div>' +
+            '<div class = "ends"></div>' +
+            '</div>' +
+            '</div>' +
+            '<div class = "progress">' +
+            '<div class = "begin">' +
+            '<div class = "beginlabel">GOAL</div>' +
+            '<div class = "begins">' + challenge.goal + '</div>' +
+            '</div>' +
+            '<div class = "conclude">' +
+            '<div class = "endlabel">LOGGED</div>' +
+            '<div class = "ends">' + challenge.logged + '</div>' +
+            '</div>' +
+            '</div>' +
+            '<div class = "progressbar"></div>' +
+            '<button class = "challengebutton"> START WORKOUT </button>';
+
+        challengeitem.appendChild(challengeblock);
+
+        challengelist.appendChild(challengeitem);
+    })
 }
 
 function processHistoryData(data) {
