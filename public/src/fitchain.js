@@ -167,6 +167,8 @@ function processChallengesData(data) {
 
     var challengelist = document.getElementById('challengelist');
 
+    challengelist.innerHTML = '';
+
     data.challenges.forEach(function (challenge) {
 
         var challengeitem = document.createElement('div');
