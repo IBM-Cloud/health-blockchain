@@ -123,11 +123,10 @@ function back() {
 
 }
 
-
 function loadData(target, callback) {
     var xhr = new XMLHttpRequest();
 
-    var uri = './summary';
+    var uri = './' + target;
     xhr.open('GET', encodeURI(uri));
     xhr.onload = function (response) {
         if (xhr.status === 200) {

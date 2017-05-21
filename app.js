@@ -260,10 +260,47 @@ app.get('/signupSuccess', function (req, res) {
 })
 
 
+app.get('/challenges', function (req, res) {
+
+    res.setHeader('Content-Type', 'application/json');
+
+    console.log('getting challenges');
+
+    /* sample response data */
+
+    var startDate = new Date(2017, 3, 1);
+    var endDate = new Date(2017, 4, 31);
+
+    var ffwstartdate = new Date(2017, 0, 1);
+    var ffwenddate = new Date(2017, 11, 31);
+
+    var challenges = [{
+        title: 'Bike To Work',
+        image: 'bike.svg',
+        start: startDate,
+        end: endDate,
+        goal: 10,
+        unit: 'workout',
+        activity: 'CYCLING'
+        }, {
+        title: 'Bike To Work',
+        image: 'skip.svg',
+        start: ffwstartdate,
+        end: ffwenddate,
+        goal: 30,
+        unit: 'workout',
+        activity: 'ANY'
+        }];
+
+    res.send(JSON.stringify(challenges, null, 3));
+})
+
 app.get('/summary', function (req, res) {
     res.setHeader('Content-Type', 'application/json');
 
     console.log('getting summary');
+
+    /* sample response data */
 
     res.send(JSON.stringify({
         challenges: 3,
