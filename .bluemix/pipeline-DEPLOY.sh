@@ -10,10 +10,14 @@ cf create-service compose-for-mongodb Standard health-blockchain-db
 ################################################################
 if ! cf app $CF_APP; then
   if [ -z "$CF_APP_HOSTNAME" ]; then
-    cf push $CF_APP
+    cf push $CF_APP --no-start
   else
-    cf push $CF_APP --hostname $CF_APP_HOSTNAME
+    cf push $CF_APP --hostname $CF_APP_HOSTNAME --no-start
   fi
+  if [ ! -z "$FITBIT" ]; then
+    cf set-env $CF_APP FITBIT "${FITBIT}"
+  fi
+  cf start $CF_APP
 else
   OLD_CF_APP=${CF_APP}-OLD-$(date +"%s")
   rollback() {
@@ -29,9 +33,13 @@ else
   trap rollback ERR
   cf rename $CF_APP $OLD_CF_APP
   if [ -z "$CF_APP_HOSTNAME" ]; then
-    cf push $CF_APP
+    cf push $CF_APP --no-start
   else
-    cf push $CF_APP --hostname $CF_APP_HOSTNAME
+    cf push $CF_APP --hostname $CF_APP_HOSTNAME --no-start
   fi
+  if [ ! -z "$FITBIT" ]; then
+    cf set-env $CF_APP FITBIT "${FITBIT}"
+  fi
+  cf start $CF_APP
   cf delete $OLD_CF_APP -f
 fi
