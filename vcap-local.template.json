@@ -1,0 +1,27 @@
+{
+  "services": {
+    "cloudantNoSQLDB": [
+      {
+        "name": "health-blockchain-db",
+        "label": "cloudantNoSQLDB",
+        "plan": "Lite",
+        "credentials": {
+          "username": "",
+          "password": "",
+          "host": "",
+          "port": 443,
+          "url": ""
+        }
+      }
+    ]
+  },
+  "user-provided": [
+    {
+      "name": "fitbit",
+      "credentials": {
+        "clientID": "",
+        "clientSecret": ""
+      }
+    }
+  ]
+}

@@ -4,5 +4,3 @@ applications:
   random-route: true
   services:
   - health-blockchain-db
-  env:
-    FITBIT: '{ "fitbit": { "clientID": "", "clientSecret": ""} }'

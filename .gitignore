@@ -1,3 +1,4 @@
 node_modules
 config/credentials.json
 phone/build
+vcap-local.json
