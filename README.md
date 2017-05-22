@@ -15,15 +15,15 @@ In the demo, the workout/health data never leaves the person's phone. The person
 
 During the demo, we will view what the individual sees, what a network administrator sees, and what the organization sees. We look behind the scenes at the blockchain fabric where fitness challenge data exists and explore the tenets of:
 
-    * Shared ledger [ participants only see transactions they're entitled to see ]
-    * Trust [ endorsements, assets ]
-    * Privacy [ anonymity ]
-    * Smart contract [ verifiable, queryable, searchable, encrypted ]
+   * Shared ledger [ participants only see transactions they're entitled to see ]
+   * Trust [ endorsements, assets ]
+   * Privacy [ anonymity ]
+   * Smart contract [ verifiable, queryable, searchable, encrypted ]
 
 ## Prerequisites
 
 * IBM Bluemix account. [Sign up][bluemix_signup_url] for Bluemix, or use an existing account.
-* Node.js >= 6.9.1
+* Node.js >= 6.9.1 - [nvm](https://github.com/creationix/nvm) is recommended.
 
 ## Deploying the app automatically in Bluemix
 
@@ -55,13 +55,37 @@ The app comes with a toolchain you can use to deploy the solution with few click
 
 ## Run the app locally
 
-1. [Install Node.js][]
-+ cd into this project's root directory
-+ Run `npm install` to install the app's dependencies
-+ Run `npm start` to start the app
-+ Access the running app in a browser at <http://localhost:6001>
+1. Clone the app to your local environment from your terminal using the following command:
 
-[Install Node.js]: https://nodejs.org/en/download/
+   ```
+   git clone https://github.com/IBM-Bluemix/health-blockchain.git
+   ```
+
+1. cd into this newly created directory
+
+1. Create a Cloudant service in Bluemix
+
+   ```
+   cf create-service cloudantNoSQLDB Lite health-blockchain-db
+   ```
+
+1. In the checkout directory, copy the file *vcap-local.template.json* to *vcap-local.json*. Edit *vcap-local.json* and update the credentials for the Cloudant service. You can retrieve the service credentials from the Bluemix console.
+
+   ```
+   cp vcap-local.template.json vcap-local.json
+   ```
+
+1. Get the project dependencies
+
+   ```
+   npm install
+   ```
+
+1. Run the app
+
+   ```
+   npm start
+   ```
 
 ## License
 
