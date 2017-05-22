@@ -121,8 +121,8 @@ module.exports = function(passport, appEnv) {
         "_id": email,
         email,
         "password": hash_pass,
-        "first_name": firstName,
-        "last_name": lastName
+        "firstName": firstName,
+        "lastName": lastName
       };
 
       Account.insert(user, function(err, body) {

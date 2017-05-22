@@ -47,8 +47,8 @@ router.get('/signupSuccess', function (req, res) {
   res.setHeader('Content-Type', 'application/json');
   res.send(JSON.stringify({
     email: req.user.email,
-    firstName: req.user.first_name,
-    lastName: req.user.last_name,
+    firstName: req.user.firstName,
+    lastName: req.user.lastName,
     outcome: 'success'
   }, null, 3));
 });
