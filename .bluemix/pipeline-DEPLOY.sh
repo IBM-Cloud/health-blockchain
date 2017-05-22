@@ -3,7 +3,7 @@
 ################################################################
 # Create services
 ################################################################
-cf create-service compose-for-mongodb Standard health-blockchain-db
+cf create-service cloudantNoSQLDB Lite health-blockchain-db
 
 ################################################################
 # Push app with blue/green deployment
