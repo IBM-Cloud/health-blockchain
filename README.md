@@ -2,6 +2,9 @@
 
 :warning: WORK IN PROGRESS
 
+[![Build Status](https://travis-ci.org/IBM-Bluemix/health-blockchain.svg?branch=master)](https://travis-ci.org/IBM-Bluemix/health-blockchain)
+![Bluemix Deployments](https://deployment-tracker.mybluemix.net/stats/68c5ff9637bb588a929f1557b07ffcc7/badge.svg)
+
 ## Overview
 
 A blockchain for fitness data demo.
