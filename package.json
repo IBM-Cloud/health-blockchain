@@ -4,6 +4,8 @@
   "scripts": {
     "start": "node app.js"
   },
+  "author": "IBM",
+  "license": "Apache-2.0",
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.17.1",
@@ -20,7 +22,10 @@
     "passport-local": "^1.0.0",
     "request": "^2.81.0"
   },
-  "repository": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/IBM-Bluemix/health-blockchain/"
+  },
   "engines": {
     "node": "6.x"
   }
