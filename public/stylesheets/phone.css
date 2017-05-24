@@ -1,6 +1,6 @@
 .phone {
-    width: 360px;
-    height: 756px;
+    width: 331px;
+    height: 700px;
     border-radius: 56px;
     border: 2px solid #666;
     display: flex;
@@ -11,8 +11,8 @@
 }
 
 .screen {
-    width: 330px;
-    height: 588px;
+    width: 303px;
+    height: 540px;
     background: #2d2d37;
     display: flex;
     flex-direction: column;
@@ -91,7 +91,7 @@
 }
 
 .stage {
-    height: 488px;
+    height: 448px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -287,4 +287,45 @@
 .rightnav {
     width: 50px;
     text-align: center;
+}
+
+.marketitem {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid #444;
+    width: 100%;
+    padding-bottom: 20px;
+}
+
+.marketicon {
+    height: 100px;
+}
+
+.marketdescription {
+    text-align: center;
+    width: 200px;
+}
+
+.marketvisual {
+    display: flex;
+    flex-direction: column;
+    height: 100px;
+    width: 160px;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.marketbutton {
+    margin-top: 20px;
+    width: 80%;
+    background: #f56461;
+    color: white;
+    border: none;
+    height: 28px;
+    border-radius: 6px;
 }
