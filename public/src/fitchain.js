@@ -213,6 +213,28 @@ function processHistoryData(data) {
     console.log(data);
 }
 
+
+function processMarketData(data) {
+    console.log(data);
+
+    var marketlist = document.getElementById('marketlist');
+
+    marketlist.innerHTML = '';
+
+    data.challenges.forEach(function (challenge) {
+
+        var marketitem = document.createElement('div');
+        marketitem.className = 'marketitem';
+        marketitem.innerHTML = '<div class="challengetitle">' + challenge.title + ' </div>' +
+            '<div class="marketvisual"><img class="marketicon" src="images/' + challenge.image + '"></div>' +
+            '<div class="marketdescription">' + challenge.description + '</div>' +
+            '<button class="marketbutton">ACCEPT CHALLENGE</button>';
+
+        marketlist.appendChild(marketitem);
+    })
+
+}
+
 var callbacks = [];
 
 callbacks['summary'] = processSummaryData;
@@ -237,6 +259,8 @@ function addChallenges(e) {
 
     var leftnav = document.getElementById('leftnav');
     leftnav.innerHTML = '<';
+
+    loadData('market', processMarketData);
 }
 
 function deselectTabs() {
