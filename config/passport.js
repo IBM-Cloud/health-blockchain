@@ -82,7 +82,7 @@ module.exports = function(passport, appEnv, readyCallback) {
         if (bcrypt.compareSync(password, user.password)) {
           console.log('Password matches');
           return done(null, user, null);
-        } else {
+        } else { // eslint-disable-line
           console.log('Password is not correct');
           return done(null, null, 'Email or password incorrect.');
         }
@@ -108,7 +108,7 @@ module.exports = function(passport, appEnv, readyCallback) {
       selector: {
         email
       }
-    }, (err, result) => {
+    }, (err, result) => { // eslint-disable-line
       if (err) {
         console.log('There was an error registering the user:', err);
         return done(null, null, err);

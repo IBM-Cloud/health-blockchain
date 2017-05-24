@@ -1,8 +1,9 @@
 // Licensed under the Apache License. See footer for details.
 const express = require('express');
-const router = express.Router();
 const passport = require('passport');
 const path = require('path');
+
+const router = express.Router();
 
 router.get('/signup', (req, res) => {
   res.sendFile(path.resolve(__dirname, '../public/signup.html'));
@@ -41,7 +42,7 @@ router.get('/loginFailure', (req, res) => {
   res.send(JSON.stringify({
     outcome: 'failure'
   }, null, 3));
-})
+});
 
 router.get('/signupSuccess', (req, res) => {
   console.log(req.user);

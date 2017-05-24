@@ -1,5 +1,6 @@
 // Licensed under the Apache License. See footer for details.
 const express = require('express');
+
 const router = express.Router();
 let fitbitClient;
 
