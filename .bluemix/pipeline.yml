@@ -10,6 +10,27 @@ stages:
   jobs:
   - name: Build
     type: builder
+- name: TEST
+  inputs:
+  - type: job
+    stage: BUILD
+    job: Build
+  triggers:
+  - type: stage
+  properties:
+  - name: ENABLE_TESTS
+    value: ""
+  jobs:
+  - name: Cloudant
+    type: deployer
+    target:
+      region_id: ${REGION_ID}
+      organization: ${ORG_NAME}
+      space: ${SPACE_NAME}
+      application: ${CF_APP_NAME}
+    script: |-
+      #!/bin/bash
+      ./.bluemix/pipeline-TEST-with-Cloudant.sh
 - name: "DEPLOY"
   inputs:
   - type: job
