@@ -1,9 +1,10 @@
-var express = require('express');
-var router = express.Router();
-var passport = require('passport');
-var path = require('path');
+// Licensed under the Apache License. See footer for details.
+const express = require('express');
+const router = express.Router();
+const passport = require('passport');
+const path = require('path');
 
-router.get('/signup', function (req, res) {
+router.get('/signup', (req, res) => {
   res.sendFile(path.resolve(__dirname, '../public/signup.html'));
 });
 
@@ -14,7 +15,7 @@ router.post('/signup', passport.authenticate('local-signup', {
   failureFlash: true // allow flash messages
 }));
 
-router.get('/login', function (req, res) {
+router.get('/login', (req, res) => {
   res.sendFile(path.resolve(__dirname, '../public/index.html'));
 });
 
@@ -24,7 +25,7 @@ router.post('/login', passport.authenticate('local-login', {
   failureFlash: true // allow flash messages
 }));
 
-router.get('/loginSuccess', function (req, res) {
+router.get('/loginSuccess', (req, res) => {
   console.log('LOGIN SUCCESS');
 
   res.setHeader('Content-Type', 'application/json');
@@ -32,17 +33,17 @@ router.get('/loginSuccess', function (req, res) {
     email: req.user.email,
     outcome: 'success'
   }, null, 3));
-})
+});
 
-router.get('/loginFailure', function (req, res) {
+router.get('/loginFailure', (req, res) => {
   console.log('LOGIN FAILURE');
   res.setHeader('Content-Type', 'application/json');
   res.send(JSON.stringify({
-      outcome: 'failure'
+    outcome: 'failure'
   }, null, 3));
 })
 
-router.get('/signupSuccess', function (req, res) {
+router.get('/signupSuccess', (req, res) => {
   console.log(req.user);
   res.setHeader('Content-Type', 'application/json');
   res.send(JSON.stringify({
@@ -53,28 +54,17 @@ router.get('/signupSuccess', function (req, res) {
   }, null, 3));
 });
 
-router.get('/signupFailure', function (req, res) {
+router.get('/signupFailure', (req, res) => {
   console.log(req, res);
-    res.setHeader('Content-Type', 'application/json');
-    res.send(JSON.stringify({
-        outcome: 'failure'
-    }, null, 3));
+  res.setHeader('Content-Type', 'application/json');
+  res.send(JSON.stringify({
+    outcome: 'failure'
+  }, null, 3));
 });
 
-// route middleware to make sure a user is logged in
-function isLoggedIn(req, res, next) {
-
-    // if user is authenticated in the session, carry on
-    if (req.isAuthenticated())
-        return next();
-
-    // if they aren't redirect them to the home page
-    res.redirect('/');
-}
-
-router.get('/isLoggedIn', function (req, res) {
+router.get('/isLoggedIn', (req, res) => {
   res.setHeader('Content-Type', 'application/json');
-  var result = {
+  const result = {
     outcome: 'failure'
   };
 
@@ -88,8 +78,8 @@ router.get('/isLoggedIn', function (req, res) {
   res.send(JSON.stringify(result, null, 3));
 });
 
-router.get('/profile', function (req, res) {
-  req.session.lastPage = "/profile";
+router.get('/profile', (req, res) => {
+  req.session.lastPage = '/profile';
   if (req.isAuthenticated()) {
     res.sendFile(path.join(__dirname, '../public/profile.html'));
   } else {
@@ -98,3 +88,17 @@ router.get('/profile', function (req, res) {
 });
 
 module.exports = router;
+
+//------------------------------------------------------------------------------
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//    http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//------------------------------------------------------------------------------
