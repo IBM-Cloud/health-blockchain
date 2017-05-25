@@ -172,6 +172,9 @@ function processChallengesData(data) {
 
     data.challenges.forEach(function (challenge) {
 
+        var start = moment(challenge.start).format('YYYY-MM-DD');
+        var end = moment(challenge.end).format('YYYY-MM-DD');
+
         var challengeitem = document.createElement('div');
         challengeitem.className = 'challengeitem';
 
@@ -184,11 +187,11 @@ function processChallengesData(data) {
             '<div class = "time">' +
             '<div class = "begin">' +
             '<div class = "beginlabel">STARTS</div>' +
-            '<div class = "begins"></div>' +
+            '<div class = "begins">' + start + '</div>' +
             '</div>' +
             '<div class = "conclude">' +
             '<div class = "endlabel">ENDS</div>' +
-            '<div class = "ends"></div>' +
+            '<div class = "ends">' + end + '</div>' +
             '</div>' +
             '</div>' +
             '<div class = "progress">' +

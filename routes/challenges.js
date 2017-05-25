@@ -26,7 +26,7 @@ router.get('/challenges', function (req, res) {
             activity: 'CYCLING',
             logged: 6
     }, {
-            title: 'Fit To Work',
+            title: 'Fit For Work',
             image: 'skip.svg',
             start: ffwstartdate,
             end: ffwenddate,
@@ -101,7 +101,7 @@ router.get('/market', function (req, res) {
             activity: 'CYCLING',
             description: 'Earn a water bottle for 10 bike commutes to work'
     }, {
-            title: 'Fit To Work',
+            title: 'Fit For Work',
             image: 'skip.svg',
             start: ffwstartdate,
             end: ffwenddate,
