@@ -121,7 +121,7 @@ class MarketTableViewController: UITableViewController {
         stairChallenge.unit = "Steps"
         stairChallenge.goal = 1000
         stairChallenge.activity = "STAIRS"
-        stairChallenge.description = "Bobble hat for 1000 stairs climbed this winte"
+        stairChallenge.description = "Bobble hat for 1000 stairs climbed this winter"
         
         // - - - - - - -
         

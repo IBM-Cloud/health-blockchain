@@ -75,6 +75,9 @@ router.get('/market', function (req, res) {
     var ffwstartdate = new Date(2017, 0, 1);
     var ffwenddate = new Date(2017, 11, 31);
 
+    var scstartdate = new Date(2017, 9, 1);
+    var scenddate = new Date(2018, 2, 31);
+
     var challenges = [
         {
             title: 'Bike To Work',
@@ -84,7 +87,6 @@ router.get('/market', function (req, res) {
             goal: 10,
             unit: 'workout',
             activity: 'CYCLING',
-            logged: 6,
             description: 'Earn a water bottle for 10 bike commutes to work'
     }, {
             title: 'Fit To Work',
@@ -94,8 +96,16 @@ router.get('/market', function (req, res) {
             goal: 30,
             unit: 'workout',
             activity: 'ANY',
-            logged: 20,
             description: '$100 health insurance credit for 30 workouts a year'
+    }, {
+            title: 'Stair Challenge',
+            image: 'stairs.svg',
+            start: scstartdate,
+            end: scenddate,
+            goal: 1000,
+            unit: 'workout',
+            activity: 'STAIRS',
+            description: 'Bobble hat for 1000 stairs climbed this winter'
     }
   ];
 
