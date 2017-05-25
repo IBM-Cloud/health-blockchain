@@ -34,6 +34,7 @@ sans-serif;*/
     /*    border-bottom: 2px solid #384b55;*/
     background: #24242c;
     height: 100px;
+    flex-shrink: 0;
 }
 
 .inner-banner {
@@ -61,6 +62,7 @@ sans-serif;*/
     align-items: center;
     justify-content: center;
     width: 100%;
+    flex-shrink: 0;
 }
 
 .poster {
@@ -283,6 +285,7 @@ a {
     align-items: center;
     justify-content: center;
     color: #888;
+    flex-shrink: 0;
 }
 
 .footerInfo {
