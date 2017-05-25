@@ -62,6 +62,18 @@ router.get('/summary', function (req, res) {
     }, null, 3));
 });
 
+router.get('/history', function (req, res) {
+    res.setHeader('Content-Type', 'application/json');
+
+    console.log('getting summary');
+
+    /* sample response data */
+
+    res.send(JSON.stringify({
+        outcome: 'success'
+    }, null, 3));
+});
+
 router.get('/market', function (req, res) {
     res.setHeader('Content-Type', 'application/json');
 
