@@ -255,8 +255,8 @@ function addChallenges(e) {
     var navigation = document.getElementById('navigation');
     navigation.innerHTML = 'MARKET';
 
-    var rightnav = document.getElementById('rightnav');
-    rightnav.innerHTML = '';
+    var rightnavimg = document.getElementById('rightnavimg');
+    rightnavimg.style.visibility = 'hidden';
 
     var leftnav = document.getElementById('leftnav');
     leftnav.innerHTML = '<';
@@ -303,14 +303,14 @@ function selectTab(e) {
 
     /* manage the left and right navigation sides */
 
-    var rightnav = document.getElementById('rightnav');
+    var rightnavimg = document.getElementById('rightnavimg');
     var leftnav = document.getElementById('leftnav');
 
     if (e.srcElement.id === 'challenges') {
-        rightnav.innerHTML = 'Add';
+        rightnavimg.style.visibility = 'visible';
         leftnav.innerHTML = '';
     } else {
-        rightnav.innerHTML = '';
+        rightnavimg.style.visibility = 'hidden';
         leftnav.innerHTML = '';
     }
 
