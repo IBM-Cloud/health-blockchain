@@ -1,337 +1,335 @@
-.phone {
-    width: 331px;
-    height: 700px;
-    border-radius: 56px;
-    border: 2px solid #666;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background: #24242c;
-    overflow: hidden;
-}
-
-.screen {
-    width: 303px;
-    height: 540px;
-    background: #2d2d37;
-    display: flex;
-    flex-direction: column;
-    align-content: center;
-    justify-content: center;
-    overflow: hidden;
-}
-
-.border {
-    height: 80px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-content: center;
-    align-items: center;
-}
-
-.camera {}
-
-.home {
-    width: 46px;
-    height: 46px;
-    border-radius: 50px;
-    border: 1px solid #444;
-    background: linear-gradient(135deg, #080808 0%, #464646 50%, #080808 100%);
-}
-
-.border-row {
-    flex-direction: row;
-    width: 104px;
-    display: flex;
-    align-content: center;
-    justify-content: center;
-    align-items: center;
-}
-
-.sensor {
-    height: 14px;
-    width: 14px;
-    border-radius: 14px;
-    background: #555;
-}
-
-.speaker {
-    width: 70px;
-    height: 6px;
-    border-radius: 6px;
-    background: #555;
-    margin-left: 20px;
-}
-
-.card {
-    height: 360px;
-    background: #363640;
-    border-radius: 4px;
-    margin: 20px;
-    display: flex;
-    flex-direction: column;
-    align-content: center;
-    align-items: center;
-    justify-content: center;
-}
-
-.summarybox {
-    display: flex;
-    flex-direction: column;
-    width: 160px;
-    align-content: center;
-    justify-content: center;
-    align-items: center;
-}
-
-.tabimage {
-    height: 26px;
-    width: 26px;
-    cursor: pointer;
-}
-
-.stages {
-    overflow: hidden;
-}
-
-.stage {
-    height: 448px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-content: center;
-    align-items: center;
-    display: none;
-    overflow: hidden;
-}
-
-.challenges {
-    display: flex;
-    flex-direction: row;
-    margin: 10px;
-    margin-top: 30px;
-    font-size: 20px;
-}
-
-.challengecount {
-    margin-right: 10px;
-    text-align: right;
-}
-
-.challengelabel {}
-
-.challengedata {
-    border-top: 1px solid #444;
-    padding-top: 20px;
-    display: flex;
-    flex-direction: row;
-    margin: 10px;
-    font-size: 20px;
-    width: 160px;
-}
-
-.workouts {
-    width: 80px;
-}
-
-.rewards {
-    width: 80px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    align-items: flex-end;
-    align-content: flex-end;
-}
-
-.workoutlabel {
-    font-size: 12px;
-}
-
-.workoutcount {
-    font-weight: bold;
-}
-
-.rewardcount {
-    font-weight: bold;
-}
-
-.rewardlabel {
-    font-size: 12px;
-    align-self: flex-end;
-}
-
-
-/* - - - - - - */
-
-.challengelist {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    align-content: center;
-    width: 100%;
-    overflow-y: scroll;
-}
-
-.challengeitem {
-    display: flex;
-    flex-direction: row;
-    border-bottom: 1px solid #444;
-    width: 100%;
-    flex-shrink: 0;
-}
-
-.challengeblock {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    align-content: center;
-    justify-content: center;
-}
-
-.challengevisual {
-    display: flex;
-    flex-direction: column;
-    height: 180px;
-    width: 160px;
-    align-content: center;
-    justify-content: center;
-    align-items: center;
-}
-
-.challengebutton {
-    margin-top: 20px;
-    width: 80%;
-    background: #f56461;
-    color: white;
-    border: none;
-    height: 28px;
-    border-radius: 6px;
-}
-
-.progress,
-.time {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    margin-top: 10px;
-}
-
-.begin {
-    width: 45%;
-    display: flex;
-    flex-direction: column;
-}
-
-.conclude {
-    width: 45%;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    align-items: flex-end;
-    align-content: flex-end;
-}
-
-.begins {
-    font-size: 10px;
-}
-
-.ends {
-    font-size: 10px;
-}
-
-.beginlabel {
-    font-size: 12px;
-}
-
-.endlabel {
-    font-size: 12px;
-}
-
-.challengeicon {
-    height: 150px;
-}
-
-.navigationbar {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    align-items: center;
-    align-content: center;
-    justify-content: center;
-    background: #363640;
-}
-
-.bar {
-    height: 50px;
-    width: 230px;
-    display: flex;
-    flex-direction: row;
-    align-content: center;
-    align-items: center;
-    justify-content: space-around;
-    color: white;
-}
-
-.tabbar {
-    height: 50px;
-    display: flex;
-    flex-direction: row;
-    align-content: center;
-    align-items: center;
-    justify-content: space-around;
-    color: white;
-    background: #363640;
-}
-
-.rightnav,
-.leftnav {
-    width: 50px;
-    text-align: center;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.marketitem {
-    display: flex;
-    flex-direction: column;
-    margin-top: 20px;
-    align-content: center;
-    align-items: center;
-    justify-content: center;
-    border-bottom: 1px solid #444;
-    width: 100%;
-    padding-bottom: 20px;
-    flex-shrink: 0;
-}
-
-.marketicon {
-    height: 100px;
-}
-
-.marketdescription {
-    text-align: center;
-    width: 200px;
-}
-
-.marketvisual {
-    display: flex;
-    flex-direction: column;
-    height: 100px;
-    width: 160px;
-    align-content: center;
-    justify-content: center;
-    align-items: center;
-}
-
-.marketbutton {
-    margin-top: 20px;
-    width: 80%;
-    background: #f56461;
-    color: white;
-    border: none;
-    height: 28px;
-    border-radius: 6px;
-}
+    .phone {
+        width: 331px;
+        height: 700px;
+        border-radius: 56px;
+        border: 2px solid #666;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background: #24242c;
+        overflow: hidden;
+    }
+    
+    .screen {
+        width: 303px;
+        height: 540px;
+        background: #2d2d37;
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        justify-content: center;
+        overflow: hidden;
+    }
+    
+    .border {
+        height: 80px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-content: center;
+        align-items: center;
+    }
+    
+    .camera {}
+    
+    .home {
+        width: 44px;
+        height: 44px;
+        border-radius: 50px;
+        border: 1px solid #393941;
+        background: linear-gradient(135deg, #1c1c23 0%, #393941 50%, #1c1c23 100%);
+    }
+    
+    .border-row {
+        flex-direction: row;
+        width: 104px;
+        display: flex;
+        align-content: center;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .sensor {
+        height: 12px;
+        width: 12px;
+        border-radius: 12px;
+        background: #4f4f56;
+    }
+    
+    .speaker {
+        width: 60px;
+        height: 6px;
+        border-radius: 6px;
+        background: #4f4f56;
+        margin-left: 20px;
+    }
+    
+    .card {
+        height: 360px;
+        background: #363640;
+        border-radius: 4px;
+        margin: 20px;
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .summarybox {
+        display: flex;
+        flex-direction: column;
+        width: 160px;
+        align-content: center;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .tabimage {
+        height: 26px;
+        width: 26px;
+        cursor: pointer;
+    }
+    
+    .stages {
+        overflow: hidden;
+    }
+    
+    .stage {
+        height: 448px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-content: center;
+        align-items: center;
+        display: none;
+        overflow: hidden;
+    }
+    
+    .challenges {
+        display: flex;
+        flex-direction: row;
+        margin: 10px;
+        margin-top: 30px;
+        font-size: 20px;
+    }
+    
+    .challengecount {
+        margin-right: 10px;
+        text-align: right;
+    }
+    
+    .challengelabel {}
+    
+    .challengedata {
+        border-top: 1px solid #444;
+        padding-top: 20px;
+        display: flex;
+        flex-direction: row;
+        margin: 10px;
+        font-size: 20px;
+        width: 160px;
+    }
+    
+    .workouts {
+        width: 80px;
+    }
+    
+    .rewards {
+        width: 80px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: flex-end;
+        align-content: flex-end;
+    }
+    
+    .workoutlabel {
+        font-size: 12px;
+    }
+    
+    .workoutcount {
+        font-weight: bold;
+    }
+    
+    .rewardcount {
+        font-weight: bold;
+    }
+    
+    .rewardlabel {
+        font-size: 12px;
+        align-self: flex-end;
+    }
+    /* - - - - - - */
+    
+    .challengelist {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        align-content: center;
+        width: 100%;
+        overflow-y: scroll;
+    }
+    
+    .challengeitem {
+        display: flex;
+        flex-direction: row;
+        border-bottom: 1px solid #444;
+        width: 100%;
+        flex-shrink: 0;
+    }
+    
+    .challengeblock {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        align-content: center;
+        justify-content: center;
+    }
+    
+    .challengevisual {
+        display: flex;
+        flex-direction: column;
+        height: 180px;
+        width: 160px;
+        align-content: center;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .challengebutton {
+        margin-top: 20px;
+        width: 80%;
+        background: #f56461;
+        color: white;
+        border: none;
+        height: 28px;
+        border-radius: 6px;
+    }
+    
+    .progress,
+    .time {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        margin-top: 10px;
+    }
+    
+    .begin {
+        width: 45%;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .conclude {
+        width: 45%;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: flex-end;
+        align-content: flex-end;
+    }
+    
+    .begins {
+        font-size: 10px;
+    }
+    
+    .ends {
+        font-size: 10px;
+    }
+    
+    .beginlabel {
+        font-size: 12px;
+    }
+    
+    .endlabel {
+        font-size: 12px;
+    }
+    
+    .challengeicon {
+        height: 150px;
+    }
+    
+    .navigationbar {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        align-items: center;
+        align-content: center;
+        justify-content: center;
+        background: #363640;
+    }
+    
+    .bar {
+        height: 50px;
+        width: 230px;
+        display: flex;
+        flex-direction: row;
+        align-content: center;
+        align-items: center;
+        justify-content: space-around;
+        color: white;
+    }
+    
+    .tabbar {
+        height: 50px;
+        display: flex;
+        flex-direction: row;
+        align-content: center;
+        align-items: center;
+        justify-content: space-around;
+        color: white;
+        background: #363640;
+    }
+    
+    .rightnav,
+    .leftnav {
+        width: 50px;
+        text-align: center;
+        font-weight: bold;
+        cursor: pointer;
+    }
+    
+    .marketitem {
+        display: flex;
+        flex-direction: column;
+        margin-top: 20px;
+        align-content: center;
+        align-items: center;
+        justify-content: center;
+        border-bottom: 1px solid #444;
+        width: 100%;
+        padding-bottom: 20px;
+        flex-shrink: 0;
+    }
+    
+    .marketicon {
+        height: 100px;
+    }
+    
+    .marketdescription {
+        text-align: center;
+        width: 200px;
+    }
+    
+    .marketvisual {
+        display: flex;
+        flex-direction: column;
+        height: 100px;
+        width: 160px;
+        align-content: center;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .marketbutton {
+        margin-top: 20px;
+        width: 80%;
+        background: #f56461;
+        color: white;
+        border: none;
+        height: 28px;
+        border-radius: 6px;
+    }
