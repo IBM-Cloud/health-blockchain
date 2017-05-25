@@ -286,15 +286,12 @@
     background: #363640;
 }
 
+.rightnav,
 .leftnav {
     width: 50px;
     text-align: center;
     font-weight: bold;
-}
-
-.rightnav {
-    width: 50px;
-    text-align: center;
+    cursor: pointer;
 }
 
 .marketitem {
