@@ -232,9 +232,12 @@ sans-serif;*/
 .logininput {
     border: none;
     border-radius: 4px;
-    height: 24px;
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+    height: 22px;
     padding: 10px;
-    width: 180px;
+    padding-right: 0;
+    width: 170px;
     font-size: 14px;
     background: #24242c;
     color: white;
@@ -245,9 +248,11 @@ input:-webkit-autofill {
 }
 
 .icon {
-    width: 24px;
+    width: 22px;
     padding: 10px;
-    margin-left: -20px;
+    background: #393941;
+    border-bottom-left-radius: 4px;
+    border-top-left-radius: 4px;
 }
 
 .loginbutton {
