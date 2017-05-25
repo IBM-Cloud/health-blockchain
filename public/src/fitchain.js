@@ -119,8 +119,9 @@ function get(path, callback) {
     xmlhttp.send();
 }
 
-function back() {
-
+function challengeView(event) {
+    console.log('return to challenge view');
+    selectChallengesTab();
 }
 
 function loadData(target, callback) {
@@ -303,9 +304,11 @@ function selectTab(e) {
     /* manage the left and right navigation sides */
 
     var rightnav = document.getElementById('rightnav');
+    var leftnav = document.getElementById('leftnav');
 
     if (e.srcElement.id === 'challenges') {
         rightnav.innerHTML = 'Add';
+        leftnav.innerHTML = '';
     } else {
         rightnav.innerHTML = '';
         leftnav.innerHTML = '';
@@ -319,6 +322,11 @@ function selectTab(e) {
     /* load data */
 
     loadData(e.srcElement.id, callbacks[e.srcElement.id]);
+}
+
+function selectChallengesTab() { /* faking a selection of the Summary tab */
+    var challengesButton = document.getElementById('challenges');
+    challengesButton.click();
 }
 
 function selectSummaryTab() { /* faking a selection of the Summary tab */
