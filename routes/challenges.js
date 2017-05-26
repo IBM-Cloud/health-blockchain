@@ -118,6 +118,24 @@ router.get('/market', function (req, res) {
             unit: 'workout',
             activity: 'STAIRS',
             description: 'Bobble hat for 1000 stairs climbed this winter'
+    }, {
+            title: 'Runners Life Insurance',
+            image: 'runner.svg',
+            start: ffwstartdate,
+            end: ffwenddate,
+            goal: 20,
+            unit: 'workout',
+            activity: 'RUNNING',
+            description: '20% discount for 20 runs a year'
+    }, {
+            title: 'Marathon Qualifying',
+            image: 'runner.svg',
+            start: ffwstartdate,
+            end: ffwenddate,
+            goal: 1,
+            unit: 'workout',
+            activity: 'RUNNING',
+            description: 'Run one marathon in less than 4 hours'
     }
   ];
 
