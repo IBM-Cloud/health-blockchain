@@ -271,17 +271,21 @@ function deselectTabs() {
     var elements = ['summary', 'challenges', 'history'];
 
     elements.forEach(function (element) {
-        var element = document.getElementById(element);
-        element.style.opacity = '0.4';
+        var element = document.getElementById(element + "stage");
+        element.style.display = 'none';
     })
 
     elements.forEach(function (element) {
-        var element = document.getElementById(element + "stage");
-        element.style.display = 'none';
+        var element = document.getElementById(element);
+        element.style.opacity = '0.4';
     })
 }
 
 function selectTab(e) {
+
+    /* load data */
+
+    loadData(e.srcElement.id, callbacks[e.srcElement.id]);
 
     /* make sure the market view is hidden */
 
@@ -295,14 +299,6 @@ function selectTab(e) {
     /* light up the tab that was selected */
 
     e.srcElement.style.opacity = '1.0';
-
-    /* switch from display none, to display flex for the selected tab */
-
-    var selected = document.getElementById(e.srcElement.id + "stage");
-
-    if (selected !== null) {
-        selected.style.display = 'flex';
-    }
 
     /* manage the left and right navigation sides */
 
@@ -322,9 +318,13 @@ function selectTab(e) {
     var navigation = document.getElementById('navigation');
     navigation.innerHTML = e.srcElement.id.toUpperCase();
 
-    /* load data */
+    /* switch from display none, to display flex for the selected tab */
 
-    loadData(e.srcElement.id, callbacks[e.srcElement.id]);
+    var selected = document.getElementById(e.srcElement.id + "stage");
+
+    if (selected !== null) {
+        selected.style.display = 'flex';
+    }
 }
 
 function selectChallengesTab() { /* faking a selection of the Summary tab */
@@ -335,6 +335,10 @@ function selectChallengesTab() { /* faking a selection of the Summary tab */
 function selectSummaryTab() { /* faking a selection of the Summary tab */
     var summaryButton = document.getElementById('summary');
     summaryButton.click();
+}
+
+function home(event) {
+    window.history.back();
 }
 
 window.addEventListener("load", function load(event) {
