@@ -380,12 +380,15 @@
     width: 300px;
     border-bottom: 1px solid #444;
     margin-top: 20px;
+    flex-shrink: 0;
 }
 
 .timestamp {
     display: flex;
     flex-direction: row;
     font-size: 12px;
+    color: #f56461;
+    font-weight: bold;
 }
 
 .datestamp {

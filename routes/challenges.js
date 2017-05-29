@@ -65,11 +65,72 @@ router.get('/summary', function (req, res) {
 router.get('/history', function (req, res) {
     res.setHeader('Content-Type', 'application/json');
 
-    console.log('getting summary');
+    console.log('getting history');
 
     /* sample response data */
 
+    var startDate = new Date(2017, 4, 29);
+
+    var history = [
+        {
+            image: 'bike.svg',
+            date: startDate,
+            start: new Date(),
+            end: new Date(),
+            calories: 300,
+            heart: 65,
+            distance: 10,
+            pace: 10,
+            unit: 'workout',
+            activity: 'CYCLING'
+    }, {
+            image: 'skip.svg',
+            date: startDate,
+            start: new Date(),
+            end: new Date(),
+            calories: 240,
+            heart: 65,
+            distance: 0,
+            pace: 0,
+            unit: 'workout',
+            activity: 'ANY'
+    }, {
+            image: 'bike.svg',
+            date: startDate,
+            start: new Date(),
+            end: new Date(),
+            calories: 300,
+            heart: 65,
+            distance: 10,
+            pace: 10,
+            unit: 'workout',
+            activity: 'CYCLING'
+    }, {
+            image: 'runner.svg',
+            date: startDate,
+            start: new Date(),
+            end: new Date(),
+            calories: 280,
+            heart: 80,
+            distance: 5,
+            pace: 10,
+            unit: 'workout',
+            activity: 'CYCLING'
+    }, {
+            image: 'runner.svg',
+            date: startDate,
+            start: new Date(),
+            end: new Date(),
+            calories: 300,
+            heart: 65,
+            distance: 10,
+            pace: 10,
+            unit: 'workout',
+            activity: 'CYCLING'
+    }]
+
     res.send(JSON.stringify({
+        history: history,
         outcome: 'success'
     }, null, 3));
 });

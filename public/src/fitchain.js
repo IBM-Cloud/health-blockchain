@@ -215,8 +215,52 @@ function processChallengesData(data) {
 
 function processHistoryData(data) {
     console.log(data);
-}
+    var historylist = document.getElementById('historylist');
 
+    historylist.innerHTML = '';
+
+    data.history.forEach(function (item) {
+
+        var historyitem = document.createElement('div');
+        historyitem.className = 'historyitem';
+
+        historyitem.innerHTML = '<div class="historyvisual">' +
+            '<img class="historyicon" src="images/' + item.image + '">' +
+            '</div>' +
+            '<div class="historydetails">' +
+            '<div class="timestamp">' +
+            '<div class="datestamp">SUNDAY MAY 28</div>' +
+            '<div class="clock">' +
+            '<div class="beginstamp">9:00</div>' +
+            '<div class="dash">-</div>' +
+            '<div class="endstamp">10:00</div>' +
+            '</div>' +
+            '</div>' +
+            '<div class="progress">' +
+            '<div class="begin">' +
+            '<div class="beginlabel">CALORIES</div>' +
+            '<div class="begins">' + item.calories + '</div>' +
+            '</div>' +
+            '<div class="conclude">' +
+            '<div class="endlabel">HEART RATE</div>' +
+            '<div class="ends">' + item.heart + '</div>' +
+            '</div>' +
+            '</div>' +
+            '<div class="progress">' +
+            '<div class="begin">' +
+            '<div class="beginlabel">DISTANCE</div>' +
+            '<div class="begins">' + item.distance + 'km</div>' +
+            '</div>' +
+            '<div class="conclude">' +
+            '<div class="endlabel">PACE</div>' +
+            '<div class="ends">' + item.pace + 'km/h</div>' +
+            '</div>' +
+            '</div>' +
+            '</div>'
+
+        historylist.appendChild(historyitem);
+    })
+}
 
 function processMarketData(data) {
     console.log(data);
