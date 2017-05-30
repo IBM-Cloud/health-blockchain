@@ -191,7 +191,7 @@
 .challengeblock {
     display: flex;
     flex-direction: column;
-    width: 100%;
+    width: 150px;
     align-content: center;
     justify-content: center;
 }
