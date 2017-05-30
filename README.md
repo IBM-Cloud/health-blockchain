@@ -9,6 +9,8 @@
 
 A blockchain for fitness data demo.
 
+![fitchain views](https://raw.githubusercontent.com/IBM-Bluemix/health-blockchain/master/design/screens.jpeg)
+
 Blockchain is first and foremost about a peer to peer exchange of value. The following demonstration reviews the exchange of an individual's fitness/workout data for various rewards from organizations they interact with.
 
 In the demo, the workout/health data never leaves the person's phone. The person accepts a fitness challenge from an organization, and each time their workout matches the challenge criteria, it is recorded as a transaction in a block.
