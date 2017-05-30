@@ -1,0 +1,86 @@
+.blockExplorer {
+  padding-left: 30px;
+  border-left-style: dotted;
+  border-color: #4D4E56;
+}
+
+.block {
+  background-color: #363640;
+  border-radius: 10px;
+  border-color: #4D4E56;
+  border-style: solid;
+  border-width: 1px;
+  display: flex;
+  flex-direction: column;
+  padding-top: 10px;
+
+}
+
+.blockRow {
+  display: flex;
+  flex-direction: row;
+  margin: 2px;
+  padding-right: 10px;
+}
+
+.blockFooter {
+  background-color: #21232B;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.blockRowLabel {
+  width: 40%;
+  margin: auto;
+  padding: 10px;
+}
+
+.blockRowDetail {
+  display: block;
+}
+
+.blockRowInput {
+  border: none;
+  border-radius: 4px;
+  height: 24px;
+  padding: 5px;
+  width: 180px;
+  font-size: 12px;
+  background: #4A4A53;
+  color: white;
+  overflow: hidden;
+}
+
+.blockRowTextArea {
+  background: #4A4A53;
+  overflow: hidden;
+  border-radius: 4px;
+  border: none;
+  color: white;
+}
+
+.hashCode {
+  margin: auto;
+}
+
+.verticalChain {
+    display: flex;
+    flex-direction: column;
+    height: 20px;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+}
+
+.verticalLink {
+    height: 10px;
+    width: 8px;
+    background: white;
+    border-radius: 7px;
+}
+
+.verticalJoin {
+    height: 10px;
+    width: 2px;
+    background: white;
+}
