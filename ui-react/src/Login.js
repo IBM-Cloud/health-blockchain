@@ -11,6 +11,7 @@ class Login extends Component {
       errorMessage: ''
     };
     this.handleInputChange = this.handleInputChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
     this.login = this.login.bind(this);
   }
 
@@ -45,40 +46,50 @@ class Login extends Component {
     });
   }
 
+  handleSubmit(event) {
+    event.preventDefault();
+    this.login();
+  }
+
   render() {
     return (
       <div className="card">
         <div className="loginbox">
-          <div className="loginform">
-            <div className="loginfield">
-              <img src="images/username.svg" className="icon" alt="user" />
-              <input
-                id="email"
-                className="logininput" type="text" name="email"
-                placeholder="E-mail address"
-                onChange={this.handleInputChange}
-                value={this.state.email}
-              />
+          <form onSubmit={this.handleSubmit}>
+            <div className="loginform">
+              <div className="loginfield">
+                <img src="images/username.svg" className="icon" alt="user" />
+                <input
+                  id="email"
+                  className="logininput" type="text" name="email"
+                  placeholder="E-mail address"
+                  onChange={this.handleInputChange}
+                  value={this.state.email}
+                />
+              </div>
+              <div className="loginfield">
+                <img src="images/password.svg" className="icon" alt="password" />
+                <input
+                  id="password"
+                  className="logininput"
+                  type="password"
+                  name="password"
+                  placeholder="Password"
+                  onChange={this.handleInputChange}
+                  value={this.state.password}
+                />
+              </div>
+              <button className="loginbutton" onClick={this.login}>Login</button>
+              <div className="loginnew">
+                <a className="signuplink" href="./signup">Add a new account</a>
+              </div>
             </div>
-            <div className="loginfield">
-              <img src="images/password.svg" className="icon" alt="password" />
-              <input
-                id="password" className="logininput"
-                type="password" name="password"
-                placeholder="Password"
-                onChange={this.handleInputChange}
-                value={this.state.password}
-              />
+            <div className="messagearea" id="messagearea">
+              {this.state.errorMessage}
             </div>
-            <button className="loginbutton" onClick={this.login}>Login</button>
-            <div className="loginnew">
-              <a className="signuplink" href="./signup">Add a new account</a>
-            </div>
-          </div>
-          <div className="messagearea" id="messagearea">
-            {this.state.errorMessage}
-          </div>
+          </form>
         </div>
+
       </div>
     );
   }

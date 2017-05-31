@@ -16,5 +16,5 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
-  "proxy": "https://dev-fitchain.mybluemix.net/"
+  "proxy": "http://localhost:6017/"
 }
