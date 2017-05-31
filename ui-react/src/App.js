@@ -17,18 +17,9 @@ class App extends Component {
   }
 
   isLoggedIn() {
-    fetch('/isLoggedIn', {
-      credentials: 'include'
-    }).then((response) => {
+    fetch('/isLoggedIn', { credentials: 'include' }).then((response) => {
       if (response.ok) {
-        console.log('loggedin');
-        response.json().then((json) => {
-          console.log(json.outcome);
-          if (json.outcome === 'success') {
-            this.setState(
-              { loggedIn: true });
-          }
-        });
+        response.json().then(json => json.outcome === 'success' && this.setState({ loggedIn: true }));
         return response;
       }
       this.setState({ errorMessage: 'Error calling API.' });
@@ -48,7 +39,6 @@ class App extends Component {
         email: this.state.email, password: this.state.password
       })
     }).then((response) => {
-      console.log(response);
       if (response.ok) {
         this.props.onLogIn();
         return response;

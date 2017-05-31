@@ -8,9 +8,18 @@ class TabBar extends Component {
   render() {
     return (
       <div className="tabbar">
-        <img id="summary" className="tabimage" alt="summary" src="images/summary.svg" />
-        <img id="challenges" className="tabimage" alt="challenges" src="images/target.svg" />
-        <img id="history" className="tabimage" alt="history" src="images/time.svg" />
+        <img
+          id="summary" className="tabimage" alt="summary" src="images/summary.svg"
+          onClick={() => this.props.changeStage('summary')}
+        />
+        <img
+          id="challenges" className="tabimage" alt="challenges" src="images/target.svg"
+          onClick={() => this.props.changeStage('challenges')}
+        />
+        <img
+          id="history" className="tabimage" alt="history" src="images/time.svg"
+          onClick={() => this.props.changeStage('history')}
+        />
       </div>
     );
   }
