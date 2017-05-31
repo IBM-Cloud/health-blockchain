@@ -29,9 +29,7 @@ class Block extends Component {
           <div className="blockRow">
             <div className="blockRowLabel">TX</div>
             <div>
-              <textarea className="blockRowTextArea">
-                asdf
-              </textarea>
+              <textarea className="blockRowTextArea" value="asdf" />
             </div>
           </div>
           <div className="blockRow blockFooter">

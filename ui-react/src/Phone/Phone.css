@@ -98,14 +98,14 @@
 }
 
 .stage {
-    height: 448px;
     display: flex;
+    height: 440px;
     flex-direction: column;
     justify-content: flex-start;
     align-content: center;
     align-items: center;
-    display: none;
-    overflow: hidden;
+    xdisplay: none;
+    xoverflow: hidden;
 }
 
 .challenges {
