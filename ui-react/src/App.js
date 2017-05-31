@@ -14,6 +14,14 @@ class App extends Component {
     };
     this.isLoggedIn = this.isLoggedIn.bind(this);
     this.isLoggedIn();
+
+    this.onLogIn = this.onLogIn.bind(this);
+  }
+
+  onLogIn() {
+    this.setState({
+      loggedIn: true
+    });
   }
 
   isLoggedIn() {
@@ -23,27 +31,6 @@ class App extends Component {
         return response;
       }
       this.setState({ errorMessage: 'Error calling API.' });
-      return response;
-    });
-  }
-
-  login() {
-    fetch('/login', {
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json'
-      },
-      method: 'POST',
-      credentials: 'include',
-      body: JSON.stringify({
-        email: this.state.email, password: this.state.password
-      })
-    }).then((response) => {
-      if (response.ok) {
-        this.props.onLogIn();
-        return response;
-      }
-      this.setState({ errorMessage: 'Network response was not ok.' });
       return response;
     });
   }
