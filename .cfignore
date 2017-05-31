@@ -1,4 +1,5 @@
 node_modules
+ui-react/node_modules
 config/credentials.json
 phone
 design

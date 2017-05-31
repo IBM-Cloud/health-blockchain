@@ -10,6 +10,10 @@ stages:
   jobs:
   - name: Build
     type: builder
+    build_type: shell
+    script: |-
+      #!/bin/bash
+      ./.bluemix/pipeline-BUILD.sh
 - name: TEST
   inputs:
   - type: job
