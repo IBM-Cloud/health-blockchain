@@ -55,8 +55,8 @@ app.use(require('./routes/challenges'));
 // fitbit integration
 app.use(require('./routes/fitbit')(appEnv));
 
-// serve the files out of ./public as our main files
-app.use(express.static(`${__dirname}/public`));
+// serve the react app files
+app.use(express.static(`${__dirname}/ui-react/build`));
 
 function initializeApp(readyCallback) {
   async.waterfall([
