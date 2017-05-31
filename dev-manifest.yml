@@ -1,0 +1,6 @@
+applications:
+- name: dev-fitchain
+  memory: 256M
+  random-route: true
+  services:
+  - dev-health-blockchain-db

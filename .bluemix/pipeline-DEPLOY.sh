@@ -1,18 +1,28 @@
 #!/bin/bash
 
+# The branch may use a custom manifest
+MANIFEST=manifest.yml
+PREFIX=""
+if [ -f ${REPO_BRANCH}-manifest.yml ]; then
+  MANIFEST=${REPO_BRANCH}-manifest.yml
+  PREFIX=$REPO_BRANCH"-"
+fi
+echo "Using manifest file: $MANIFEST"
+echo "Using prefix: $PREFIX"
+
 ################################################################
 # Create services
 ################################################################
-cf create-service cloudantNoSQLDB Lite health-blockchain-db
+cf create-service cloudantNoSQLDB Lite ${PREFIX}health-blockchain-db
 
 ################################################################
 # Push app with blue/green deployment
 ################################################################
 if ! cf app $CF_APP; then
   if [ -z "$CF_APP_HOSTNAME" ]; then
-    cf push $CF_APP --no-start
+    cf push $CF_APP -f $MANIFEST --no-start
   else
-    cf push $CF_APP --hostname $CF_APP_HOSTNAME --no-start
+    cf push $CF_APP -f $MANIFEST --hostname $CF_APP_HOSTNAME --no-start
   fi
   if [ ! -z "$FITBIT" ]; then
     cf set-env $CF_APP FITBIT "${FITBIT}"
@@ -33,9 +43,9 @@ else
   trap rollback ERR
   cf rename $CF_APP $OLD_CF_APP
   if [ -z "$CF_APP_HOSTNAME" ]; then
-    cf push $CF_APP --no-start
+    cf push $CF_APP -f $MANIFEST --no-start
   else
-    cf push $CF_APP --hostname $CF_APP_HOSTNAME --no-start
+    cf push $CF_APP -f $MANIFEST --hostname $CF_APP_HOSTNAME --no-start
   fi
   if [ ! -z "$FITBIT" ]; then
     cf set-env $CF_APP FITBIT "${FITBIT}"
