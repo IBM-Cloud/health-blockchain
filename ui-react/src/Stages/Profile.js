@@ -3,7 +3,7 @@ import Logo from '../Logo';
 import Summary from './Summary';
 import Challenges from './Challenges';
 import Market from './Market';
-import History from './History'
+import History from './History';
 import TabBar from '../TabBar';
 import '../Phone/Phone.css';
 
@@ -41,8 +41,8 @@ class Profile extends Component {
     return (
       <div className="screen">
         <div className="navigationbar">
-          <div id="leftnav" className="leftnav" onClick={this.getSummary}></div>
-          <div id="navigation" className="bar">SUMMARY</div>
+          <div id="leftnav" className="leftnav" onClick={this.getSummary} />
+          <div id="navigation" className="bar">{this.state.selectedStage.toUpperCase()}</div>
           <div id="rightnav" className="rightnav" onClick={this.addChallenges}>
             {/* <img id="rightnavimg" src="images/add.svg" className="navimg" style="visibility:hidden;" /> */}
           </div>

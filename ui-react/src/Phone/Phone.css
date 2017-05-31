@@ -87,10 +87,15 @@
     align-items: center;
 }
 
+.tabButton {
+  width: 33%;
+  text-align: center;
+  cursor: pointer;
+}
+
 .tabimage {
     height: 26px;
     width: 26px;
-    cursor: pointer;
 }
 
 .stages {
@@ -177,7 +182,7 @@
     align-items: center;
     justify-content: flex-start;
     align-content: center;
-    width: 100%;
+    width: 110%;
     overflow-y: scroll;
 }
 

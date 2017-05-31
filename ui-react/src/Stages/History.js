@@ -3,6 +3,11 @@ import Logo from '../Logo';
 import TabBar from '../TabBar';
 import '../Phone/Phone.css';
 
+const moment = require('moment');
+
+const dateFormat = 'dddd MMM Do';
+const timeFormat = 'h:mm';
+
 class History extends Component {
 
   constructor(props) {
@@ -32,7 +37,45 @@ class History extends Component {
   render() {
     return (
       <div id="historystage" className="stage">
-        <div className="challengelist" id="historylist">{this.state.history.length} History</div>
+        <div className="challengelist" id="historylist">
+          {this.state.history.map((challenge, index) => (
+            <div className="historyitem" key={`history-${index}`}>
+              <div className="historyvisual">
+                <img className="historyicon" src={`images/${challenge.image}`} role="presentation" />
+              </div>
+              <div className="historydetails">
+                <div className="timestamp">
+                  <div className="datestamp">{moment(challenge.date).format(dateFormat)}</div>
+                  <div className="clock">
+                    <div className="beginstamp">{moment(challenge.start).format(timeFormat)}</div>
+                    <div className="dash">-</div>
+                    <div className="endstamp">{moment(challenge.end).format(timeFormat)}</div>
+                  </div>
+                </div>
+                <div className="progress">
+                  <div className="begin">
+                    <div className="beginlabel">CALORIES</div>
+                    <div className="begins">{challenge.calories}</div>
+                  </div>
+                  <div className="conclude">
+                    <div className="endlabel">HEART RATE</div>
+                    <div className="ends">{challenge.heart}</div>
+                  </div>
+                </div>
+                <div className="progress">
+                  <div className="begin">
+                    <div className="beginlabel">DISTANCE</div>
+                    <div className="begins">{challenge.distance}km</div>
+                  </div>
+                  <div className="conclude">
+                    <div className="endlabel">PACE</div>
+                    <div className="ends">{challenge.pace}km/h</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     );
   }
