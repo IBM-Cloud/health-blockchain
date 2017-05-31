@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Logo from '../Logo';
 import Summary from './Summary';
 import Challenges from './Challenges';
 import Market from './Market';
@@ -25,9 +24,6 @@ class Profile extends Component {
   render() {
     let stage;
     switch (this.state.selectedStage) {
-      case 'summary':
-        stage = <Summary />;
-        break;
       case 'challenges':
         stage = <Challenges />;
         break;
@@ -36,6 +32,9 @@ class Profile extends Component {
         break;
       case 'market':
         stage = <Market />;
+        break;
+      default:
+        stage = <Summary />;
         break;
     }
     return (

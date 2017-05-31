@@ -15,19 +15,19 @@ class TabBar extends Component {
         <div
           className="tabButton"
           onClick={() => this.props.changeStage('summary')}
-          style={(this.props.selectedStage != 'summary') ? opacityStyle : {}}
+          style={(this.props.selectedStage !== 'summary') ? opacityStyle : {}}
         >
           <img id="summary" className="tabimage" alt="summary" src="images/summary.svg" />
         </div>
         <div
           className="tabButton" onClick={() => this.props.changeStage('challenges')}
-          style={(this.props.selectedStage != 'challenges') ? opacityStyle : {}}
+          style={(this.props.selectedStage !== 'challenges') ? opacityStyle : {}}
         >
           <img id="challenges" className="tabimage" alt="challenges" src="images/target.svg" />
         </div>
         <div
           className="tabButton" onClick={() => this.props.changeStage('history')}
-          style={(this.props.selectedStage != 'history') ? opacityStyle : {}}
+          style={(this.props.selectedStage !== 'history') ? opacityStyle : {}}
         >
           <img id="history" className="tabimage" alt="history" src="images/time.svg" />
         </div>

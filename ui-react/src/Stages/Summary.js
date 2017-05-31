@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Logo from '../Logo';
-import TabBar from '../TabBar';
 import '../Phone/Phone.css';
 
 class Summary extends Component {

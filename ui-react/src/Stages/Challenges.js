@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import Logo from '../Logo';
-import TabBar from '../TabBar';
 import '../Phone/Phone.css';
 
 const moment = require('moment');
@@ -40,7 +38,7 @@ class Challenges extends Component {
           {this.state.challenges.map((challenge, index) => (
             <div className="challengeitem" key={`challenge-${index}`}>
               <div className="challengevisual">
-                <img className="challengeicon" src={`images/${challenge.image}`} role="presentation" />
+                <img className="challengeicon" src={`images/${challenge.image}`} alt="challenge" />
               </div>
               <div className="challengeblock">
                 <div className="challengetitle">

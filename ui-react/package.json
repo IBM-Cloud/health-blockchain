@@ -8,7 +8,6 @@
     "react-dom": "^15.5.4"
   },
   "devDependencies": {
-    "eslint-plugin-jsx-a11y": "^2.2.3",
     "react-scripts": "1.0.7"
   },
   "scripts": {
@@ -17,5 +16,5 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
-  "proxy": "http://localhost:6017"
+  "proxy": "https://dev-fitchain.mybluemix.net/"
 }

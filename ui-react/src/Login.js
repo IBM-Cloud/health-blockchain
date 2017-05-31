@@ -51,7 +51,7 @@ class Login extends Component {
         <div className="loginbox">
           <div className="loginform">
             <div className="loginfield">
-              <img src="images/username.svg" className="icon" role="presentation" />
+              <img src="images/username.svg" className="icon" alt="user" />
               <input
                 id="email"
                 className="logininput" type="text" name="email"
@@ -61,7 +61,7 @@ class Login extends Component {
               />
             </div>
             <div className="loginfield">
-              <img src="images/password.svg" className="icon" role="presentation" />
+              <img src="images/password.svg" className="icon" alt="password" />
               <input
                 id="password" className="logininput"
                 type="password" name="password"

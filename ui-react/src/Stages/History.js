@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import Logo from '../Logo';
-import TabBar from '../TabBar';
 import '../Phone/Phone.css';
 
 const moment = require('moment');
@@ -41,7 +39,7 @@ class History extends Component {
           {this.state.history.map((challenge, index) => (
             <div className="historyitem" key={`history-${index}`}>
               <div className="historyvisual">
-                <img className="historyicon" src={`images/${challenge.image}`} role="presentation" />
+                <img className="historyicon" src={`images/${challenge.image}`} alt="history" />
               </div>
               <div className="historydetails">
                 <div className="timestamp">
