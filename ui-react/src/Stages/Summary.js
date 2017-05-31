@@ -4,17 +4,18 @@ import TabBar from '../TabBar';
 import '../Phone/Phone.css';
 
 class Profile extends Component {
+
   constructor(props) {
     super(props);
     this.state = {
       summary: {},
       errorMessage: ''
     };
-    this.getSummary = this.getSummary.bind(this);
-    this.getSummary();
+    this.challengeView = this.challengeView.bind(this);
+    this.challengeView();
   }
 
-  getSummary() {
+  challengeView() {
     fetch('/summary', {
       credentials: 'include'
     }).then((response) => {
@@ -28,11 +29,16 @@ class Profile extends Component {
       return response;
     });
   }
+
+  addChallenges(){
+    // TODO
+  }
+
   render() {
     return (
       <div className="screen">
         <div className="navigationbar">
-          <div id="leftnav" className="leftnav" onClick={this.getSummary}></div>
+          <div id="leftnav" className="leftnav" onClick={this.challengeView}></div>
           <div id="navigation" className="bar">SUMMARY</div>
           <div id="rightnav" className="rightnav" onClick={this.addChallenges}>
             {/* <img id="rightnavimg" src="images/add.svg" className="navimg" style="visibility:hidden;" /> */}
@@ -79,6 +85,21 @@ class Profile extends Component {
               </div>
             </div>
           </div>
+
+          {/* <div id="challengesstage" className="stage">
+              <div className="challengelist" id="challengelist">
+              </div>
+          </div>
+
+          <div id="historystage" className="stage">
+              <div className="challengelist" id="historylist">
+              </div>
+          </div>
+
+          <div id="marketstage" className="stage">
+              <div className="challengelist" id="marketlist">
+              </div>
+          </div> */}
         </div>
         <div>{this.state.errorMessage}</div>
         <TabBar />
