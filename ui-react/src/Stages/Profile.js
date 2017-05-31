@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import './Phone/Phone.css';
+import Logo from '../Logo';
+import '../Phone/Phone.css';
 
 class Profile extends Component {
 
@@ -43,29 +44,9 @@ class Profile extends Component {
           </div>
         </div>
         <div id="stages" className="stages">
-          {/* TODO: display flex summarystage */}
           <div id="summarystage" className="stage">
             <div className="summarybox">
-              <div className="logoholder">
-                <div className="title">
-                  <a href="/">FITCHAIN</a>
-                </div>
-                <div className="chain">
-                  <div className="join" />
-                  <div className="link" />
-                  <div className="join" />
-                  <div className="link" />
-                  <div className="join" />
-                  <div className="link" />
-                  <div className="join" />
-                  <div className="link" />
-                  <div className="join" />
-                  <div className="link" />
-                  <div className="join" />
-                  <div className="link" />
-                  <div className="join" />
-                </div>
-              </div>
+              <Logo />
 
               <div className="challenges">
                 <div id="challengecount" className="challengecount">
@@ -119,8 +100,8 @@ class Profile extends Component {
               </div>
           </div> */}
         </div>
+        <div>{this.state.errorMessage}</div>
         <div className="tabbar">
-          {this.state.errorMessage}
           <img id="summary" className="tabimage" alt="summary" src="images/summary.svg" />
           <img id="challenges" className="tabimage" alt="challenges" src="images/target.svg" />
           <img id="history" className="tabimage" alt="history" src="images/time.svg" />

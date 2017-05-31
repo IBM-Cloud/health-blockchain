@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Phone from './Phone/Phone';
 import Login from './Login';
-import Profile from './Profile';
+import Profile from './Stages/Profile';
 import BlockExplorer from './BlockExplorer/BlockExplorer';
 import './App.css';
 
