@@ -37,12 +37,14 @@ class Login extends Component {
     }).then((response) => {
       console.log(response);
       if (response.ok) {
+        this.props.onLogIn();
         return response;
       }
       this.setState({ errorMessage: 'Network response was not ok.' });
       return response;
     });
   }
+
   render() {
     return (
       <div className="card">
