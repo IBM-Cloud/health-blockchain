@@ -12,7 +12,7 @@ class Login extends Component {
     };
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.login = this.login.bind(this);
+    this.navigate = this.navigate.bind(this);
   }
 
   handleInputChange(event) {
@@ -24,8 +24,16 @@ class Login extends Component {
     });
   }
 
-  login() {
-    fetch('/login', {
+  navigate() {
+    this.setState({ errorMessage: '' });
+    this.props.onNavigate();
+  }
+
+  handleSubmit(event) {
+    event.preventDefault();
+
+    this.setState({ errorMessage: '' });
+    fetch(this.props.isLogin ? '/login' : '/signup', {
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json'
@@ -35,20 +43,14 @@ class Login extends Component {
       body: JSON.stringify({
         email: this.state.email, password: this.state.password
       })
-    }).then((response) => {
-      console.log(response);
-      if (response.ok) {
-        this.props.onLogIn();
-        return response;
+    }).then(response => response.json())
+    .then((body) => {
+      if (body.ok) {
+        this.props.onSubmit();
+      } else {
+        this.setState({ errorMessage: body.message });
       }
-      this.setState({ errorMessage: 'Network response was not ok.' });
-      return response;
     });
-  }
-
-  handleSubmit(event) {
-    event.preventDefault();
-    this.login();
   }
 
   render() {
@@ -79,15 +81,17 @@ class Login extends Component {
                   value={this.state.password}
                 />
               </div>
-              <button className="loginbutton" onClick={this.login}>Login</button>
-              <div className="loginnew">
-                <a className="signuplink" href="./signup">Add a new account</a>
-              </div>
-            </div>
-            <div className="messagearea" id="messagearea">
-              {this.state.errorMessage}
+              <button className="loginbutton" onClick={this.submit}>{ this.props.isLogin ? "Login" : "Sign Up" }</button>
             </div>
           </form>
+          <div className="loginnew">
+            <a href="#" className="signuplink" onClick={this.navigate}>
+              { this.props.isLogin ? "Add a new account" : "Existing account?" }
+            </a>
+          </div>
+          <div className="messagearea" id="messagearea">
+            {this.state.errorMessage}
+          </div>
         </div>
 
       </div>

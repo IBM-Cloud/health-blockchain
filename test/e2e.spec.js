@@ -33,7 +33,7 @@ describe('End to end', () => {
     api.post('/signup')
       .send(`email=${username}`)
       .send(`password=${password}`)
-      .expect(302)
+      .expect(200)
       .end((err) => {
         done(err);
       });
@@ -43,7 +43,7 @@ describe('End to end', () => {
     apiAnotherUser.post('/signup')
       .send(`email=${anotherUsername}`)
       .send(`password=${anotherPassword}`)
-      .expect(302)
+      .expect(200)
       .end((err) => {
         done(err);
       });

@@ -1,70 +1,56 @@
 // Licensed under the Apache License. See footer for details.
 const express = require('express');
 const passport = require('passport');
-const path = require('path');
 
 const router = express.Router();
 
-router.get('/signup', (req, res) => {
-  res.sendFile(path.resolve(__dirname, '../public/signup.html'));
-});
-
 // process the signup form
-router.post('/signup', passport.authenticate('local-signup', {
-  successRedirect: '/signupSuccess', // redirect to the secure profile section
-  failureRedirect: '/signupFailure', // redirect back to the signup page if there is an error
-  failureFlash: true // allow flash messages
-}));
-
-router.get('/login', (req, res) => {
-  res.sendFile(path.resolve(__dirname, '../public/index.html'));
+router.post('/signup', (req, res) => {
+  passport.authenticate('local-signup', {
+    failureFlash: true // allow flash messages
+  }, (err, user, info) => {
+    if (err) {
+      res.status(500).send({ ok: false, outcome: 'failure' });
+    } else if (user) {
+      req.logIn(user, () => {
+        res.send({
+          ok: true,
+          email: user.email,
+          outcome: 'success'
+        });
+      });
+    } else {
+      res.status(401).send({ ok: false, message: info.message || info, outcome: 'failure' });
+    }
+  })(req, res);
 });
 
-router.post('/login', passport.authenticate('local-login', {
-  successRedirect: '/loginSuccess', // redirect to the secure profile section
-  failureRedirect: '/loginFailure', // redirect back to the signup page if there is an error
-  failureFlash: true // allow flash messages
-}));
-
-router.get('/loginSuccess', (req, res) => {
-  console.log('LOGIN SUCCESS');
-
-  res.setHeader('Content-Type', 'application/json');
-  res.send(JSON.stringify({
-    email: req.user.email,
-    outcome: 'success'
-  }, null, 3));
+router.post('/logout', (req, res) => {
+  req.logout();
+  res.send({ ok: true });
 });
 
-router.get('/loginFailure', (req, res) => {
-  console.log('LOGIN FAILURE');
-  res.setHeader('Content-Type', 'application/json');
-  res.send(JSON.stringify({
-    outcome: 'failure'
-  }, null, 3));
-});
-
-router.get('/signupSuccess', (req, res) => {
-  console.log(req.user);
-  res.setHeader('Content-Type', 'application/json');
-  res.send(JSON.stringify({
-    email: req.user.email,
-    firstName: req.user.firstName,
-    lastName: req.user.lastName,
-    outcome: 'success'
-  }, null, 3));
-});
-
-router.get('/signupFailure', (req, res) => {
-  console.log(req, res);
-  res.setHeader('Content-Type', 'application/json');
-  res.send(JSON.stringify({
-    outcome: 'failure'
-  }, null, 3));
+router.post('/login', (req, res) => {
+  passport.authenticate('local-login', {
+    failureFlash: true // allow flash messages
+  }, (err, user, info) => {
+    if (err) {
+      res.status(500).send({ ok: false, outcome: 'failure' });
+    } else if (user) {
+      req.logIn(user, () => {
+        res.send({
+          ok: true,
+          email: user.email,
+          outcome: 'success'
+        });
+      });
+    } else {
+      res.status(401).send({ ok: false, message: info.message || info, outcome: 'failure' });
+    }
+  })(req, res);
 });
 
 router.get('/isLoggedIn', (req, res) => {
-  res.setHeader('Content-Type', 'application/json');
   const result = {
     outcome: 'failure'
   };
@@ -72,20 +58,9 @@ router.get('/isLoggedIn', (req, res) => {
   if (req.isAuthenticated()) {
     result.outcome = 'success';
     result.email = req.user.email;
-    result.firstName = req.user.firstName;
-    result.lastName = req.user.lastName;
   }
 
-  res.send(JSON.stringify(result, null, 3));
-});
-
-router.get('/profile', (req, res) => {
-  req.session.lastPage = '/profile';
-  if (req.isAuthenticated()) {
-    res.sendFile(path.join(__dirname, '../public/profile.html'));
-  } else {
-    res.redirect('/login');
-  }
+  res.send(result);
 });
 
 module.exports = router;

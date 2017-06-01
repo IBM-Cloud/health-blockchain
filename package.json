@@ -4,6 +4,7 @@
   "scripts": {
     "start": "node app.js",
     "e2e": "./test/test-with-cloudant.sh",
+    "e2e-local": "./test/test-with-vcap-local.sh",
     "lint": "eslint routes config app.js server.js"
   },
   "author": "IBM",
