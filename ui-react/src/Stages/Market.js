@@ -31,7 +31,25 @@ class Summary extends Component {
   render() {
     return (
       <div id="marketstage" className="stage">
-        <div className="challengelist" id="marketlist">{this.state.marketChallenges.length} market challenges</div>
+        <div className="challengelist" id="marketlist">
+          {this.state.marketChallenges.map((challenge, index) => (
+            <div className="marketitem" >
+              <div className="challengetitle">
+                {challenge.title}
+              </div>
+              <div className="marketvisual" >
+                <img className="marketicon" alt={challenge.title} src={`images/${challenge.image}`} />
+              </div>
+              <div className="marketdescription">
+                {challenge.description}
+              </div>
+              <button className="marketbutton">
+                ACCEPT CHALLENGE
+              </button>
+            </div>
+
+          ))}
+        </div>
       </div>
     );
   }
