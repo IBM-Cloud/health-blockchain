@@ -6,6 +6,10 @@ import History from './History';
 import TabBar from '../TabBar';
 import '../Phone/Phone.css';
 
+const hiddenDiv = {
+  visibility: 'hidden'
+};
+
 class Profile extends Component {
   constructor(props) {
     super(props);
@@ -40,10 +44,12 @@ class Profile extends Component {
     return (
       <div className="screen">
         <div className="navigationbar">
-          <div id="leftnav" className="leftnav" onClick={this.getSummary} />
+          <div id="leftnav" className="leftnav" onClick={() => this.changeStage('challenges')}>
+            {(this.state.selectedStage !== 'history') ? '' : '<' }
+          </div>
           <div id="navigation" className="bar">{this.state.selectedStage.toUpperCase()}</div>
-          <div id="rightnav" className="rightnav" onClick={this.addChallenges}>
-            {/* <img id="rightnavimg" src="images/add.svg" className="navimg" style="visibility:hidden;" /> */}
+          <div id="rightnav" className="rightnav" onClick={() => this.changeStage('market')}>
+            <img id="rightnavimg" src="images/add.svg" className="navimg" style={(this.state.selectedStage !== 'challenges') ? hiddenDiv : {}} />
           </div>
         </div>
         <div id="stages" className="stages">
