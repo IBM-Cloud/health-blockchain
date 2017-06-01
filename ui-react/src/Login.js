@@ -6,8 +6,8 @@ class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: 'rvennam@us.ibm.com',
-      password: 'password',
+      email: '',
+      password: '',
       errorMessage: ''
     };
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -81,11 +81,11 @@ class Login extends Component {
                   value={this.state.password}
                 />
               </div>
-              <button className="loginbutton" onClick={this.submit}>{ this.props.isLogin ? "Login" : "Sign Up" }</button>
+              <button className="loginbutton" onClick={this.submit}>{ this.props.isLogin ? 'Login' : 'Sign Up' }</button>
             </div>
           </form>
           <div className="loginnew" onClick={this.navigate}>
-            { this.props.isLogin ? "Add a new account" : "Existing account?" }
+            { this.props.isLogin ? 'Add a new account' : 'Existing account?' }
           </div>
           <div className="messagearea" id="messagearea">
             {this.state.errorMessage}

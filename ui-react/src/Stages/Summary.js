@@ -33,7 +33,9 @@ class Summary extends Component {
       <div id="summarystage" className="stage">
         <div className="summarybox">
           <Logo />
-
+          <div className="messagearea" id="messagearea">
+            {this.state.errorMessage}
+          </div>
           <div className="challenges">
             <div id="challengecount" className="challengecount">
               {this.state.summary.challenges}
@@ -56,16 +58,16 @@ class Summary extends Component {
           </div>
           <div className="challengedata">
             <div className="workouts">
-                <div id="hourcount" className="workoutcount">
-                  {this.state.summary.hours}
-                </div>
-                <div className="workoutlabel">HOURS</div>
+              <div id="hourcount" className="workoutcount">
+                {this.state.summary.hours}
+              </div>
+              <div className="workoutlabel">HOURS</div>
             </div>
             <div className="rewards">
-                <div id="caloriecount" className="rewardcount">
-                  {this.state.summary.calories}
-                </div>
-                <div className="rewardlabel">CALORIES</div>
+              <div id="caloriecount" className="rewardcount">
+                {this.state.summary.calories}
+              </div>
+              <div className="rewardlabel">CALORIES</div>
             </div>
           </div>
         </div>

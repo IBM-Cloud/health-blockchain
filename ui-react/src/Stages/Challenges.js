@@ -35,6 +35,9 @@ class Challenges extends Component {
     return (
       <div id="challengesstage" className="stage">
         <div className="challengelist" id="challengelist">
+          <div className="messagearea" id="messagearea">
+            {this.state.errorMessage}
+          </div>
           {this.state.challenges.map((challenge, index) => (
             <div className="challengeitem" key={`challenge-${index}`}>
               <div className="challengevisual">

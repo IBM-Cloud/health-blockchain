@@ -45,7 +45,7 @@ class Profile extends Component {
       <div className="screen">
         <div className="navigationbar">
           <div id="leftnav" className="leftnav" onClick={() => this.changeStage('challenges')}>
-            {(this.state.selectedStage !== 'history') ? '' : '<' }
+            {(this.state.selectedStage !== 'market') ? '' : '<' }
           </div>
           <div id="navigation" className="bar">{this.state.selectedStage.toUpperCase()}</div>
           <div id="rightnav" className="rightnav" onClick={() => this.changeStage('market')}>
@@ -55,7 +55,9 @@ class Profile extends Component {
         <div id="stages" className="stages">
           {stage}
         </div>
-        <div>{this.state.errorMessage}</div>
+        <div className="messagearea" id="messagearea">
+          {this.state.errorMessage}
+        </div>
         <TabBar selectedStage={this.state.selectedStage} changeStage={this.changeStage} />
       </div>
     );
