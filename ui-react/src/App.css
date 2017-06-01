@@ -270,10 +270,11 @@ input:-webkit-autofill {
 }
 
 .loginnew {
+    color: #c0c0c3;
     padding: 15px;
     text-align: center;
-    text-decoration: none;
-    color: #95dee3;
+    text-decoration: underline;
+    cursor: pointer;
 }
 
 a {

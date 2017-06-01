@@ -84,10 +84,8 @@ class Login extends Component {
               <button className="loginbutton" onClick={this.submit}>{ this.props.isLogin ? "Login" : "Sign Up" }</button>
             </div>
           </form>
-          <div className="loginnew">
-            <a href="#" className="signuplink" onClick={this.navigate}>
-              { this.props.isLogin ? "Add a new account" : "Existing account?" }
-            </a>
+          <div className="loginnew" onClick={this.navigate}>
+            { this.props.isLogin ? "Add a new account" : "Existing account?" }
           </div>
           <div className="messagearea" id="messagearea">
             {this.state.errorMessage}
