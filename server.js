@@ -70,7 +70,7 @@ function initializeApp(readyCallback) {
     // user workouts
     (callback) => {
       require('./routes/workouts')(appEnv, (err, router) => {
-        app.use(router);
+        app.use('/api/account/workouts', router);
         callback();
       });
     }

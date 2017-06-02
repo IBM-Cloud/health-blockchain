@@ -69,7 +69,7 @@ describe('End to end', () => {
   });
 
   it('can retrieve workouts for a registered account', (done) => {
-    api.get('/workouts')
+    api.get('/api/account/workouts')
       .expect(200)
       .end((err, res) => {
         assert.equal(0, res.body.length);
@@ -78,7 +78,7 @@ describe('End to end', () => {
   });
 
   it('can save a workout', (done) => {
-    api.post('/workouts')
+    api.post('/api/account/workouts')
       .send(workout)
       .expect(201)
       .end((err, res) => {
@@ -88,7 +88,7 @@ describe('End to end', () => {
   });
 
   it('can retrieve created workouts', (done) => {
-    api.get('/workouts')
+    api.get('/api/account/workouts')
       .expect(200)
       .end((err, res) => {
         assert.equal(1, res.body.length);
@@ -99,7 +99,7 @@ describe('End to end', () => {
   });
 
   it('can not see John workouts', (done) => {
-    apiAnotherUser.get('/workouts')
+    apiAnotherUser.get('/api/account/workouts')
       .expect(200)
       .end((err, res) => {
         assert.equal(0, res.body.length);
@@ -109,7 +109,7 @@ describe('End to end', () => {
 
   it('can update a workout', (done) => {
     workout.calories = 500;
-    api.put(`/workouts/${workout._id}`)
+    api.put(`/api/account/workouts/${workout._id}`)
       .send(workout)
       .expect(200)
       .end((err, res) => {
@@ -119,7 +119,7 @@ describe('End to end', () => {
   });
 
   it('can delete a workout', (done) => {
-    api.delete(`/workouts/${workout._id}`)
+    api.delete(`/api/account/workouts/${workout._id}`)
       .send(workout)
       .expect(201)
       .end((err) => {
@@ -128,7 +128,7 @@ describe('End to end', () => {
   });
 
   it('can have no workouts', (done) => {
-    api.get('/workouts')
+    api.get('/api/account/workouts')
       .expect(200)
       .end((err, res) => {
         assert.equal(0, res.body.length);
@@ -137,7 +137,7 @@ describe('End to end', () => {
   });
 
   it('can not retrieve workouts if not logged in', (done) => {
-    apiAnon.get('/workouts')
+    apiAnon.get('/api/account/workouts')
       .expect(401)
       .end((err) => {
         done(err);

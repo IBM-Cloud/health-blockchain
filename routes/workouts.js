@@ -13,7 +13,7 @@ function checkAuthenticated(req, res, next) {
   }
 }
 
-router.get('/workouts', checkAuthenticated, (req, res) => {
+router.get('/', checkAuthenticated, (req, res) => {
   console.log(`Retrieving workouts for ${req.user._id}`);
   Workouts.find({
     selector: {
@@ -29,7 +29,7 @@ router.get('/workouts', checkAuthenticated, (req, res) => {
   });
 });
 
-router.post('/workouts', checkAuthenticated, (req, res) => {
+router.post('/', checkAuthenticated, (req, res) => {
   console.log(`Storing workout for ${req.user._id}:`, req.body);
   const workout = req.body;
   // sanity check
@@ -48,7 +48,7 @@ router.post('/workouts', checkAuthenticated, (req, res) => {
   });
 });
 
-router.put('/workouts/:id', checkAuthenticated, (req, res) => {
+router.put('/:id', checkAuthenticated, (req, res) => {
   console.log(`Updating workout for ${req.user._id}:`, req.body);
   const workout = req.body;
   if (workout.account_id !== req.user._id) {
@@ -68,7 +68,7 @@ router.put('/workouts/:id', checkAuthenticated, (req, res) => {
   }
 });
 
-router.delete('/workouts/:id', checkAuthenticated, (req, res) => {
+router.delete('/:id', checkAuthenticated, (req, res) => {
   console.log(`Removing workout for ${req.user._id}:`, req.body);
   const workout = req.body;
   if (workout.account_id !== req.user._id) {
