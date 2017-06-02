@@ -1,0 +1,15 @@
+[
+  {
+    "_id": "john@acme.com",
+    "_rev": "3-bd8024a22172eacd3eec72dafc4cc445",
+    "email": "john@acme.com",
+    "password": "$2a$10$N3V83DLnNa8iTbiXi/f4c.9bz.NYFrqBeTeCKK/1LEAgZN8lUUqq."
+  },
+  {
+    "_id": "jim@insurance.com",
+    "_rev": "1-f32a58424a6aa869d3557eb9a1d8131f",
+    "email": "jim@insurance.com",
+    "password": "$2a$10$tsADNYicvGwcaJGlJyZJRO0zUZnwfgO2MrV1Psfw0E5niDj762Ue6",
+    "organization": "Cloud Insurance Co."
+  }
+]
