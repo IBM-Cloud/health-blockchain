@@ -1,25 +1,22 @@
-{
-   "challenges": [
-      {
-         "title": "Bike To Work",
-         "image": "bike.svg",
-         "start": "2017-03-31T22:00:00.000Z",
-         "end": "2017-05-30T22:00:00.000Z",
-         "goal": 10,
-         "unit": "workout",
-         "activity": "CYCLING",
-         "logged": 6
-      },
-      {
-         "title": "Fit For Work",
-         "image": "skip.svg",
-         "start": "2016-12-31T23:00:00.000Z",
-         "end": "2017-12-30T23:00:00.000Z",
-         "goal": 30,
-         "unit": "workout",
-         "activity": "ANY",
-         "logged": 20
-      }
-   ],
-   "outcome": "success"
-}
+[
+  {
+    "title": "Bike To Work",
+    "image": "bike.svg",
+    "start": "2017-03-31T22:00:00.000Z",
+    "end": "2017-05-30T22:00:00.000Z",
+    "goal": 10,
+    "unit": "workout",
+    "activity": "CYCLING",
+    "logged": 6
+  },
+  {
+    "title": "Fit For Work",
+    "image": "skip.svg",
+    "start": "2016-12-31T23:00:00.000Z",
+    "end": "2017-12-30T23:00:00.000Z",
+    "goal": 30,
+    "unit": "workout",
+    "activity": "ANY",
+    "logged": 20
+  }
+]

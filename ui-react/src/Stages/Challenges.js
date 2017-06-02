@@ -18,13 +18,13 @@ class Challenges extends Component {
   }
 
   getChallenges() {
-    fetch('/challenges', {
+    fetch('/api/account/challenges', {
       credentials: 'include'
     }).then((response) => {
       if (response.ok) {
-        response.json().then(json =>
+        response.json().then(challenges =>
           this.setState(
-            { challenges: json.challenges }));
+            { challenges }));
         return response;
       }
       this.setState({ errorMessage: 'Error calling API.' });

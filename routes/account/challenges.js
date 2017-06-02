@@ -1,18 +1,19 @@
 // Licensed under the Apache License. See footer for details.
 const express = require('express');
+const path = require('path');
 
 const router = express.Router();
 
-router.get('/challenges', (req, res) => {
-  res.sendFile(`${__dirname}/json/challenges-get.json`);
+router.get('/', (req, res) => {
+  res.sendFile(path.resolve(`${__dirname}/../json/challenges-get.json`));
 });
 
 router.get('/summary', (req, res) => {
-  res.sendFile(`${__dirname}/json/challenges-summary.json`);
+  res.sendFile(path.resolve(`${__dirname}/../json/challenges-summary.json`));
 });
 
 router.get('/history', (req, res) => {
-  res.sendFile(`${__dirname}/json/challenges-history.json`);
+  res.sendFile(path.resolve(`${__dirname}/../json/challenges-history.json`));
 });
 
 module.exports = router;

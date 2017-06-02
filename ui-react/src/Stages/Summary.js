@@ -15,7 +15,7 @@ class Summary extends Component {
   }
 
   challengeView() {
-    fetch('/summary', {
+    fetch('/api/account/challenges/summary', {
       credentials: 'include'
     }).then((response) => {
       if (response.ok) {

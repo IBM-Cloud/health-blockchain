@@ -19,7 +19,7 @@ class History extends Component {
   }
 
   getChallenges() {
-    fetch('/history', {
+    fetch('/api/account/challenges/history', {
       credentials: 'include'
     }).then((response) => {
       if (response.ok) {

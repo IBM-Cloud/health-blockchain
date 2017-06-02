@@ -49,8 +49,8 @@ app.set('view engine', 'html');
 // user management
 app.use('/api/users', require('./routes/users'));
 
-// challenges
-app.use(require('./routes/challenges'));
+// user challenges
+app.use('/api/account/challenges', require('./routes/account/challenges'));
 
 // organizations and market
 app.use('/api/market', require('./routes/market.js'));
@@ -72,7 +72,7 @@ function initializeApp(readyCallback) {
     },
     // user workouts
     (callback) => {
-      require('./routes/workouts')(appEnv, (err, router) => {
+      require('./routes/account/workouts')(appEnv, (err, router) => {
         app.use('/api/account/workouts', router);
         callback();
       });
