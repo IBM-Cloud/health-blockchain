@@ -21,7 +21,7 @@ class TabBar extends Component {
         </div>
         <div
           className="tabButton" onClick={() => this.props.changeStage('challenges')}
-          style={(this.props.selectedStage !== 'challenges') ? opacityStyle : {}}
+          style={(this.props.selectedStage !== 'challenges' && this.props.selectedStage !== 'market') ? opacityStyle : {}}
         >
           <img id="challenges" className="tabimage" alt="challenges" src="images/target.svg" />
         </div>
