@@ -2,9 +2,6 @@ import React, { Component } from 'react';
 import './Block.css';
 
 class Block extends Component {
-  login() {
-    console.log('login', this);
-  }
   render() {
     return (
       <div>
@@ -17,7 +14,7 @@ class Block extends Component {
           <div className="blockRow">
             <div className="blockRowLabel">Block</div>
             <div>
-              <input className="blockRowInput" type="text" value="'<%= block.id %>'" />
+              <input className="blockRowInput" type="text" value={this.props.block.blockNumber} />
             </div>
           </div>
           {/* <!--Nonce--> */}
