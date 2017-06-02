@@ -15,10 +15,6 @@ router.get('/history', (req, res) => {
   res.sendFile(`${__dirname}/json/challenges-history.json`);
 });
 
-router.get('/market', (req, res) => {
-  res.sendFile(`${__dirname}/json/challenges-market.json`);
-});
-
 module.exports = router;
 
 //------------------------------------------------------------------------------

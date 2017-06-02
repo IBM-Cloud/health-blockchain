@@ -14,13 +14,13 @@ class Summary extends Component {
   }
 
   getChallenges() {
-    fetch('/market', {
+    fetch('/api/market/challenges', {
       credentials: 'include'
     }).then((response) => {
       if (response.ok) {
-        response.json().then(json =>
+        response.json().then(challenges =>
           this.setState(
-            { marketChallenges: json.challenges }));
+            { marketChallenges: challenges }));
         return response;
       }
       this.setState({ errorMessage: 'Error calling API.' });
