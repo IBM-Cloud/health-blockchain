@@ -1,0 +1,65 @@
+{
+   "history": [
+      {
+         "image": "bike.svg",
+         "date": "2017-05-28T22:00:00.000Z",
+         "start": "2017-06-02T07:57:47.328Z",
+         "end": "2017-06-02T07:57:47.328Z",
+         "calories": 300,
+         "heart": 65,
+         "distance": 10,
+         "pace": 10,
+         "unit": "workout",
+         "activity": "CYCLING"
+      },
+      {
+         "image": "skip.svg",
+         "date": "2017-05-28T22:00:00.000Z",
+         "start": "2017-06-02T07:57:47.328Z",
+         "end": "2017-06-02T07:57:47.328Z",
+         "calories": 240,
+         "heart": 65,
+         "distance": 0,
+         "pace": 0,
+         "unit": "workout",
+         "activity": "ANY"
+      },
+      {
+         "image": "bike.svg",
+         "date": "2017-05-28T22:00:00.000Z",
+         "start": "2017-06-02T07:57:47.328Z",
+         "end": "2017-06-02T07:57:47.328Z",
+         "calories": 300,
+         "heart": 65,
+         "distance": 10,
+         "pace": 10,
+         "unit": "workout",
+         "activity": "CYCLING"
+      },
+      {
+         "image": "runner.svg",
+         "date": "2017-05-28T22:00:00.000Z",
+         "start": "2017-06-02T07:57:47.328Z",
+         "end": "2017-06-02T07:57:47.328Z",
+         "calories": 280,
+         "heart": 80,
+         "distance": 5,
+         "pace": 10,
+         "unit": "workout",
+         "activity": "CYCLING"
+      },
+      {
+         "image": "runner.svg",
+         "date": "2017-05-28T22:00:00.000Z",
+         "start": "2017-06-02T07:57:47.328Z",
+         "end": "2017-06-02T07:57:47.328Z",
+         "calories": 300,
+         "heart": 65,
+         "distance": 10,
+         "pace": 10,
+         "unit": "workout",
+         "activity": "CYCLING"
+      }
+   ],
+   "outcome": "success"
+}

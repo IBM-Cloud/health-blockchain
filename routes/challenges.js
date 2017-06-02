@@ -1,211 +1,22 @@
 // Licensed under the Apache License. See footer for details.
-var express = require('express');
-var router = express.Router();
+const express = require('express');
 
-router.get('/challenges', function (req, res) {
-    res.setHeader('Content-Type', 'application/json');
+const router = express.Router();
 
-    console.log('getting challenges');
-
-    /* sample response data */
-
-    var startDate = new Date(2017, 3, 1);
-    var endDate = new Date(2017, 4, 31);
-
-    var ffwstartdate = new Date(2017, 0, 1);
-    var ffwenddate = new Date(2017, 11, 31);
-
-    var challenges = [
-        {
-            title: 'Bike To Work',
-            image: 'bike.svg',
-            start: startDate,
-            end: endDate,
-            goal: 10,
-            unit: 'workout',
-            activity: 'CYCLING',
-            logged: 6
-    }, {
-            title: 'Fit For Work',
-            image: 'skip.svg',
-            start: ffwstartdate,
-            end: ffwenddate,
-            goal: 30,
-            unit: 'workout',
-            activity: 'ANY',
-            logged: 20
-    }
-  ];
-
-    var response = {
-        challenges: challenges,
-        outcome: 'success'
-    };
-
-    res.send(JSON.stringify(response, null, 3));
-})
-
-router.get('/summary', function (req, res) {
-    res.setHeader('Content-Type', 'application/json');
-
-    console.log('getting summary');
-
-    /* sample response data */
-
-    res.send(JSON.stringify({
-        challenges: 3,
-        workouts: 57,
-        rewards: 2,
-        hours: 40,
-        calories: 2000,
-        outcome: 'success'
-    }, null, 3));
+router.get('/challenges', (req, res) => {
+  res.sendFile(`${__dirname}/json/challenges-get.json`);
 });
 
-router.get('/history', function (req, res) {
-    res.setHeader('Content-Type', 'application/json');
-
-    console.log('getting history');
-
-    /* sample response data */
-
-    var startDate = new Date(2017, 4, 29);
-
-    var history = [
-        {
-            image: 'bike.svg',
-            date: startDate,
-            start: new Date(),
-            end: new Date(),
-            calories: 300,
-            heart: 65,
-            distance: 10,
-            pace: 10,
-            unit: 'workout',
-            activity: 'CYCLING'
-    }, {
-            image: 'skip.svg',
-            date: startDate,
-            start: new Date(),
-            end: new Date(),
-            calories: 240,
-            heart: 65,
-            distance: 0,
-            pace: 0,
-            unit: 'workout',
-            activity: 'ANY'
-    }, {
-            image: 'bike.svg',
-            date: startDate,
-            start: new Date(),
-            end: new Date(),
-            calories: 300,
-            heart: 65,
-            distance: 10,
-            pace: 10,
-            unit: 'workout',
-            activity: 'CYCLING'
-    }, {
-            image: 'runner.svg',
-            date: startDate,
-            start: new Date(),
-            end: new Date(),
-            calories: 280,
-            heart: 80,
-            distance: 5,
-            pace: 10,
-            unit: 'workout',
-            activity: 'CYCLING'
-    }, {
-            image: 'runner.svg',
-            date: startDate,
-            start: new Date(),
-            end: new Date(),
-            calories: 300,
-            heart: 65,
-            distance: 10,
-            pace: 10,
-            unit: 'workout',
-            activity: 'CYCLING'
-    }]
-
-    res.send(JSON.stringify({
-        history: history,
-        outcome: 'success'
-    }, null, 3));
+router.get('/summary', (req, res) => {
+  res.sendFile(`${__dirname}/json/challenges-summary.json`);
 });
 
-router.get('/market', function (req, res) {
-    res.setHeader('Content-Type', 'application/json');
+router.get('/history', (req, res) => {
+  res.sendFile(`${__dirname}/json/challenges-history.json`);
+});
 
-    console.log('getting challenges');
-
-    /* sample response data */
-
-    var startDate = new Date(2017, 3, 1);
-    var endDate = new Date(2017, 4, 31);
-
-    var ffwstartdate = new Date(2017, 0, 1);
-    var ffwenddate = new Date(2017, 11, 31);
-
-    var scstartdate = new Date(2017, 9, 1);
-    var scenddate = new Date(2018, 2, 31);
-
-    var challenges = [
-        {
-            title: 'Bike To Work',
-            image: 'bike.svg',
-            start: startDate,
-            end: endDate,
-            goal: 10,
-            unit: 'workout',
-            activity: 'CYCLING',
-            description: 'Earn a water bottle for 10 bike commutes to work'
-    }, {
-            title: 'Fit For Work',
-            image: 'skip.svg',
-            start: ffwstartdate,
-            end: ffwenddate,
-            goal: 30,
-            unit: 'workout',
-            activity: 'ANY',
-            description: '$100 health insurance credit for 30 workouts a year'
-    }, {
-            title: 'Stair Challenge',
-            image: 'stairs.svg',
-            start: scstartdate,
-            end: scenddate,
-            goal: 1000,
-            unit: 'workout',
-            activity: 'STAIRS',
-            description: 'Bobble hat for 1000 stairs climbed this winter'
-    }, {
-            title: 'Runners Life Insurance',
-            image: 'runner.svg',
-            start: ffwstartdate,
-            end: ffwenddate,
-            goal: 20,
-            unit: 'workout',
-            activity: 'RUNNING',
-            description: '20% discount for 20 runs a year'
-    }, {
-            title: 'Marathon Qualifying',
-            image: 'runner.svg',
-            start: ffwstartdate,
-            end: ffwenddate,
-            goal: 1,
-            unit: 'workout',
-            activity: 'RUNNING',
-            description: 'Run one marathon in less than 4 hours'
-    }
-  ];
-
-    var response = {
-        challenges: challenges,
-        outcome: 'success'
-    };
-
-    res.send(JSON.stringify(response, null, 3));
+router.get('/market', (req, res) => {
+  res.sendFile(`${__dirname}/json/challenges-market.json`);
 });
 
 module.exports = router;
