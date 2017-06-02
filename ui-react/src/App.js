@@ -45,7 +45,7 @@ class App extends Component {
   }
 
   isLoggedIn() {
-    fetch('/isLoggedIn', { credentials: 'include' }).then((response) => {
+    fetch('/api/users/isLoggedIn', { credentials: 'include' }).then((response) => {
       if (response.ok) {
         response.json().then(json => json.outcome === 'success' && this.setState({ route: Route.PROFILE }));
         return response;

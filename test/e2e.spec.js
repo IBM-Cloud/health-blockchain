@@ -29,8 +29,17 @@ describe('End to end', () => {
     });
   });
 
+  it('can check if it is logged', (done) => {
+    api.get('/api/users/isLoggedIn')
+      .expect(200)
+      .end((err, result) => {
+        assert.equal('failure', result.body.outcome);
+        done(err);
+      });
+  });
+
   it('can register an account', (done) => {
-    api.post('/signup')
+    api.post('/api/users/signup')
       .send(`email=${username}`)
       .send(`password=${password}`)
       .expect(200)
@@ -39,8 +48,18 @@ describe('End to end', () => {
       });
   });
 
+  it('can ensure if it is logged', (done) => {
+    api.get('/api/users/isLoggedIn')
+      .expect(200)
+      .end((err, result) => {
+        assert.equal('success', result.body.outcome);
+        assert.equal(username, result.body.email);
+        done(err);
+      });
+  });
+
   it('can register another account', (done) => {
-    apiAnotherUser.post('/signup')
+    apiAnotherUser.post('/api/users/signup')
       .send(`email=${anotherUsername}`)
       .send(`password=${anotherPassword}`)
       .expect(200)

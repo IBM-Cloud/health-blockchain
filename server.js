@@ -47,7 +47,7 @@ app.use(passport.session()); // persistent login sessions
 app.set('view engine', 'html');
 
 // user management
-app.use(require('./routes/users'));
+app.use('/api/users', require('./routes/users'));
 
 // challenges
 app.use(require('./routes/challenges'));

@@ -33,7 +33,7 @@ class Login extends Component {
     event.preventDefault();
 
     this.setState({ errorMessage: '' });
-    fetch(this.props.isLogin ? '/login' : '/signup', {
+    fetch(this.props.isLogin ? '/api/users/login' : '/api/users/signup', {
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json'
