@@ -1,5 +1,7 @@
 [
   {
+    "_id": "100",
+    "challengeId": "1",
     "title": "Bike To Work",
     "image": "bike.svg",
     "start": "2017-03-31T22:00:00.000Z",
@@ -10,6 +12,8 @@
     "logged": 6
   },
   {
+    "_id": "200",
+    "challengeId": "2",
     "title": "Fit For Work",
     "image": "skip.svg",
     "start": "2016-12-31T23:00:00.000Z",

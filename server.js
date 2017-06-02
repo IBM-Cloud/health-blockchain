@@ -52,9 +52,6 @@ app.use('/api/users', require('./routes/users'));
 // user challenges
 app.use('/api/account/challenges', require('./routes/account/challenges'));
 
-// organizations and market
-app.use('/api/market', require('./routes/market.js'));
-
 // internal API to view the blocks - not something we would really expose in a real app
 app.use('/api/private/blockchain', require('./routes/blockchain.js'));
 
@@ -74,6 +71,13 @@ function initializeApp(readyCallback) {
     (callback) => {
       require('./routes/account/workouts')(appEnv, (err, router) => {
         app.use('/api/account/workouts', router);
+        callback();
+      });
+    },
+    // organizations and market
+    (callback) => {
+      require('./routes/market')(appEnv, (err, router) => {
+        app.use('/api/market', router);
         callback();
       });
     }
