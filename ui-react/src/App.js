@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Phone from './Phone/Phone';
 import Login from './Login';
-import Profile from './Stages/Profile';
+import Profile from './Profile/Profile';
 import BlockExplorer from './BlockExplorer/BlockExplorer';
 import './App.css';
 
@@ -24,6 +24,7 @@ class App extends Component {
     this.onLogIn = this.onLogIn.bind(this);
     this.onSignup = this.onSignup.bind(this);
     this.onLoggedIn = this.onLoggedIn.bind(this);
+    this.logout = this.logout.bind(this);
   }
 
   onLogIn() {
@@ -55,6 +56,17 @@ class App extends Component {
     });
   }
 
+  logout() {
+    fetch('/api/users/logout', { method: 'POST' }).then(response => response.json())
+    .then((body) => {
+      if (body.ok) {
+        this.setState({ route: Route.LOGIN });
+      } else {
+        this.setState({ errorMessage: body.message });
+      }
+    });
+  }
+
   render() {
     let view;
     switch (this.state.route) {
@@ -66,13 +78,13 @@ class App extends Component {
         break;
       case Route.LOGIN:
       default:
-        view = <Login isLogin={true} onSubmit={this.onLoggedIn} onNavigate={this.onSignup} />;
+        view = <Login isLogin onSubmit={this.onLoggedIn} onNavigate={this.onSignup} />;
         break;
     }
     return (
       <div className="App">
         <div className="splitView">
-          <Phone>
+          <Phone homeButton={this.logout}>
             {view}
           </Phone>
           <BlockExplorer />

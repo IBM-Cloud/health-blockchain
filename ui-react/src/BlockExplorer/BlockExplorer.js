@@ -27,7 +27,7 @@ class BlockExplorer extends Component {
     return (
       <div className="blockExplorer">
         {this.state.blocks.map((block, index) => (
-          <Block block={block}/>
+          <Block block={block} />
         ))}
       </div>
     );

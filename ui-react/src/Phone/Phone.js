@@ -20,7 +20,7 @@ class Phone extends Component {
           {this.props.children}
         </div>
         <div className="border">
-          <div className="home" />
+          <div className="home" onClick={this.props.homeButton} />
         </div>
       </div>
     );
@@ -28,7 +28,8 @@ class Phone extends Component {
 }
 
 Phone.propTypes = {
-  children: PropTypes.Object
+  children: PropTypes.Object,
+  homeButton: PropTypes.func
 };
 
 export default Phone;
