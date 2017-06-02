@@ -14,14 +14,5 @@
         }
       }
     ]
-  },
-  "user-provided": [
-    {
-      "name": "fitbit",
-      "credentials": {
-        "clientID": "",
-        "clientSecret": ""
-      }
-    }
-  ]
+  }
 }

@@ -24,9 +24,6 @@ if ! cf app $CF_APP; then
   else
     cf push $CF_APP -f $MANIFEST --hostname $CF_APP_HOSTNAME --no-start
   fi
-  if [ ! -z "$FITBIT" ]; then
-    cf set-env $CF_APP FITBIT "${FITBIT}"
-  fi
   cf start $CF_APP
 else
   OLD_CF_APP=${CF_APP}-OLD-$(date +"%s")
@@ -46,9 +43,6 @@ else
     cf push $CF_APP -f $MANIFEST --no-start
   else
     cf push $CF_APP -f $MANIFEST --hostname $CF_APP_HOSTNAME --no-start
-  fi
-  if [ ! -z "$FITBIT" ]; then
-    cf set-env $CF_APP FITBIT "${FITBIT}"
   fi
   cf start $CF_APP
   cf delete $OLD_CF_APP -f

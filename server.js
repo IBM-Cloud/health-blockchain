@@ -52,9 +52,6 @@ app.use(require('./routes/users'));
 // challenges
 app.use(require('./routes/challenges'));
 
-// fitbit integration
-app.use(require('./routes/fitbit')(appEnv));
-
 // internal API to view the blocks - not something we would really expose in a real app
 app.use('/api/private/blockchain', require('./routes/blockchain.js'));
 
