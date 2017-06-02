@@ -16,6 +16,7 @@ router.post('/signup', (req, res) => {
         res.send({
           ok: true,
           email: user.email,
+          organization: user.organization,
           outcome: 'success'
         });
       });
@@ -41,6 +42,7 @@ router.post('/login', (req, res) => {
         res.send({
           ok: true,
           email: user.email,
+          organization: user.organization,
           outcome: 'success'
         });
       });
@@ -58,6 +60,7 @@ router.get('/isLoggedIn', (req, res) => {
   if (req.isAuthenticated()) {
     result.outcome = 'success';
     result.email = req.user.email;
+    result.organization = req.user.organization;
   }
 
   res.send(result);
