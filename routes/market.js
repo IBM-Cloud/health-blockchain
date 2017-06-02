@@ -1,5 +1,6 @@
 // Licensed under the Apache License. See footer for details.
 const express = require('express');
+const path = require('path');
 
 const router = express.Router();
 const dba = 'market';
@@ -15,17 +16,14 @@ function checkAuthenticated(req, res, next) {
 
 // | GET    | /api/market/challenges | view available challenges
 router.get('/challenges', (req, res) => {
-  res.sendFile(`${__dirname}/json/market-get-challenges.json`);
-  // TO BE ENABLED when we can create organizations and sign in
-  // console.log('Retrieving market challenges');
-  // Database.list((err, result) => {
-  //   if (err) {
-  //     res.status(500).send({ ok: false });
-  //   } else {
-  //     console.log('Retrieved', result);
-  //     res.send(result.docs);
-  //   }
-  // });
+  console.log('Retrieving market challenges');
+  Database.list({ include_docs: true }, (err, result) => {
+    if (err) {
+      res.status(500).send({ ok: false });
+    } else {
+      res.send(result.rows.map(row => row.doc));
+    }
+  });
 });
 
 // | POST   | /api/market/challenges | allows an organization to submit a new challenge to the market
@@ -96,24 +94,24 @@ router.delete('/challenges/:id', checkAuthenticated, (req, res) => {
   }
 });
 
-function initCloudant(appEnv, readyCallback) {
-  const cloudantURL = appEnv.services.cloudantNoSQLDB[0].credentials.url || appEnv.getServiceCreds('health-blockchain-db').url;
-  const Cloudant = require('cloudant')({ url: cloudantURL, plugin: 'retry', retryAttempts: 10, retryTimeout: 500 });
-
-  // Create the accounts DB if it doesn't exist
-  Cloudant.db.create(dba, (err) => {
-    if (err) {
-      console.log('Database already exists:', dba);
-    } else {
-      console.log('New database created:', dba);
-    }
-    readyCallback();
-  });
-  Database = Cloudant.use(dba);
-}
-
 module.exports = (appEnv, readyCallback) => {
-  initCloudant(appEnv, () => {
-    readyCallback(null, router);
-  });
+  Database = require('../config/database')(appEnv, dba,
+    path.resolve(`${__dirname}/../seed/market.json`), () => {
+      readyCallback(null, router);
+    });
 };
+
+
+//------------------------------------------------------------------------------
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//    http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//------------------------------------------------------------------------------

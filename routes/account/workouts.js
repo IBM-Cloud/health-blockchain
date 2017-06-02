@@ -1,5 +1,6 @@
 // Licensed under the Apache License. See footer for details.
 const express = require('express');
+const path = require('path');
 
 const router = express.Router();
 const dba = 'workouts';
@@ -86,26 +87,11 @@ router.delete('/:id', checkAuthenticated, (req, res) => {
   }
 });
 
-function initCloudant(appEnv, readyCallback) {
-  const cloudantURL = appEnv.services.cloudantNoSQLDB[0].credentials.url || appEnv.getServiceCreds('health-blockchain-db').url;
-  const Cloudant = require('cloudant')({ url: cloudantURL, plugin: 'retry', retryAttempts: 10, retryTimeout: 500 });
-
-  // Create the accounts DB if it doesn't exist
-  Cloudant.db.create(dba, (err) => {
-    if (err) {
-      console.log('Database already exists:', dba);
-    } else {
-      console.log('New database created:', dba);
-    }
-    readyCallback();
-  });
-  Workouts = Cloudant.use(dba);
-}
-
 module.exports = (appEnv, readyCallback) => {
-  initCloudant(appEnv, () => {
-    readyCallback(null, router);
-  });
+  Workouts = require('../../config/database')(appEnv, dba,
+    path.resolve(`${__dirname}/../../seed/workouts.json`), () => {
+      readyCallback(null, router);
+    });
 };
 
 //------------------------------------------------------------------------------
