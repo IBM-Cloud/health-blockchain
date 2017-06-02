@@ -1,31 +1,19 @@
 // Licensed under the Apache License. See footer for details.
 const LocalStrategy = require('passport-local').Strategy;
+const path = require('path');
 
 // load up the user model
 const dba = 'account';
 let Account;
 
-function initCloudant(appEnv, readyCallback) {
-  const cloudantURL = appEnv.services.cloudantNoSQLDB[0].credentials.url || appEnv.getServiceCreds('health-blockchain-db').url;
-  const Cloudant = require('cloudant')({ url: cloudantURL, plugin: 'retry', retryAttempts: 10, retryTimeout: 500 });
-
-  // Create the accounts DB if it doesn't exist
-  Cloudant.db.create(dba, (err) => {
-    if (err) {
-      console.log('Database already exists:', dba);
-    } else {
-      console.log('New database created:', dba);
-    }
-    readyCallback(err);
-  });
-  Account = Cloudant.use(dba);
-}
-
 // =====================================
 // EXPORT LOGIN & SIGNUP ===============
 // =====================================
 module.exports = function(passport, appEnv, readyCallback) {
-  initCloudant(appEnv, readyCallback);
+  Account = require('./database')(appEnv, dba,
+    path.resolve(`${__dirname}/../seed/account.json`), () => {
+      readyCallback();
+    });
 
   const bcrypt = require('bcrypt-nodejs');
 
@@ -102,6 +90,7 @@ module.exports = function(passport, appEnv, readyCallback) {
 
     const firstName = req.body.fname;
     const lastName = req.body.lname;
+    const organization = req.body.organization;
 
     // Use Cloudant query to find the user just based on user name
     Account.find({
@@ -123,7 +112,8 @@ module.exports = function(passport, appEnv, readyCallback) {
         email,
         password: bcrypt.hashSync(password),
         firstName,
-        lastName
+        lastName,
+        organization,
       };
 
       Account.insert(user, (insertErr) => {
