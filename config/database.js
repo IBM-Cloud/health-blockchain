@@ -24,7 +24,10 @@ function Database(appEnv, dbName, seedFilename, readyCallback) {
     // Seed with data
     (callback) => {
       self.db.list((err, result) => {
-        if (!err && result.total_rows === 0 && seedFilename) {
+        if (err) {
+          console.log(err);
+          callback();
+        } else if (result.total_rows === 0 && seedFilename) {
           const docs = JSON.parse(fs.readFileSync(seedFilename));
           console.log('Injecting', docs.length, 'rows in', dbName);
           self.db.bulk({ docs }, (insertErr) => {
