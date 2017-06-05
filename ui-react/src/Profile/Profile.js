@@ -16,7 +16,7 @@ class Profile extends Component {
     this.state = {
       summary: {},
       errorMessage: '',
-      selectedStage: 'summary'
+      selectedStage: ''
     };
     this.changeStage = this.changeStage.bind(this);
   }
@@ -49,7 +49,7 @@ class Profile extends Component {
           </div>
           <div id="navigation" className="bar">{this.state.selectedStage.toUpperCase()}</div>
           <div id="rightnav" className="rightnav" onClick={() => this.changeStage('market')}>
-            <img id="rightnavimg" src="images/add.svg" className="navimg" style={(this.state.selectedStage !== 'challenges') ? hiddenDiv : {}} />
+            <img id="rightnavimg" alt="Add Challenge" src="images/add.svg" className="navimg" style={(this.state.selectedStage !== 'challenges') ? hiddenDiv : {}} />
           </div>
         </div>
         <div id="stages" className="stages">

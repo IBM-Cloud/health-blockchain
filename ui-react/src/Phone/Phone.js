@@ -28,7 +28,6 @@ class Phone extends Component {
 }
 
 Phone.propTypes = {
-  children: PropTypes.Object,
   homeButton: PropTypes.func
 };
 

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './Phone/Phone.css';
+import API from './callAPI';
 
 class Login extends Component {
 
@@ -30,20 +31,9 @@ class Login extends Component {
   }
 
   handleSubmit(event) {
-    event.preventDefault();
-
+    event.preventDefault(); // Don't submit the form. We will call the API ourself.
     this.setState({ errorMessage: '' });
-    fetch(this.props.isLogin ? '/api/users/login' : '/api/users/signup', {
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json'
-      },
-      method: 'POST',
-      credentials: 'include',
-      body: JSON.stringify({
-        email: this.state.email, password: this.state.password
-      })
-    }).then(response => response.json())
+    API.loginOrSignup(this.props.isLogin ? 'login' : 'signup', this.state.email, this.state.password)
     .then((body) => {
       if (body.ok) {
         this.props.onSubmit();

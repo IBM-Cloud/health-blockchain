@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Logo from '../Logo';
 import '../Phone/Phone.css';
+import API from '../callAPI';
 
 class Summary extends Component {
 
@@ -15,19 +16,10 @@ class Summary extends Component {
   }
 
   challengeView() {
-    fetch('/api/account/challenges/summary', {
-      credentials: 'include'
-    }).then((response) => {
-      if (response.ok) {
-        response.json().then(json =>
-          this.setState(
-            { summary: json }));
-        return response;
-      }
-      this.setState({ errorMessage: 'Error calling API.' });
-      return response;
-    });
+    API.getRequest('/api/account/challenges/summary').then(body =>
+          this.setState({ summary: body }));
   }
+
   render() {
     return (
       <div id="summarystage" className="stage">
@@ -55,6 +47,7 @@ class Summary extends Component {
               </div>
               <div className="rewardlabel">REWARDS</div>
             </div>
+
           </div>
           <div className="challengedata">
             <div className="workouts">
