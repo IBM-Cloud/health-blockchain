@@ -1,0 +1,343 @@
+
+.card {
+    height: 360px;
+    border-radius: 4px;
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.summarybox {
+    display: flex;
+    flex-direction: column;
+    width: 160px;
+    height: 100%;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.tabButton {
+  width: 33%;
+  text-align: center;
+  cursor: pointer;
+}
+
+.tabimage {
+    height: 26px;
+    width: 26px;
+}
+
+.stages {
+    overflow: hidden;
+}
+
+.stage {
+    display: flex;
+    height: 440px;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-content: center;
+    align-items: center;
+    xdisplay: none;
+    xoverflow: hidden;
+}
+
+.challenges {
+    display: flex;
+    flex-direction: row;
+    margin: 10px;
+    margin-top: 30px;
+    font-size: 20px;
+}
+
+.challengecount {
+    margin-right: 10px;
+    text-align: right;
+}
+
+.challengetitle {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.challengelabel {}
+
+.challengedata {
+    border-top: 1px solid #444;
+    padding-top: 20px;
+    display: flex;
+    flex-direction: row;
+    margin: 10px;
+    font-size: 24px;
+    width: 160px;
+}
+
+.workouts {
+    width: 80px;
+}
+
+.rewards {
+    width: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+    align-content: flex-end;
+}
+
+.workoutlabel {
+    font-size: 14px;
+}
+
+.workoutcount {
+    font-weight: bold;
+}
+
+.rewardcount {
+    font-weight: bold;
+}
+
+.rewardlabel {
+    font-size: 14px;
+    align-self: flex-end;
+}
+
+
+/* - - - - - - */
+
+.challengelist {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    align-content: center;
+    width: 110%;
+    overflow-y: scroll;
+}
+
+.challengeitem {
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px solid #444;
+    width: 100%;
+    flex-shrink: 0;
+}
+
+.challengeblock {
+    display: flex;
+    flex-direction: column;
+    width: 150px;
+    align-content: center;
+    justify-content: center;
+}
+
+.challengevisual {
+    display: flex;
+    flex-direction: column;
+    height: 180px;
+    width: 160px;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.challengebutton {
+    margin-top: 20px;
+    width: 80%;
+    background: #f56461;
+    color: white;
+    border: none;
+    height: 28px;
+    border-radius: 6px;
+}
+
+.progress,
+.time {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.begin {
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+}
+
+.conclude {
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+    align-content: flex-end;
+}
+
+.begins {
+    font-size: 10px;
+}
+
+.ends {
+    font-size: 10px;
+}
+
+.beginlabel {
+    font-size: 12px;
+}
+
+.endlabel {
+    font-size: 12px;
+}
+
+.challengeicon {
+    height: 150px;
+}
+
+.navigationbar {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    background: #363640;
+}
+
+.bar {
+    height: 50px;
+    width: 230px;
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    align-items: center;
+    justify-content: space-around;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+}
+
+.tabbar {
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    align-items: center;
+    justify-content: space-around;
+    color: white;
+    background: #363640;
+}
+
+.rightnav,
+.leftnav {
+    width: 50px;
+    text-align: center;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.navimg {
+    height: 26px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+}
+
+.marketitem {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid #444;
+    width: 100%;
+    padding-bottom: 20px;
+    flex-shrink: 0;
+}
+
+.marketicon {
+    height: 100px;
+}
+
+.marketdescription {
+    text-align: center;
+    width: 200px;
+}
+
+.marketvisual {
+    display: flex;
+    flex-direction: column;
+    height: 100px;
+    width: 160px;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.marketbutton {
+    margin-top: 24px;
+    margin-bottom: 12px;
+    width: 60%;
+    background: #f56461;
+    color: white;
+    border: none;
+    height: 30px;
+    font-size: 13px;
+    font-weight: bold;
+    border-radius: 6px;
+}
+
+.historyItem {
+    display: flex;
+    flex-direction: row;
+    height: 100px;
+}
+
+.historyvisual {
+    height: 120px;
+    width: 120px;
+}
+
+.historydetails {
+    width: 100%;
+}
+
+.historyicon {
+    height: 90px;
+}
+
+.historyitem {
+    display: flex;
+    flex-direction: row;
+    width: 300px;
+    border-bottom: 1px solid #444;
+    margin-top: 20px;
+    flex-shrink: 0;
+}
+
+.timestamp {
+    display: flex;
+    flex-direction: row;
+    font-size: 12px;
+    color: #f56461;
+    font-weight: bold;
+}
+
+.datestamp {
+    font-size: 12px;
+}
+
+.clock {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    min-width: 100px;
+}

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './Phone/Phone.css';
+import './Profile/Profile.css';
 import API from './callAPI';
 
 class Login extends Component {

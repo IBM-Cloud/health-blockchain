@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import '../Phone/Phone.css';
+import './Profile.css';
 import API from '../callAPI';
 
 const moment = require('moment');

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Logo from '../Logo';
-import '../Phone/Phone.css';
+import Logo from './Logo';
+import './Profile.css';
 import API from '../callAPI';
 
 class Summary extends Component {

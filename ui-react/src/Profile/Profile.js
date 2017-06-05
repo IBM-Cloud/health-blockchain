@@ -3,8 +3,8 @@ import Summary from './Summary';
 import Challenges from './Challenges';
 import Market from './Market';
 import History from './History';
-import TabBar from '../TabBar';
-import '../Phone/Phone.css';
+import TabBar from './TabBar';
+import './Profile.css';
 
 const hiddenDiv = {
   visibility: 'hidden'
