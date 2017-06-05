@@ -28,8 +28,8 @@ class History extends Component {
     return (
       <div id="historystage" className="stage">
         <div className="challengelist" id="historylist">
-          {this.state.history.map((challenge, index) => (
-            <div className="historyitem" key={`history-${index}`}>
+          {this.state.history.map(challenge => (
+            <div className="historyitem" key={challenge.id}>
               <div className="historyvisual">
                 <img className="historyicon" src={`images/${challenge.image}`} alt="history" />
               </div>

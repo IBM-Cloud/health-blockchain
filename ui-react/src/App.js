@@ -17,7 +17,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      route: Route.LOGIN,
+      route: Route.LOGIN
     };
     this.isLoggedIn = this.isLoggedIn.bind(this);
     this.isLoggedIn();

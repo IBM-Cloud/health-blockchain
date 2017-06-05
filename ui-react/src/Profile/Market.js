@@ -23,7 +23,7 @@ class Summary extends Component {
     return (
       <div id="marketstage" className="stage">
         <div className="challengelist" id="marketlist">
-          {this.state.marketChallenges.map((challenge, index) => (
+          {this.state.marketChallenges.map(challenge => (
             <div className="marketitem" >
               <div className="challengetitle">
                 {challenge.title}

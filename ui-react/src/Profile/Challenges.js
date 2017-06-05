@@ -35,8 +35,8 @@ class Challenges extends Component {
           <div className="messagearea" id="messagearea">
             {this.state.errorMessage}
           </div>
-          {this.state.challenges.map((challenge, index) => (
-            <div className="challengeitem" key={`challenge-${index}`}>
+          {this.state.challenges.map(challenge => (
+            <div className="challengeitem" key={challenge.id}>
               <div className="challengevisual">
                 <img className="challengeicon" src={`images/${challenge.image}`} alt="challenge" />
               </div>

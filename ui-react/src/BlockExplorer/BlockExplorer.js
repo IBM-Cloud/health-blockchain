@@ -7,7 +7,7 @@ class BlockExplorer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      blocks: [],
+      blocks: []
     };
     this.getBlocks = this.getBlocks.bind(this);
     this.getBlocks();
@@ -26,8 +26,8 @@ class BlockExplorer extends Component {
   render() {
     return (
       <div className="blockExplorer">
-        {this.state.blocks.map((block, index) => (
-          <Block block={block} key={index} />
+        {this.state.blocks.map(block => (
+          <Block block={block} key={block.id} />
         ))}
       </div>
     );

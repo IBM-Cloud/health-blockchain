@@ -28,7 +28,7 @@
     "no-constant-condition": [2, {"checkLoops": false}],
     "react/jsx-filename-extension": [0],
     "func-names": [0],
-    "react/prefer-stateless-function": [1],
+    "react/prefer-stateless-function": "off",
     "no-use-before-define": ["error", { "functions": false, "classes": true }]
   }
 }

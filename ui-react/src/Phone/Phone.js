@@ -32,4 +32,10 @@ Phone.propTypes = {
   homeButton: PropTypes.func
 };
 
+// Default props
+Phone.defaultProps = {
+  children: <h2>Hello</h2>,
+  homeButton: () => console.log('Home button pressed')
+};
+
 export default Phone;

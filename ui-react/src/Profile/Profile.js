@@ -44,11 +44,11 @@ class Profile extends Component {
     return (
       <div className="screen">
         <div className="navigationbar">
-          <div id="leftnav" className="leftnav" onClick={() => this.changeStage('challenges')}>
+          <div id="leftnav" role="presentation" className="leftnav" onClick={() => this.changeStage('challenges')}>
             {(this.state.selectedStage !== 'market') ? '' : '<' }
           </div>
           <div id="navigation" className="bar">{this.state.selectedStage.toUpperCase()}</div>
-          <div id="rightnav" className="rightnav" onClick={() => this.changeStage('market')}>
+          <div id="rightnav" role="presentation" className="rightnav" onClick={() => this.changeStage('market')}>
             <img id="rightnavimg" alt="Add Challenge" src="images/add.svg" className="navimg" style={(this.state.selectedStage !== 'challenges') ? hiddenDiv : {}} />
           </div>
         </div>
