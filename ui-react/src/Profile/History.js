@@ -20,8 +20,8 @@ class History extends Component {
   }
 
   getChallenges() {
-    API.getRequest('/api/account/challenges/history').then(body =>
-          this.setState({ history: body.history }));
+    API.getRequest('/api/account/workouts').then(body =>
+          this.setState({ history: body }));
   }
 
   render() {
