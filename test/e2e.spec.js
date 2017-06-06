@@ -15,9 +15,16 @@ describe('End to end', () => {
   let apiAnotherUser;
   let apiAnon;
   let workout = {
-    activity: 'bike',
-    calories: 0,
-    start: new Date(),
+    challengeId: 'bikeToWork',
+    date: '2017-03-31T10:00:00.000Z',
+    start: '2017-03-31T10:00:00.000Z',
+    end: '2017-03-31T12:00:00.000Z',
+    calories: 500,
+    distance: 14,
+    pace: 8.5,
+    heart: 65,
+    activity: 'CYCLING',
+    image: 'bike.svg'
   };
 
   before((done) => {
@@ -135,8 +142,8 @@ describe('End to end', () => {
       .expect(200)
       .end((err, res) => {
         assert.equal(1, res.body.length);
-        assert.equal('bike', res.body[0].activity);
-        assert.equal(0, res.body[0].calories);
+        assert.equal('CYCLING', res.body[0].activity);
+        assert.equal(500, res.body[0].calories);
         done(err);
       });
   });
@@ -150,8 +157,20 @@ describe('End to end', () => {
       });
   });
 
+  it('can get workout summary', (done) => {
+    api.get('/api/account/challenges/summary')
+      .expect(200)
+      .end((err, result) => {
+        console.log(result.body);
+        assert.equal(1, result.body.challenges);
+        assert.equal(2, result.body.hours);
+        assert.equal(500, result.body.calories);
+        done(err);
+      });
+  });
+
   it('can update a workout', (done) => {
-    workout.calories = 500;
+    workout.calories = 1500;
     api.put(`/api/account/workouts/${workout._id}`)
       .send(workout)
       .expect(200)

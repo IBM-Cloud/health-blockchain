@@ -128,9 +128,10 @@ router.get('/summary', (req, res) => {
 });
 
 module.exports = (appEnv, readyCallback) => {
-  Workouts = require('../../config/database')(appEnv, workoutsDbName, null, () => {
-    Market = require('../../config/database')(appEnv, marketDbName, null, () => {
-      Challenges = require('../../config/database')(appEnv, dba,
+  const Database = require('../../config/database');
+  Workouts = Database(appEnv, workoutsDbName, null, () => {
+    Market = Database(appEnv, marketDbName, null, () => {
+      Challenges = Database(appEnv, dba,
         path.resolve(`${__dirname}/../../seed/challenges.json`), () => {
           readyCallback(null, router);
         });
