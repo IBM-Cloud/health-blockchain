@@ -3,6 +3,7 @@
 :warning: WORK IN PROGRESS
 
 [![Build Status](https://travis-ci.org/IBM-Bluemix/health-blockchain.svg?branch=master)](https://travis-ci.org/IBM-Bluemix/health-blockchain)
+[![Coverage Status](https://coveralls.io/repos/github/IBM-Bluemix/health-blockchain/badge.svg?branch=react)](https://coveralls.io/github/IBM-Bluemix/health-blockchain?branch=react)
 ![Bluemix Deployments](https://deployment-tracker.mybluemix.net/stats/68c5ff9637bb588a929f1557b07ffcc7/badge.svg)
 
 ## Overview

@@ -39,4 +39,9 @@ cleanup() {
 }
 trap cleanup EXIT
 
-istanbul cover _mocha test/*.spec.js --report html -- -R spec --timeout 300000
+if [ -z ${COVERALLS_REPO_TOKEN} ]; then
+  istanbul cover _mocha test/*.spec.js --report html -- -R spec --timeout 300000
+  echo No Coveralls token specified, skipping coveralls.io upload
+else
+  istanbul cover _mocha test/*.spec.js --report lcovonly -- -R spec --timeout 300000 && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
+fi
