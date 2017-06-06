@@ -1,5 +1,9 @@
 # health-blockchain API
 
+The API exposes this data model:
+
+   ![data model](design/entity-relationship.png)
+
 ## User Session
 
 Implemented in [routes/users.js](./routes/users.js)

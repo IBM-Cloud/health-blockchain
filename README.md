@@ -89,6 +89,10 @@ The app comes with a toolchain you can use to deploy the solution with few click
    npm start
    ```
 
+## Data Model and API
+
+Refer to [API.md](API.md) for details on the app architecture.
+
 ## License
 
 See [License.txt](License.txt) for license information.
