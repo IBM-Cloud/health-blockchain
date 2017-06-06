@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import './Profile.css';
 import API from '../callAPI';
 
-class Summary extends Component {
+class Market extends Component {
 
   constructor(props) {
     super(props);
@@ -12,6 +13,8 @@ class Summary extends Component {
     };
     this.getChallenges = this.getChallenges.bind(this);
     this.getChallenges();
+
+    this.acceptChallenge = this.acceptChallenge.bind(this);
   }
 
   getChallenges() {
@@ -19,7 +22,16 @@ class Summary extends Component {
           this.setState({ marketChallenges: body }));
   }
 
+  acceptChallenge(challengeID) {
+    // POST /api/account/challenges/accept/:marketChallengeId
+    // subscribe to a challenge found in the market
+    console.log(`Accepting challenge with id ${challengeID}`);
+    API.postRequest(`/api/account/challenges/accept/${challengeID}`).then(() =>
+          this.props.changeStage('challages'));
+  }
+
   render() {
+    console.log(this.state.marketChallenges);
     return (
       <div id="marketstage" className="stage">
         <div className="challengelist" id="marketlist">
@@ -34,7 +46,7 @@ class Summary extends Component {
               <div className="marketdescription">
                 {challenge.description}
               </div>
-              <button className="marketbutton">
+              <button className="marketbutton" onClick={() => this.acceptChallenge(challenge._id)}>
                 ACCEPT CHALLENGE
               </button>
             </div>
@@ -46,4 +58,8 @@ class Summary extends Component {
   }
 }
 
-export default Summary;
+Market.propTypes = {
+  changeStage: PropTypes.func.isRequired
+};
+
+export default Market;

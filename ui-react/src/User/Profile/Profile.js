@@ -35,7 +35,7 @@ class Profile extends Component {
         stage = <History />;
         break;
       case 'market':
-        stage = <Market />;
+        stage = <Market changeStage={this.changeStage} />;
         break;
       default:
         stage = <Summary />;

@@ -16,6 +16,9 @@ class Challenges extends Component {
     };
     this.getChallenges = this.getChallenges.bind(this);
     this.startChallenge = this.startChallenge.bind(this);
+  }
+
+  componentDidMount() {
     this.getChallenges();
   }
 
@@ -36,7 +39,7 @@ class Challenges extends Component {
             {this.state.errorMessage}
           </div>
           {this.state.challenges.map(challenge => (
-            <div className="challengeitem" key={challenge.id}>
+            <div className="challengeitem" key={challenge._id}>
               <div className="challengevisual">
                 <img className="challengeicon" src={`images/${challenge.image}`} alt="challenge" />
               </div>

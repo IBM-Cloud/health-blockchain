@@ -20,7 +20,6 @@ class BlockExplorer extends Component {
       credentials: 'include'
     }).then(response => response.json())
       .then((blocks) => {
-        console.log(blocks);
         this.setState({ blocks });
       });
   }

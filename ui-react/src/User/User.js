@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import Phone from './Phone/Phone';
 import Login from './Login';
+import Logo from './Logo';
 import Profile from './Profile/Profile';
 import BlockExplorer from './BlockExplorer/BlockExplorer';
-import './App.css';
+import './User.css';
 import API from './callAPI';
 
 const Route = {
@@ -12,7 +13,7 @@ const Route = {
   PROFILE: 'profile',
 };
 
-class App extends Component {
+class User extends Component {
 
   constructor(props) {
     super(props);
@@ -71,17 +72,42 @@ class App extends Component {
         break;
     }
     return (
-      <div className="App">
-        <div className="splitView">
-          <Phone homeButton={this.logout}>
-            {view}
-          </Phone>
-          <BlockExplorer />
+      <div className="fitchain">
+        <div className="banner">
+          <div className="inner-banner">
+            <Logo />
+            <div className="about"><a href="./about.html">ABOUT</a></div>
+          </div>
+        </div>
+        <div className="content">
+          <div className="inner-content">
+            <div>
+              <div className="splitView">
+                <Phone homeButton={this.logout}>
+                  {view}
+                </Phone>
+                <BlockExplorer />
+              </div>
+
+            </div>
+          </div>
         </div>
 
+
+        <div className="footer">
+          <div className="inner-banner">
+            <div className="logoholder">
+              <div className="footerInfo">Built with <a href="https://www.ibm.com/cloud-computing/bluemix/">IBM Bluemix</a> and <a href="https://www.ibm.com/blockchain/">IBM Blockchain</a></div>
+            </div>
+            <div className="footerGithub">
+              <a href="https://github.com/IBM-Bluemix/health-blockchain">Github Repo</a>
+            </div>
+          </div>
+        </div>
       </div>
+
     );
   }
 }
 
-export default App;
+export default User;

@@ -8,8 +8,8 @@ class BlockExplorerPreview extends Component {
   render() {
     return (
       <div role="presentation" onClick={this.props.onExpand}>
-        {this.props.blocks.map(() => (
-          <div>
+        {this.props.blocks.map(block => (
+          <div key={block.blockNumber}>
             <div className="blockSmallLink" />
             <div className="blockSmall" />
           </div>
@@ -20,7 +20,7 @@ class BlockExplorerPreview extends Component {
 }
 
 BlockExplorerPreview.propTypes = {
-  blocks: PropTypes.object.isRequired, // eslint-disable-line react/forbid-prop-types
+  blocks: PropTypes.array.isRequired, // eslint-disable-line react/forbid-prop-types
   onExpand: PropTypes.func.isRequired
 };
 
