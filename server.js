@@ -49,9 +49,6 @@ app.set('view engine', 'html');
 // user management
 app.use('/api/users', require('./routes/users'));
 
-// user challenges
-app.use('/api/account/challenges', require('./routes/account/challenges'));
-
 // internal API to view the blocks - not something we would really expose in a real app
 app.use('/api/private/blockchain', require('./routes/blockchain.js'));
 
@@ -78,6 +75,13 @@ function initializeApp(readyCallback) {
     (callback) => {
       require('./routes/market')(appEnv, (err, router) => {
         app.use('/api/market', router);
+        callback();
+      });
+    },
+    // user challenges
+    (callback) => {
+      require('./routes/account/challenges')(appEnv, (err, router) => {
+        app.use('/api/account/challenges', router);
         callback();
       });
     }

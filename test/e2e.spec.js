@@ -10,6 +10,7 @@ describe('End to end', () => {
   const anotherPassword = '456';
 
   let app;
+  let marketChallenges;
   let api;
   let apiAnotherUser;
   let apiAnon;
@@ -64,6 +65,48 @@ describe('End to end', () => {
       .send(`password=${anotherPassword}`)
       .expect(200)
       .end((err) => {
+        done(err);
+      });
+  });
+
+  it('can retrieve market challenges', (done) => {
+    api.get('/api/market/challenges')
+      .expect(200)
+      .end((err, result) => {
+        if (err) {
+          done(err);
+        } else {
+          assert(result.body.length > 0);
+          marketChallenges = result.body;
+          done();
+        }
+      });
+  });
+
+  it('has no challenge at first', (done) => {
+    api.get('/api/account/challenges')
+      .expect(200)
+      .end((err, result) => {
+        assert.equal(0, result.body.length);
+        done(err);
+      });
+  });
+
+  it('can subscribe to a market challenge', (done) => {
+    api.post(`/api/account/challenges/accept/${marketChallenges[0]._id}`)
+      .expect(201)
+      .end((err, result) => {
+        assert.equal(marketChallenges[0]._id, result.body.challengeId);
+        done(err);
+      });
+  });
+
+  it('has one challenge now', (done) => {
+    api.get('/api/account/challenges')
+      .expect(200)
+      .end((err, result) => {
+        assert.equal(1, result.body.length);
+        assert.equal(marketChallenges[0]._id, result.body[0].challengeId);
         done(err);
       });
   });
