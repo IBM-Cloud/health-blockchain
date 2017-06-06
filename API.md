@@ -46,6 +46,8 @@ Implemented in [routes/account/challenges.js](./routes/account/challenges.js)
 | GET    | /api/account/challenges/summary | a summary of the user challenges
 | POST   | /api/account/challenges/accept/:marketChallengeId | subscribe to a challenge found in the market
 
+Sample challenges ([seed/challenges.json](./seed/challenges.json)) linked to the sample users are injected during startup if the *challenges* database is empty.
+
 ## User Workouts
 
 Implemented in [routes/account/workouts.js](./routes/account/workouts.js)
@@ -56,6 +58,8 @@ Implemented in [routes/account/workouts.js](./routes/account/workouts.js)
 | POST   | /api/account/workouts | add a user workout
 | PUT    | /api/account/workouts/:id | update a user workout
 | DELETE | /api/account/workouts/:id | delete a user workout
+
+Sample workouts ([seed/workouts.json](./seed/workouts.json)) linked to the sample users and user challenges are injected during startup if the *workouts* database is empty.
 
 ## Internal access to the Blockchain data
 
