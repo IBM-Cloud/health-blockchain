@@ -18,7 +18,7 @@ router.get('/', checkAuthenticated, (req, res) => {
   console.log(`Retrieving workouts for ${req.user._id}`);
   Workouts.find({
     selector: {
-      account_id: req.user._id
+      accountId: req.user._id
     }
   }, (err, result) => {
     if (err) {
@@ -37,7 +37,7 @@ router.post('/', checkAuthenticated, (req, res) => {
   delete workout._id;
   delete workout._rev;
   // assign this workout to the current user
-  workout.account_id = req.user._id;
+  workout.accountId = req.user._id;
   Workouts.insert(workout, (err, result) => {
     if (err) {
       res.status(500).send({ ok: false });
@@ -52,7 +52,7 @@ router.post('/', checkAuthenticated, (req, res) => {
 router.put('/:id', checkAuthenticated, (req, res) => {
   console.log(`Updating workout for ${req.user._id}:`, req.body);
   const workout = req.body;
-  if (workout.account_id !== req.user._id) {
+  if (workout.accountId !== req.user._id) {
     res.status(401).send({ message: 'Wrong account id' });
   } else if (!workout._id || !workout._rev) {
     res.status(500).send({ message: 'Missing _id or _rev' });
@@ -72,7 +72,7 @@ router.put('/:id', checkAuthenticated, (req, res) => {
 router.delete('/:id', checkAuthenticated, (req, res) => {
   console.log(`Removing workout for ${req.user._id}:`, req.body);
   const workout = req.body;
-  if (workout.account_id !== req.user._id) {
+  if (workout.accountId !== req.user._id) {
     res.status(401).send({ message: 'Wrong account id' });
   } else if (!workout._id || !workout._rev) {
     res.status(500).send({ message: 'Missing _id or _rev' });

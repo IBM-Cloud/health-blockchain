@@ -1,2 +1,58 @@
 [
+  {
+    "_id": "100",
+    "accountId": "john@acme.com",
+    "challengeId": "bikeToWork",
+    "date": "2017-03-31T10:00:00.000Z",
+    "start": "2017-03-31T10:00:00.000Z",
+    "end": "2017-03-31T10:28:00.000Z",
+    "calories": 500,
+    "distance": 14,
+    "pace": 8.5,
+    "heart": 65,
+    "activity": "CYCLING",
+    "image": "bike.svg"
+  },
+  {
+    "_id": "200",
+    "accountId": "john@acme.com",
+    "challengeId": "bikeToWork",
+    "date": "2017-03-30T10:00:00.000Z",
+    "start": "2017-03-30T10:00:00.000Z",
+    "end": "2017-03-30T10:35:00.000Z",
+    "calories": 500,
+    "distance": 14,
+    "pace": 9.5,
+    "heart": 65,
+    "activity": "CYCLING",
+    "image": "bike.svg"
+  },
+  {
+    "_id": "300",
+    "accountId": "john@acme.com",
+    "challengeId": "fitForWork",
+    "date": "2016-12-30T11:00:00.000Z",
+    "start": "2016-12-30T11:00:00.000Z",
+    "end": "2016-12-30T11:55:00.000Z",
+    "calories": 750,
+    "distance": 10,
+    "pace": 10,
+    "heart": 80,
+    "activity": "ANY",
+    "image": "skip.svg"
+  },
+  {
+    "_id": "400",
+    "accountId": "john@acme.com",
+    "challengeId": "fitForWork",
+    "date": "2017-01-02T10:00:00.000Z",
+    "start": "2017-01-02T10:00:00.000Z",
+    "end": "2017-01-02T11:15:00.000Z",
+    "calories": 750,
+    "distance": 10,
+    "pace": 12,
+    "heart": 80,
+    "activity": "ANY",
+    "image": "skip.svg"
+  }
 ]
