@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-// import PropTypes from 'prop-types';
-import './Phone/Phone.css';
+import PropTypes from 'prop-types';
+import './Profile.css';
 
 const opacityStyle = {
   opacity: '0.4'
@@ -13,6 +13,7 @@ class TabBar extends Component {
     return (
       <div className="tabbar">
         <div
+          role="presentation"
           className="tabButton"
           onClick={() => this.props.changeStage('summary')}
           style={(this.props.selectedStage !== 'summary') ? opacityStyle : {}}
@@ -20,13 +21,17 @@ class TabBar extends Component {
           <img id="summary" className="tabimage" alt="summary" src="images/summary.svg" />
         </div>
         <div
-          className="tabButton" onClick={() => this.props.changeStage('challenges')}
+          role="presentation"
+          className="tabButton"
+          onClick={() => this.props.changeStage('challenges')}
           style={(this.props.selectedStage !== 'challenges' && this.props.selectedStage !== 'market') ? opacityStyle : {}}
         >
           <img id="challenges" className="tabimage" alt="challenges" src="images/target.svg" />
         </div>
         <div
-          className="tabButton" onClick={() => this.props.changeStage('history')}
+          role="presentation"
+          className="tabButton"
+          onClick={() => this.props.changeStage('history')}
           style={(this.props.selectedStage !== 'history') ? opacityStyle : {}}
         >
           <img id="history" className="tabimage" alt="history" src="images/time.svg" />
@@ -37,6 +42,12 @@ class TabBar extends Component {
 }
 
 TabBar.propTypes = {
+  selectedStage: PropTypes.string,
+  changeStage: PropTypes.func.isRequired
+};
+
+TabBar.defaultProps = {
+  selectedStage: 'summary'
 };
 
 export default TabBar;

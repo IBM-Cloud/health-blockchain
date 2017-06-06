@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import '../Phone/Phone.css';
+import './Profile.css';
+import API from '../callAPI';
 
 const moment = require('moment');
 
@@ -14,22 +15,18 @@ class Challenges extends Component {
       errorMessage: ''
     };
     this.getChallenges = this.getChallenges.bind(this);
+    this.startChallenge = this.startChallenge.bind(this);
     this.getChallenges();
   }
 
   getChallenges() {
-    fetch('/api/account/challenges', {
-      credentials: 'include'
-    }).then((response) => {
-      if (response.ok) {
-        response.json().then(challenges =>
-          this.setState(
-            { challenges }));
-        return response;
-      }
-      this.setState({ errorMessage: 'Error calling API.' });
-      return response;
-    });
+    API.getRequest('/api/account/challenges').then(challenges =>
+          this.setState({ challenges }));
+  }
+
+  startChallenge(challenge) {
+    console.log(this, challenge);
+    // TODO
   }
   render() {
     return (
@@ -38,8 +35,8 @@ class Challenges extends Component {
           <div className="messagearea" id="messagearea">
             {this.state.errorMessage}
           </div>
-          {this.state.challenges.map((challenge, index) => (
-            <div className="challengeitem" key={`challenge-${index}`}>
+          {this.state.challenges.map(challenge => (
+            <div className="challengeitem" key={challenge.id}>
               <div className="challengevisual">
                 <img className="challengeicon" src={`images/${challenge.image}`} alt="challenge" />
               </div>
@@ -84,7 +81,9 @@ class Challenges extends Component {
                   </div>
                 </div>
                 <div className="progressbar" />
-                <button className="challengebutton"> START WORKOUT </button>
+                <button className="challengebutton" onClick={() => this.startChallenge(challenge)}>
+                  START WORKOUT
+                </button>
               </div>
             </div>
         ))}

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 // import PropTypes from 'prop-types';
-import './Phone/Phone.css';
+import './Profile.css';
 
 
 class Logo extends Component {

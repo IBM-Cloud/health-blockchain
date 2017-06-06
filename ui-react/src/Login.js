@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
-import './Phone/Phone.css';
+import PropTypes from 'prop-types';
+import './Profile/Profile.css';
+import API from './callAPI';
+
 
 class Login extends Component {
 
@@ -30,20 +33,9 @@ class Login extends Component {
   }
 
   handleSubmit(event) {
-    event.preventDefault();
-
+    event.preventDefault(); // Don't submit the form. We will call the API ourself.
     this.setState({ errorMessage: '' });
-    fetch(this.props.isLogin ? '/api/users/login' : '/api/users/signup', {
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json'
-      },
-      method: 'POST',
-      credentials: 'include',
-      body: JSON.stringify({
-        email: this.state.email, password: this.state.password
-      })
-    }).then(response => response.json())
+    API.loginOrSignup(this.props.isLogin ? 'login' : 'signup', this.state.email, this.state.password)
     .then((body) => {
       if (body.ok) {
         this.props.onSubmit();
@@ -63,7 +55,9 @@ class Login extends Component {
                 <img src="images/username.svg" className="icon" alt="user" />
                 <input
                   id="email"
-                  className="logininput" type="text" name="email"
+                  className="logininput"
+                  type="text"
+                  name="email"
                   placeholder="E-mail address"
                   onChange={this.handleInputChange}
                   value={this.state.email}
@@ -84,7 +78,11 @@ class Login extends Component {
               <button className="loginbutton" onClick={this.submit}>{ this.props.isLogin ? 'Login' : 'Sign Up' }</button>
             </div>
           </form>
-          <div className="loginnew" onClick={this.navigate}>
+          <div
+            className="loginnew"
+            onClick={this.navigate}
+            role="presentation"
+          >
             { this.props.isLogin ? 'Add a new account' : 'Existing account?' }
           </div>
           <div className="messagearea" id="messagearea">
@@ -97,4 +95,9 @@ class Login extends Component {
   }
 }
 
+Login.propTypes = {
+  isLogin: PropTypes.string.isRequired,
+  onNavigate: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func.isRequired
+};
 export default Login;

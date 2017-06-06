@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import '../Phone/Phone.css';
+import './Profile.css';
+import API from '../callAPI';
 
 class Summary extends Component {
 
@@ -14,25 +15,15 @@ class Summary extends Component {
   }
 
   getChallenges() {
-    fetch('/api/market/challenges', {
-      credentials: 'include'
-    }).then((response) => {
-      if (response.ok) {
-        response.json().then(challenges =>
-          this.setState(
-            { marketChallenges: challenges }));
-        return response;
-      }
-      this.setState({ errorMessage: 'Error calling API.' });
-      return response;
-    });
+    API.getRequest('/api/market/challenges').then(body =>
+          this.setState({ marketChallenges: body }));
   }
 
   render() {
     return (
       <div id="marketstage" className="stage">
         <div className="challengelist" id="marketlist">
-          {this.state.marketChallenges.map((challenge, index) => (
+          {this.state.marketChallenges.map(challenge => (
             <div className="marketitem" >
               <div className="challengetitle">
                 {challenge.title}

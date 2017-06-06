@@ -20,7 +20,7 @@ class Phone extends Component {
           {this.props.children}
         </div>
         <div className="border">
-          <div className="home" onClick={this.props.homeButton} />
+          <div className="home" role="presentation" onClick={this.props.homeButton} />
         </div>
       </div>
     );
@@ -28,8 +28,14 @@ class Phone extends Component {
 }
 
 Phone.propTypes = {
-  children: PropTypes.Object,
+  children: PropTypes.node,
   homeButton: PropTypes.func
+};
+
+// Default props
+Phone.defaultProps = {
+  children: <h2>Hello</h2>,
+  homeButton: () => console.log('Home button pressed')
 };
 
 export default Phone;

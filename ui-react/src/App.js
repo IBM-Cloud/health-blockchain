@@ -4,6 +4,7 @@ import Login from './Login';
 import Profile from './Profile/Profile';
 import BlockExplorer from './BlockExplorer/BlockExplorer';
 import './App.css';
+import API from './callAPI';
 
 const Route = {
   LOGIN: 'login',
@@ -16,7 +17,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      route: Route.LOGIN,
+      route: Route.LOGIN
     };
     this.isLoggedIn = this.isLoggedIn.bind(this);
     this.isLoggedIn();
@@ -46,25 +47,13 @@ class App extends Component {
   }
 
   isLoggedIn() {
-    fetch('/api/users/isLoggedIn', { credentials: 'include' }).then((response) => {
-      if (response.ok) {
-        response.json().then(json => json.outcome === 'success' && this.setState({ route: Route.PROFILE }));
-        return response;
-      }
-      this.setState({ errorMessage: 'Error calling API.' });
-      return response;
-    });
+    API.getRequest('/api/users/isLoggedIn').then(json =>
+          json.outcome === 'success' && this.setState({ route: Route.PROFILE }));
   }
 
   logout() {
-    fetch('/api/users/logout', { method: 'POST' }).then(response => response.json())
-    .then((body) => {
-      if (body.ok) {
-        this.setState({ route: Route.LOGIN });
-      } else {
-        this.setState({ errorMessage: body.message });
-      }
-    });
+    API.postRequest('/api/users/logout')
+    .then(() => this.setState({ route: Route.LOGIN }));
   }
 
   render() {

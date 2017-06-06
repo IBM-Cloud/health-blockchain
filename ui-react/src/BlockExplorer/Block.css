@@ -1,4 +1,4 @@
-.blockExplorer {
+.BlockExplorerDetailView {
   padding-left: 30px;
   border-left-style: dotted;
   border-color: #4D4E56;
@@ -13,16 +13,12 @@
   display: flex;
   flex-direction: column;
   padding-top: 10px;
-
   animation-name: slideDown;
   -webkit-animation-name: slideDown;
-
   animation-duration: 1s;
   -webkit-animation-duration: 1s;
-
   animation-timing-function: ease;
   -webkit-animation-timing-function: ease;
-
   visibility: visible !important;
 
 }
@@ -136,4 +132,43 @@
     height: 10px;
     width: 2px;
     background: white;
+}
+
+.blockSmall {
+  width: 21px;
+  height: 21px;
+  border-radius: 5px;
+  border: 1px solid #393941;
+  background: linear-gradient(135deg, #1c1c23 0%, #393941 50%, #1c1c23 100%);
+  cursor: pointer;
+  animation-name: slideDown;
+  -webkit-animation-name: slideDown;
+  animation-duration: 1s;
+  -webkit-animation-duration: 1s;
+  animation-timing-function: ease;
+  -webkit-animation-timing-function: ease;
+  visibility: visible !important;
+}
+
+.blockSmallLink {
+  height: 10px;
+  width: 2px;
+  background: white;
+  margin: auto;
+}
+
+.minimizeSign {
+  height: 2px;
+  width: 10px;
+  background: #393941;
+  cursor: pointer;
+}
+
+.minimizeButton {
+  cursor: pointer;
+  padding:10px;
+  border: solid;
+  border-width: 1px;
+  width: 12px;
+  border-color: #393941;
 }

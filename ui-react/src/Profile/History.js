@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import '../Phone/Phone.css';
+import './Profile.css';
+import API from '../callAPI';
 
 const moment = require('moment');
 
@@ -19,25 +20,16 @@ class History extends Component {
   }
 
   getChallenges() {
-    fetch('/api/account/challenges/history', {
-      credentials: 'include'
-    }).then((response) => {
-      if (response.ok) {
-        response.json().then(json =>
-          this.setState(
-            { history: json.history }));
-        return response;
-      }
-      this.setState({ errorMessage: 'Error calling API.' });
-      return response;
-    });
+    API.getRequest('/api/account/challenges/history').then(body =>
+          this.setState({ history: body.history }));
   }
+
   render() {
     return (
       <div id="historystage" className="stage">
         <div className="challengelist" id="historylist">
-          {this.state.history.map((challenge, index) => (
-            <div className="historyitem" key={`history-${index}`}>
+          {this.state.history.map(challenge => (
+            <div className="historyitem" key={challenge.id}>
               <div className="historyvisual">
                 <img className="historyicon" src={`images/${challenge.image}`} alt="history" />
               </div>

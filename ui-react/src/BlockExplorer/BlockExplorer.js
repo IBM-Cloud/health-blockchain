@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './Block.css';
-import Block from './Block';
+import BlockExplorerPreview from './BlockExplorerPreview';
+import BlockExplorerDetailView from './BlockExplorerDetailView';
 
 class BlockExplorer extends Component {
 
@@ -8,6 +9,7 @@ class BlockExplorer extends Component {
     super(props);
     this.state = {
       blocks: [],
+      preview: true
     };
     this.getBlocks = this.getBlocks.bind(this);
     this.getBlocks();
@@ -25,10 +27,18 @@ class BlockExplorer extends Component {
 
   render() {
     return (
-      <div className="blockExplorer">
-        {this.state.blocks.map((block, index) => (
-          <Block block={block} />
-        ))}
+      <div>
+        { this.state.preview ?
+          <BlockExplorerPreview
+            blocks={this.state.blocks}
+            onExpand={() => this.setState({ preview: false })}
+          />
+          :
+          <BlockExplorerDetailView
+            blocks={this.state.blocks}
+            onMin={() => this.setState({ preview: true })}
+          />
+        }
       </div>
     );
   }
