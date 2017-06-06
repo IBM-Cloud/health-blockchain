@@ -1,2 +1,12 @@
 [
+  {
+    "_id": "1",
+    "accountId": "john@acme.com",
+    "challengeId": "bikeToWork"
+  },
+  {
+    "_id": "2",
+    "accountId": "john@acme.com",
+    "challengeId": "fitForWork"
+  }
 ]

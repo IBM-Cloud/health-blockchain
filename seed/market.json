@@ -1,6 +1,6 @@
 [
   {
-    "_id": "1",
+    "_id": "bikeToWork",
     "organization": "Cloud Insurance Co.",
     "title": "Bike To Work",
     "image": "bike.svg",
@@ -12,7 +12,7 @@
     "description": "Earn a water bottle for 10 bike commutes to work"
   },
   {
-    "_id": "2",
+    "_id": "fitForWork",
     "organization": "Cloud Insurance Co.",
     "title": "Fit For Work",
     "image": "skip.svg",
@@ -24,7 +24,7 @@
     "description": "$100 health insurance credit for 30 workouts a year"
   },
   {
-    "_id": "3",
+    "_id": "stairChallenge",
     "organization": "Cloud Insurance Co.",
     "title": "Stair Challenge",
     "image": "stairs.svg",
@@ -36,7 +36,7 @@
     "description": "Bobble hat for 1000 stairs climbed this winter"
   },
   {
-    "_id": "4",
+    "_id": "runnersLifeInsurance",
     "organization": "Cloud Insurance Co.",
     "title": "Runners Life Insurance",
     "image": "runner.svg",
@@ -48,7 +48,7 @@
     "description": "20% discount for 20 runs a year"
   },
   {
-    "_id": "5",
+    "_id": "marathonQualifying",
     "organization": "Cloud Insurance Co.",
     "title": "Marathon Qualifying",
     "image": "runner.svg",
