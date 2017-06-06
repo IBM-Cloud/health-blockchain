@@ -55,18 +55,26 @@ router.post('/challenges', checkAuthenticated, (req, res) => {
 router.put('/challenges/:id', checkAuthenticated, (req, res) => {
   console.log(`Updating challenge for ${req.user._id} / ${req.user.organization}:`, req.body);
   const challenge = req.body;
-  if (challenge.organization !== req.user.organization) {
-    res.status(401).send({ message: 'Wrong organization' });
-  } else if (!challenge._id || !challenge._rev) {
+  if (!challenge._id || !challenge._rev) {
     res.status(500).send({ message: 'Missing _id or _rev' });
   } else {
-    challenge.updated_at = new Date();
-    Database.insert(challenge, (err, result) => {
+    Database.get(challenge._id, (err, existing) => {
       if (err) {
+        console.log(err);
         res.status(500).send({ ok: false });
+      } else if (existing.organization !== req.user.organization) {
+        res.status(401).send({ ok: false, message: 'Not owner' });
       } else {
-        challenge._rev = result.rev;
-        res.status(200).send(challenge);
+        challenge.updated_at = new Date();
+        Database.insert(challenge, (insertErr, updated) => {
+          if (insertErr) {
+            console.log(err);
+            res.status(500).send({ ok: false });
+          } else {
+            challenge._rev = updated.rev;
+            res.status(200).send(challenge);
+          }
+        });
       }
     });
   }
@@ -79,16 +87,23 @@ router.put('/challenges/:id', checkAuthenticated, (req, res) => {
 router.delete('/challenges/:id', checkAuthenticated, (req, res) => {
   console.log(`Removing workout for ${req.user._id} / ${req.user.organization}:`, req.body);
   const challenge = req.body;
-  if (challenge.organization !== req.user.organization) {
-    res.status(401).send({ message: 'Wrong organization' });
-  } else if (!challenge._id || !challenge._rev) {
+  if (!challenge._id || !challenge._rev) {
     res.status(500).send({ message: 'Missing _id or _rev' });
   } else {
-    Database.destroy(challenge._id, challenge._rev, (err, result) => {
+    Database.get(challenge._id, (err, existing) => {
       if (err) {
+        console.log(err);
         res.status(500).send({ ok: false });
+      } else if (existing.organization !== req.user.organization) {
+        res.status(401).send({ ok: false, message: 'Not owner' });
       } else {
-        res.status(201).send(result);
+        Database.destroy(challenge._id, challenge._rev, (deleteErr, result) => {
+          if (deleteErr) {
+            res.status(500).send({ ok: false });
+          } else {
+            res.status(200).send(result);
+          }
+        });
       }
     });
   }
