@@ -5,7 +5,7 @@ import Logo from './Logo';
 import Profile from './Profile/Profile';
 import BlockExplorer from './BlockExplorer/BlockExplorer';
 import './User.css';
-import API from './callAPI';
+import API from '../callAPI';
 
 const Route = {
   LOGIN: 'login',

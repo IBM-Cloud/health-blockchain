@@ -1,0 +1,44 @@
+.orgChallenges {
+  margin: 20px;
+}
+.cardContainer {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.challengeCard {
+  margin: 10px;
+}
+
+.actionContainer {
+  width: 100%;
+  text-align: right;
+}
+
+.challengeIconContainer {
+  width: 100px;
+}
+
+.orgChallengeIcon {
+  fill: black;
+  width: 60px;
+
+}
+
+.bx--about__icon {
+  background-color: #2d2d37;
+}
+
+.bx--about__title--name {
+  text-align: center;
+}
+
+.overflowMenu{
+  width: 40px;
+}
+
+.overflowMenuContainer {
+  text-align: right;
+  margin-left: 160px;
+}

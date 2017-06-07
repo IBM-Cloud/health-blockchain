@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './Profile.css';
-import API from '../callAPI';
+import API from '../../callAPI';
 
 const moment = require('moment');
 

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import './Profile/Profile.css';
-import API from './callAPI';
+import API from '../callAPI';
 
 
 class Login extends Component {
