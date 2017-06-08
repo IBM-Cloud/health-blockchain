@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Icon, Button, Card, CardContent, OverflowMenuItem, OverflowMenu, CardFooter, CardStatus, CardActions, CardActionItem } from 'carbon-components-react';
+import { Link } from 'react-router';
 import API from '../callAPI';
-import './carbon-components.css';
 import './OrgChallenges.css';
 
 class OrgChallenges extends Component {
@@ -28,7 +28,7 @@ class OrgChallenges extends Component {
       <div className="orgChallenges">
         <h3>All Challenges ({this.state.marketChallenges.length})</h3>
         <div className="actionContainer">
-          <Button small>New Challenge</Button>
+          <Link to="/organization/newChallenge"><Button small>New Challenge</Button></Link>
         </div>
         <div className="cardContainer">
           {
@@ -36,7 +36,8 @@ class OrgChallenges extends Component {
               <Card key={challenge._id} onClick={() => this.onClick(challenge)} className="challengeCard">
                 <div className="overflowMenuContainer">
                   <OverflowMenu className="overflowMenu">
-                    <OverflowMenuItem className="some-class" itemText="Stop App" />
+                    <OverflowMenuItem className="some-class" itemText="End" />
+                    <OverflowMenuItem className="some-class" itemText="Delete" />
                   </OverflowMenu>
                 </div>
                 <div className="bx--card-overview__about" >
