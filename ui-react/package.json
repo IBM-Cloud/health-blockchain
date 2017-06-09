@@ -3,7 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "carbon-components-react": "^3.0.0-beta.1",
+    "carbon-components": "*",
+    "carbon-components-react": "^3.0.1",
+    "carbon-icons": "5.1.2",
     "moment": "^2.18.1",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
