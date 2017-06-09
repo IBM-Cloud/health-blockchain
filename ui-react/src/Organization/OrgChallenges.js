@@ -25,7 +25,7 @@ class OrgChallenges extends Component {
   }
   render() {
     return (
-      <div className="orgChallenges">
+      <div className="orgChallengesContainer">
         <h3>All Challenges ({this.state.marketChallenges.length})</h3>
         <div className="actionContainer">
           <Link to="/organization/newChallenge"><Button small>New Challenge</Button></Link>

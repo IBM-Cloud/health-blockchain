@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import OrgChallenges from './OrgChallenges';
 import OrgLayout from './OrgLayout';
+import OrgChallenges from './OrgChallenges';
+import './Organization.css';
 
 
 class Organization extends Component {
