@@ -8,10 +8,11 @@ class Organization extends Component {
 
   render() {
     return (
-      <OrgLayout>
-        <OrgChallenges />
-      </OrgLayout>
-
+      <div className="organization">
+        <OrgLayout>
+          <OrgChallenges />
+        </OrgLayout>
+      </div>
     );
   }
 }

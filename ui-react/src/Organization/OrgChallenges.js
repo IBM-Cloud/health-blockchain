@@ -9,20 +9,24 @@ class OrgChallenges extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      marketChallenges: []
+      marketChallenges: [],
+      errorMessage: ''
     };
     this.getChallenges = this.getChallenges.bind(this);
     this.getChallenges();
   }
 
-  getChallenges() {
-    API.getRequest('/api/market/challenges').then(body =>
-          this.setState({ marketChallenges: body }));
-  }
-
   onClick(challenge) {
     console.log(challenge);
   }
+
+  getChallenges() {
+    API.getRequest('/api/market/challenges').then((body) => {
+      if (body) this.setState({ marketChallenges: body });
+    });
+  }
+
+
   render() {
     return (
       <div className="orgChallengesContainer">
@@ -56,14 +60,13 @@ class OrgChallenges extends Component {
 
                 <CardFooter>
                   <CardStatus runningText="Active" />
-                  <CardActions>
-                    <CardActionItem iconName="restart_icon" />
-                  </CardActions>
+
                 </CardFooter>
               </Card>
           ))
           }
         </div>
+        <div>{this.state.errorMessage}</div>
       </div>
     );
   }

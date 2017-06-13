@@ -1,4 +1,10 @@
 .orgLayoutContainer {
-
+  min-height: 100%;
   background-color: rgb(247, 247, 247);
+}
+
+.orgLayoutChildren {
+  max-width: 1010px;
+  margin: auto;
+  padding: 10px;
 }

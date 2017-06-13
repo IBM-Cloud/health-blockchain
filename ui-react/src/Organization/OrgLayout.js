@@ -14,7 +14,7 @@ class OrgLayout extends Component {
             <div className="about"><a href="https://github.com/IBM-Bluemix/health-blockchain">ABOUT</a></div>
           </div>
         </div>
-        <div className="orgLayoutContainer">
+        <div className="orgLayoutChildren">
           {this.props.children}
         </div>
       </div>

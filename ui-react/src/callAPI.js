@@ -14,12 +14,13 @@ const loginOrSignup = (action, email, password) =>
 const getRequest = url =>
   fetch(url, {
     credentials: 'include'
-  }).then(response => response.json());
+  }).then(response => response.ok ? response.json() : null);
 
-const postRequest = url =>
+const postRequest = (url, body = '{}') =>
   fetch(url, {
     method: 'POST',
-    credentials: 'include'
+    credentials: 'include',
+    body
   });
 
 export const API = {

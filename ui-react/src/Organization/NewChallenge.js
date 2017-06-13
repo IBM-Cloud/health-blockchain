@@ -1,74 +1,119 @@
 import React, { Component } from 'react';
-import { Button, Form, FormGroup, Checkbox, Toggle, Search, NumberInput, RadioButtonGroup, RadioButton, TextInput, Textarea } from 'carbon-components-react';
+import { Button, Form, FormGroup, Checkbox, NumberInput, SelectItem, Select, Toggle, Search, RadioButtonGroup, RadioButton, FileUploader, TextInput, TextArea } from 'carbon-components-react';
 import OrgLayout from './OrgLayout';
 import './NewChallenge.css';
+import API from '../callAPI';
 
 class NewChallenge extends Component {
 
-  onChange() {
-    // TODO
+  constructor(props) {
+    super(props);
+    this.state = {
+      title: 'Marathon Qualifying',
+      image: 'runner.svg',
+      start: '2016-12-31T23:00:00.000Z',
+      end: '2017-12-30T23:00:00.000Z',
+      goal: 1,
+      unit: 'workout',
+      activity: 'RUNNING',
+      description: 'Run one marathon in less than 4 hours'
+    };
+    this.handleInputChange = this.handleInputChange.bind(this);
+    this.submitNewChallenge = this.submitNewChallenge.bind(this);
   }
 
-  onClick() {
-    // TODO
+
+  submitNewChallenge() {
+    API.postRequest('/api/market/challenges', JSON.stringify(this.state)).then(body => console.log(body));
   }
 
-  toggle() {
-    // TODO
-  }
-  render2() {
-    return (
-      <div>hi</div>
-    );
+  handleInputChange(event) {
+    const target = event.target;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
+    console.log(target);
+    const name = target.id || target.name;
+    this.setState({
+      [name]: value
+    });
   }
 
   render() {
     return (
       <OrgLayout>
         <div className="newChallengeConatiner">
-          <FormGroup className="some-class" legendText="Text Input">
-            <TextInput
-              className="some-class"
-              id="test2"
-              labelText="Text Input"
-              placeholder="Hint text here"
-            />
-          </FormGroup>
-          <FormGroup className="some-class" legendText="Password field label">
-            <TextInput
-              type="password"
-              required
-              pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
-              className="some-class"
-              id="test2"
-              labelText="Password"
-              placeholder="Password"
-            />
-          </FormGroup>
-          <FormGroup className="some-class" legendText="Checkbox">
-            <Checkbox
-              defaultChecked
-              className="some-class"
-              labelText="Checkbox"
-              onChange={this.onChange()}
-              id="checkbox-0"
-            />
-            <br />
-            <Checkbox
-              className="some-class"
-              labelText="Checkbox"
-              onChange={this.onChange()}
-              id="checkbox-1"
-            />
-            <br />
-            <Checkbox
-              disabled
-              className="some-class"
-              labelText="Checkbox"
-              onChange={this.onChange()}
-              id="checkbox-2"
-            />
-          </FormGroup>
+          <h3> Create a Challenge</h3>
+          <hr />
+          <div className="newChallengeSplitView" >
+            <div className="newChallengeDescription">
+              <p>Challenges are a collection of fitness related workouts
+                between a specified period for a given reward.
+              </p>
+              <pre>{JSON.stringify(this.state, null, ' ')}
+              </pre>
+            </div>
+            <div className="newChallengeFormContainer">
+              <FormGroup className="some-class" legendText="Challenge Title">
+                <TextInput
+                  className="some-class"
+                  id="title"
+                  placeholder={this.state.title}
+                  onChange={this.handleInputChange}
+                />
+              </FormGroup>
+
+              <FormGroup className="some-class" legendText="Type of Challenge">
+                <Select
+                  className="some-class"
+                  id="activity"
+                  defaultValue={this.state.activity}
+                  onChange={this.handleInputChange}
+                >
+                  <SelectItem value="CYCLING" text="CYCLING" />
+                  <SelectItem value="RUNNING" text="RUNNING" />
+                  <SelectItem value="STAIRS" text="STAIRS" />
+                  <SelectItem value="ANY" text="ANY" />
+                </Select>
+              </FormGroup>
+
+              <FormGroup className="some-class" legendText="Description">
+                <TextArea
+                  className="some-class"
+                  id="description"
+                  value={this.state.description}
+                  onChange={this.handleInputChange}
+                />
+              </FormGroup>
+
+              <FormGroup className="some-class" legendText="Challenge Duration">
+                <TextInput
+                  className="some-class"
+                  id="start"
+                  labelText="Start Date"
+                  value={this.state.start}
+                  onChange={this.handleInputChange}
+                />
+                <TextInput
+                  className="some-class"
+                  id="end"
+                  labelText="End Date"
+                  value={this.state.end}
+                  onChange={this.handleInputChange}
+                />
+              </FormGroup>
+              <FormGroup className="some-class" legendText="Goal">
+
+                <TextInput
+                  className="some-class"
+                  id="goal"
+                  label="Number of Workouts"
+                  value={this.state.goal}
+                  onChange={this.handleInputChange}
+                />
+              </FormGroup>
+              <Button onClick={this.submitNewChallenge}>Submit</Button>
+
+            </div>
+          </div>
         </div>
 
       </OrgLayout>

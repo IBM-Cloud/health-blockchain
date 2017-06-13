@@ -1,3 +1,16 @@
 .newChallengeConatiner {
   margin: 20px;
 }
+
+.newChallengeFormContainer {
+margin: auto;
+
+}
+
+.newChallengeSplitView {
+  display: flex;
+}
+
+.newChallengeDescription {
+  width: 30%;
+}

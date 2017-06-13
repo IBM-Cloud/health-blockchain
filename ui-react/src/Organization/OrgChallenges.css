@@ -1,9 +1,5 @@
 .orgChallengesContainer {
 
-  max-width: 1024px;
-  margin: auto;
-  margin-top: 20px;
-  height:100%;
 }
 .cardContainer {
   display: flex;
@@ -13,6 +9,7 @@
 
 .challengeCard {
   margin: 10px;
+  cursor: pointer;
 }
 
 .actionContainer {
