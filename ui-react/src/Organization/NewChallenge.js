@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Button, Form, FormGroup, Checkbox, NumberInput, SelectItem, Select, Toggle, Search, RadioButtonGroup, RadioButton, FileUploader, TextInput, TextArea } from 'carbon-components-react';
+import { browserHistory } from 'react-router';
+import { Button, FormGroup, SelectItem, Select, TextInput, TextArea } from 'carbon-components-react';
 import OrgLayout from './OrgLayout';
 import './NewChallenge.css';
 import API from '../callAPI';
@@ -24,7 +25,8 @@ class NewChallenge extends Component {
 
 
   submitNewChallenge() {
-    API.postRequest('/api/market/challenges', JSON.stringify(this.state)).then(body => console.log(body));
+    console.log('Submitting ', this.state);
+    API.postRequest('/api/market/challenges', this.state).then(body => browserHistory.push('/organization'));
   }
 
   handleInputChange(event) {
@@ -48,8 +50,6 @@ class NewChallenge extends Component {
               <p>Challenges are a collection of fitness related workouts
                 between a specified period for a given reward.
               </p>
-              <pre>{JSON.stringify(this.state, null, ' ')}
-              </pre>
             </div>
             <div className="newChallengeFormContainer">
               <FormGroup className="some-class" legendText="Challenge Title">

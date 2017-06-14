@@ -16,11 +16,15 @@ const getRequest = url =>
     credentials: 'include'
   }).then(response => response.ok ? response.json() : null);
 
-const postRequest = (url, body = '{}') =>
+const postRequest = (url, data = {}) =>
   fetch(url, {
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json'
+    },
     method: 'POST',
     credentials: 'include',
-    body
+    body: JSON.stringify(data)
   });
 
 export const API = {

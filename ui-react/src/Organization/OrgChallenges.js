@@ -46,7 +46,7 @@ class OrgChallenges extends Component {
                 </div>
                 <div className="bx--card-overview__about" >
                   <div className="bx--about__icon">
-                    <img className="orgChallengeIcon" src={`images/${challenge.image}`} alt="challenge" />
+                    <img className="orgChallengeIcon" src={`../images/${challenge.image}`} alt="challenge" />
                   </div>
                   <div className="bx--about__title" >
                     <p id="card-app-title" className="bx--about__title--name">
