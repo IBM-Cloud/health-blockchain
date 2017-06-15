@@ -6,6 +6,7 @@ const assert = require('chai').assert;
 describe('Market', () => {
   const orgUsername = `jim-${new Date().getTime()}@insurance.com`;
   const orgPassword = '456';
+  const organization = `org-${new Date().getTime()}`;
   const anotherOrgUsername = `jane-${new Date().getTime()}@cloud.com`;
   const anotherOrgPassword = '456';
 
@@ -41,7 +42,7 @@ describe('Market', () => {
     api.post('/api/users/signup')
       .send(`email=${orgUsername}`)
       .send(`password=${orgPassword}`)
-      .send('organization=insurance.com')
+      .send(`organization=${organization}`)
       .expect(200)
       .end((err) => {
         done(err);
@@ -59,7 +60,7 @@ describe('Market', () => {
       });
   });
 
-  it('can retrieve market challenges', (done) => {
+  it('can retrieve all market challenges', (done) => {
     apiAnon.get('/api/market/challenges')
       .expect(200)
       .end((err, result) => {
@@ -73,8 +74,17 @@ describe('Market', () => {
       });
   });
 
+  it('has no org challenges at first', (done) => {
+    api.get('/api/organization/challenges')
+      .expect(200)
+      .end((err, result) => {
+        assert.equal(0, result.body.length);
+        done(err);
+      });
+  });
+
   it('can add a market challenge', (done) => {
-    api.post('/api/market/challenges')
+    api.post('/api/organization/challenges')
       .send(newChallenge)
       .expect(201)
       .end((err, result) => {
@@ -85,7 +95,17 @@ describe('Market', () => {
       });
   });
 
-  it('can confirm it was added to the list', (done) => {
+  it('can see this new challenge in its org list', (done) => {
+    api.get('/api/organization/challenges')
+      .send(newChallenge)
+      .expect(200)
+      .end((err, result) => {
+        assert.equal(1, result.body.length);
+        done(err);
+      });
+  });
+
+  it('can confirm it was added to the global list', (done) => {
     apiAnon.get('/api/market/challenges')
       .expect(200)
       .end((err, result) => {
@@ -99,7 +119,7 @@ describe('Market', () => {
   });
 
   it('can not update a challenge she does not own', (done) => {
-    anotherOrgApi.put(`/api/market/challenges/${addedChallenge._id}`)
+    anotherOrgApi.put(`/api/organization/challenges/${addedChallenge._id}`)
       .send(addedChallenge)
       .expect(401)
       .end((err) => {
@@ -108,7 +128,7 @@ describe('Market', () => {
   });
 
   it('can not delete a challenge she does not own', (done) => {
-    anotherOrgApi.delete(`/api/market/challenges/${addedChallenge._id}`)
+    anotherOrgApi.delete(`/api/organization/challenges/${addedChallenge._id}`)
       .send(addedChallenge)
       .expect(401)
       .end((err) => {
@@ -118,7 +138,7 @@ describe('Market', () => {
 
   it('can update a challenge he owns', (done) => {
     addedChallenge.goal = 15;
-    api.put(`/api/market/challenges/${addedChallenge._id}`)
+    api.put(`/api/organization/challenges/${addedChallenge._id}`)
       .send(addedChallenge)
       .expect(200)
       .end((err, result) => {
@@ -130,7 +150,7 @@ describe('Market', () => {
   });
 
   it('can delete a challenge he owns', (done) => {
-    api.delete(`/api/market/challenges/${addedChallenge._id}`)
+    api.delete(`/api/organization/challenges/${addedChallenge._id}`)
       .send(addedChallenge)
       .expect(200)
       .end((err) => {

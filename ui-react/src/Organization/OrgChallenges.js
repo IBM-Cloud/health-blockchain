@@ -21,7 +21,7 @@ class OrgChallenges extends Component {
   }
 
   getChallenges() {
-    API.getRequest('/api/market/challenges').then((body) => {
+    API.getRequest('/api/organization/challenges').then((body) => {
       if (body) this.setState({ marketChallenges: body });
     });
   }

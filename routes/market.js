@@ -15,7 +15,7 @@ function checkAuthenticated(req, res, next) {
 }
 
 // | GET    | /api/market/challenges | view available challenges
-router.get('/challenges', (req, res) => {
+router.get('/market/challenges', (req, res) => {
   console.log('Retrieving market challenges');
   Database.list({ include_docs: true }, (err, result) => {
     if (err) {
@@ -26,10 +26,27 @@ router.get('/challenges', (req, res) => {
   });
 });
 
-// | POST   | /api/market/challenges | allows an organization to submit a new challenge to the market
+// | GET    | /api/organization/challenges | view challenges owned by the current organization
+router.get('/organization/challenges', checkAuthenticated, (req, res) => {
+  console.log(`Retrieving organization challenges for ${req.user._id} / ${req.user.organization}`);
+  Database.find({
+    selector: {
+      organization: req.user.organization
+    }
+  }, (err, result) => {
+    if (err) {
+      res.status(500).send({ ok: false });
+    } else {
+      console.log('Retrieved', result);
+      res.send(result.docs);
+    }
+  });
+});
+
+// | POST   | /api/organization/challenges | allows an organization to submit a new challenge to the market
 // requires authentication
 // user must be an organization
-router.post('/challenges', checkAuthenticated, (req, res) => {
+router.post('/organization/challenges', checkAuthenticated, (req, res) => {
   console.log(`Storing new challenge for ${req.user._id} / ${req.user.organization}:`, req.body);
   const challenge = req.body;
   // sanity check
@@ -48,11 +65,11 @@ router.post('/challenges', checkAuthenticated, (req, res) => {
   });
 });
 
-// | PUT   | /api/market/challenges | allows an organization to update its challenge
+// | PUT   | /api/organization/challenges | allows an organization to update its challenge
 // requires authentication
 // user must be an organization
 // challenge must be owned by user
-router.put('/challenges/:id', checkAuthenticated, (req, res) => {
+router.put('/organization/challenges/:id', checkAuthenticated, (req, res) => {
   console.log(`Updating challenge for ${req.user._id} / ${req.user.organization}:`, req.body);
   const challenge = req.body;
   if (!challenge._id || !challenge._rev) {
@@ -80,11 +97,11 @@ router.put('/challenges/:id', checkAuthenticated, (req, res) => {
   }
 });
 
-// | DELETE | /api/market/challenges | allows an organization to delete its challenge from the market
+// | DELETE | /api/organization/challenges | allows an organization to delete its challenge from the market
 // requires authentication
 // user must be an organization
 // challenge must be owned by user
-router.delete('/challenges/:id', checkAuthenticated, (req, res) => {
+router.delete('/organization/challenges/:id', checkAuthenticated, (req, res) => {
   console.log(`Removing workout for ${req.user._id} / ${req.user.organization}:`, req.body);
   const challenge = req.body;
   if (!challenge._id || !challenge._rev) {

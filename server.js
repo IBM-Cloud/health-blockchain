@@ -74,7 +74,7 @@ function initializeApp(readyCallback) {
     // organizations and market
     (callback) => {
       require('./routes/market')(appEnv, (err, router) => {
-        app.use('/api/market', router);
+        app.use('/api/', router);
         callback();
       });
     },
