@@ -209,6 +209,17 @@ describe('End to end', () => {
       .catch(done);
   });
 
+  it('can update a user1 workout', (done) => {
+    user1WorkoutForOrg1Challenge1.calories = 1500;
+    user1Api.put(`/api/account/workouts/${user1WorkoutForOrg1Challenge1._id}`)
+      .send(user1WorkoutForOrg1Challenge1)
+      .expect(200)
+      .end((err, res) => {
+        user1WorkoutForOrg1Challenge1 = res.body;
+        done(err);
+      });
+  });
+
   it('confirms user2 has no workouts', (done) => {
     testutil.User.getWorkouts(user2Api)
       .then((workouts) => {
@@ -232,18 +243,6 @@ describe('End to end', () => {
       .then(done)
       .catch(done);
   });
-
-  //
-  // it('can update a workout', (done) => {
-  //   workout.calories = 1500;
-  //   api.put(`/api/account/workouts/${workout._id}`)
-  //     .send(workout)
-  //     .expect(200)
-  //     .end((err, res) => {
-  //       workout = res.body;
-  //       done(err);
-  //     });
-  // });
 
   it('can not retrieve workouts if not logged in', (done) => {
     apiAnon.get('/api/account/workouts')
