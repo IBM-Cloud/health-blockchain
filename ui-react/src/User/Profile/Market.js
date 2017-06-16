@@ -27,7 +27,7 @@ class Market extends Component {
     // subscribe to a challenge found in the market
     console.log(`Accepting challenge with id ${challengeID}`);
     API.postRequest(`/api/account/challenges/accept/${challengeID}`).then(() =>
-          this.props.changeStage('challages'));
+          this.props.changeStage('challenges'));
   }
 
   render() {
