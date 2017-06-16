@@ -2,3 +2,8 @@
   width: 300px;
   margin: auto;
 }
+
+.loginErrorMessage {
+  color:red;
+  padding-top: 10px;
+}

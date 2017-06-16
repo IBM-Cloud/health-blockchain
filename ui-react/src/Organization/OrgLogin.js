@@ -37,8 +37,12 @@ class OrgLogin extends Component {
     this.setState({ errorMessage: '' });
     API.loginOrSignup('login', this.state.email, this.state.password)
     .then((body) => {
-      if (body.ok && body.organization) {
-        this.props.onLogin();
+      if (body.ok) {
+        if (body.organization) {
+          this.props.onLogin();
+        } else {
+          this.setState({ errorMessage: 'User does not have org access.' });
+        }
       } else {
         this.setState({ errorMessage: body.message });
       }
@@ -69,7 +73,7 @@ class OrgLogin extends Component {
           />
         </FormGroup>
         <Button onClick={this.handleSubmit}>Submit</Button>
-
+        <div className="loginErrorMessage">{this.state.errorMessage}</div>
       </div>
     );
   }
