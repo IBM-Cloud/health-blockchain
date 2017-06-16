@@ -23,6 +23,12 @@ function Database(appEnv, dbName, seedFilename, readyCallback) {
     },
     // Seed with data
     (callback) => {
+      // nothing to do if no seed file
+      if (!seedFilename) {
+        callback();
+        return;
+      }
+
       self.db.list((err, result) => {
         if (err) {
           console.log(err);
