@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Icon, Button, Card, CardContent, OverflowMenuItem, OverflowMenu, CardFooter, CardStatus, CardActions, CardActionItem } from 'carbon-components-react';
+import { Button, Card, OverflowMenuItem, OverflowMenu, CardFooter, CardStatus } from 'carbon-components-react';
 import { Link } from 'react-router';
 import API from '../callAPI';
 import './OrgChallenges.css';
