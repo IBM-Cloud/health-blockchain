@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { browserHistory } from 'react-router';
-import { Button, FormGroup, SelectItem, Select, TextInput, TextArea } from 'carbon-components-react';
+import { browserHistory, Link } from 'react-router';
+import { Breadcrumb, BreadcrumbItem, Button, FormGroup, SelectItem, Select, TextInput, TextArea } from 'carbon-components-react';
 import OrgLayout from './OrgLayout';
 import './NewChallenge.css';
 import API from '../callAPI';
@@ -42,7 +42,12 @@ class NewChallenge extends Component {
   render() {
     return (
       <OrgLayout>
-        <div className="newChallengeConatiner">
+        <div className="new-challenge-container">
+          <Breadcrumb className="some-class">
+            <BreadcrumbItem>
+              <Link to="/organization">Challenges</Link>
+            </BreadcrumbItem>
+          </Breadcrumb>
           <h3> Create a Challenge</h3>
           <hr />
           <div className="newChallengeSplitView" >

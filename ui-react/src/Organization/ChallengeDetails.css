@@ -1,0 +1,35 @@
+.summary-container {
+  display:flex;
+  width: 100%;
+  align-items: stretch;
+}
+
+.summary-item {
+  width: 25%;
+  height: 200px;
+  text-align: center;
+}
+
+.org-challenge-icon-container {
+  background-color: black;
+  width:4rem;
+  height: 4rem;
+  border-radius: 100%;
+  margin: auto;
+}
+
+.org-challenge-text-container {
+  background-color: black;
+  width:4rem;
+  height: 3rem;
+  border-radius: 100%;
+  margin: auto;
+  padding-top:1rem;
+  color: white;
+  font-size: 2rem;
+}
+
+.org-summary-text {
+  padding:5px;
+  font-weight:500;
+}

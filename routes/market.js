@@ -50,6 +50,25 @@ router.get('/organization/challenges', checkAuthenticated, (req, res) => {
   });
 });
 
+// | GET    | /api/organization/challenges/:id | view challenge owned by the current organization
+router.get('/organization/challenges/:id', checkAuthenticated, (req, res) => {
+  console.log(`Retrieving organization challenge ${req.params.id} for ${req.user._id} / ${req.user.organization}`);
+  if (!req.params.id) {
+    res.status(500).send({ message: 'Missing _id' });
+  } else {
+    Market.get(req.params.id, (err, challenge) => {
+      if (err) {
+        console.log(err);
+        res.status(500).send({ ok: false });
+      } else if (challenge.organization !== req.user.organization) {
+        res.status(401).send({ ok: false, message: 'Not owner' });
+      } else {
+        res.status(200).send(challenge);
+      }
+    });
+  }
+});
+
 // | POST   | /api/organization/challenges | allows to submit a new challenge to the market
 // requires authentication
 // user must be an organization

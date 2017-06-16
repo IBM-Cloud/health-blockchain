@@ -9,7 +9,7 @@ class OrgLayout extends Component {
 
   render() {
     return (
-      <div className="orgLayoutContainer">
+      <div className="org-layout-container">
         <div className="banner">
           <div className="inner-banner">
             <Logo />
@@ -19,7 +19,7 @@ class OrgLayout extends Component {
               <a href="https://github.com/IBM-Bluemix/health-blockchain">ABOUT</a></div>
           </div>
         </div>
-        <div className="orgLayoutChildren">
+        <div className="org-layout-children">
           {this.props.children}
         </div>
       </div>

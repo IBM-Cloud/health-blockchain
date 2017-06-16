@@ -3,6 +3,7 @@ import { Button, Card, OverflowMenuItem, OverflowMenu, CardFooter, CardStatus } 
 import { Link } from 'react-router';
 import API from '../callAPI';
 import './OrgChallenges.css';
+import { browserHistory } from 'react-router';
 
 class OrgChallenges extends Component {
 
@@ -18,6 +19,7 @@ class OrgChallenges extends Component {
 
   onClick(challenge) {
     console.log(challenge);
+    browserHistory.push(`/organization/challenge/${challenge._id}`);
   }
 
   getChallenges() {
