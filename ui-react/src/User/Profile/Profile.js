@@ -16,7 +16,7 @@ class Profile extends Component {
     this.state = {
       summary: {},
       errorMessage: '',
-      selectedStage: ''
+      selectedStage: 'summary'
     };
     this.changeStage = this.changeStage.bind(this);
   }
