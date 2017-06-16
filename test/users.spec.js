@@ -124,11 +124,11 @@ describe('Users', () => {
       });
   });
 
-  it('can not login without specifying its organization', (done) => {
+  it('can login without specifying its organization', (done) => {
     apiAnon.post('/api/users/login')
       .send(`email=${orgUsername}`)
       .send(`password=${orgPassword}`)
-      .expect(401)
+      .expect(200)
       .end((err) => {
         done(err);
       });
