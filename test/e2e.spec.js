@@ -129,6 +129,7 @@ describe('End to end', () => {
       .then((challenges) => {
         assert.equal(1, challenges.length);
         assert.equal(org1Challenge1._id, challenges[0].challengeId);
+        assert.equal(0, challenges[0].logged);
       })
       .then(done)
       .catch(done);
@@ -204,6 +205,17 @@ describe('End to end', () => {
         assert.equal(1, summary.challenges);
         assert.equal(2, summary.hours);
         assert.equal(500, summary.calories);
+      })
+      .then(done)
+      .catch(done);
+  });
+
+  it('can get challenge summary for user1', (done) => {
+    testutil.User.getChallenges(user1Api)
+      .then((challenges) => {
+        assert.equal(1, challenges.length);
+        assert.equal(org1Challenge1._id, challenges[0].challengeId);
+        assert.equal(1, challenges[0].logged);
       })
       .then(done)
       .catch(done);

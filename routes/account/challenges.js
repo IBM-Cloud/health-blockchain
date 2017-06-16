@@ -21,22 +21,35 @@ function checkAuthenticated(req, res, next) {
 
 router.get('/', checkAuthenticated, (req, res) => {
   console.log(`Retrieving accepted challenges for ${req.user._id}`);
-  Challenges.find({
-    selector: {
-      accountId: req.user._id
-    }
-  }, (err, result) => {
-    if (err) {
-      res.status(500).send({ ok: false });
-    } else {
-      console.log('Retrieved', result);
-      const userChallenges = result.docs;
 
-      // retrieve the challenge details and build a consolidated view
+  let userChallenges;
+
+  async.waterfall([
+    // retrieve accepted challenges
+    (callback) => {
+      Challenges.find({
+        selector: {
+          accountId: req.user._id
+        }
+      }, (err, result) => {
+        if (err) {
+          callback(err);
+        } else {
+          userChallenges = result.docs;
+          callback();
+        }
+      });
+    },
+    // augment with market data
+    (callback) => {
       Market.list({ include_docs: true }, (marketErr, marketResult) => {
-        const market = marketResult.rows.map(row => row.doc);
+        if (marketErr) {
+          callback(marketErr);
+          return;
+        }
 
         // copy attributes from the market
+        const market = marketResult.rows.map(row => row.doc);
         userChallenges.forEach((userChallenge) => {
           const marketChallenge =
             market.find(mc => mc._id === userChallenge.challengeId);
@@ -45,8 +58,34 @@ router.get('/', checkAuthenticated, (req, res) => {
           });
         });
 
-        res.send(userChallenges);
+        callback();
       });
+    },
+    // retrieve workouts
+    (callback) => {
+      Workouts.find({
+        selector: {
+          accountId: req.user._id
+        }
+      }, (err, result) => {
+        if (err) {
+          callback(err);
+        } else {
+          // compute the LOGGED value for each challenge
+          const workouts = result.docs;
+          userChallenges.forEach((userChallenge) => {
+            userChallenge.logged =
+              workouts.filter(workout => workout.challengeId === userChallenge.challengeId).length;
+          });
+          callback();
+        }
+      });
+    },
+  ], (err) => {
+    if (err) {
+      res.status(500).send({ ok: false });
+    } else {
+      res.send(userChallenges);
     }
   });
 });
