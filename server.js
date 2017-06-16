@@ -55,12 +55,6 @@ app.use('/api/private/blockchain', require('./routes/blockchain.js'));
 // serve the react app files
 app.use(express.static(`${__dirname}/ui-react/build`));
 
-// this handles the case where someone has bookmarked a direct link to a React Router route
-// the server needs to return the root html file
-app.get('*', (req, res) => {
-  res.sendFile(`${__dirname}/ui-react/build/index.html`);
-});
-
 function initializeApp(readyCallback) {
   async.waterfall([
     // initialize passport configuration
@@ -90,6 +84,15 @@ function initializeApp(readyCallback) {
         app.use('/api/account/challenges', router);
         callback();
       });
+    },
+    // everything else
+    (callback) => {
+      // this handles the case where someone has bookmarked a direct link to a React Router route
+      // the server needs to return the root html file
+      app.get('*', (req, res) => {
+        res.sendFile(`${__dirname}/ui-react/build/index.html`);
+      });
+      callback();
     }
   ], (err) => {
     readyCallback(err, app);
