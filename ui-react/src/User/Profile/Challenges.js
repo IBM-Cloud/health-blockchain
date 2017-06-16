@@ -15,7 +15,7 @@ class Challenges extends Component {
       errorMessage: ''
     };
     this.getChallenges = this.getChallenges.bind(this);
-    this.startChallenge = this.startChallenge.bind(this);
+    this.startWorkout = this.startWorkout.bind(this);
   }
 
   componentDidMount() {
@@ -27,11 +27,24 @@ class Challenges extends Component {
           this.setState({ challenges }));
   }
 
-  startChallenge(challenge) {
-    console.log(this, challenge);
-    // TODO
+  startWorkout(challenge) {
+    console.log(challenge);
+
+    API.postRequest('/api/account/workouts', {
+      challengeId: challenge.challengeId,
+      date: '2017-03-31T10:00:00.000Z',
+      start: '2017-03-31T10:00:00.000Z',
+      end: '2017-03-31T12:00:00.000Z',
+      calories: 500,
+      distance: 14,
+      pace: 8.5,
+      heart: 65,
+      activity: 'CYCLING',
+      image: 'bike.svg'
+    }).then(() => this.getChallenges());
   }
   render() {
+    console.log(this.state.challenges);
     return (
       <div id="challengesstage" className="stage">
         <div className="challengelist" id="challengelist">
@@ -84,8 +97,8 @@ class Challenges extends Component {
                   </div>
                 </div>
                 <div className="progressbar" />
-                <button className="challengebutton" onClick={() => this.startChallenge(challenge)}>
-                  START WORKOUT
+                <button className="challengebutton" onClick={() => this.startWorkout(challenge)}>
+                  ADD WORKOUT
                 </button>
               </div>
             </div>
