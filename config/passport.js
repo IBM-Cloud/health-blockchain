@@ -67,6 +67,13 @@ module.exports = function(passport, appEnv, readyCallback) {
 
         // user was found, now determine if password matches
         const user = result.docs[0];
+
+        // ensure that the right organization is specified if needed
+        if (user.organization !== req.body.organization) {
+          console.log('Invalid organization specified');
+          return done(null, null, 'Invalid organization');
+        }
+
         if (bcrypt.compareSync(password, user.password)) {
           console.log('Password matches');
           return done(null, user, null);
