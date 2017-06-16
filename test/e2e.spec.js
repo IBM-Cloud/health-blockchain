@@ -37,31 +37,12 @@ describe('End to end', () => {
     });
   });
 
-  it('can check if it is logged', (done) => {
-    api.get('/api/users/isLoggedIn')
-      .expect(200)
-      .end((err, result) => {
-        assert.equal('failure', result.body.outcome);
-        done(err);
-      });
-  });
-
   it('can register an account', (done) => {
     api.post('/api/users/signup')
       .send(`email=${username}`)
       .send(`password=${password}`)
       .expect(200)
       .end((err) => {
-        done(err);
-      });
-  });
-
-  it('can ensure if it is logged', (done) => {
-    api.get('/api/users/isLoggedIn')
-      .expect(200)
-      .end((err, result) => {
-        assert.equal('success', result.body.outcome);
-        assert.equal(username, result.body.email);
         done(err);
       });
   });
