@@ -1,10 +1,17 @@
 // Licensed under the Apache License. See footer for details.
 const express = require('express');
 const path = require('path');
+const async = require('async');
 
 const router = express.Router();
-const dba = 'market';
-let Database;
+
+const marketDbName = 'market';
+const challengesDbName = 'challenges';
+const workoutsDbName = 'workouts';
+
+let Market;
+let UserChallenges;
+let UserWorkouts;
 
 function checkAuthenticated(req, res, next) {
   if (req.isAuthenticated() && req.user.organization) {
@@ -17,7 +24,7 @@ function checkAuthenticated(req, res, next) {
 // | GET    | /api/market/challenges | view available challenges
 router.get('/market/challenges', (req, res) => {
   console.log('Retrieving market challenges');
-  Database.list({ include_docs: true }, (err, result) => {
+  Market.list({ include_docs: true }, (err, result) => {
     if (err) {
       res.status(500).send({ ok: false });
     } else {
@@ -29,7 +36,7 @@ router.get('/market/challenges', (req, res) => {
 // | GET    | /api/organization/challenges | view challenges owned by the current organization
 router.get('/organization/challenges', checkAuthenticated, (req, res) => {
   console.log(`Retrieving organization challenges for ${req.user._id} / ${req.user.organization}`);
-  Database.find({
+  Market.find({
     selector: {
       organization: req.user.organization
     }
@@ -43,7 +50,7 @@ router.get('/organization/challenges', checkAuthenticated, (req, res) => {
   });
 });
 
-// | POST   | /api/organization/challenges | allows an organization to submit a new challenge to the market
+// | POST   | /api/organization/challenges | allows to submit a new challenge to the market
 // requires authentication
 // user must be an organization
 router.post('/organization/challenges', checkAuthenticated, (req, res) => {
@@ -54,7 +61,7 @@ router.post('/organization/challenges', checkAuthenticated, (req, res) => {
   delete challenge._rev;
   // assign this workout to the current user
   challenge.organization = req.user.organization;
-  Database.insert(challenge, (err, result) => {
+  Market.insert(challenge, (err, result) => {
     if (err) {
       res.status(500).send({ ok: false });
     } else {
@@ -75,7 +82,7 @@ router.put('/organization/challenges/:id', checkAuthenticated, (req, res) => {
   if (!challenge._id || !challenge._rev) {
     res.status(500).send({ message: 'Missing _id or _rev' });
   } else {
-    Database.get(challenge._id, (err, existing) => {
+    Market.get(challenge._id, (err, existing) => {
       if (err) {
         console.log(err);
         res.status(500).send({ ok: false });
@@ -83,7 +90,7 @@ router.put('/organization/challenges/:id', checkAuthenticated, (req, res) => {
         res.status(401).send({ ok: false, message: 'Not owner' });
       } else {
         challenge.updated_at = new Date();
-        Database.insert(challenge, (insertErr, updated) => {
+        Market.insert(challenge, (insertErr, updated) => {
           if (insertErr) {
             console.log(err);
             res.status(500).send({ ok: false });
@@ -97,24 +104,92 @@ router.put('/organization/challenges/:id', checkAuthenticated, (req, res) => {
   }
 });
 
-// | DELETE | /api/organization/challenges | allows an organization to delete its challenge from the market
+// | GET    | /api/organization/challenges/summary/:id | view a challenge summary
+router.get('/organization/challenges/:id/summary', checkAuthenticated, (req, res) => {
+  console.log(`Retrieving challenge summary for ${req.user._id} / ${req.user.organization} / ${req.params.id}:`);
+
+  async.waterfall([
+    // get the challenge from the database
+    // and ensure the challenge belong to the organization
+    (callback) => {
+      Market.get(req.params.id, (err, challenge) => {
+        if (err) {
+          callback(err);
+        } else if (challenge && challenge.organization === req.user.organization) {
+          callback(null, challenge);
+        } else {
+          callback(new Error('not found'));
+        }
+      });
+    },
+    // find all users who have signed up for this challenge
+    (challenge, callback) => {
+      console.log('Retrieving users subscribed to challenge', challenge._id);
+      UserChallenges.find({
+        selector: {
+          challengeId: challenge._id
+        }
+      }, (err, result) => {
+        if (err) {
+          callback(err);
+        } else {
+          callback(null, challenge, result.docs);
+        }
+      });
+    },
+    // find all workouts linked to these challenges
+    (challenge, userChallenges, callback) => {
+      console.log('Retrieving workouts for challenge', challenge._id);
+      UserWorkouts.find({
+        selector: {
+          challengeId: challenge._id
+        }
+      }, (err, result) => {
+        if (err) {
+          callback(err);
+        } else {
+          callback(null, challenge, userChallenges, result.docs);
+        }
+      });
+    },
+    // from the workout, count how many users are actively participating
+    // from the workout, count how many users have completed the challenge
+    (challenge, userChallenges, workouts, callback) => {
+      const summary = {
+        participants: userChallenges.length,
+        workouts: workouts.length,
+        activityLog: []
+      };
+      callback(null, summary);
+    },
+  ], (err, result) => {
+    if (err) {
+      res.status(500).send(err);
+    } else {
+      res.send(result);
+    }
+  });
+});
+
+
+// | DELETE | /api/organization/challenges | allows to delete its challenge from the market
 // requires authentication
 // user must be an organization
 // challenge must be owned by user
 router.delete('/organization/challenges/:id', checkAuthenticated, (req, res) => {
-  console.log(`Removing workout for ${req.user._id} / ${req.user.organization}:`, req.body);
+  console.log(`Removing challenge for ${req.user._id} / ${req.user.organization}:`, req.body);
   const challenge = req.body;
   if (!challenge._id || !challenge._rev) {
     res.status(500).send({ message: 'Missing _id or _rev' });
   } else {
-    Database.get(challenge._id, (err, existing) => {
+    Market.get(challenge._id, (err, existing) => {
       if (err) {
         console.log(err);
         res.status(500).send({ ok: false });
       } else if (existing.organization !== req.user.organization) {
         res.status(401).send({ ok: false, message: 'Not owner' });
       } else {
-        Database.destroy(challenge._id, challenge._rev, (deleteErr, result) => {
+        Market.destroy(challenge._id, challenge._rev, (deleteErr, result) => {
           if (deleteErr) {
             res.status(500).send({ ok: false });
           } else {
@@ -127,10 +202,15 @@ router.delete('/organization/challenges/:id', checkAuthenticated, (req, res) => 
 });
 
 module.exports = (appEnv, readyCallback) => {
-  Database = require('../config/database')(appEnv, dba,
-    path.resolve(`${__dirname}/../seed/market.json`), () => {
-      readyCallback(null, router);
+  const Database = require('../config/database');
+  UserChallenges = Database(appEnv, challengesDbName, null, () => {
+    UserWorkouts = Database(appEnv, workoutsDbName, null, () => {
+      Market = Database(appEnv, marketDbName,
+        path.resolve(`${__dirname}/../seed/market.json`), () => {
+          readyCallback(null, router);
+        });
     });
+  });
 };
 
 

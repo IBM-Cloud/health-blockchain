@@ -32,8 +32,9 @@ All users can retrieve the list of challenges submitted by an organization. When
 | GET    | /api/market/challenges | view available challenges
 | GET    | /api/organization/challenges | view challenges owned by the current organization
 | POST   | /api/organization/challenges | allows an organization to submit a new challenge to the market
-| DELETE | /api/organization/challenges | allows an organization to delete its challenge from the market
-| PUT    | /api/organization/challenges | allows an organization to update its challenge
+| DELETE | /api/organization/challenges/:id | allows an organization to delete its challenge from the market
+| PUT    | /api/organization/challenges/:id | allows an organization to update its challenge
+| GET    | /api/organization/challenges/:id/summary | view a challenge summary
 
 Sample challenges ([seed/market.json](./seed/market.json)) linked to the sample accounts are injected during startup if the *market* database is empty.
 
