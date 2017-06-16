@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router';
 import Phone from './Phone/Phone';
 import Login from './Login';
 import Logo from './Logo';
@@ -77,7 +78,7 @@ class User extends Component {
           <div className="inner-banner">
             <Logo />
             <div className="about">
-              <a href="./organization">ORGANIZATION</a>
+              <Link to="organization">ORGANIZATION</Link>
               &nbsp;&nbsp;&nbsp;&nbsp;
               <a href="./about.html">ABOUT</a>
             </div>
