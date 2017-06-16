@@ -7,6 +7,7 @@
     "carbon-components-react": "^3.0.1",
     "carbon-icons": "5.1.2",
     "moment": "^2.18.1",
+    "prop-types": "^15.5.10",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-router": "^3"

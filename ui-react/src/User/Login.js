@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import './Profile/Profile.css';
+import { browserHistory } from 'react-router';
 import API from '../callAPI';
 
 
@@ -38,7 +39,11 @@ class Login extends Component {
     API.loginOrSignup(this.props.isLogin ? 'login' : 'signup', this.state.email, this.state.password)
     .then((body) => {
       if (body.ok) {
-        this.props.onSubmit();
+        if (body.organization) {
+          browserHistory.push('/organization');
+        } else {
+          this.props.onSubmit();
+        }
       } else {
         this.setState({ errorMessage: body.message });
       }

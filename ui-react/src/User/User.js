@@ -49,7 +49,7 @@ class User extends Component {
 
   isLoggedIn() {
     API.getRequest('/api/users/isLoggedIn').then(json =>
-          json.outcome === 'success' && this.setState({ route: Route.PROFILE }));
+          json.outcome === 'success' && !json.organization && this.setState({ route: Route.PROFILE }));
   }
 
   logout() {
