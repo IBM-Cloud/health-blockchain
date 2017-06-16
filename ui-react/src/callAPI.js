@@ -1,4 +1,4 @@
-const loginOrSignup = (action, email, password) =>
+const loginOrSignup = (action, email, password, organization) =>
   fetch(`/api/users/${action}`, {
     headers: {
       Accept: 'application/json',
@@ -7,7 +7,7 @@ const loginOrSignup = (action, email, password) =>
     method: 'POST',
     credentials: 'include',
     body: JSON.stringify({
-      email, password
+      email, password, organization
     })
   }).then(response => response.json());
 

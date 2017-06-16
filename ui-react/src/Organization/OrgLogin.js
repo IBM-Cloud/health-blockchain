@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { TextInput, Button, FormGroup } from 'carbon-components-react';
+import { TextInput, Button, FormGroup, Select, SelectItem } from 'carbon-components-react';
 import { browserHistory } from 'react-router';
 import API from '../callAPI';
 import './OrgLogin.css';
@@ -11,6 +11,7 @@ class OrgLogin extends Component {
     this.state = {
       email: '',
       password: '',
+      organization: '',
       errorMessage: ''
     };
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -35,7 +36,7 @@ class OrgLogin extends Component {
     console.log(this.state);
     event.preventDefault(); // Don't submit the form. We will call the API ourself.
     this.setState({ errorMessage: '' });
-    API.loginOrSignup('login', this.state.email, this.state.password)
+    API.loginOrSignup('login', this.state.email, this.state.password, this.state.organization)
     .then((body) => {
       if (body.ok) {
         if (body.organization) {
@@ -71,6 +72,23 @@ class OrgLogin extends Component {
             onChange={this.handleInputChange}
             value={this.state.password}
           />
+        </FormGroup>
+        <FormGroup>
+          <Select
+            name="organization"
+            id="organization"
+            onChange={this.handleInputChange}
+            labelText="Organization"
+            defaultValue="placeholder-item"
+          >
+            <SelectItem
+              disabled
+              hidden
+              value="placeholder-item"
+              text="Select your organization"
+            />
+            <SelectItem text="Cloud Insurance Co." value="Cloud Insurance Co." />
+          </Select>
         </FormGroup>
         <Button onClick={this.handleSubmit}>Submit</Button>
         <div className="loginErrorMessage">{this.state.errorMessage}</div>
