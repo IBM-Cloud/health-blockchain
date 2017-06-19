@@ -4,6 +4,74 @@ The API exposes this data model:
 
    ![data model](design/entity-relationship.png)
 
+![Model](https://g.gravizo.com/source/architecture?https%3A%2F%2Fraw.githubusercontent.com%2FIBM-Bluemix%2Fhealth-blockchain%2Freact%2FAPI.md)
+<details>
+<summary></summary>
+model
+ /**
+  *@opt inferrel
+  *@opt collpackages java.util.*
+  *@opt inferdep
+  *@opt inferdepinpackage
+  *@opt hide java.*
+  *@opt all
+  *@opt !constructors
+  *@opt !operations
+  *@hidden
+  */
+  class UMLOptions {
+  }
+  /**
+   *@hidden
+   */
+  class UMLNoteOptions{}
+  /**
+   */
+  class User {
+    String email;
+    String password;
+    UserChallenge[] challenges;
+    Workout[] workouts;
+  }
+  /**
+   */
+  class Organization extends User {
+    String organization;
+    Challenge[] challenges;
+  }
+  /**
+   */
+  class Challenge {
+    String title;
+    String image;
+    Date start;
+    Date end;
+    int goal;
+    String unit;
+    String activity;
+    String description;
+  }
+  /**
+  */
+  class UserChallenge {
+    Challenge challenge;
+  }
+  /**
+   */
+  class Workout {
+    Challenge challenge;
+    Date date;
+    Date start;
+    Date end;
+    int calories;
+    int distance;
+    double pace;
+    int heart;
+    String activity;
+  }
+model
+</details>
+
 ## User Session
 
 Implemented in [routes/users.js](./routes/users.js)
