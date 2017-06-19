@@ -27,15 +27,19 @@ data_model
   class UMLNoteOptions{}
   /**
    */
-  class User {
+  class Account {
     String email;
     String password;
+  }
+  /**
+   */
+  class User extends Account {
     UserChallenge[] challenges;
     Workout[] workouts;
   }
   /**
    */
-  class Organization extends User {
+  class Organization extends Account {
     String organization;
     Challenge[] challenges;
   }
