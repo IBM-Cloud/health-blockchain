@@ -176,8 +176,7 @@ router.get('/organization/challenges/:id/summary', checkAuthenticated, (req, res
     (challenge, userChallenges, workouts, callback) => {
       const summary = {
         participants: userChallenges.length,
-        workouts: workouts.length,
-        activityLog: []
+        workouts: workouts.length
       };
       callback(null, summary);
     },
