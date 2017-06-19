@@ -97,10 +97,19 @@ describe('Market', () => {
 
   it('can see this new challenge in its org list', (done) => {
     api.get('/api/organization/challenges')
-      .send(newChallenge)
       .expect(200)
       .end((err, result) => {
         assert.equal(1, result.body.length);
+        done(err);
+      });
+  });
+
+  it('can retrieve the individual challenge', (done) => {
+    api.get(`/api/organization/challenges/${addedChallenge._id}`)
+      .expect(200)
+      .end((err, result) => {
+        assert.equal(addedChallenge._id, result.body._id);
+        assert.equal(addedChallenge.description, result.body.description);
         done(err);
       });
   });
