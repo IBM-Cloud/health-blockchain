@@ -107,7 +107,7 @@ router.post('/accept/:marketChallengeId', checkAuthenticated, (req, res) => {
   });
 });
 
-router.get('/summary', (req, res) => {
+router.get('/summary', checkAuthenticated, (req, res) => {
   const summary = {
     challenges: -1,
     workouts: -1,
