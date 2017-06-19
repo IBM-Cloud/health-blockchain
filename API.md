@@ -4,10 +4,10 @@ The API exposes this data model:
 
    ![data model](design/entity-relationship.png)
 
-![Model](https://g.gravizo.com/source/architecture?https%3A%2F%2Fraw.githubusercontent.com%2FIBM-Bluemix%2Fhealth-blockchain%2Freact%2FAPI.md)
+![Model](https://g.gravizo.com/source/data_model?https%3A%2F%2Fraw.githubusercontent.com%2FIBM-Bluemix%2Fhealth-blockchain%2Freact%2FAPI.md)
 <details>
 <summary></summary>
-model
+data_model
  /**
   *@opt inferrel
   *@opt collpackages java.util.*
@@ -69,7 +69,7 @@ model
     int heart;
     String activity;
   }
-model
+data_model
 </details>
 
 ## User Session
