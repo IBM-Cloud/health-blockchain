@@ -15,7 +15,7 @@ class OrgLayout extends Component {
   }
 
   logout() {
-    API.postRequest('/api/users/logout')
+    API.logout()
       .then(() => browserHistory.push('/organization'));
   }
 

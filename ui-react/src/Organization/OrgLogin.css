@@ -1,6 +1,13 @@
 .orgLoginContainer {
-  width: 300px;
-  margin: auto;
+  width: 330px;
+  margin: 0 auto;
+}
+
+.org-loginnew {
+  padding: 15px;
+  text-align: center;
+  text-decoration: underline;
+  cursor: pointer;
 }
 
 .loginErrorMessage {

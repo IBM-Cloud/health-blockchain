@@ -3,21 +3,72 @@ import { TextInput, Button, Checkbox, FormGroup, Select, SelectItem } from 'carb
 import API from '../callAPI';
 import './OrgLogin.css';
 
+class Credentials extends Component {
+
+  render() {
+    return (
+      <div>
+        <FormGroup>
+          <TextInput
+            className="some-class"
+            id="email"
+            name="email"
+            labelText="Username"
+            onChange={this.props.handleInputChange}
+            value={this.props.email}
+          />
+        </FormGroup>
+        <FormGroup>
+          <TextInput
+            type="password"
+            className="some-class"
+            id="password"
+            name="password"
+            labelText="Password"
+            onChange={this.props.handleInputChange}
+            value={this.props.password}
+          />
+        </FormGroup>
+
+        {!this.props.isLogin ? <FormGroup>
+          <Select
+            name="organization"
+            id="organization"
+            onChange={this.props.handleInputChange}
+            labelText="Organization"
+            defaultValue="placeholder-item"
+          >
+            <SelectItem
+              disabled
+              hidden
+              value="placeholder-item"
+              text="Select your organization"
+            />
+            <SelectItem text="Cloud Insurance Co." value="Cloud Insurance Co." />
+            <SelectItem text="Employer Co." value="Employer Co." />
+            <SelectItem text="Pharma Co." value="Pharma Co." />
+          </Select>
+        </FormGroup> : ''}
+
+        <Button onClick={this.props.handleSubmit}>Submit</Button>
+        <div className="loginErrorMessage">{this.props.errorMessage}</div>
+      </div>);
+  }
+}
 
 class OrgLogin extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      isLogin: true,
       email: '',
       password: '',
       organization: '',
-      errorMessage: '',
-      isNewUser: false,
+      errorMessage: ''
     };
     this.handleInputChange = this.handleInputChange.bind(this);
-    this.handleIsNewUserChange = this.handleIsNewUserChange.bind(this);
+    this.handleIsLoginChange = this.handleIsLoginChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.navigate = this.navigate.bind(this);
   }
   handleInputChange(event) {
     console.log(event);
@@ -29,24 +80,19 @@ class OrgLogin extends Component {
     });
   }
 
-  handleIsNewUserChange(value) {
+  handleIsLoginChange() {
     this.setState({
-      isNewUser: value
+      errorMessage: '',
+      isLogin: !this.state.isLogin
     });
   }
 
-  navigate() {
-    this.setState({ errorMessage: '' });
-    // this.props.onNavigate();
-  }
-
   handleSubmit(event) {
-    console.log(this.state);
     event.preventDefault(); // Don't submit the form. We will call the API ourself.
     this.setState({ errorMessage: '' });
-    API.loginOrSignup(this.state.isNewUser ? 'signup' : 'login',
+    API.loginOrSignup(this.state.isLogin ? 'login' : 'signup',
       this.state.email, this.state.password,
-      this.state.isNewUser ? this.state.organization : null)
+      this.state.isLogin ? null : this.state.organization)
     .then((body) => {
       if (body.ok) {
         if (body.organization) {
@@ -62,58 +108,22 @@ class OrgLogin extends Component {
   render() {
     return (
       <div className="orgLoginContainer">
-        <FormGroup>
-          <TextInput
-            className="some-class"
-            id="email"
-            name="email"
-            labelText="Username"
-            onChange={this.handleInputChange}
-            value={this.state.email}
-          />
-        </FormGroup>
-        <FormGroup>
-          <TextInput
-            type="password"
-            className="some-class"
-            id="password"
-            name="password"
-            labelText="Password"
-            onChange={this.handleInputChange}
-            value={this.state.password}
-          />
-        </FormGroup>
-
-        <Checkbox
-          checked={this.state.isNewUser}
-          onChange={this.handleIsNewUserChange}
-          className="some-class"
-          id="isNewUser"
-          labelText="Register a new account"
+        <Credentials
+          handleInputChange={this.handleInputChange}
+          email={this.state.email}
+          password={this.state.password}
+          handleSubmit={this.handleSubmit}
+          errorMessage={this.state.errorMessage}
+          isLogin={this.state.isLogin}
         />
 
-        <FormGroup>
-          <Select
-            disabled={!this.state.isNewUser}
-            name="organization"
-            id="organization"
-            onChange={this.handleInputChange}
-            labelText="Organization"
-            defaultValue="placeholder-item"
-          >
-            <SelectItem
-              disabled
-              hidden
-              value="placeholder-item"
-              text="Select your organization"
-            />
-            <SelectItem text="Cloud Insurance Co." value="Cloud Insurance Co." />
-            <SelectItem text="Employer Co." value="Employer Co." />
-            <SelectItem text="Pharma Co." value="Pharma Co." />
-          </Select>
-        </FormGroup>
-        <Button onClick={this.handleSubmit}>Submit</Button>
-        <div className="loginErrorMessage">{this.state.errorMessage}</div>
+        <div
+          className="org-loginnew"
+          onClick={this.handleIsLoginChange}
+          role="presentation"
+        >
+          { this.state.isLogin ? 'Add a new account' : 'Existing account?' }
+        </div>
       </div>
     );
   }

@@ -11,6 +11,17 @@ const loginOrSignup = (action, email, password, organization) =>
     })
   }).then(response => response.json());
 
+
+const logout = () =>
+  fetch('/api/users/logout', {
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json'
+    },
+    method: 'POST',
+    credentials: 'include'
+  }).then(response => response.json());
+
 const getRequest = url =>
   fetch(url, {
     credentials: 'include'
@@ -29,6 +40,7 @@ const postRequest = (url, data = {}) =>
 
 export const API = {
   loginOrSignup,
+  logout,
   postRequest,
   getRequest
 };
