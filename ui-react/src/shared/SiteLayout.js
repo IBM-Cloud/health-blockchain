@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router';
 import PropTypes from 'prop-types';
 import Logo from './Logo';
 import './SiteLayout.css';
@@ -14,7 +13,6 @@ class SiteLayout extends Component {
             <Logo />
             <div className="site-links">
               {this.props.links}
-              &nbsp;&nbsp;&nbsp;&nbsp;
               <a href="https://github.com/IBM-Bluemix/health-blockchain">GitHub</a>
             </div>
           </div>
@@ -35,15 +33,16 @@ class SiteLayout extends Component {
 }
 
 SiteLayout.defaultProps = {
-  links: [],
-  children: [],
+  links: null,
+  children: null,
   className: null
 };
 
+
 SiteLayout.propTypes = {
-  links: PropTypes.arrayOf(Link).optional,
-  children: PropTypes.array.optional,
-  className: PropTypes.string.optional
+  links: PropTypes.array,
+  children: PropTypes.object,
+  className: PropTypes.string
 };
 
 export default SiteLayout;

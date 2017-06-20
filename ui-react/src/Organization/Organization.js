@@ -25,7 +25,7 @@ class Organization extends Component {
 
   render() {
     return (
-      <OrgLayout>
+      <OrgLayout isLoggedIn={this.state.loggedIn}>
         <div className="organization">
           {this.state.loggedIn ?
             <OrgChallenges />

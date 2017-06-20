@@ -40,6 +40,7 @@ body {
 .site-links a {
   text-decoration: none;
   text-transform: uppercase;
+  margin-left: 20px;
 }
 
 .site-body {

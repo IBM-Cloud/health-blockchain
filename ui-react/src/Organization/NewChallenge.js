@@ -26,7 +26,7 @@ class NewChallenge extends Component {
 
   submitNewChallenge() {
     console.log('Submitting ', this.state);
-    API.postRequest('/api/organization/challenges', this.state).then(body => browserHistory.push('/organization'));
+    API.postRequest('/api/organization/challenges', this.state).then(() => browserHistory.push('/organization'));
   }
 
   handleInputChange(event) {

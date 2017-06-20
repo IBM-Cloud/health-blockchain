@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { TextInput, Button, FormGroup, Select, SelectItem } from 'carbon-components-react';
-import { browserHistory } from 'react-router';
+import { TextInput, Button, Checkbox, FormGroup, Select, SelectItem } from 'carbon-components-react';
 import API from '../callAPI';
 import './OrgLogin.css';
 
@@ -12,18 +11,27 @@ class OrgLogin extends Component {
       email: '',
       password: '',
       organization: '',
-      errorMessage: ''
+      errorMessage: '',
+      isNewUser: false,
     };
     this.handleInputChange = this.handleInputChange.bind(this);
+    this.handleIsNewUserChange = this.handleIsNewUserChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.navigate = this.navigate.bind(this);
   }
   handleInputChange(event) {
+    console.log(event);
     const target = event.target;
     const value = target.type === 'checkbox' ? target.checked : target.value;
     const name = target.name;
     this.setState({
       [name]: value
+    });
+  }
+
+  handleIsNewUserChange(value) {
+    this.setState({
+      isNewUser: value
     });
   }
 
@@ -36,7 +44,9 @@ class OrgLogin extends Component {
     console.log(this.state);
     event.preventDefault(); // Don't submit the form. We will call the API ourself.
     this.setState({ errorMessage: '' });
-    API.loginOrSignup('login', this.state.email, this.state.password, this.state.organization)
+    API.loginOrSignup(this.state.isNewUser ? 'signup' : 'login',
+      this.state.email, this.state.password,
+      this.state.isNewUser ? this.state.organization : null)
     .then((body) => {
       if (body.ok) {
         if (body.organization) {
@@ -73,8 +83,18 @@ class OrgLogin extends Component {
             value={this.state.password}
           />
         </FormGroup>
+
+        <Checkbox
+          checked={this.state.isNewUser}
+          onChange={this.handleIsNewUserChange}
+          className="some-class"
+          id="isNewUser"
+          labelText="Register a new account"
+        />
+
         <FormGroup>
           <Select
+            disabled={!this.state.isNewUser}
             name="organization"
             id="organization"
             onChange={this.handleInputChange}
@@ -88,6 +108,8 @@ class OrgLogin extends Component {
               text="Select your organization"
             />
             <SelectItem text="Cloud Insurance Co." value="Cloud Insurance Co." />
+            <SelectItem text="Employer Co." value="Employer Co." />
+            <SelectItem text="Pharma Co." value="Pharma Co." />
           </Select>
         </FormGroup>
         <Button onClick={this.handleSubmit}>Submit</Button>
