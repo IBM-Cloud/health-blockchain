@@ -116,7 +116,6 @@ class NewChallenge extends Component {
                 />
               </FormGroup>
               <Button onClick={this.submitNewChallenge}>Submit</Button>
-
             </div>
           </div>
         </div>

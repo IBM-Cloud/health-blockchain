@@ -25,15 +25,15 @@ class Organization extends Component {
 
   render() {
     return (
-      <div className="organization">
-        <OrgLayout>
+      <OrgLayout>
+        <div className="organization">
           {this.state.loggedIn ?
             <OrgChallenges />
-          :
+            :
             <OrgLogin onLogin={() => this.setState({ loggedIn: true })} />
           }
-        </OrgLayout>
-      </div>
+        </div>
+      </OrgLayout>
     );
   }
 }

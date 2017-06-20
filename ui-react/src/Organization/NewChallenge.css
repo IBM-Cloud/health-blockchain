@@ -1,16 +1,18 @@
 .new-challenge-container {
-
-}
-
-.newChallengeFormContainer {
-margin: auto;
-
+  display: flex;
+  flex-direction: column;
 }
 
 .newChallengeSplitView {
   display: flex;
+  flex-direction: row;
+  flex-basis: auto;
 }
 
 .newChallengeDescription {
-  width: 30%;
+  flex-basis: 30%;
+}
+
+.newChallengeFormContainer {
+  margin: 0 auto;
 }

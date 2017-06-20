@@ -5,6 +5,7 @@ import Login from './Login';
 import Logo from './Logo';
 import Profile from './Profile/Profile';
 import BlockExplorer from './BlockExplorer/BlockExplorer';
+import SiteLayout from '../shared/SiteLayout';
 import './User.css';
 import API from '../callAPI';
 
@@ -73,17 +74,11 @@ class User extends Component {
         break;
     }
     return (
-      <div className="fitchain">
-        <div className="banner">
-          <div className="inner-banner">
-            <Logo />
-            <div className="about">
-              <Link to="organization">ORGANIZATION</Link>
-              &nbsp;&nbsp;&nbsp;&nbsp;
-              <a href="./about.html">ABOUT</a>
-            </div>
-          </div>
-        </div>
+      <SiteLayout
+        {...this.props}
+        className="user-layout-container"
+        links={[<Link to="organization">ORGANIZATION</Link>]}
+      >
         <div className="content">
           <div className="inner-content">
             <div>
@@ -97,20 +92,7 @@ class User extends Component {
             </div>
           </div>
         </div>
-
-
-        <div className="footer">
-          <div className="inner-banner">
-            <div className="logoholder">
-              <div className="footerInfo">Built with <a href="https://www.ibm.com/cloud-computing/bluemix/">IBM Bluemix</a> and <a href="https://www.ibm.com/blockchain/">IBM Blockchain</a></div>
-            </div>
-            <div className="footerGithub">
-              <a href="https://github.com/IBM-Bluemix/health-blockchain">Github Repo</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
+      </SiteLayout>
     );
   }
 }

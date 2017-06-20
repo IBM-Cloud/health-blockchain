@@ -3,3 +3,30 @@
   color: #ffffff;
   letter-spacing: 1px;
 }
+
+.logoholder {
+    font-size: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+
+.logo {
+    height: 120px;
+}
+
+.title {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    text-align: center;
+    align-content: center;
+    align-items: center;
+}
+
+.title a {
+    text-decoration: none;
+    color: white;
+}

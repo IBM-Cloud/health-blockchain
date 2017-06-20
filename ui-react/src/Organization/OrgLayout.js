@@ -1,31 +1,20 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
-import Logo from '../User/Logo';
+
+import SiteLayout from '../shared/SiteLayout';
 import './OrgLayout.css';
 import './carbon-components.css';
-
 
 class OrgLayout extends Component {
 
   render() {
-    return (
-      <div className="org-layout-container">
-        <div className="banner">
-          <div className="inner-banner">
-            <Logo />
-            <div className="about">
-              <Link to="/">USER</Link>
-              &nbsp;&nbsp;&nbsp;&nbsp;
-              <a href="https://github.com/IBM-Bluemix/health-blockchain">ABOUT</a></div>
-          </div>
-        </div>
-        <div className="org-layout-children">
-          {this.props.children}
-        </div>
-      </div>
-
-    );
+    return (<SiteLayout
+      {...this.props}
+      className="org-layout-container"
+      links={[<Link to="/">USER</Link>]}
+    />);
   }
+
 }
 
 export default OrgLayout;
