@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Link } from 'react-router';
 import Phone from './Phone/Phone';
 import Login from './Login';
-import Logo from './Logo';
 import Profile from './Profile/Profile';
 import BlockExplorer from './BlockExplorer/BlockExplorer';
 import SiteLayout from '../shared/SiteLayout';

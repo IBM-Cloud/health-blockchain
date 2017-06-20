@@ -30,3 +30,26 @@
     text-decoration: none;
     color: white;
 }
+
+
+.chain {
+    display: flex;
+    flex-direction: row;
+    height: 20px;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+}
+
+.link {
+    height: 8px;
+    width: 8px;
+    background: white;
+    border-radius: 7px;
+}
+
+.join {
+    height: 2px;
+    width: 8px;
+    background: white;
+}

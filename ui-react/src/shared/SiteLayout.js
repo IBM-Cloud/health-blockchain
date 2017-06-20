@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 import PropTypes from 'prop-types';
-import Logo from '../User/Logo';
+import Logo from './Logo';
 import './SiteLayout.css';
 
 class SiteLayout extends Component {

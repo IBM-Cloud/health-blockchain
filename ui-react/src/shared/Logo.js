@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-// import PropTypes from 'prop-types';
-import './Profile/Profile.css';
 import './Logo.css';
 
 class Logo extends Component {
