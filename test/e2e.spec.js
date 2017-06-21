@@ -28,10 +28,11 @@ describe('End to end', () => {
     image: 'bike.svg',
     start: '2017-03-31T22:00:00.000Z',
     end: '2017-05-30T22:00:00.000Z',
-    goal: 10,
+    goal: 1,
     unit: 'workout',
     activity: 'CYCLING',
-    description: 'Earn a water bottle for 10 bike commutes to work'
+    description: 'Earn a water bottle for 10 bike commutes to work',
+    rewards: 100
   };
 
   let org1Challenge2 = {
@@ -42,7 +43,8 @@ describe('End to end', () => {
     goal: 30,
     unit: 'workout',
     activity: 'ANY',
-    description: '$100 health insurance credit for 30 workouts a year'
+    description: '$100 health insurance credit for 30 workouts a year',
+    rewards: 200
   };
 
   let user1WorkoutForOrg1Challenge1;
@@ -139,6 +141,10 @@ describe('End to end', () => {
     testutil.Organization.getChallengeSummary(org1Api, org1Challenge1._id)
       .then((summary) => {
         assert.equal(1, summary.participants);
+        assert.equal(1, summary.rewards.reserved);
+        assert.equal(0, summary.rewards.granted);
+        assert.equal(99, summary.rewards.remaining);
+        assert.equal(100, summary.rewards.total);
       })
       .then(done)
       .catch(done);
@@ -154,6 +160,10 @@ describe('End to end', () => {
     testutil.Organization.getChallengeSummary(org1Api, org1Challenge1._id)
       .then((summary) => {
         assert.equal(2, summary.participants);
+        assert.equal(2, summary.rewards.reserved);
+        assert.equal(0, summary.rewards.granted);
+        assert.equal(98, summary.rewards.remaining);
+        assert.equal(100, summary.rewards.total);
       })
       .then(done)
       .catch(done);
@@ -184,6 +194,10 @@ describe('End to end', () => {
       .then((summary) => {
         assert.equal(2, summary.participants);
         assert.equal(1, summary.workouts);
+        assert.equal(1, summary.rewards.reserved);
+        assert.equal(1, summary.rewards.granted);
+        assert.equal(98, summary.rewards.remaining);
+        assert.equal(100, summary.rewards.total);
       })
       .then(done)
       .catch(done);

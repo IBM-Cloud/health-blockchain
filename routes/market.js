@@ -173,9 +173,30 @@ router.get('/organization/challenges/:id/summary', checkAuthenticated, (req, res
     // from the workout, count how many users are actively participating
     // from the workout, count how many users have completed the challenge
     (challenge, userChallenges, workouts, callback) => {
+      let reserved = 0;
+      let granted = 0;
+      userChallenges.forEach((userChallenge) => {
+        // for each user, count the workouts
+        const count = workouts.filter(workout =>
+          workout.accountId === userChallenge.accountId &&
+          workout.activity === challenge.activity).length;
+        if (count >= challenge.goal) {
+          // goal reached, the user deserves the reward!
+          granted += 1;
+        } else {
+          // goal not reached yet but we need to save a reward in case the user reaches the goal
+          reserved += 1;
+        }
+      });
       const summary = {
         participants: userChallenges.length,
-        workouts: workouts.length
+        workouts: workouts.length,
+        rewards: {
+          total: challenge.rewards,
+          reserved,
+          granted,
+          remaining: challenge.rewards - reserved - granted
+        }
       };
       callback(null, summary);
     },
