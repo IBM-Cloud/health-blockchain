@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
-import { Breadcrumb, BreadcrumbItem, DetailPageHeader, Icon, Module, ModuleHeader, ModuleBody } from 'carbon-components-react';
+import { Breadcrumb, BreadcrumbItem, DetailPageHeader, Module, ModuleHeader, ModuleBody } from 'carbon-components-react';
 import OrgLayout from './OrgLayout';
 import './ChallengeDetails.css';
 import API from '../callAPI';
@@ -10,8 +10,8 @@ class ChallengeDetails extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      challengeDetails: {},
-      challengeSummary: {
+      challengeDetails: this.props.details || {},
+      challengeSummary: this.props.summary || {
         participants: '-',
         rewards: {
           granted: '-',
@@ -28,11 +28,13 @@ class ChallengeDetails extends Component {
   }
 
   getChallengeDetails() {
-    API.getRequest(`/api/organization/challenges/${this.props.params.challengeId}`).then(challengeDetails =>
-          this.setState({ challengeDetails }));
+    if (this.props.params) {
+      API.getRequest(`/api/organization/challenges/${this.props.params.challengeId}`).then(challengeDetails =>
+            this.setState({ challengeDetails }));
 
-    API.getRequest(`/api/organization/challenges/${this.props.params.challengeId}/summary`).then(challengeSummary =>
-          this.setState({ challengeSummary }));
+      API.getRequest(`/api/organization/challenges/${this.props.params.challengeId}/summary`).then(challengeSummary =>
+            this.setState({ challengeSummary }));
+    }
   }
 
   render() {
