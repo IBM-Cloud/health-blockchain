@@ -83,7 +83,11 @@ class ChallengeDetails extends Component {
               </div>
               <div className="indicator">
                 <div className="indicator-value">
-                  {summary.rewards.remaining}
+                  <div className="indicator-gauge"
+                    style={{
+                      height: (100 * (summary.rewards.remaining / summary.rewards.total)) + '%'
+                    }}></div>
+                  <div className="indicator-gauge-value">{summary.rewards.remaining}</div>
                 </div>
                 <div className="indicator-label">Tokens<br/>Remaining</div>
               </div>
