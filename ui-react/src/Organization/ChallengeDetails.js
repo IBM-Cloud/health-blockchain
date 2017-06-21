@@ -41,7 +41,6 @@ class ChallengeDetails extends Component {
     return (
       <OrgLayout>
         <DetailPageHeader title={challenge.title} statusText="Active">
-          <Icon name="" />
           <Breadcrumb>
             <BreadcrumbItem>
               <Link to="/organization">Challenges</Link>
