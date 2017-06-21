@@ -73,23 +73,25 @@ class ChallengeDetails extends Component {
                 <div className="indicator-value">
                   {summary.rewards.reserved}
                 </div>
-                <div className="indicator-label">Token<br/>Reserved</div>
+                <div className="indicator-label">Token<br />Reserved</div>
               </div>
               <div className="indicator">
                 <div className="indicator-value">
                   {summary.rewards.granted}
                 </div>
-                <div className="indicator-label">Rewards<br/>Granted</div>
+                <div className="indicator-label">Rewards<br />Granted</div>
               </div>
               <div className="indicator">
                 <div className="indicator-value">
-                  <div className="indicator-gauge"
+                  <div
+                    className="indicator-gauge"
                     style={{
-                      height: (100 * (summary.rewards.remaining / summary.rewards.total)) + '%'
-                    }}></div>
+                      height: `${(100 * (summary.rewards.remaining / summary.rewards.total))}%`
+                    }}
+                  />
                   <div className="indicator-gauge-value">{summary.rewards.remaining}</div>
                 </div>
-                <div className="indicator-label">Tokens<br/>Remaining</div>
+                <div className="indicator-label">Tokens<br />Remaining</div>
               </div>
             </div>
           </ModuleBody>
