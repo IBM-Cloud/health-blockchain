@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './Profile.css';
+import './Challenges.css';
 import API from '../../callAPI';
 
 const moment = require('moment');
@@ -15,7 +16,8 @@ class Challenges extends Component {
       errorMessage: ''
     };
     this.getChallenges = this.getChallenges.bind(this);
-    this.startWorkout = this.startWorkout.bind(this);
+    this.addWorkout = this.addWorkout.bind(this);
+    this.animate = this.animate.bind(this);
   }
 
   componentDidMount() {
@@ -25,14 +27,26 @@ class Challenges extends Component {
   getChallenges() {
     API.getRequest('/api/account/challenges').then(challenges =>
           this.setState({ challenges }));
-
-    API.loggedInUser().then(json =>
-                 json.outcome === 'success' && !json.organization && console.log('JSON', json));
   }
 
-  startWorkout(challenge) {
-    console.log(challenge);
+  // TODO: There has to be a better way of doing this
+  // Sets animation field for the challenge to true and
+  // set it back to false 100ms later.
+  // This translates to css className toggle
+  animate(index) {
+    console.log('index', index);
+    const challenges = this.state.challenges;
+    challenges[index].animate = true;
+    this.setState({ challenges });
 
+    setTimeout(() => {
+      challenges[index].animate = false;
+      this.setState({ challenges });
+    }, 100);
+  }
+
+  addWorkout(challenge, index) {
+    this.animate(index);
     API.postRequest('/api/account/workouts', {
       challengeId: challenge.challengeId,
       date: '2017-03-31T10:00:00.000Z',
@@ -43,20 +57,21 @@ class Challenges extends Component {
       pace: 8.5,
       heart: 65,
       activity: 'CYCLING',
-      image: 'bike.svg'
+      image: challenge.image
     }).then(() => this.getChallenges());
   }
+
+
   render() {
-    console.log(this.state.challenges);
     return (
       <div id="challengesstage" className="stage">
         <div className="challengelist" id="challengelist">
           <div className="messagearea" id="messagearea">
             {this.state.errorMessage}
           </div>
-          {this.state.challenges.map(challenge => (
+          {this.state.challenges.map((challenge, index) => (
             <div className="challengeitem" key={challenge._id}>
-              <div className="challengevisual">
+              <div className={challenge.animate ? 'challengevisual challengevisual-animate' : 'challengevisual'}>
                 <img className="challengeicon" src={`images/${challenge.image}`} alt="challenge" />
               </div>
               <div className="challengeblock">
@@ -100,9 +115,15 @@ class Challenges extends Component {
                   </div>
                 </div>
                 <div className="progressbar" />
-                <button className="challengebutton" onClick={() => this.startWorkout(challenge)}>
-                  ADD WORKOUT
-                </button>
+                {challenge.logged >= challenge.goal ?
+                  <button disabled className="challengebutton">
+                    COMPLETED
+                  </button>
+                  :
+                  <button className="challengebutton" onClick={() => this.addWorkout(challenge, index)}>
+                    ADD WORKOUT
+                  </button>
+                }
               </div>
             </div>
         ))}
