@@ -116,10 +116,8 @@ router.get('/summary', checkAuthenticated, (req, res) => {
     calories: -1
   };
 
-  // {
-  //    "rewards": 2,
-  // }
   async.waterfall([
+    // get the challenges the user has subscribed to
     (callback) => {
       Challenges.find({
         selector: {
@@ -130,11 +128,33 @@ router.get('/summary', checkAuthenticated, (req, res) => {
           callback(err);
         } else {
           summary.challenges = result.docs.length;
-          callback();
+          callback(null, result.docs);
         }
       });
     },
-    (callback) => {
+    // augment with market data
+    (userChallenges, callback) => {
+      Market.list({ include_docs: true }, (marketErr, marketResult) => {
+        if (marketErr) {
+          callback(marketErr);
+          return;
+        }
+
+        // copy attributes from the market
+        const market = marketResult.rows.map(row => row.doc);
+        userChallenges.forEach((userChallenge) => {
+          const marketChallenge =
+            market.find(mc => mc._id === userChallenge.challengeId);
+          ['image', 'start', 'end', 'title', 'goal', 'activity'].forEach((key) => {
+            userChallenge[key] = marketChallenge[key];
+          });
+        });
+
+        callback(null, userChallenges);
+      });
+    },
+    // get the user workouts
+    (userChallenges, callback) => {
       Workouts.find({
         selector: {
           accountId: req.user._id
@@ -143,16 +163,31 @@ router.get('/summary', checkAuthenticated, (req, res) => {
         if (err) {
           callback(err);
         } else {
-          summary.workouts = result.docs.length;
-          summary.calories = result.docs.map(workout => workout.calories)
+          const workouts = result.docs;
+          summary.workouts = workouts.length;
+          summary.calories = workouts.map(workout => workout.calories)
             .reduce((previous, current) => previous + current, 0);
           let duration = 0;
-          result.docs.forEach((workout) => {
+          workouts.forEach((workout) => {
             if (workout.start && workout.end) {
               duration += (Date.parse(workout.end) - Date.parse(workout.start));
             }
           });
           summary.hours = (duration / 1000 / 60 / 60).toFixed(1);
+
+          let rewards = 0;
+          userChallenges.forEach((userChallenge) => {
+            // for each challenge, count the workouts
+            const count = workouts.filter(workout =>
+              workout.challengeId === userChallenge.challengeId &&
+              workout.activity === userChallenge.activity).length;
+            if (count >= userChallenge.goal) {
+              // goal reached, the user deserves the reward!
+              rewards += 1;
+            }
+          });
+          summary.rewards = rewards;
+
           callback();
         }
       });

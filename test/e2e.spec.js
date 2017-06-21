@@ -219,6 +219,8 @@ describe('End to end', () => {
         assert.equal(1, summary.challenges);
         assert.equal(2, summary.hours);
         assert.equal(500, summary.calories);
+        assert.equal(1, summary.workouts);
+        assert.equal(1, summary.rewards);
       })
       .then(done)
       .catch(done);
