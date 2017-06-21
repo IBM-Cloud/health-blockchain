@@ -1,3 +1,9 @@
 #root {
   height: 100%;
 }
+
+.bx--detail-page-header--no-tabs {
+  position: relative !important;
+  top: 0 !important;
+  left: 0 !important;
+}

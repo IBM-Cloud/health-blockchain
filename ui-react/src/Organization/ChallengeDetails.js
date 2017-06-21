@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
-import { Breadcrumb, BreadcrumbItem } from 'carbon-components-react';
+import { Breadcrumb, BreadcrumbItem, DetailPageHeader, Icon, Module, ModuleHeader, ModuleBody } from 'carbon-components-react';
 import OrgLayout from './OrgLayout';
 import './ChallengeDetails.css';
 import API from '../callAPI';
@@ -11,7 +11,14 @@ class ChallengeDetails extends Component {
     super(props);
     this.state = {
       challengeDetails: {},
-      challengeSummary: {}
+      challengeSummary: {
+        participants: '-',
+        rewards: {
+          granted: '-',
+          reserved: '-',
+          remaining: '-'
+        }
+      }
     };
     this.getChallenges = this.getChallengeDetails.bind(this);
   }
@@ -33,42 +40,55 @@ class ChallengeDetails extends Component {
     const summary = this.state.challengeSummary;
     return (
       <OrgLayout>
-
-        <Breadcrumb className="some-class">
-          <BreadcrumbItem>
-            <Link to="/organization">Challenges</Link>
-          </BreadcrumbItem>
-        </Breadcrumb>
-
-        <h3>{challenge.title}</h3>
-        <br />
-        <div className="summary-container">
-          <div className="summary-item">
-            <div className="org-challenge-icon-container">
-              <img className="orgChallengeIcon" src={`/images/${challenge.image}`} alt="challenge" />
+        <DetailPageHeader title={challenge.title} statusText="Active">
+          <Icon name="" />
+          <Breadcrumb>
+            <BreadcrumbItem>
+              <Link to="/organization">Challenges</Link>
+            </BreadcrumbItem>
+          </Breadcrumb>
+        </DetailPageHeader>
+        <Module size="double">
+          <ModuleHeader>
+            Overview
+          </ModuleHeader>
+          <ModuleBody>
+            <div className="indicators">
+              <div className="indicator">
+                <div className="indicator-value">
+                  <img className="indicator-icon" src={`/images/${challenge.image}`} />
+                </div>
+                <div className="indicator-label">
+                  {challenge.activity}
+                </div>
+              </div>
+              <div className="indicator">
+                <div className="indicator-value">
+                  {summary.participants}
+                </div>
+                <div className="indicator-label">Participants</div>
+              </div>
+              <div className="indicator">
+                <div className="indicator-value">
+                  {summary.rewards.reserved}
+                </div>
+                <div className="indicator-label">Token<br/>Reserved</div>
+              </div>
+              <div className="indicator">
+                <div className="indicator-value">
+                  {summary.rewards.granted}
+                </div>
+                <div className="indicator-label">Rewards<br/>Granted</div>
+              </div>
+              <div className="indicator">
+                <div className="indicator-value">
+                  {summary.rewards.remaining}
+                </div>
+                <div className="indicator-label">Tokens<br/>Remaining</div>
+              </div>
             </div>
-            <div className="org-summary-text">Activity</div>
-          </div>
-          <div className="summary-item">
-            <div className="org-challenge-text-container">
-              {summary.participants}
-            </div>
-            <div className="org-summary-text">Participants</div>
-          </div>
-          <div className="summary-item">
-            <div className="org-challenge-text-container">
-              {summary.workouts}
-            </div>
-            <div className="org-summary-text">Completed</div>
-          </div>
-          <div className="summary-item">
-            <div className="org-challenge-text-container">
-              {summary.participants}
-            </div>
-            <div className="org-summary-text">Days to Go</div>
-          </div>
-        </div>
-
+          </ModuleBody>
+        </Module>
       </OrgLayout>
     );
   }
