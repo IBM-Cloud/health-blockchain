@@ -17,7 +17,8 @@ class NewChallenge extends Component {
       goal: 1,
       unit: 'workout',
       activity: 'RUNNING',
-      description: 'Run one marathon in less than 4 hours'
+      description: 'Run one marathon in less than 4 hours',
+      rewards: 100
     };
     this.handleInputChange = this.handleInputChange.bind(this);
     this.submitNewChallenge = this.submitNewChallenge.bind(this);
@@ -105,16 +106,35 @@ class NewChallenge extends Component {
                   onChange={this.handleInputChange}
                 />
               </FormGroup>
-              <FormGroup className="some-class" legendText="Goal">
 
+              <FormGroup className="some-class" legendText="Goal">
+                <p>
+                  Number of Workouts
+                </p>
                 <TextInput
                   className="some-class"
                   id="goal"
                   label="Number of Workouts"
+                  type="number"
                   value={this.state.goal}
                   onChange={this.handleInputChange}
                 />
               </FormGroup>
+
+              <FormGroup className="some-class" legendText="Rewards">
+                <p>
+                  Reward tokens in the system
+                </p>
+                <TextInput
+                  className="some-class"
+                  id="rewards"
+                  label="Rewards"
+                  type="number"
+                  value={this.state.rewards}
+                  onChange={this.handleInputChange}
+                />
+              </FormGroup>
+
               <Button onClick={this.submitNewChallenge}>Submit</Button>
             </div>
           </div>

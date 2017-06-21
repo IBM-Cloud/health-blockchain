@@ -44,7 +44,6 @@ router.get('/organization/challenges', checkAuthenticated, (req, res) => {
     if (err) {
       res.status(500).send({ ok: false });
     } else {
-      // console.log('Retrieved', result);
       res.send(result.docs);
     }
   });

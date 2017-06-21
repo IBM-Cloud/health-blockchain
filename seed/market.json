@@ -9,7 +9,8 @@
     "goal": 10,
     "unit": "workout",
     "activity": "CYCLING",
-    "description": "Earn a water bottle for 10 bike commutes to work"
+    "description": "Earn a water bottle for 10 bike commutes to work",
+    "rewards": 1000
   },
   {
     "_id": "fitForWork",
@@ -21,7 +22,8 @@
     "goal": 30,
     "unit": "workout",
     "activity": "ANY",
-    "description": "$100 health insurance credit for 30 workouts a year"
+    "description": "$100 health insurance credit for 30 workouts a year",
+    "rewards": 100
   },
   {
     "_id": "stairChallenge",
@@ -33,7 +35,8 @@
     "goal": 1000,
     "unit": "workout",
     "activity": "STAIRS",
-    "description": "Bobble hat for 1000 stairs climbed this winter"
+    "description": "Bobble hat for 1000 stairs climbed this winter",
+    "rewards": 1000
   },
   {
     "_id": "runnersLifeInsurance",
@@ -45,7 +48,8 @@
     "goal": 20,
     "unit": "workout",
     "activity": "RUNNING",
-    "description": "20% discount for 20 runs a year"
+    "description": "20% discount for 20 runs a year",
+    "rewards": 750
   },
   {
     "_id": "marathonQualifying",
@@ -57,6 +61,7 @@
     "goal": 1,
     "unit": "workout",
     "activity": "RUNNING",
-    "description": "Run one marathon in less than 4 hours"
+    "description": "Run one marathon in less than 4 hours",
+    "rewards": 500
   }
 ]
