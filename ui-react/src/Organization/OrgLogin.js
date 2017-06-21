@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { TextInput, Button, Checkbox, FormGroup, Select, SelectItem } from 'carbon-components-react';
+import { TextInput, Button, FormGroup, Select, SelectItem } from 'carbon-components-react';
 import API from '../callAPI';
 import './OrgLogin.css';
 

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { browserHistory, Link } from 'react-router';
-import { Breadcrumb, BreadcrumbItem, FormGroup, SelectItem, Select, TextInput, TextArea } from 'carbon-components-react';
+import { Link } from 'react-router';
+import { Breadcrumb, BreadcrumbItem } from 'carbon-components-react';
 import OrgLayout from './OrgLayout';
 import './ChallengeDetails.css';
 import API from '../callAPI';

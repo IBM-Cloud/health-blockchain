@@ -49,9 +49,10 @@ class User extends Component {
   }
 
   isLoggedIn() {
-    API.getRequest('/api/users/isLoggedIn').then(json =>
-          json.outcome === 'success' && !json.organization && this.setState({ route: Route.PROFILE }));
+    API.loggedInUser().then(json =>
+           json.outcome === 'success' && !json.organization && this.setState({ route: Route.PROFILE }));
   }
+
 
   logout() {
     API.postRequest('/api/users/logout')
@@ -76,7 +77,7 @@ class User extends Component {
       <SiteLayout
         {...this.props}
         className="user-layout-container"
-        links={[<Link to="organization">ORGANIZATION</Link>]}
+        links={[<Link key="organization" to="organization">ORGANIZATION</Link>]}
       >
         <div className="content">
           <div className="inner-content">

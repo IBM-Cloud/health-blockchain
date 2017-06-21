@@ -25,6 +25,9 @@ class Challenges extends Component {
   getChallenges() {
     API.getRequest('/api/account/challenges').then(challenges =>
           this.setState({ challenges }));
+
+    API.loggedInUser().then(json =>
+                 json.outcome === 'success' && !json.organization && console.log('JSON', json));
   }
 
   startWorkout(challenge) {

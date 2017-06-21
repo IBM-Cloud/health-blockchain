@@ -19,7 +19,7 @@ class Organization extends Component {
   }
 
   isLoggedIn() {
-    API.getRequest('/api/users/isLoggedIn').then(json =>
+    API.loggedInUser().then(json =>
           json.organization && this.setState({ loggedIn: true }));
   }
 

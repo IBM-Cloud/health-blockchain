@@ -36,19 +36,20 @@ class Login extends Component {
   handleSubmit(event) {
     event.preventDefault(); // Don't submit the form. We will call the API ourself.
     this.setState({ errorMessage: '' });
-    API.loginOrSignup(this.props.isLogin ? 'login' : 'signup', this.state.email, this.state.password)
-    .then((body) => {
-      if (body.ok) {
-        if (body.organization) {
+    const response = API.loginOrSignup(this.props.isLogin ? 'login' : 'signup', this.state.email, this.state.password);
+    response.then((user) => {
+      if (user.ok) {
+        if (user.organization) {
           browserHistory.push('/organization');
         } else {
           this.props.onSubmit();
         }
       } else {
-        this.setState({ errorMessage: body.message });
+        this.setState({ errorMessage: user.message });
       }
     });
   }
+
 
   render() {
     return (
