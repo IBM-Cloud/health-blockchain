@@ -46,7 +46,6 @@ body {
 .site-body {
   flex-grow: 1;
   display: block;
-  overflow: scroll;
   padding: 20px;
 }
 
