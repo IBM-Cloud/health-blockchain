@@ -3,6 +3,7 @@ import { Button, Card, OverflowMenuItem, OverflowMenu, CardFooter, CardStatus } 
 import { Link } from 'react-router';
 import API from '../callAPI';
 import './OrgChallenges.css';
+import OrgLayout from './OrgLayout';
 import { browserHistory } from 'react-router';
 
 class OrgChallenges extends Component {
@@ -18,7 +19,6 @@ class OrgChallenges extends Component {
   }
 
   onClick(challenge) {
-    console.log(challenge);
     browserHistory.push(`/organization/challenge/${challenge._id}`);
   }
 
@@ -31,13 +31,15 @@ class OrgChallenges extends Component {
 
   render() {
     return (
-      <div className="orgChallengesContainer">
-        <h3>All Challenges ({this.state.marketChallenges.length})</h3>
-        <div className="actionContainer">
-          <Link to="/organization/newChallenge"><Button small>New Challenge</Button></Link>
-        </div>
-        <div className="cardContainer">
-          {
+      <OrgLayout>
+        <div className="organization">
+          <div className="orgChallengesContainer">
+            <h3>All Challenges ({this.state.marketChallenges.length})</h3>
+            <div className="actionContainer">
+              <Link to="/organization/newChallenge"><Button small>New Challenge</Button></Link>
+            </div>
+            <div className="cardContainer">
+              {
             this.state.marketChallenges.map(challenge => (
               <Card key={challenge._id} onClick={() => this.onClick(challenge)} className="challengeCard">
                 <div className="overflowMenuContainer">
@@ -67,9 +69,11 @@ class OrgChallenges extends Component {
               </Card>
           ))
           }
+            </div>
+            <div>{this.state.errorMessage}</div>
+          </div>
         </div>
-        <div>{this.state.errorMessage}</div>
-      </div>
+      </OrgLayout>
     );
   }
 }

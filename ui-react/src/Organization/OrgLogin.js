@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { TextInput, Button, FormGroup, Select, SelectItem } from 'carbon-components-react';
+import OrgLayout from './OrgLayout';
 import API from '../callAPI';
 import './OrgLogin.css';
+import { browserHistory } from 'react-router';
 
 class Credentials extends Component {
 
@@ -69,7 +71,15 @@ class OrgLogin extends Component {
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleIsLoginChange = this.handleIsLoginChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.isLoggedIn = this.isLoggedIn.bind(this);
+    this.isLoggedIn();
   }
+
+  isLoggedIn() {
+    API.loggedInUser().then(json =>
+          json.organization && browserHistory.push('/organization/challenges'));
+  }
+
   handleInputChange(event) {
     console.log(event);
     const target = event.target;
@@ -96,7 +106,8 @@ class OrgLogin extends Component {
     .then((body) => {
       if (body.ok) {
         if (body.organization) {
-          this.props.onLogin();
+          // this.props.onLogin();
+          browserHistory.push('/organization/challenges');
         } else {
           this.setState({ errorMessage: 'User does not have org access.' });
         }
@@ -107,24 +118,26 @@ class OrgLogin extends Component {
   }
   render() {
     return (
-      <div className="orgLoginContainer">
-        <Credentials
-          handleInputChange={this.handleInputChange}
-          email={this.state.email}
-          password={this.state.password}
-          handleSubmit={this.handleSubmit}
-          errorMessage={this.state.errorMessage}
-          isLogin={this.state.isLogin}
-        />
+      <OrgLayout>
+        <div className="orgLoginContainer">
+          <Credentials
+            handleInputChange={this.handleInputChange}
+            email={this.state.email}
+            password={this.state.password}
+            handleSubmit={this.handleSubmit}
+            errorMessage={this.state.errorMessage}
+            isLogin={this.state.isLogin}
+          />
 
-        <div
-          className="org-loginnew"
-          onClick={this.handleIsLoginChange}
-          role="presentation"
-        >
-          { this.state.isLogin ? 'Add a new account' : 'Existing account?' }
+          <div
+            className="org-loginnew"
+            onClick={this.handleIsLoginChange}
+            role="presentation"
+          >
+            { this.state.isLogin ? 'Add a new account' : 'Existing account?' }
+          </div>
         </div>
-      </div>
+      </OrgLayout>
     );
   }
 }

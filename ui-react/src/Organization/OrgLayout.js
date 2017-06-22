@@ -11,19 +11,42 @@ class OrgLayout extends Component {
 
   constructor(props) {
     super(props);
+    this.state = {
+      loggedIn: false
+    };
     this.logout = this.logout.bind(this);
+    this.isLoggedIn = this.isLoggedIn.bind(this);
+    this.isLoggedIn();
+  }
+
+  isLoggedIn() {
+    API.loggedInUser().then((json) => {
+      if (json.organization) {
+        this.setState({ loggedIn: true });
+      } else {
+        this.redirectToLogin();
+      }
+    });
+  }
+
+  redirectToLogin() {
+    if (browserHistory.getCurrentLocation().pathname !== '/organization') {
+      browserHistory.push('/organization');
+    }
   }
 
   logout() {
-    API.logout()
-      .then(() => browserHistory.push('/organization'));
+    API.logout().then(() => {
+      this.setState({ loggedIn: false });
+      this.redirectToLogin();
+    });
   }
 
   render() {
     let links = <Link to="/">USER</Link>;
-    if (this.props.isLoggedIn) {
+    if (this.state.loggedIn) {
       links = [
-        <a href="" onClick={this.logout}>Logout</a>,
+        <a href="/organization" onClick={this.logout}>Logout</a>,
         <Link to="/">USER</Link>
       ];
     }
@@ -35,13 +58,5 @@ class OrgLayout extends Component {
   }
 
 }
-
-OrgLayout.defaultProps = {
-  isLoggedIn: false
-};
-
-OrgLayout.propTypes = {
-  isLoggedIn: PropTypes.boolean
-};
 
 export default OrgLayout;
