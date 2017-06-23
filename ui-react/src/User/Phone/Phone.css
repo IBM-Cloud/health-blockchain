@@ -1,67 +1,67 @@
 .phone {
-    width: 331px;
-    height: 700px;
-    border-radius: 56px;
-    border: 2px solid #666;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background: #24242c;
-    overflow: hidden;
-    margin-right: 30px;
+  width: 300px;
+  height: 630px;
+  border-radius: 56px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #4B5369;
+  overflow: hidden;
+  margin-right: 30px;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .screen {
-    width: 303px;
-    height: 540px;
-    background: #2d2d37;
-    display: flex;
-    flex-direction: column;
-    align-content: center;
-    justify-content: center;
-    overflow: hidden;
+  width: 274px;
+  height: 486px;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  overflow: hidden;
 }
 
 .border {
-    height: 80px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-content: center;
-    align-items: center;
+  height: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
 }
 
 .camera {}
 
 .home {
-    width: 44px;
-    height: 44px;
-    border-radius: 50px;
-    border: 1px solid #393941;
-    background: linear-gradient(135deg, #1c1c23 0%, #393941 50%, #1c1c23 100%);
+  width: 44px;
+  height: 44px;
+  border-radius: 50px;
+  border: 1px solid #EAF4FE;
+  background: #4B5369;
 }
 
 .border-row {
-    flex-direction: row;
-    width: 104px;
-    display: flex;
-    align-content: center;
-    justify-content: center;
-    align-items: center;
+  flex-direction: row;
+  width: 104px;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
 }
 
 .sensor {
-    height: 12px;
-    width: 12px;
-    border-radius: 12px;
-    background: #4f4f56;
+  height: 12px;
+  width: 12px;
+  border-radius: 12px;
+  background: #EAF4FE;
 }
 
 .speaker {
-    width: 60px;
-    height: 6px;
-    border-radius: 6px;
-    background: #4f4f56;
-    margin-left: 20px;
+  width: 60px;
+  height: 6px;
+  border-radius: 6px;
+  background: #EAF4FE;
+  margin-left: 20px;
 }

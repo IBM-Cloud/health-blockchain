@@ -1,111 +1,113 @@
 .user-layout-container {
-  background-color: #2d2d37 !important;
-  color: #ffffff;
+  background-color: #EAF4FE !important;
+  color: #4F5E84;
 }
 
 .content {
   flex-grow: 1;
-    display: flex;
-    flex-direction: row;
-    align-content: center;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    flex-shrink: 0;
-    padding: 20px;
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  flex-shrink: 0;
+  padding: 20px;
 }
 
 .login {
-    height: 300px;
-    width: 33%;
-    background: white;
-    border-radius: 4px;
-    margin: 20px;
+  height: 300px;
+  width: 33%;
+  background: white;
+  border-radius: 4px;
+  margin: 20px;
 }
+
 
 /* - - - - - */
 
 .loginbox {
-    height: auto;
-    display: flex;
-    flex-direction: column;
-    align-content: center;
-    align-items: center;
-    justify-content: center;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
 }
 
 .loginform {
-    display: flex;
-    flex-direction: column;
-    margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
 }
 
 .loginfield {
-    display: flex;
-    padding: 16px;
-    align-items: center;
-    justify-content: center;
-    margin: 10px;
-    height: 20px;
-    align-content: center;
-    flex-direction: row;
-    font-size: 14px;
+  display: flex;
+  padding: 16px;
+  align-items: center;
+  justify-content: center;
+  margin: 10px;
+  height: 20px;
+  align-content: center;
+  flex-direction: row;
+  font-size: 14px;
 }
 
 .logininput {
-    border: none;
-    border-radius: 4px;
-    border-bottom-left-radius: 0;
-    border-top-left-radius: 0;
-    height: 44px;
-    padding: 10px;
-    padding-right: 0;
-    width: 170px;
-    font-size: 14px;
-    background: #24242c;
-    color: white;
+  border: none;
+  border-radius: 4px;
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+  height: 44px;
+  padding: 10px;
+  padding-right: 0;
+  width: 170px;
+  font-size: 14px;
+  background: #F1FAFF;
+  border: 1px solid #74C8F6;
+  color: white;
 }
 
 input:-webkit-autofill {
-    -webkit-box-shadow: 0 0 0px 1000px white inset;
+  -webkit-box-shadow: 0 0 0px 1000px white inset;
 }
 
 .icon {
-    width: 22px;
-    padding: 10px;
-    background: #393941;
-    border-bottom-left-radius: 4px;
-    border-top-left-radius: 4px;
+  width: 22px;
+  padding: 11px;
+  background: #74C8F6;
+  border-bottom-left-radius: 4px;
+  border-top-left-radius: 4px;
 }
 
 .loginbutton {
-    background: #f56461;
-    color: white;
-    text-align: center;
-    width: 200px;
-    height: 36px;
-    padding: 5px;
-    align-self: center;
-    border-radius: 4px;
-    margin-top: 10px;
-    border: none;
-    font-size: 16px;
+  background: #f56461;
+  color: white;
+  text-align: center;
+  width: 200px;
+  height: 36px;
+  padding: 5px;
+  align-self: center;
+  border-radius: 4px;
+  margin-top: 10px;
+  border: none;
+  font-size: 16px;
 }
 
 .loginnew {
-    color: #c0c0c3;
-    padding: 15px;
-    text-align: center;
-    text-decoration: underline;
-    cursor: pointer;
+  color: #c0c0c3;
+  padding: 15px;
+  text-align: center;
+  text-decoration: underline;
+  cursor: pointer;
 }
 
 a {
-    color: #c0c0c3;
+  color: #c0c0c3;
 }
 
 .padding {
-    height: 200px;
+  height: 200px;
 }
 
 .splitView {

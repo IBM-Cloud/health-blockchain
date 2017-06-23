@@ -5,51 +5,51 @@
 }
 
 .logoholder {
-    font-size: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    align-content: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  font-weight: bold;
+  font-size: 24px;
 }
 
 .logo {
-    height: 120px;
+  height: 120px;
 }
 
 .title {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    text-align: center;
-    align-content: center;
-    align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  text-align: center;
+  align-content: center;
+  align-items: center;
 }
 
 .title a {
-    text-decoration: none;
-    color: white;
+  text-decoration: none;
+  color: #4B5369;
 }
 
-
 .chain {
-    display: flex;
-    flex-direction: row;
-    height: 20px;
-    justify-content: center;
-    align-content: center;
-    align-items: center;
+  display: flex;
+  flex-direction: row;
+  height: 20px;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
 }
 
 .link {
-    height: 8px;
-    width: 8px;
-    background: white;
-    border-radius: 7px;
+  height: 8px;
+  width: 8px;
+  background: white;
+  border-radius: 7px;
 }
 
 .join {
-    height: 2px;
-    width: 8px;
-    background: white;
+  height: 2px;
+  width: 8px;
+  background: white;
 }

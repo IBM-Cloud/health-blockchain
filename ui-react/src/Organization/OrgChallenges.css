@@ -5,8 +5,9 @@
 }
 
 .orgChallengesContainer {
-
+  font-family: 'Montserrat', 'Open Sans', sans-serif;
 }
+
 .cardContainer {
   display: flex;
   justify-content: center;
@@ -16,11 +17,31 @@
 .challengeCard {
   margin: 10px;
   cursor: pointer;
+  background-color: #fff;
+  border: none;
+  border-radius: 6px;
+  width: 13rem;
+  height: 18rem;
+  margin: 16px;
+}
+
+.challengeCardFooter {
+  background-color: #73c7f6;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+  color: white;
+  font-family: 'Montserrat', 'Open Sans', sans-serif;
+  font-size: 12px;
 }
 
 .actionContainer {
   width: 100%;
   text-align: right;
+  border-bottom: 1px solid #73c7f6;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 .challengeIconContainer {
@@ -29,23 +50,71 @@
 
 .orgChallengeIcon {
   fill: black;
-  width: 60px;
+  width: 100px;
+}
 
+.bx--btn--primary {
+  background-color: #63c961;
 }
 
 .bx--about__icon {
-  background-color: #2d2d37;
+  border: none;
+  width: 4rem;
+  height: 4rem;
 }
 
 .bx--about__title--name {
   text-align: center;
+  font-family: 'Open Sans', sans-serif;
+  color: #CD4A4A;
+  /* background: #FFD56A; */
+  border-radius: 10px;
+  /* border: 1px solid #FFD56A; */
+  padding: 1px;
+  font-weight: light;
+  font-size: 15px;
 }
 
-.overflowMenu{
-  width: 40px;
+.bx--card-footer__app-status--running {
+  font-size: 0.8rem;
+}
+
+.bx--card-footer__app-status--running:before {
+  content: " ";
+  height: 1rem;
+  width: 1rem;
+  border-radius: 100%;
+  margin-right: .5rem;
+  background-color: #5aa700;
+  border: 3px solid white;
+}
+
+.bx--about__title--additional-info {
+  margin-top: 10px;
+  font-size: 0.6rem;
+  white-space: normal;
+  text-overflow: inherit;
+  font-family: 'Montserrat', 'Open Sans', sans-serif;
+}
+
+.overflowMenu {
+  margin-top: 5px;
+  padding: .5rem;
+  padding-right: 0;
 }
 
 .overflowMenuContainer {
   text-align: right;
   margin-left: 160px;
+}
+
+h3 {
+  line-height: 1.25;
+  font-size: 14px;
+  color: #4b5369;
+  font-family: 'Montserrat', 'Open Sans', sans-serif;
+}
+
+a {
+  color: #4B5369;
 }

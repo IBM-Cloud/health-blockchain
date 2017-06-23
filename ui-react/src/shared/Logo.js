@@ -9,21 +9,6 @@ class Logo extends Component {
         <div className="title">
           <a href="/">FITCHAIN</a>
         </div>
-        <div className="chain">
-          <div className="join" />
-          <div className="link" />
-          <div className="join" />
-          <div className="link" />
-          <div className="join" />
-          <div className="link" />
-          <div className="join" />
-          <div className="link" />
-          <div className="join" />
-          <div className="link" />
-          <div className="join" />
-          <div className="link" />
-          <div className="join" />
-        </div>
       </div>
     );
   }

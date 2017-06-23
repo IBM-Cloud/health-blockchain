@@ -62,7 +62,7 @@ class OrgChallenges extends Component {
                   </div>
                 </div>
 
-                <CardFooter>
+                <CardFooter className="challengeCardFooter">
                   <CardStatus runningText="Active" />
 
                 </CardFooter>
