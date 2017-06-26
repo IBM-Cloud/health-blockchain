@@ -35,12 +35,14 @@ body {
   flex-grow: 1;
   display: flex;
   justify-content: flex-end;
+  font-family: sans-serif;
 }
 
 .site-links a {
   text-decoration: none;
   text-transform: uppercase;
   margin-left: 20px;
+  font-family: sans-serif;
 }
 
 .site-body {
@@ -65,6 +67,7 @@ body {
   flex-direction: row;
   justify-content: center;
   min-height: 50px;
+  font-family: sans-serif;
 }
 
 .site-footer-inner {
@@ -79,6 +82,7 @@ body {
 .footerInfo {
   font-size: 10px;
   text-transform: uppercase;
+  font-family: sans-serif;
 }
 
 .footerInfo>a {
@@ -87,4 +91,5 @@ body {
   margin-bottom: 3px;
   text-decoration: none;
   border-bottom: 1px solid #4B5369;
+  font-family: sans-serif;
 }

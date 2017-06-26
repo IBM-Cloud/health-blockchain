@@ -59,10 +59,11 @@
 }
 
 .challengetitle {
-  font-size: 13px;
+  font-size: 12px;
   font-weight: bold;
-  color: #CD4A4A;
+  color: #4B5369;
   text-transform: uppercase;
+  font-family: sans-serif;
 }
 
 .challengelabel {}

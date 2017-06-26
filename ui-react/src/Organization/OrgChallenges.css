@@ -5,7 +5,7 @@
 }
 
 .orgChallengesContainer {
-  font-family: 'Montserrat', 'Open Sans', sans-serif;
+  font-family: sans-serif;
 }
 
 .cardContainer {
@@ -32,7 +32,7 @@
   border-bottom-left-radius: 6px;
   border-bottom-right-radius: 6px;
   color: white;
-  font-family: 'Montserrat', 'Open Sans', sans-serif;
+  font-family: sans-serif;
   font-size: 12px;
 }
 
@@ -65,18 +65,19 @@
 
 .bx--about__title--name {
   text-align: center;
-  font-family: 'Open Sans', sans-serif;
+  font-family: sans-serif;
   color: #CD4A4A;
   /* background: #FFD56A; */
   border-radius: 10px;
   /* border: 1px solid #FFD56A; */
   padding: 1px;
   font-weight: light;
-  font-size: 15px;
+  font-size: 13px;
+  text-transform: uppercase;
 }
 
 .bx--card-footer__app-status--running {
-  font-size: 0.8rem;
+  font-size: 0.9rem;
 }
 
 .bx--card-footer__app-status--running:before {
@@ -91,10 +92,13 @@
 
 .bx--about__title--additional-info {
   margin-top: 10px;
-  font-size: 0.6rem;
+  font-size: 0.9rem;
   white-space: normal;
+  -o-text-overflow: inherit;
   text-overflow: inherit;
-  font-family: 'Montserrat', 'Open Sans', sans-serif;
+  line-height: 18px;
+  font-family: sans-serif;
+  text-align: center;
 }
 
 .overflowMenu {
@@ -112,7 +116,7 @@ h3 {
   line-height: 1.25;
   font-size: 14px;
   color: #4b5369;
-  font-family: 'Montserrat', 'Open Sans', sans-serif;
+  font-family: sans-serif;
 }
 
 a {
