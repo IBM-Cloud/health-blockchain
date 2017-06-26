@@ -16,9 +16,9 @@
   font-size: 2rem;
   width: 120px;
   height: 120px;
-  border: 2px solid #6083bc;
+  border: 2px solid #00ABC0;
   border-radius: 60px;
-  display:flex;
+  display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
@@ -26,7 +26,7 @@
 }
 
 .indicator-gauge {
-  background-color: #cbd7eb;
+  background-color: #7ACCB8;
   position: absolute;
   display: block;
   overflow: hidden;
@@ -47,8 +47,25 @@
 }
 
 .indicator-icon {
-  background-color: #6083bc;
+  background-color: #ffffff;
   width: calc(100% - 10px);
   overflow: hidden;
   border-radius: 60px;
+}
+
+.bx--detail-page-header-status-icon {
+  display: inline-block;
+  border-radius: 50%;
+  height: 0.75rem;
+  width: 0.75rem;
+  background-color: #7ACCB8;
+  margin-left: .625rem;
+  border: 3px solid white;
+  margin-right: 5px;
+}
+
+.bx--detail-page-header-title {
+  font-size: 1.8125rem;
+  font-weight: 300;
+  color: #0F4C81;
 }
