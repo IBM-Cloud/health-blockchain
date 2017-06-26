@@ -11,7 +11,7 @@
 .challengeitem {
   display: flex;
   flex-direction: row;
-  border-bottom: 1px solid #D3E2EF;
+  border-bottom: 1px solid #9DC3D4;
   flex-shrink: 0;
 }
 
@@ -26,7 +26,7 @@
 .challengebutton {
   margin-top: 20px;
   width: 80%;
-  background: #CD4A4A;
+  background: #0F4C81;
   color: white;
   font-weight: bold;
   border: none;

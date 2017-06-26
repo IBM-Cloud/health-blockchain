@@ -26,7 +26,7 @@
 }
 
 .challengeCardFooter {
-  background-color: #73c7f6;
+  background-color: #00ABC0;
   padding-left: 1rem;
   padding-right: 1rem;
   border-bottom-left-radius: 6px;
@@ -54,7 +54,7 @@
 }
 
 .bx--btn--primary {
-  background-color: #63c961;
+  background-color: #E78B90;
 }
 
 .bx--about__icon {
@@ -66,7 +66,8 @@
 .bx--about__title--name {
   text-align: center;
   font-family: sans-serif;
-  color: #CD4A4A;
+  color: #F88F58;
+  font-weight: bold;
   /* background: #FFD56A; */
   border-radius: 10px;
   /* border: 1px solid #FFD56A; */
@@ -86,7 +87,7 @@
   width: 1rem;
   border-radius: 100%;
   margin-right: .5rem;
-  background-color: #5aa700;
+  background-color: #7ACCB8;
   border: 3px solid white;
 }
 
@@ -115,7 +116,7 @@
 h3 {
   line-height: 1.25;
   font-size: 14px;
-  color: #4b5369;
+  color: #0F4C81;
   font-family: sans-serif;
 }
 

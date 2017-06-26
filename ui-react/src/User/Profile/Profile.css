@@ -61,7 +61,7 @@
 .challengetitle {
   font-size: 12px;
   font-weight: bold;
-  color: #4B5369;
+  color: #0F4C81;
   text-transform: uppercase;
   font-family: sans-serif;
 }
@@ -69,7 +69,7 @@
 .challengelabel {}
 
 .challengedata {
-  border-top: 1px solid #74C8F6;
+  border-top: 1px solid #00ABC0;
   padding-top: 20px;
   display: flex;
   flex-direction: row;
@@ -144,11 +144,11 @@
 }
 
 .beginlabel {
-  font-size: 12px;
+  font-size: 11px;
 }
 
 .endlabel {
-  font-size: 12px;
+  font-size: 11px;
 }
 
 .challengeicon {
@@ -162,7 +162,7 @@
   align-items: center;
   align-content: center;
   justify-content: center;
-  background: #E9F4FE;
+  background: #00ABC0;
 }
 
 .bar {
@@ -180,7 +180,7 @@
   justify-content: space-around;
   font-size: 16px;
   font-weight: bold;
-  color: #4B5369;
+  color: white;
 }
 
 .tabbar {
@@ -191,7 +191,7 @@
   align-items: center;
   justify-content: space-around;
   color: white;
-  background: #C1E3F9;
+  background: #cceef2;
 }
 
 .rightnav, .leftnav {
@@ -218,7 +218,7 @@
   align-content: center;
   align-items: center;
   justify-content: center;
-  border-bottom: 1px solid #D3E2EF;
+  border-bottom: 1px solid #9DC3D4;
   width: 100%;
   padding-bottom: 20px;
   flex-shrink: 0;
@@ -247,19 +247,13 @@
   margin-top: 24px;
   margin-bottom: 12px;
   width: 60%;
-  background: #f56461;
+  background: #0F4C81;
   color: white;
   border: none;
   height: 30px;
   font-size: 13px;
   font-weight: bold;
   border-radius: 6px;
-}
-
-.historyItem {
-  display: flex;
-  flex-direction: row;
-  height: 100px;
 }
 
 .historyvisual {
@@ -276,23 +270,26 @@
 }
 
 .historyitem {
+  display: flex;
+  flex-direction: row;
+  height: 150px;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-direction: row;
   flex-direction: row;
   width: 274px;
-  border-bottom: 1px solid #D3E2EF;
-  margin-top: 20px;
+  border-bottom: 1px solid #9DC3D4;
   -ms-flex-negative: 0;
   flex-shrink: 0;
-  padding-bottom: 10px;
+  align-items: center;
+  align-content: center;
 }
 
 .timestamp {
   display: flex;
   flex-direction: column;
   font-size: 12px;
-  color: #f56461;
+  color: #0F4C81;
   font-weight: bold;
 }
 
