@@ -1,18 +1,27 @@
 .BlockExplorerDetailView {
   padding-left: 30px;
-  border-left-style: dotted;
-  border-color: #4D4E56;
+  border-left: 1px solid;
+  border-color: #cceef2;
+  margin-left: 30px;
+  padding-right: 30px;
 }
 
 .block {
-  background-color: #363640;
-  border-radius: 10px;
-  border-color: #4D4E56;
+  /*background-color: white;*/
+  */ border-radius: 6px;
+  border-color: #00ABC0;
   border-style: solid;
-  border-width: 1px;
+  border-width: 0;
+  text-transform: uppercase;
+  font-family: sans-serif;
+  font-size: 13px;
+  display: -ms-flexbox;
   display: flex;
+  -ms-flex-direction: column;
   flex-direction: column;
-  padding-top: 10px;
+  margin-left: 30px;
+  width: 320px;
+  /* padding-top: 10px; */
   animation-name: slideDown;
   -webkit-animation-name: slideDown;
   animation-duration: 1s;
@@ -20,68 +29,86 @@
   animation-timing-function: ease;
   -webkit-animation-timing-function: ease;
   visibility: visible !important;
-
+  font-weight: bold;
 }
 
 @keyframes slideDown {
-	0% {
-		transform: translateY(-100%);
-	}
-	50%{
-		transform: translateY(8%);
-	}
-	65%{
-		transform: translateY(-4%);
-	}
-	80%{
-		transform: translateY(4%);
-	}
-	95%{
-		transform: translateY(-2%);
-	}
-	100% {
-		transform: translateY(0%);
-	}
+  0% {
+    transform: translateY(-100%);
+  }
+  50% {
+    transform: translateY(8%);
+  }
+  65% {
+    transform: translateY(-4%);
+  }
+  80% {
+    transform: translateY(4%);
+  }
+  95% {
+    transform: translateY(-2%);
+  }
+  100% {
+    transform: translateY(0%);
+  }
 }
 
 @-webkit-keyframes slideDown {
-	0% {
-		-webkit-transform: translateY(-100%);
-	}
-	50%{
-		-webkit-transform: translateY(8%);
-	}
-	65%{
-		-webkit-transform: translateY(-4%);
-	}
-	80%{
-		-webkit-transform: translateY(4%);
-	}
-	95%{
-		-webkit-transform: translateY(-2%);
-	}
-	100% {
-		-webkit-transform: translateY(0%);
-	}
+  0% {
+    -webkit-transform: translateY(-100%);
+  }
+  50% {
+    -webkit-transform: translateY(8%);
+  }
+  65% {
+    -webkit-transform: translateY(-4%);
+  }
+  80% {
+    -webkit-transform: translateY(4%);
+  }
+  95% {
+    -webkit-transform: translateY(-2%);
+  }
+  100% {
+    -webkit-transform: translateY(0%);
+  }
 }
 
 .blockRow {
+  display: -ms-flexbox;
   display: flex;
+  -ms-flex-direction: row;
   flex-direction: row;
-  margin: 2px;
   padding-right: 10px;
+  background: white;
+  height: 50px;
+  border-bottom: 2px solid #cceef2;
+  -ms-flex-line-pack: center;
+  align-content: center;
 }
 
 .blockFooter {
-  background-color: #21232B;
+  background-color: #cceef2;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
+  /* color: white; */
+  font-family: sans-serif;
+  font-size: 13px;
+  border-bottom: none;
+  text-transform: uppercase;
 }
 
 .blockRowLabel {
-  width: 40%;
-  margin: auto;
+  width: 60px;
+  border-right: 2px solid #cceef2;
   padding: 10px;
+  /* background: #cceef2; */
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .blockRowDetail {
@@ -95,17 +122,15 @@
   padding: 5px;
   width: 180px;
   font-size: 12px;
-  background: #4A4A53;
-  color: white;
+  color: #0F4C81;
   overflow: hidden;
 }
 
 .blockRowTextArea {
-  background: #4A4A53;
   overflow: hidden;
   border-radius: 4px;
   border: none;
-  color: white;
+  color: #0F4C81;
 }
 
 .hashCode {
@@ -113,25 +138,25 @@
 }
 
 .verticalChain {
-    display: flex;
-    flex-direction: column;
-    height: 20px;
-    justify-content: center;
-    align-content: center;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 30px;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
 }
 
 .verticalLink {
-    height: 10px;
-    width: 8px;
-    background: white;
-    border-radius: 7px;
+  height: 20px;
+  width: 10px;
+  background: #0F4C81;
+  border-radius: 10px;
 }
 
 .verticalJoin {
-    height: 10px;
-    width: 2px;
-    background: white;
+  height: 20px;
+  width: 2px;
+  background: #0F4C81;
 }
 
 .blockSmall {
@@ -166,9 +191,28 @@
 
 .minimizeButton {
   cursor: pointer;
-  padding:10px;
+  padding: 10px;
   border: solid;
   border-width: 1px;
   width: 12px;
   border-color: #393941;
+}
+
+.blockchainButton {
+  background: white;
+  border: 1px solid #00ABC0;
+  border-radius: 40px;
+  height: 80px;
+  width: 80px;
+}
+
+.blockchainImage {
+  height: 40px;
+}
+
+.blockCap {
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+  height: 10px;
+  background: #cceef2;
 }

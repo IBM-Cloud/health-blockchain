@@ -8,12 +8,7 @@ class BlockExplorerPreview extends Component {
   render() {
     return (
       <div role="presentation" onClick={this.props.onExpand}>
-        {this.props.blocks.map(block => (
-          <div key={block.blockNumber}>
-            <div className="blockSmallLink" />
-            <div className="blockSmall" />
-          </div>
-        ))}
+<button className="blockchainButton"><img className="blockchainImage" src="images/blockchain.svg"></img></button>
       </div>
     );
   }

@@ -11,6 +11,7 @@ class Block extends Component {
           <div className="verticalJoin" />
         </div>
         <div className="block">
+          <div className="blockCap"></div>
           <div className="blockRow">
             <div className="blockRowLabel">Block</div>
             <div>
