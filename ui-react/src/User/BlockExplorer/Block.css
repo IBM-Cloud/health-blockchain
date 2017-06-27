@@ -227,3 +227,15 @@
   flex-direction: column;
   justify-content: center;
 }
+
+.blockNumber {
+  color: white;
+  font-weight: bold;
+  background: #00ABC0;
+  width: 30px;
+  height: 30px;
+  border-radius: 15px;
+  text-align: center;
+  font-size: 14px;
+  margin-left: 10px;
+}

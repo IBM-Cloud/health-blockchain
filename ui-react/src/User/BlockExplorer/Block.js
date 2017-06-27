@@ -15,7 +15,7 @@ class Block extends Component {
           <div className="blockRow">
             <div className="blockRowLabel">Block</div>
             <div className="blockData">
-              <input className="blockRowInput" type="text" value={this.props.block.blockNumber} />
+              <input className="blockRowInput blockNumber" type="text" value={this.props.block.blockNumber} />
             </div>
           </div>
           {/* <!--Nonce--> */}
