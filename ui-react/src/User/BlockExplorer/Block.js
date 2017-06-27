@@ -14,14 +14,14 @@ class Block extends Component {
           <div className="blockCap"></div>
           <div className="blockRow">
             <div className="blockRowLabel">Block</div>
-            <div>
+            <div className="blockData">
               <input className="blockRowInput" type="text" value={this.props.block.blockNumber} />
             </div>
           </div>
           {/* <!--Nonce--> */}
           <div className="blockRow">
             <div className="blockRowLabel">Nonce</div>
-            <div><input className="blockRowInput" type="text" value="'<%= block.id %>'" /></div>
+            <div className="blockData"><input className="blockRowInput" type="text" value="'<%= block.id %>'" /></div>
           </div>
           {/* <!--TX--> */}
           <div className="blockRow">

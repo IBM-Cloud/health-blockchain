@@ -130,7 +130,12 @@
   overflow: hidden;
   border-radius: 4px;
   border: none;
+  height: 30px;
   color: #0F4C81;
+  padding: 18px;
+  width: 220px;
+  display: flex;
+  align-self: center;
 }
 
 .hashCode {
@@ -215,4 +220,10 @@
   border-top-left-radius: 10px;
   height: 10px;
   background: #cceef2;
+}
+
+.blockData {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
