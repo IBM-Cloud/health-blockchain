@@ -8,9 +8,15 @@
   text-align: center;
   text-decoration: underline;
   cursor: pointer;
+  font-family: sans-serif;
+  font-size: 14px;
 }
 
 .loginErrorMessage {
-  color:red;
+  color: red;
   padding-top: 10px;
+}
+
+.bx--form-item {
+  font-family: sans-serif !important;
 }
