@@ -145,17 +145,31 @@
     box-sizing: border-box;
     position: absolute;
     display: block;
-    border: 2px solid #8c9ba5 !important;
+    border: 2px solid #7d9ca9 !important;
     cursor: pointer;
     top: -12px;
     width: 24px;
     height: 24px;
-    background-color: #4B5369 !important;
+    background-color: #8dafbe !important;
     border-radius: 50%;
     content: '';
     -webkit-transition-duration: 250ms;
     -o-transition-duration: 250ms;
     transition-duration: 250ms;
+  }
+
+  .bx--toggle__appearance:before {
+    position: absolute;
+    display: block;
+    content: '';
+    width: 100%;
+    height: 4px;
+    top: -2px;
+    background-color: #8dafbe !important;
+    -webkit-transition-duration: 250ms;
+    -o-transition-duration: 250ms;
+    transition-duration: 250ms;
+    cursor: pointer;
   }
 
   .bx--toggle__label {
