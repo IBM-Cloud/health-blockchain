@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
+import { Toggle } from 'carbon-components-react';
+
 import Phone from './Phone/Phone';
 import Login from './Login';
 import Profile from './Profile/Profile';
@@ -19,15 +21,16 @@ class User extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      route: Route.LOGIN
+      route: Route.LOGIN,
+      showBlocks:false
     };
     this.isLoggedIn = this.isLoggedIn.bind(this);
     this.isLoggedIn();
-
     this.onLogIn = this.onLogIn.bind(this);
     this.onSignup = this.onSignup.bind(this);
     this.onLoggedIn = this.onLoggedIn.bind(this);
     this.logout = this.logout.bind(this);
+    this.onToggleBlocks = this.onToggleBlocks.bind(this);
   }
 
   onLogIn() {
@@ -35,6 +38,14 @@ class User extends Component {
       route: Route.LOGIN
     });
   }
+
+  onToggleBlocks() {
+      this.setState({
+        showBlocks: !this.state.showBlocks
+      });
+      console.log('toggle')
+
+    }
 
   onLoggedIn() {
     this.setState({
@@ -80,16 +91,17 @@ class User extends Component {
         links={[<Link key="organization" to="organization">ORGANIZATION</Link>]}
       >
         <div className="content">
+
           <div className="inner-content">
             <div>
               <div className="splitView">
                 <Phone homeButton={this.logout}>
                   {view}
                 </Phone>
-                <BlockExplorer />
+                {(this.state.showBlocks) && <BlockExplorer/> }
               </div>
-
             </div>
+            <Toggle labelA="Hide Blockchain" labelB="Show Blockchain" className="toggler" toggled={this.state.showBlocks} onToggle={this.onToggleBlocks}></Toggle>
           </div>
         </div>
       </SiteLayout>
