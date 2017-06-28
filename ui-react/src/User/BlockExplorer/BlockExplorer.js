@@ -27,17 +27,12 @@ class BlockExplorer extends Component {
   render() {
     return (
       <div>
-        { this.state.preview ?
-          <BlockExplorerPreview
-            blocks={this.state.blocks}
-            onExpand={() => this.setState({ preview: false })}
-          />
-          :
+
           <BlockExplorerDetailView
             blocks={this.state.blocks}
             onMin={() => this.setState({ preview: true })}
           />
-        }
+        
       </div>
     );
   }

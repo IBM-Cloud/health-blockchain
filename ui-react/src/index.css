@@ -19,3 +19,7 @@ body {
 h3 {
   font-size: 10px;
 }
+
+.fcTextInput {
+  border: none;
+}

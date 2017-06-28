@@ -1,9 +1,10 @@
 .BlockExplorerDetailView {
-  padding-left: 30px;
+  padding-left: 90px;
   border-left: 1px solid;
   border-color: #cceef2;
-  margin-left: 30px;
-  padding-right: 30px;
+  margin-left: 60px;
+  width: 320px;
+  transition: width 2s;
 }
 
 .block {
@@ -19,8 +20,8 @@
   display: flex;
   -ms-flex-direction: column;
   flex-direction: column;
-  margin-left: 30px;
   width: 320px;
+  transition: width 2s;
   /* padding-top: 10px; */
   animation-name: slideDown;
   -webkit-animation-name: slideDown;
@@ -82,7 +83,7 @@
   padding-right: 10px;
   background: white;
   height: 50px;
-  border-bottom: 2px solid #cceef2;
+  border-bottom: 1px solid #9DC3D4;
   -ms-flex-line-pack: center;
   align-content: center;
 }
@@ -100,7 +101,7 @@
 
 .blockRowLabel {
   width: 60px;
-  border-right: 2px solid #cceef2;
+  border-right: 1px solid #9DC3D4;
   padding: 10px;
   /* background: #cceef2; */
   display: -ms-flexbox;

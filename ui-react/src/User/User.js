@@ -92,14 +92,6 @@ class User extends Component {
         <div className="content">
 
           <div className="inner-content">
-            <div>
-              <div className="splitView">
-                <Phone homeButton={this.logout}>
-                  {view}
-                </Phone>
-                {(this.state.showBlocks) && <BlockExplorer /> }
-              </div>
-            </div>
             <Toggle
               id="myToggle"
               labelA="Hide Blockchain"
@@ -108,6 +100,15 @@ class User extends Component {
               toggled={this.state.showBlocks}
               onToggle={this.onToggleBlocks}
             />
+            <div>
+              <div className="splitView">
+                <Phone homeButton={this.logout}>
+                  {view}
+                </Phone>
+                {(this.state.showBlocks) && <BlockExplorer /> }
+              </div>
+            </div>
+
           </div>
         </div>
       </SiteLayout>

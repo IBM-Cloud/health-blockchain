@@ -9,9 +9,7 @@ class BlockExplorerDetailView extends Component {
   render() {
     return (
       <div className="BlockExplorerDetailView">
-        <div className="minimizeButton" role="presentation" onClick={this.props.onMin}>
-          <div className="minimizeSign" />
-        </div>
+
         {this.props.blocks.map(block => (
           <Block block={block} key={block.id} />
         ))}
