@@ -22,7 +22,7 @@ class User extends Component {
     super(props);
     this.state = {
       route: Route.LOGIN,
-      showBlocks:false
+      showBlocks: false
     };
     this.isLoggedIn = this.isLoggedIn.bind(this);
     this.isLoggedIn();
@@ -40,12 +40,11 @@ class User extends Component {
   }
 
   onToggleBlocks() {
-      this.setState({
-        showBlocks: !this.state.showBlocks
-      });
-      console.log('toggle')
-
-    }
+    this.setState({
+      showBlocks: !this.state.showBlocks
+    });
+    console.log('toggle');
+  }
 
   onLoggedIn() {
     this.setState({
@@ -98,10 +97,17 @@ class User extends Component {
                 <Phone homeButton={this.logout}>
                   {view}
                 </Phone>
-                {(this.state.showBlocks) && <BlockExplorer/> }
+                {(this.state.showBlocks) && <BlockExplorer /> }
               </div>
             </div>
-            <Toggle labelA="Hide Blockchain" labelB="Show Blockchain" className="toggler" toggled={this.state.showBlocks} onToggle={this.onToggleBlocks}></Toggle>
+            <Toggle
+              id="myToggle"
+              labelA="Hide Blockchain"
+              labelB="Show Blockchain"
+              className="toggler"
+              toggled={this.state.showBlocks}
+              onToggle={this.onToggleBlocks}
+            />
           </div>
         </div>
       </SiteLayout>
