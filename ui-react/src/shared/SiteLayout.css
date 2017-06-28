@@ -80,9 +80,11 @@ body {
 }
 
 .footerInfo {
-  font-size: 10px;
+  font-size: 11px;
   text-transform: uppercase;
   font-family: sans-serif;
+  background: #b0cfdc;
+  padding: 5px;
 }
 
 .footerInfo>a {
