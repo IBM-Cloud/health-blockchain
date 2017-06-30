@@ -1,13 +1,14 @@
 {
   "extends" : [
-    "airbnb",
+    // "airbnb",
   ],
   "plugins": [
     "react",
     "promise"
   ],
   "env"     : {
-    "browser" : false
+    "browser" : false,
+    "es6": true
   },
   "globals" : {
   },
@@ -31,6 +32,7 @@
     "react/jsx-filename-extension": [0],
     "func-names": [0],
     "react/prefer-stateless-function": [1],
-    "no-use-before-define": ["error", { "functions": false, "classes": true }]
+    "no-use-before-define": ["error", { "functions": false, "classes": true }],
+    "modules": true
   }
 }
