@@ -69,3 +69,7 @@
   font-weight: 300;
   color: #0F4C81;
 }
+
+.bx--detail-page-header-icon-container {
+  display: none;
+}
