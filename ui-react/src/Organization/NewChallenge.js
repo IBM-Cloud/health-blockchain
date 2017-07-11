@@ -44,7 +44,7 @@ class NewChallenge extends Component {
     return (
       <OrgLayout>
         <div className="new-challenge-container">
-          <Breadcrumb className="some-class">
+          <Breadcrumb className="fcTextInput">
             <BreadcrumbItem>
               <Link to="/organization">Challenges</Link>
             </BreadcrumbItem>
@@ -58,18 +58,18 @@ class NewChallenge extends Component {
               </p>
             </div>
             <div className="newChallengeFormContainer">
-              <FormGroup className="some-class" legendText="Challenge Title">
+              <FormGroup className="fcTextInput" legendText="Challenge Title">
                 <TextInput
-                  className="some-class"
+                  className="fcTextInput"
                   id="title"
                   placeholder={this.state.title}
                   onChange={this.handleInputChange}
                 />
               </FormGroup>
 
-              <FormGroup className="some-class" legendText="Type of Challenge">
+              <FormGroup className="fcTextInput" legendText="Type of Challenge">
                 <Select
-                  className="some-class"
+                  className="fcTextInput"
                   id="activity"
                   defaultValue={this.state.activity}
                   onChange={this.handleInputChange}
@@ -81,25 +81,25 @@ class NewChallenge extends Component {
                 </Select>
               </FormGroup>
 
-              <FormGroup className="some-class" legendText="Description">
+              <FormGroup className="fcTextInput" legendText="Description">
                 <TextArea
-                  className="some-class"
+                  className="fcTextInput"
                   id="description"
                   value={this.state.description}
                   onChange={this.handleInputChange}
                 />
               </FormGroup>
 
-              <FormGroup className="some-class" legendText="Challenge Duration">
+              <FormGroup className="fcTextInput" legendText="Challenge Duration">
                 <TextInput
-                  className="some-class"
+                  className="fcTextInput"
                   id="start"
                   labelText="Start Date"
                   value={this.state.start}
                   onChange={this.handleInputChange}
                 />
                 <TextInput
-                  className="some-class"
+                  className="fcTextInput"
                   id="end"
                   labelText="End Date"
                   value={this.state.end}
@@ -107,12 +107,12 @@ class NewChallenge extends Component {
                 />
               </FormGroup>
 
-              <FormGroup className="some-class" legendText="Goal">
+              <FormGroup className="fcTextInput" legendText="Goal">
                 <p>
                   Number of Workouts
                 </p>
                 <TextInput
-                  className="some-class"
+                  className="fcTextInput"
                   id="goal"
                   label="Number of Workouts"
                   type="number"
@@ -121,12 +121,12 @@ class NewChallenge extends Component {
                 />
               </FormGroup>
 
-              <FormGroup className="some-class" legendText="Rewards">
+              <FormGroup className="fcTextInput" legendText="Rewards">
                 <p>
                   Reward tokens in the system
                 </p>
                 <TextInput
-                  className="some-class"
+                  className="fcTextInput"
                   id="rewards"
                   label="Rewards"
                   type="number"

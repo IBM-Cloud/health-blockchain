@@ -44,8 +44,8 @@ class OrgChallenges extends Component {
               <Card key={challenge._id} onClick={() => this.onClick(challenge)} className="challengeCard">
                 <div className="overflowMenuContainer">
                   <OverflowMenu className="overflowMenu">
-                    <OverflowMenuItem className="some-class" itemText="End" />
-                    <OverflowMenuItem className="some-class" itemText="Delete" />
+                    <OverflowMenuItem className="fcTextInput" itemText="End" />
+                    <OverflowMenuItem className="fcTextInput" itemText="Delete" />
                   </OverflowMenu>
                 </div>
                 <div className="bx--card-overview__about" >

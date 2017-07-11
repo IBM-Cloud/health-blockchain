@@ -53,3 +53,20 @@
   width: 8px;
   background: white;
 }
+
+.logolink {
+  width: 18px;
+  color: #0F4C81;
+  border-radius: 15px;
+  font-size: 20px;
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  color: #00ABC0;
+  /*background: #cceef2;*/
+  /*margin-top: 2px;*/
+  /*margin: 1px;*/
+}

@@ -10,7 +10,7 @@ class Credentials extends Component {
       <div>
         <FormGroup>
           <TextInput
-            className="some-class"
+            className="fcTextInput"
             id="email"
             name="email"
             labelText="Username"
@@ -21,7 +21,7 @@ class Credentials extends Component {
         <FormGroup>
           <TextInput
             type="password"
-            className="some-class"
+            className="fcTextInput"
             id="password"
             name="password"
             labelText="Password"

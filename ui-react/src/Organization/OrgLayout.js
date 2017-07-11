@@ -43,7 +43,7 @@ class OrgLayout extends Component {
   }
 
   render() {
-    let links = <Link to="/">USER</Link>;
+    let links = <Link to="/"><img className="bannerLink" src="images/user.svg" title="USER" alt="USER"></img></Link>;
     if (this.state.loggedIn) {
       links = [
         <a href="/organization" onClick={this.logout}>Logout</a>,

@@ -87,7 +87,7 @@ class User extends Component {
       <SiteLayout
         {...this.props}
         className="user-layout-container"
-        links={[<Link key="organization" to="organization">ORGANIZATION</Link>]}
+        links={[<Link key="organization" to="organization"><img className="bannerLink" src="images/services.svg" title="ORGANIZATION" alt="ORGANIZATION"></img></Link>]}
       >
         <div className="content">
 
