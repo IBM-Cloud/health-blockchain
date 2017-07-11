@@ -20,3 +20,20 @@
 .bx--form-item {
   font-family: sans-serif !important;
 }
+
+.orgLoginTitle {
+  font-family: sans-serif;
+  background: #a6c9d8;
+  color: #0F4C81;
+  height: 30px;
+  font-size: 20px;
+  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  width: 330px;
+}

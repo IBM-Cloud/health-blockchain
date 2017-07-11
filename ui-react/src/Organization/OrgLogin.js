@@ -67,7 +67,9 @@ class OrgLogin extends Component {
   render() {
     return (
       <OrgLayout>
+
         <div className="orgLoginContainer">
+          <div className="orgLoginTitle">ORGANIZATION LOGIN</div>
           <Credentials
             handleInputChange={this.handleInputChange}
             email={this.state.email}
