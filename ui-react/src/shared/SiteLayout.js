@@ -34,7 +34,7 @@ class SiteLayout extends Component {
               <a  href="https://github.com/IBM-Bluemix/health-blockchain">
             <div className="githubarea">
               <div className="githublabel">view on github</div>
-                <img className="githubimage" border="0" alt="W3Schools" src="images/github.svg" width="24" height="24"></img>
+                <img className="githubimage"  alt="W3Schools" src="/images/github.svg" width="24" height="24"></img>
             </div>
           </a>
           </div>

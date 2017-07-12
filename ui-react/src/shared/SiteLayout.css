@@ -31,6 +31,7 @@ body {
   flex-direction: row;
   align-items: center;
   max-width: 1010px;
+  min-width: 1010px;
   justify-content: space-between;
 }
 
