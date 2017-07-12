@@ -88,18 +88,19 @@ class User extends Component {
         {...this.props}
         className="user-layout-container"
         links={[<Link key="organization" to="organization"><img className="bannerLink" src="images/services.svg" title="ORGANIZATION" alt="ORGANIZATION"></img></Link>]}
+        toggle={  <Toggle
+            id="myToggle"
+            labelA="Hide Blockchain"
+            labelB="Show Blockchain"
+            className="toggler"
+            toggled={this.state.showBlocks}
+            onToggle={this.onToggleBlocks}
+          />}
       >
         <div className="content">
 
           <div className="inner-content">
-            <Toggle
-              id="myToggle"
-              labelA="Hide Blockchain"
-              labelB="Show Blockchain"
-              className="toggler"
-              toggled={this.state.showBlocks}
-              onToggle={this.onToggleBlocks}
-            />
+
             <div>
               <div className="splitView">
                 <Phone homeButton={this.logout}>

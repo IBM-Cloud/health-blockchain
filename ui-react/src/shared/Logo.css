@@ -25,6 +25,7 @@
   text-align: center;
   align-content: center;
   align-items: center;
+  width: 120px;
 }
 
 .title a {
@@ -55,7 +56,7 @@
 }
 
 .logolink {
-  width: 18px;
+  letter-spacing: 10px;
   color: #0F4C81;
   border-radius: 15px;
   font-size: 20px;

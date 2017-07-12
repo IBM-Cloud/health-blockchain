@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import Logo from './Logo';
 import './SiteLayout.css';
+import { Toggle } from 'carbon-components-react';
 
 class SiteLayout extends Component {
 
@@ -11,6 +12,7 @@ class SiteLayout extends Component {
         <div className="site-header">
           <div className="site-header-inner">
             <Logo/>
+              {this.props.toggle}
             <div className="site-links">
               {this.props.links}
             </div>
@@ -24,7 +26,6 @@ class SiteLayout extends Component {
           </div>
         </div>
         <div className="builttext">
-
             <div className="built">Built with
             <a href="https://www.ibm.com/cloud-computing/bluemix/">IBM Bluemix </a>
               and
@@ -45,13 +46,15 @@ class SiteLayout extends Component {
 SiteLayout.defaultProps = {
   links: null,
   children: null,
-  className: null
+  className: null,
+  toggle:null
 };
 
 SiteLayout.propTypes = {
   links: PropTypes.array,
   children: PropTypes.object,
-  className: PropTypes.string
+  className: PropTypes.string,
+  toggle: PropTypes.object
 };
 
 export default SiteLayout;
