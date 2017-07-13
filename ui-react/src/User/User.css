@@ -187,3 +187,9 @@
     font-family: sans-serif !important;
     font-size: 16px !important;
   }
+
+  .visualToggle {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }

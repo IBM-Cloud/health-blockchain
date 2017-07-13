@@ -190,11 +190,11 @@ body {
 }
 
 .bx--toggle__text--left {
-  width: 130px;
+  /*width: 130px;*/
   text-align: center;
 }
 
 .bx--toggle__text--right {
-  width: 130px;
+  /*width: 130px;*/
   text-align: center;
 }

@@ -88,14 +88,14 @@ class User extends Component {
         {...this.props}
         className="user-layout-container"
         links={[<Link key="organization" to="organization"><img className="bannerLink" src="images/services.svg" title="ORGANIZATION" alt="ORGANIZATION"></img></Link>]}
-        toggle={  <Toggle
+        toggle={  <div className="visualToggle"><img className="bannerLink" src="/images/blue-phone.svg" title="Phone App only"></img><Toggle
             id="myToggle"
-            labelA="Hide Blockchain"
-            labelB="Show Blockchain"
+            labelA=""
+            labelB=""
             className="toggler"
             toggled={this.state.showBlocks}
             onToggle={this.onToggleBlocks}
-          />}
+          /><img className="bannerLink" src="/images/blue-blockchain.svg" title="Phone & Blockchain Explorer"></img></div>}
       >
         <div className="content">
 
