@@ -33,6 +33,6 @@
     "func-names": [0],
     "react/prefer-stateless-function": [1],
     "no-use-before-define": ["error", { "functions": false, "classes": true }],
-    "modules": true
+    "modules": 1
   }
 }
