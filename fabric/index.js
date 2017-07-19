@@ -26,14 +26,18 @@ const NS_ARENA = `${NS}.Arena`;
 class FabricConnection {
 	// NOTE :: destructuring to make interface explicit.
 	// @config = {connectionProfile, businessNetwork}
-	constructor(connectionProfile, businessNetwork, enrollmentID, enrollmentSecret) {
+	constructor() {
 		this.config = {};
 		this.events = [];
-		return this._connect(connectionProfile, businessNetwork, enrollmentID, enrollmentSecret);
+		this.conn = new BusinessNetworkConnection();		
+		// return this._connect(connectionProfile, businessNetwork, enrollmentID, enrollmentSecret);
 	}
 
+
+
 	// NOTE :: Default connection values are for the default composer peeradmin user
-	_connect(connectionProfile = 'hlfv1', businessNetwork = 'fitChain.main', enrollmentID = 'PeerAdmin', enrollmentSecret = 'password') {
+	connect(connectionProfile = 'hlfv1', businessNetwork = 'fitchain-composer', enrollmentID = 'PeerAdmin', enrollmentSecret = 'password') {
+		console.log([connectionProfile, businessNetwork, enrollmentID, enrollmentSecret]);
 		this.conn = new BusinessNetworkConnection();
 		return this.conn.connect(connectionProfile, businessNetwork, enrollmentID, enrollmentSecret).then(() => {
 			this.config = {connectionProfile, businessNetwork, enrollmentID};
@@ -45,22 +49,10 @@ class FabricConnection {
 		})
 	}
 
-	get events() {
-		return this.events;
-	}
-
-	get config() {
-		return this.config;
-	}
-
-	get factory() {
-		return this.factory;
-	}
-
 	// set identity used to interact with fabric.
 	useIdentity(enrollmentID, enrollmentSecret) {
 		const {connectionProfile, businessNetwork} = this.config;
-		return this._connect(connectionProfile, businessNetwork, enrollmentID, enrollmentSecret);
+		return this.connect(connectionProfile, businessNetwork, enrollmentID, enrollmentSecret);
 	}
 
 	// 
@@ -338,5 +330,6 @@ class FabricConnection {
 		return businessNetworkConnection.submitTransaction(txn);
 	}
 }
+
 
 module.exports = FabricConnection;
