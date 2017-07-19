@@ -3,5 +3,5 @@ config/credentials.json
 phone/build
 vcap-local.json
 coverage
-
+logs/
 npm-debug.log
