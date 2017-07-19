@@ -1,142 +1,342 @@
 'use strict';
 
-const AdminConnection = require('composer-admin').AdminConnection;
-const BrowserFS = require('browserfs/dist/node/index');
+// TODO :: THESE ARE FOR MOCK CONNECTION .. add later
+// const AdminConnection = require('composer-admin').AdminConnection;
+// const BrowserFS = require('browserfs/dist/node/index');
+// const BusinessNetworkDefinition = require('composer-common').BusinessNetworkDefinition;
+// const path = require('path');
+// const bfs_fs = BrowserFS.BFSRequire('fs');
+
+
 const BusinessNetworkConnection = require('composer-client').BusinessNetworkConnection;
-const BusinessNetworkDefinition = require('composer-common').BusinessNetworkDefinition;
-const path = require('path');
 
-// TEMPORARY -- use browser FS.
-const bfs_fs = BrowserFS.BFSRequire('fs');
+// Namespace constants
+// TODO :: move into separate "constants" module
+const NS = 'fitChain.main';
 
-var CHALLENGE_REGISTRY = "fitChain.main.Challenge";
-var ARENA_REGISTRY = "fitChain.main.Arena";
-var BUSINESS_REGISTRY = "fitChain.main.Business";
-var ATHLETE_REGISTRY = "fitChain.main.Athlete";
-var WALLET_REGISTRY = "fitChain.main.Wallet";
-var CHALLENGE_ENTRY_REGISTRY ="fitChain.main.ChallengeEntry";
+const NS_OPERATOR = `${NS}.Operator`;
+const NS_BUSINESS = `${NS}.Business`;
+const NS_ATHLETE = `${NS}.Athlete`;
+
+const NS_CHALLENGE = `${NS}.Challenge`;
+const NS_CHALLENGE_ENTRY = `${NS}.ChallengeEntry`;
+const NS_ARENA = `${NS}.Arena`;
 
 
-module.exports = (profile, network, userID, userSecret) => {
-	let events = [];
-	let businessNetworkConnection;
-  	let factory;
+class FabricConnection {
+	// NOTE :: destructuring to make interface explicit.
+	// @config = {connectionProfile, businessNetwork}
+	constructor(connectionProfile, businessNetwork, enrollmentID, enrollmentSecret) {
+		this.config = {};
+		this.events = [];
+		return this._connect(connectionProfile, businessNetwork, enrollmentID, enrollmentSecret);
+	}
 
-    businessNetworkConnection = new BusinessNetworkConnection({
-        fs: bfs_fs
-	});
-
-	businessNetworkConnection = businessNetworkConnection.connect('hlfv1', 'fitChain.main', identity.userID, identity.userSecret);
-
-	factory = businessNetworkConnection.getBusinessNetwork().getFactory();
-
-  	return {
-      issueIdentity: (userID, userSecret) => {
-        return businessNetworkConnection.issueIdentity(id, secret);
-      },
-	  setIdentity: (userID, userSecret) => {
-		  return businessNetworkConnection.disconnect()
-			.then(() => {
-			businessNetworkConnection = new BusinessNetworkConnection({
-				fs: bfs_fs
+	// NOTE :: Default connection values are for the default composer peeradmin user
+	_connect(connectionProfile = 'hlfv1', businessNetwork = 'fitChain.main', enrollmentID = 'PeerAdmin', enrollmentSecret = 'password') {
+		this.conn = new BusinessNetworkConnection();
+		return this.conn.connect(connectionProfile, businessNetwork, enrollmentID, enrollmentSecret).then(() => {
+			this.config = {connectionProfile, businessNetwork, enrollmentID};
+			this.events = [];
+			this.conn.on('event',(e) => {
+				this.events.push(e);
 			});
-			events = [];
-			businessNetworkConnection.on('event', (event) => {
-				events.push(event);
-			});
-			return businessNetworkConnection.connect('hlfv1', 'fitChain.main', userID, userSecret);
-			});
-    },
-    participants: {
-      athletes: {
-        create: (userID, username, email, profileURL) => {
-			let partcipant = factory.newResource('fitChain.main', 'Athlete', userID);
-			participant.username = username;
-			participant.email = email;
-			participant.profileURL = profileURL;
+			this.factory = this.conn.getBusinessNetwork().getFactory();
+		})
+	}
 
-			return businessNetworkConnection.getParticipantRegistry(ATHLETE_REGISTRY).then((r) => {
-				r.add(participant);
-			});
-        },
-        get: (id) => {
-			return businessNetworkConnection.getParticipantRegistry(ATHLETE_REGISTRY).then((r) => {
-				r.get(id);
-			});
-        },
-        all: () => {
-			return businessNetworkConnection.getParticipantRegistry(ATHLETE_REGISTRY).then((r) => {
-				r.getAll();
-			});
-        }
-      },
-	  businesses: {
-        create: (userID, username, email, profileURL) => {
-			let partcipant = factory.newResource('fitChain.main', 'Business', userID);
-			participant.username = username;
-			participant.email = email;
-			participant.profileURL = profileURL;
+	get events() {
+		return this.events;
+	}
 
-			return businessNetworkConnection.getParticipantRegistry(BUSINESS_REGISTRY).then((r) => {
-				return r.add(participant);
-			});
-        },
-        get: (id) => {
-			return businessNetworkConnection.getParticipantRegistry(BUSINESS_REGISTRY).then((r) => {
-				return r.get(id);
-			});
-        },
-        all: () => {
-			return businessNetworkConnection.getParticipantRegistry(BUSINESS_REGISTRY).then((r) => {
-				return r.getAll();
-			});
-        }
-      },
+	get config() {
+		return this.config;
+	}
 
-    },
-    assets: {
-		challenges: {
-			create: (id) => {
-				let challenge = factory.newResource('fitChain.main', 'Challlenge', id, {generate: 'sample'});
-				return businessNetworkConnection.getParticipantRegistry(CHALLENGE_REGISTRY).then((r) => {
-					return r.add(challenge);
-				});
-			},
-			get: (id) => {
-				return businessNetworkConnection.getParticipantRegistry(CHALLENGE_REGISTRY).then((r) => {
-					return r.get(id);
-				});
-			},
-			all: () => {
-				return businessNetworkConnection.getParticipantRegistry(CHALLENGE_REGISTRY).then((r) => {
-					return r.getAll();
-				});
-			}
-		},
-    },
-    transactions: {
-		// NOTE :: all txns currently generating fake data.
-		issueTokens: (target) => {
-			let txn = factory.newTransaction('fitChain.main', 'IssueTokens');
-			txn.wallet = target;
-			return businessNetworkConnection.submitTransaction(txn);
-		},
-		publishChallenge: (data) => {
-			let txn = factory.newTransaction('fitChain.main', 'PublishChallenge','', {generate: 'sample'});
-			return businessNetworkConnection.submitTransaction(txn);
-		},
-		enterChallenge: (data) => {
-			let txn = factory.newTransaction('fitChain.main', 'EnterChallenge','', {generate: 'sample'});
-			return businessNetworkConnection.submitTransaction(txn);
-		},
-		withdrawFromChallenge: (data) => {
-			let txn = factory.newTransaction('fitChain.main', 'WithdrawFromChallenge','', {generate: 'sample'});
-			return businessNetworkConnection.submitTransaction(txn);
-		},
-		submitChallengeClaim: (data) => {
-			let txn = factory.newTransaction('fitChain.main', 'SubmitChallengeClaim','', {generate: 'sample'});
-			return businessNetworkConnection.submitTransaction(txn);
+	get factory() {
+		return this.factory;
+	}
+
+	// set identity used to interact with fabric.
+	useIdentity(enrollmentID, enrollmentSecret) {
+		const {connectionProfile, businessNetwork} = this.config;
+		return this._connect(connectionProfile, businessNetwork, enrollmentID, enrollmentSecret);
+	}
+
+	// 
+	// @participant is the fully qualified ID of the participant 
+	// @enrollmentID is the name of the identity / fabric enrollment
+	issueIdentity(participant, enrollmentID) {
+		return this.conn.issueIdentity(participant, enrollmentID);
+	}
+
+	//////////////////
+	// PARTICIPANTS //
+	//////////////////
+	
+
+	// @userID
+	// @data
+	createBusiness(userID, data = {}, generate = false){
+		let partcipant = this.factory.newResource(NS, 'Business', userID, {generate: (generate) ? 'sample':'empty'});
+		
+		const {username, email, profileURL} = data;
+		if (username) participant.username = username;
+		if (email) participant.email = email;
+		if (profileURL) participant.profileURL = profileURL;
+
+		participant.wallet = this.factory.newConcept(NS, 'EmbeddedWallet');
+
+		return this.conn.getParticipantRegistry(NS_BUSINESS).then((r) => {
+			return r.add(participant);
+		});
+	}
+
+	getBusiness(userID){
+		return this.conn.getParticipantRegistry(NS_BUSINESS).then((r) => {
+			return r.get(userID);
+		});
+	}
+
+	// TODO :: introduce query scopes.
+	listBusinesses(/*scope*/){
+		return this.conn.getParticipantRegistry(NS_BUSINESS).then((r) => {
+			return r.getAll();
+		});
+	}
+
+	// @userID
+	// @data
+	createAthlete(userID, data = {}, generate = false){
+		let partcipant = this.factory.newResource(NS, 'Athlete', userID, {generate: (generate) ? 'sample':'empty'});
+
+		const {username, email, profileURL} = data;
+		if (username) participant.username = username;
+		if (email) participant.email = email;
+		if (profileURL) participant.profileURL = profileURL;
+
+		participant.wallet = this.factory.newConcept(NS, 'EmbeddedWallet');		
+
+		return this.conn.getParticipantRegistry(NS_ATHLETE).then((r) => {
+			return r.add(participant);
+		});
+	}
+
+	getAthlete(userID){
+		return this.conn.getParticipantRegistry(NS_ATHLETE).then((r) => {
+			return r.get(userID);
+		});
+	}
+
+	listAthletes(/*scope*/){
+		return this.conn.getParticipantRegistry(NS_ATHLETE).then((r) => {
+			return r.getAll();
+		});
+	}
+
+	////////////////
+	// CHALLENGES //
+	////////////////
+
+	newChallenge(challengeID, data = {}, sample = false, includeOptionalFields = true) {
+
+		const options = {
+			generate: (sample) ? 'sample':'empty',
+			includeOptionalFields
+		};
+
+		let challenge = this.factory.newResource(NS, 'Challenge', challengeID, options);
+
+		const {
+			name,
+			description,
+			expiration,
+			entryFee,
+			tokenReward,
+			maxParticipants
+		} = data;
+
+		if (name) challenge.name = name;
+		if (description) challenge.description = description;
+		if (expiration) challenge.expiration = expiration;
+		if (entryFee) challenge.entryFee = entryFee;
+		if (tokenReward) challenge.tokenReward = tokenReward;
+		if (maxParticipants) challenge.maxParticipants = maxParticipants;
+
+		return challenge;
+	}
+
+	newChallengeQuantityRequirements(data = {}, sample = false, includeOptionalFields = true) {
+
+		const options = {
+			generate: (sample) ? 'sample':'empty',
+			includeOptionalFields
+		};
+
+		let req = this.factory.newConcept(NS, 'HKQuantityRequirements', options)
+
+		const {
+			quantityType,
+			quantityOperation,
+			value,			
+			timeSpan,
+		} = data;
+
+		if (quantityType) req.quantityType = quantityType;
+		if (quantityOperation) req.quantityOperation = quantityOperation;
+		if (value) req.value = value;		
+		if (timeSpan) {
+			let {start, stop} = timeSpan;
+			if (!(start && stop)) throw new Error("Invalid timeSpan attribute; expected {start:TS, stop:TS}");
+			req.timeSpan = this.factory.newConcept(NS,'ChallengeTimeSpan');
+			req.timeSpan.start = start;
+			req.timeSpan.stop = stop;
 		}
-    }
-  }
-};
+
+		return req;
+	}
+
+	newChallengeWorkoutRequirements(data = {}, sample = false, includeOptionalFields = true) {
+
+		const options = {
+			generate: (sample) ? 'sample':'empty',
+			includeOptionalFields
+		};
+		
+		let req = this.factory.newConcept(NS, 'HKWorkoutRequirements', options)
+
+		const {
+			workoutType,
+			workoutProperty,
+			value,
+			count,
+			timeSpan
+		} = data;
+
+		if (workoutType) req.workoutType = workoutType;
+		if (workoutProperty) req.workoutProperty = workoutProperty;
+		if (value) req.value = value;
+		if (count) req.count = count;
+		if (timeSpan) {
+			let {start, stop} = timeSpan;
+			if (!(start && stop)) throw new Error("Invalid timeSpan attribute; expected {start:TS, stop:TS}");
+			req.timeSpan = this.factory.newConcept(NS,'ChallengeTimeSpan');
+			req.timeSpan.start = start;
+			req.timeSpan.stop = stop;
+		}
+		
+		return req;
+	}
+
+
+	createChallenge(challenge, businessID){
+
+		if (!(challenge.quantityRequirements || challenge.workoutRequirements)) {
+			throw new Error("Invalid Challenge resource: either quantityRequirements or workoutRequirements must be present");
+		}
+
+		challenge.owner = this.factory.newRelationship(NS,'Business', businessID);
+		challenge.escrowWallet = this.factory.newConcept(NS,'EmbeddedWallet');
+		challenge.entries = [];
+
+		return this.conn.getAssetRegistry(NS_CHALLENGE).then((r) => {
+			return r.add(challenge);
+		});
+
+	}
+
+	getChallenge(challengeID) {
+		return this.conn.getAssetRegistry(NS_CHALLENGE).then((r) => {
+			return r.get(challengeID);
+		});
+	}
+
+	// scope by: ownerID, state, [type, requirements]
+	listChallenges(scope = {}) {
+		// NOTE :: add other fields here
+		const {ownerID, state} = scope;
+
+		let queryString = `SELECT ${NS_CHALLENGE}`;
+		const ownerIDString = `WHERE (owner == _$ownerID)`;
+		const stateString = `WHERE (state == _$state)`;
+
+		if (ownerID && state) {
+			queryString += ` ${ownerIDString} AND ${stateString}`;
+		} else if (ownerID) {
+			queryString += ` ${ownerIDString}`;
+		} else if (state) {
+			queryString += ` ${stateString}`;			
+		}
+
+		const query = this.conn.buildQuery(queryString);
+		return this.conn.query(query, {ownerID, state});
+	}
+
+	// get all challenge entries for a 
+	// scope: athleteID, [challenge ?]
+	getChallengeEntry(challengeEntryID) {
+		return this.conn.getAssetRegistry(NS_CHALLENGE_ENTRY).then((r) => {
+			return r.get(challengeEntryID);
+		});
+	}
+
+	// scope : by user ID
+	listChallengeEntries(scope = {}) {
+		const {athleteID, state} = scope;
+
+		let queryString = `SELECT ${NS_CHALLENGE_ENTRY}`;
+		const athleteIDString = `WHERE (owner == _$athleteID)`;
+		const stateString = `WHERE (state == _$state)`;
+
+		if (athleteID && state) {
+			queryString += ` ${athleteIDString} AND ${stateString}`;
+		} else if (athleteID) {
+			queryString += ` ${athleteIDString}`;
+		} else if (state) {
+			queryString += ` ${stateString}`;			
+		}
+
+		const query = this.conn.buildQuery(queryString);
+		return this.conn.query(query, {athleteID, state});
+	}
+
+	////////////////////////////
+	// CHALLENGE TRANSACTIONS //
+	////////////////////////////	
+
+	// Can ONLY be submitted by a business user against a tranasaction they own.  
+	// escrowAmount is optional -- will replace automatic escrow amount for rewards
+	businessPublishChallenge(challengeID, arenaID, escrowAmount) {
+		// create new challenge transaction.
+		let txn = this.factory.newTransaction(NS, 'PublishChallengeTransaction');
+		txn.challenge = this.factory.newRelationship(NS, 'Challenge', challengeID);
+		txn.arena = this.factory.newRelationship(NS, 'Arena', arenaID);
+
+		return this.conn.submitTransaction(txn);
+	}
+
+
+	athleteEnterChallenge(challengeID, athleteID) {
+		let txn = this.factory.newTransaction(NS, 'EnterChallengeTransaction');
+		txn.challenge = this.factory.newRelationship(NS, 'Challenge', challengeID);
+		txn.athlete = this.factory.newRelationship(NS, 'Athlete', athleteID);
+
+		return this.conn.submitTransaction(txn);
+	}
+
+	athleteWithdrawFromChallenge(challengeEntryID) {
+		let txn = this.factory.newTransaction(NS, 'WithdrawFromChallengeTransaction');
+		txn.challengeEntry = this.factory.newRelationship(NS, 'Challenge', challengeEntryID);
+
+		// NOTE :: need to confirm that validation rules in ACL can restrict this txn from only entry's user.  I think association will be loaded..
+		return this.conn.submitTransaction(txn);
+	}
+
+	// TODO :: Add "claim" data once it's determined what that is.
+	athleteSubmitChallengeClaim(challengeEntryID) {
+		let txn = factory.newTransaction('fitChain.main', 'SubmitChallengeClaim','', {generate: 'sample'});
+		return businessNetworkConnection.submitTransaction(txn);
+	}
+}
+
+module.exports = FabricConnection;
