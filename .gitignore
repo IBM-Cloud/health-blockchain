@@ -4,4 +4,5 @@ phone/build
 vcap-local.json
 coverage
 logs/
+fabric/test.js
 npm-debug.log

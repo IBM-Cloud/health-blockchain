@@ -29,29 +29,27 @@ class FabricConnection {
 	constructor() {
 		this.config = {};
 		this.events = [];
-		this.conn = new BusinessNetworkConnection();		
-		// return this._connect(connectionProfile, businessNetwork, enrollmentID, enrollmentSecret);
+		this.conn = new BusinessNetworkConnection();
 	}
-
-
 
 	// NOTE :: Default connection values are for the default composer peeradmin user
 	connect(connectionProfile = 'hlfv1', businessNetwork = 'fitchain-composer', enrollmentID = 'PeerAdmin', enrollmentSecret = 'password') {
-		console.log([connectionProfile, businessNetwork, enrollmentID, enrollmentSecret]);
 		this.conn = new BusinessNetworkConnection();
-		return this.conn.connect(connectionProfile, businessNetwork, enrollmentID, enrollmentSecret).then(() => {
+		return this.conn.connect(connectionProfile, businessNetwork, enrollmentID, enrollmentSecret).then((networkDefinition) => {
 			this.config = {connectionProfile, businessNetwork, enrollmentID};
 			this.events = [];
 			this.conn.on('event',(e) => {
 				this.events.push(e);
 			});
 			this.factory = this.conn.getBusinessNetwork().getFactory();
+			return networkDefinition;
 		})
 	}
 
 	// set identity used to interact with fabric.
 	useIdentity(enrollmentID, enrollmentSecret) {
 		const {connectionProfile, businessNetwork} = this.config;
+		if (!(connectionProfile && businessNetwork)) throw new Error('Configuration not set.  call connect');
 		return this.connect(connectionProfile, businessNetwork, enrollmentID, enrollmentSecret);
 	}
 
@@ -131,7 +129,6 @@ class FabricConnection {
 	////////////////
 
 	newChallenge(challengeID, data = {}, sample = false, includeOptionalFields = true) {
-
 		const options = {
 			generate: (sample) ? 'sample':'empty',
 			includeOptionalFields
@@ -300,7 +297,7 @@ class FabricConnection {
 	// escrowAmount is optional -- will replace automatic escrow amount for rewards
 	businessPublishChallenge(challengeID, arenaID, escrowAmount) {
 		// create new challenge transaction.
-		let txn = this.factory.newTransaction(NS, 'PublishChallengeTransaction');
+		let txn = this.factory.newTransaction(NS, 'PublishChallenge');
 		txn.challenge = this.factory.newRelationship(NS, 'Challenge', challengeID);
 		txn.arena = this.factory.newRelationship(NS, 'Arena', arenaID);
 
@@ -309,7 +306,7 @@ class FabricConnection {
 
 
 	athleteEnterChallenge(challengeID, athleteID) {
-		let txn = this.factory.newTransaction(NS, 'EnterChallengeTransaction');
+		let txn = this.factory.newTransaction(NS, 'EnterChallenge');
 		txn.challenge = this.factory.newRelationship(NS, 'Challenge', challengeID);
 		txn.athlete = this.factory.newRelationship(NS, 'Athlete', athleteID);
 
@@ -317,7 +314,7 @@ class FabricConnection {
 	}
 
 	athleteWithdrawFromChallenge(challengeEntryID) {
-		let txn = this.factory.newTransaction(NS, 'WithdrawFromChallengeTransaction');
+		let txn = this.factory.newTransaction(NS, 'WithdrawFromChallenge');
 		txn.challengeEntry = this.factory.newRelationship(NS, 'Challenge', challengeEntryID);
 
 		// NOTE :: need to confirm that validation rules in ACL can restrict this txn from only entry's user.  I think association will be loaded..
@@ -326,9 +323,20 @@ class FabricConnection {
 
 	// TODO :: Add "claim" data once it's determined what that is.
 	athleteSubmitChallengeClaim(challengeEntryID) {
-		let txn = factory.newTransaction('fitChain.main', 'SubmitChallengeClaim','', {generate: 'sample'});
-		return businessNetworkConnection.submitTransaction(txn);
+		let txn = this.factory.newTransaction(NS, 'SubmitChallengClaim');
+		txn.challengeEntry = this.factory.newRelationship(NS, 'Challenge', challengeEntryID);
+		txn.claim = this.factory.newConcept(NS, 'ChallengeClaim');
+		// NOTE :: need to confirm that validation rules in ACL can restrict this txn from only entry's user.  I think association will be loaded..
+		return this.conn.submitTransaction(txn);
 	}
+
+	operatorIssueTokens(userID, amount = 0) {
+		let txn = this.factory.newTransaction(NS, 'SubmitChallengeClaim');
+		txn.recipient = this.factory.newRelationship(NS, 'Business', userID);
+		txn.amount = amount;
+		return this.conn.submitTransaction(txn);
+	}
+
 }
 
 
