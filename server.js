@@ -9,6 +9,10 @@ const bodyParser = require('body-parser');
 const session = require('express-session');
 const async = require('async');
 
+// Create fabric connection objects
+let FabricConnection = require('./fabric');
+let fabric = new FabricConnection();
+
 // configuration ===============================================================
 // load local VCAP configuration
 let vcapLocal = null;
@@ -56,47 +60,56 @@ app.use('/api/private/blockchain', require('./routes/blockchain.js'));
 app.use(express.static(`${__dirname}/ui-react/build`));
 
 function initializeApp(readyCallback) {
-  async.waterfall([
-    // initialize passport configuration
-    (callback) => {
-      require('./config/passport')(passport, appEnv, () => {
-        // user database created
+  // initialize fabric connection, pass into each route handler constructor.
+  
+
+
+  // TODO :: load from configuration file
+  // TODO :: initialize and pass into handler modules in better way.. this aint great.
+  return fabric.connect('hlfv1', 'org-acme-biznet').then((/*networkDef*/) => {
+    async.waterfall([
+      // initialize passport configuration
+      (callback) => {
+        require('./config/passport')(passport, appEnv, fabric, () => {
+          // user database created
+          callback();
+        });
+      },
+      // user workouts
+      (callback) => {
+        require('./routes/account/workouts')(appEnv, fabric, (err, router) => {
+          app.use('/api/account/workouts', router);
+          callback();
+        });
+      },
+      // organizations and market
+      (callback) => {
+        require('./routes/market')(appEnv, fabric, (err, router) => {
+          app.use('/api/', router);
+          callback();
+        });
+      },
+      // user challenges
+      (callback) => {
+        require('./routes/account/challenges')(appEnv, fabric, (err, router) => {
+          app.use('/api/account/challenges', router);
+          callback();
+        });
+      },
+      // everything else
+      (callback) => {
+        // this handles the case where someone has bookmarked a direct link to a React Router route
+        // the server needs to return the root html file
+        app.get('*', (req, res) => {
+          res.sendFile(`${__dirname}/ui-react/build/index.html`);
+        });
         callback();
-      });
-    },
-    // user workouts
-    (callback) => {
-      require('./routes/account/workouts')(appEnv, (err, router) => {
-        app.use('/api/account/workouts', router);
-        callback();
-      });
-    },
-    // organizations and market
-    (callback) => {
-      require('./routes/market')(appEnv, (err, router) => {
-        app.use('/api/', router);
-        callback();
-      });
-    },
-    // user challenges
-    (callback) => {
-      require('./routes/account/challenges')(appEnv, (err, router) => {
-        app.use('/api/account/challenges', router);
-        callback();
-      });
-    },
-    // everything else
-    (callback) => {
-      // this handles the case where someone has bookmarked a direct link to a React Router route
-      // the server needs to return the root html file
-      app.get('*', (req, res) => {
-        res.sendFile(`${__dirname}/ui-react/build/index.html`);
-      });
-      callback();
-    }
-  ], (err) => {
-    readyCallback(err, app);
+      }
+    ], (err) => {
+      readyCallback(err, app);
+    });
   });
+ 
 }
 
 app.start = () => {

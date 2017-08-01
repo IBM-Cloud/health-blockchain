@@ -9,7 +9,8 @@ let Account;
 // =====================================
 // EXPORT LOGIN & SIGNUP ===============
 // =====================================
-module.exports = function(passport, appEnv, readyCallback) {
+module.exports = function(passport, appEnv, fabric, readyCallback) {
+  // TODO :: use fabric connection object to initialize and set identities.
   Account = require('./database')(appEnv, dba,
     path.resolve(`${__dirname}/../seed/account.json`), () => {
       readyCallback();

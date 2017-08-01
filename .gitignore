@@ -6,3 +6,7 @@ coverage
 logs/
 fabric/test.js
 npm-debug.log
+
+# composer artifacts
+composer-data/
+composer.sh

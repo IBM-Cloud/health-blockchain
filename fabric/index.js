@@ -300,6 +300,7 @@ class FabricConnection {
 		let txn = this.factory.newTransaction(NS, 'PublishChallenge');
 		txn.challenge = this.factory.newRelationship(NS, 'Challenge', challengeID);
 		txn.arena = this.factory.newRelationship(NS, 'Arena', arenaID);
+		if (escrowAmount) txn.escrowAmount = escrowAmount;
 
 		return this.conn.submitTransaction(txn);
 	}

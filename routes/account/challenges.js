@@ -7,6 +7,8 @@ const router = express.Router();
 const dba = 'challenges';
 const marketDbName = 'market';
 const workoutsDbName = 'workouts';
+
+let fabric;
 let Challenges;
 let Market;
 let Workouts;
@@ -92,19 +94,26 @@ router.get('/', checkAuthenticated, (req, res) => {
 
 router.post('/accept/:marketChallengeId', checkAuthenticated, (req, res) => {
   console.log(`Accepting challenge for ${req.user._id}:`, req.params.marketChallengeId);
-  const userChallenge = {
-    accountId: req.user._id,
-    challengeId: req.params.marketChallengeId
-  };
-  Challenges.insert(userChallenge, (err, result) => {
-    if (err) {
-      res.status(500).send({ ok: false });
-    } else {
-      userChallenge._id = result.id;
-      userChallenge._rev = result.rev;
-      res.status(201).send(userChallenge);
-    }
+
+
+  fabric.athleteEnterChallenge(req.params.marketChallengeID, req.user._id).then((challengeEntry) => {
+    let us
+    res.status(201).send()
   });
+
+  // const userChallenge = {
+  //   accountId: req.user._id,
+  //   challengeId: req.params.marketChallengeId
+  // };
+  // Challenges.insert(userChallenge, (err, result) => {
+  //   if (err) {
+  //     res.status(500).send({ ok: false });
+  //   } else {
+  //     userChallenge._id = result.id;
+  //     userChallenge._rev = result.rev;
+  //     res.status(201).send(userChallenge);
+  //   }
+  // });
 });
 
 router.get('/summary', checkAuthenticated, (req, res) => {
@@ -201,7 +210,8 @@ router.get('/summary', checkAuthenticated, (req, res) => {
   });
 });
 
-module.exports = (appEnv, readyCallback) => {
+module.exports = (appEnv, _fabric, readyCallback) => {
+  fabric = _fabric;
   const Database = require('../../config/database');
   Workouts = Database(appEnv, workoutsDbName, null, () => {
     Market = Database(appEnv, marketDbName, null, () => {

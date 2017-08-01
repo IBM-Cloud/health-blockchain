@@ -86,7 +86,7 @@ router.delete('/:id', checkAuthenticated, (req, res) => {
   }
 });
 
-module.exports = (appEnv, readyCallback) => {
+module.exports = (appEnv, fabric, readyCallback) => {
   Workouts = require('../../config/database')(appEnv, dba,
     path.resolve(`${__dirname}/../../seed/workouts.json`), () => {
       readyCallback(null, router);

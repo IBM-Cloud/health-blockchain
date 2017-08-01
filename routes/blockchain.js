@@ -3,6 +3,8 @@ const express = require('express');
 
 const router = express.Router();
 
+// TODO :: connnect to fabric using node client
+
 router.get('/blocks', (req, res) => {
   res.sendFile(`${__dirname}/json/blockchain-get-blocks.json`);
 });

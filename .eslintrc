@@ -23,7 +23,7 @@
     "import/no-unresolved": [0],
     "new-cap": [2, { "capIsNew": false }],
     "no-param-reassign": [1, { "props": false }],
-    "max-len": [1],
+    "max-len": [0],
     "no-confusing-arrow": [2, {"allowParens": true}],
     "import/no-extraneous-dependencies": [0],
     "import/no-named-as-default": [0],
