@@ -90,6 +90,44 @@ The app comes with a toolchain you can use to deploy the solution with few click
    npm start
    ```
 
+
+## Using the fabric module
+
+Please refer to [the health-blockchain-composer documentation](https://github.com/IBM-Bluemix/health-blockchain-composer) for instructions on installing and deploying the composer fabric backend application.  The composer command line client is also required (`$ npm install -g composer-cli`).
+
+*Important note*: If you deploy the network via playground then the business network identity will be `org-acme-biz`, whereas if you deploy via the command line the business network identity will be `fitchain`.
+
+The fabric connection module is located in `./fabric/index.js`.
+
+```javascript
+let FabricConnection = require('./fabric);
+
+let conn = new FabricConnection();
+
+const   CONNECTION_PROFILE = 'hlfv1',
+        BUSSINESS_NETWORK_IDENTIFIER = 'fitchain', // will be 'org-acme-biznet' if deployed using playground.
+        ENROLLMENT_ID = 'PeerAdmin', // default admin user
+        ENROLLMENT_SECRET = 'whatever'; // default admin user does not have password
+
+conn.connect(CONNECTION_PROFILE, BUSSINESS_NETWORK_IDENTIFIER, ENROLLMENT_ID, ENROLLMENT_SECRET).then((def) => {
+    console.log(def) // print out network definition
+
+    // returns promise
+    let createAthlete = conn.createAthlete('userID:0001', {email: 'test@email'})
+
+    let listBusinesses = conn.listBusinesses()
+
+    let challenge = conn.newChallenge({},true, true);
+
+    let createChallenge = conn.createChallenge(challenge, 'userID:0000');
+
+    // etc.
+})
+
+```
+
+The functionality and return values can be tested in the node REPL by requiring the fabric connection as described.
+
 ## Data Model and API
 
 Refer to [API.md](API.md) for details on the app architecture.

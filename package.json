@@ -13,17 +13,22 @@
     "async": "^2.4.1",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "1.17.2",
+    "browserfs": "^1.4.2",
     "cf-deployment-tracker-client": "*",
     "cfenv": "1.0.x",
     "cloudant": "1.7.1",
+    "composer-admin": "^0.10.1",
     "composer-client": "^0.10.1",
+    "composer-common": "^0.10.1",
+    "composer-connector-embedded": "^0.10.1",
     "connect-flash": "0.1.1",
     "cookie-parser": "1.4.3",
     "express": "4.15.3",
     "express-session": "1.15.3",
     "morgan": "1.8.1",
     "passport": "0.3.2",
-    "passport-local": "1.0.0"
+    "passport-local": "1.0.0",
+    "uuid": "^3.1.0"
   },
   "devDependencies": {
     "chai": "^3.5.0",

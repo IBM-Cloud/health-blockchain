@@ -7,35 +7,58 @@
 // const path = require('path');
 // const bfs_fs = BrowserFS.BFSRequire('fs');
 
+const fs = require('fs');
+const path = require('path');
 
+const AdminConnection = require('composer-admin').AdminConnection;
 const BusinessNetworkConnection = require('composer-client').BusinessNetworkConnection;
+const BusinessNetworkDefinition = require('composer-common').BusinessNetworkDefinition;
+
+const BrowserFS = require('browserfs/dist/node/index');
+const bfs_fs = BrowserFS.BFSRequire('fs');
 
 // Namespace constants
-// TODO :: move into separate "constants" module
-const NS = 'fitChain.main';
+const {
+	ARCHIVE_VERSION,
+	ARCHIVE_PATH,
 
-const NS_OPERATOR = `${NS}.Operator`;
-const NS_BUSINESS = `${NS}.Business`;
-const NS_ATHLETE = `${NS}.Athlete`;
-
-const NS_CHALLENGE = `${NS}.Challenge`;
-const NS_CHALLENGE_ENTRY = `${NS}.ChallengeEntry`;
-const NS_ARENA = `${NS}.Arena`;
-
+	NS,
+	NS_OPERATOR,
+	NS_BUSINESS,
+	NS_ATHLETE,
+	NS_CHALLENGE,
+	NS_CHALLENGE_ENTRY,
+	NS_ARENA 
+} = require ('./constants');
 
 class FabricConnection {
 	// NOTE :: destructuring to make interface explicit.
 	// @config = {connectionProfile, businessNetwork}
-	constructor() {
+	constructor(mock = false) {
 		this.config = {};
 		this.events = [];
+		this.mock = mock;
+
 		this.conn = new BusinessNetworkConnection();
 	}
 
 	// NOTE :: Default connection values are for the default composer peeradmin user
 	connect(connectionProfile = 'hlfv1', businessNetwork = 'fitchain-composer', enrollmentID = 'PeerAdmin', enrollmentSecret = 'password') {
-		this.conn = new BusinessNetworkConnection();
-		return this.conn.connect(connectionProfile, businessNetwork, enrollmentID, enrollmentSecret).then((networkDefinition) => {
+
+		let makeConnection;
+
+		if (this.mock) {
+			console.log("establishing mock connection");
+			makeConnection = this._mockConnect()
+		} else {
+			this.conn = new BusinessNetworkConnection();			
+			makeConnection = this.conn.connect(connectionProfile, businessNetwork, enrollmentID, enrollmentSecret)
+		}
+
+		return makeConnection.then((networkDefinition) => {
+			console.log("Connection Established")
+			console.log(networkDefinition);
+
 			this.config = {connectionProfile, businessNetwork, enrollmentID};
 			this.events = [];
 			this.conn.on('event',(e) => {
@@ -43,19 +66,99 @@ class FabricConnection {
 			});
 			this.factory = this.conn.getBusinessNetwork().getFactory();
 			return networkDefinition;
+		}).catch((e) => {
+			console.log(e)
+			throw e;
 		})
 	}
 
+	_mockConnect() {
+		const connectionProfile = 'defaultProfile';
+		const businessNetwork = 'fitchain';
+		const enrollmentID = 'admin';
+		const enrollmentSecret = 'adminpw';
+
+		this.config = {
+			connectionProfile,
+			businessNetwork
+		};
+
+		BrowserFS.initialize(new BrowserFS.FileSystem.InMemory());
+
+		// Create a new admin connection.
+		const adminConnection = new AdminConnection({
+			fs: bfs_fs
+		});
+
+		// Create a new connection profile that uses the embedded (in-memory) runtime.
+		return adminConnection.createProfile(connectionProfile, {
+			type: 'embedded'
+		})
+		.then(() => {
+			console.log("before admin connection")
+			// Establish an admin connection. The user ID must be admin. The user secret is
+			// ignored, but only when the tests are executed using the embedded (in-memory)
+			// runtime.
+			return adminConnection.connect(connectionProfile, businessNetwork, enrollmentID, enrollmentSecret);
+
+		})
+		.then((r) => {
+			console.log(`After the admin connection ${r}`);
+
+			// load fitchain archive file
+			// TODO :: include version in bna file; list version in constants;
+			return fs.readFile(ARCHIVE_PATH).then((f) => {
+				return BusinessNetworkDefinition.fromArchive(f);
+			});
+		})
+		.then((businessNetworkDefinition) => {
+			console.log(businessNetworkDefinition)
+
+			// Deploy and start the business network defined by the business network definition.
+			return adminConnection.deploy(businessNetworkDefinition);
+
+		})
+		.then((r) => {
+			console.log("post-deploy")
+			console.log(r)
+
+			// Create and establish a business network connection
+			this.conn = new BusinessNetworkConnection({
+				fs: bfs_fs
+			});
+
+			this.events = [];
+			this.conn.on('event', (event) => {
+				this.events.push(event);
+			});
+
+			return this.conn.connect(connectionProfile, connectionProfile, enrollmentID, enrollmentSecret);
+
+		});
+	}
 	// set identity used to interact with fabric.
 	useIdentity(enrollmentID, enrollmentSecret) {
+
 		const {connectionProfile, businessNetwork} = this.config;
+		
 		if (!(connectionProfile && businessNetwork)) throw new Error('Configuration not set.  call connect');
-		return this.connect(connectionProfile, businessNetwork, enrollmentID, enrollmentSecret);
+
+		this.conn.disconnect().then(() => {
+			let options = {};
+			if (this.mock) this.options.fs = bfs_fs;
+			this.conn = new BusinessNetworkConnection(options);
+			this.events = [];
+			this.conn.on('event', (event) => {
+				this.events.push(event);
+			});
+			return this.conn.connect(connectionProfile, businessNetwork, enrollmentID, enrollmentSecret);
+		});
 	}
 
 	// 
 	// @participant is the fully qualified ID of the participant 
 	// @enrollmentID is the name of the identity / fabric enrollment
+	// Current connection identity must have this capability
 	issueIdentity(participant, enrollmentID) {
 		return this.conn.issueIdentity(participant, enrollmentID);
 	}
@@ -340,5 +443,4 @@ class FabricConnection {
 
 }
 
-
-module.exports = FabricConnection;
+module.exports = {FabricConnection};

@@ -148,26 +148,11 @@ router.post('/organization/challenges/:id/publish', checkAuthenticated, (req, re
   }).catch((err) => {
     res.status(500).send({ok:false, msg: err});
   });
-
-
-
-  // console.log(`Storing new challenge for ${req.user._id} / ${req.user.organization}:`, req.body);
-  // const challenge = req.body;
-  // // sanity check
-  // delete challenge._id;
-  // delete challenge._rev;
-  // // assign this workout to the current user
-  // challenge.organization = req.user.organization;
-  // Market.insert(challenge, (err, result) => {
-  //   if (err) {
-  //     res.status(500).send({ ok: false });
-  //   } else {
-  //     challenge._id = result.id;
-  //     challenge._rev = result.rev;
-  //     res.status(201).send(challenge);
-  //   }
-  // });
 });
+
+
+// NOTE -- this is not currently allowed in composer app
+// TODO :: allow updates for challenges in "Draft" stage
 
 // | PUT   | /api/organization/challenges | allows an organization to update its challenge
 // requires authentication
@@ -201,6 +186,10 @@ router.put('/organization/challenges/:id', checkAuthenticated, (req, res) => {
   }
 });
 
+
+// NOTE :: There is no clear mapping here to composer interface.
+// Get challenges --> this will include entries
+// Get workouts that map to challenge ??  How does a workout map to a challenge ?
 // | GET    | /api/organization/challenges/summary/:id | view a challenge summary
 router.get('/organization/challenges/:id/summary', checkAuthenticated, (req, res) => {
   console.log(`Retrieving challenge summary for ${req.user._id} / ${req.user.organization} / ${req.params.id}:`);
@@ -288,6 +277,10 @@ router.get('/organization/challenges/:id/summary', checkAuthenticated, (req, res
   });
 });
 
+
+// NOTE -- no deletion is currently possible in fitchain composer
+// TODO :: expose "close challege" transaction
+// TODO :: enable deletion of "DRAFT" challenges
 
 // | DELETE | /api/organization/challenges | allows to delete its challenge from the market
 // requires authentication
