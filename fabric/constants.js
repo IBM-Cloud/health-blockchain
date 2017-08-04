@@ -1,5 +1,5 @@
 const ARCHIVE_VERSION = '0.0.1';
-const ARCHIVE_PATH = `archives/fitchain@${ARCHIVE_VERSION}`;
+const ARCHIVE_PATH = `./archives/fitchain@${ARCHIVE_VERSION}.zip`;
 
 const NS = 'fitChain.main';
 

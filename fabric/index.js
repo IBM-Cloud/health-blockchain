@@ -93,32 +93,32 @@ class FabricConnection {
 		// Create a new connection profile that uses the embedded (in-memory) runtime.
 		return adminConnection.createProfile(connectionProfile, {
 			type: 'embedded'
-		})
-		.then(() => {
+		}).then(() => {
 			console.log("before admin connection")
 			// Establish an admin connection. The user ID must be admin. The user secret is
 			// ignored, but only when the tests are executed using the embedded (in-memory)
 			// runtime.
-			return adminConnection.connect(connectionProfile, businessNetwork, enrollmentID, enrollmentSecret);
+			return adminConnection.connect(connectionProfile, enrollmentID, enrollmentSecret);
 
-		})
-		.then((r) => {
+		}).then((r) => {
 			console.log(`After the admin connection ${r}`);
-
-			// load fitchain archive file
-			// TODO :: include version in bna file; list version in constants;
-			return fs.readFile(ARCHIVE_PATH).then((f) => {
-				return BusinessNetworkDefinition.fromArchive(f);
+			console.log(path.join(__dirname, ARCHIVE_PATH))
+			return new Promise((resolve, reject) => {
+				fs.readFile(path.join(__dirname, ARCHIVE_PATH), (err, f) => {
+					if (err) {
+						reject(err)
+					} else {
+						resolve(BusinessNetworkDefinition.fromArchive(f))
+					}
+					
+				});
 			});
-		})
-		.then((businessNetworkDefinition) => {
-			console.log(businessNetworkDefinition)
+		}).then((businessNetworkDefinition) => {
 
 			// Deploy and start the business network defined by the business network definition.
 			return adminConnection.deploy(businessNetworkDefinition);
 
-		})
-		.then((r) => {
+		}).then((r) => {
 			console.log("post-deploy")
 			console.log(r)
 
@@ -132,7 +132,7 @@ class FabricConnection {
 				this.events.push(event);
 			});
 
-			return this.conn.connect(connectionProfile, connectionProfile, enrollmentID, enrollmentSecret);
+			return this.conn.connect(connectionProfile, businessNetwork, enrollmentID, enrollmentSecret);
 
 		});
 	}
